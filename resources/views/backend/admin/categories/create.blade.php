@@ -13,7 +13,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6" style="padding:30px;">
-                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i> Contact Add</h1>
+                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i> Danh mục </h1>
                     </div>
                 </div>
             </div>
@@ -59,8 +59,8 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <input type="submit" value="Create new contact" class="btn btn-success float-left mr-2" />
-                        <a href="#" class="btn btn-secondary float-left">Cancel</a>
+                        <input type="submit" value="Tạo mới" class="btn btn-success float-left mr-2" />
+                        <a href="#" class="btn btn-secondary float-left">Quay lại</a>
                     </div>
                 </div>
             </form>
