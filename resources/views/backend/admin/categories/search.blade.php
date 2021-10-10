@@ -8,6 +8,7 @@
             </div>
         </div>
     </td>
+    <td>{{ $category->id }}</td>
     <td>{{ $category->name }}</td>
     <td>{{ $category->slug }}</td>
     <td>
