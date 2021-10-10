@@ -21,7 +21,7 @@
                             class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i>Thêm mới</a>
                         <button class="btn btn-danger float-left delete_all"
                             data-url="{{ route('backend.admin.categories.categories.delete') }}"><i
-                                class="fas fa-trash"></i> Bulk Delete</button>
+                                class="fas fa-trash"></i>Xóa hàng loạt</button>
                     </div>
                 </div>
             </div>
@@ -58,6 +58,7 @@
                                                     </div>
                                                 </div>
                                             </th>
+                                            <th>Số thứ tự</th>
                                             <th>Tên danh mục</th>
                                             <th>Slug</th>
                                             <th>Hành động</th>
