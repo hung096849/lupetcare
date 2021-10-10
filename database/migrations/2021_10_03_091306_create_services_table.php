@@ -27,7 +27,7 @@ class CreateServicesTable extends Migration
             $table->string('time');
             $table->string('slug');
             $table->timestamp('delete_at');
-            $table->foreign('category_id')->references('id')->on('categories_services');
+            $table->foreign('category_id')->references('id')->on('categories_services')->onDelete('cascade');
             $table->timestamps();
         });
     }
