@@ -1,13 +1,12 @@
 @extends('layouts.backend')
 @section('content')
-edit
-{{-- <div class="wrapper">
+<div class="wrapper">
 
-    @include('backend.includes.navbar-top', [
-    'edit' => 'Contact',
-    'id' => $contact->id,
-    'url' => route('backend.admin.contacts.show')
-    ])
+    {{-- @include('backend.includes.navbar-top', [
+    'edit' => 'categories',
+    'id' => $categories->id,
+    'url' => route('backend.admin.categories.show')
+    ]) --}}
 
     @include('backend.components.alert')
 
@@ -17,7 +16,7 @@ edit
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6" style="padding:30px;">
-                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> Contact Edit</h1>
+                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> categories Edit</h1>
                     </div>
                 </div>
             </div>
@@ -26,54 +25,19 @@ edit
 
         <!-- Main content -->
         <section class="content">
-            <form method="POST" action="{{ route('backend.admin.contacts.update') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('backend.admin.categories.update') }}" enctype="multipart/form-data">
                 @csrf
                 {{ method_field('PATCH') }}
-                <input type="hidden" name="id" value="{{ $contact->id }}" />
+                <input type="hidden" name="id" value="{{ $categories->id }}" />
                 <div class="row">
                     <div class="col-12">
                         <div class="card card-primary">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputName">Name</label>
-                                    <input type="text" name="name" id="inputName" class="form-control"
-                                        value="{{old('name',$contact->name)}}" placeholder="Name ..." />
+                                    <label for="inputName">Tên danh mục</label>
+                                    <input type="text" name="name" id="title" class="form-control"
+                                        value="{{old('name',$categories->name)}}" placeholder="Name ..." />
                                     @error('name')
-                                    <div class="mt-1 text-red-500">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="inputDescription">Email</label>
-                                    <input type="email" name="email" id="inputEmail" class="form-control"
-                                        value="{{old('email',$contact->email)}}" placeholder="Email ..." />
-                                    @error('email')
-                                    <div class="mt-1 text-red-500">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="">Phone</label>
-                                    <input type="text" name="phone" id="inputPhone" class="form-control"
-                                        value="{{old('phone',$contact->phone)}}" placeholder="Phone ..." />
-                                    @error('phone')
-                                    <div class="mt-1 text-red-500">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="">Content</label>
-                                    <textarea class="form-control" name="content" id="content" rows="3"
-                                        placeholder="Your message">
-                                        {{old('content',$contact->content)}}
-                                    </textarea>
-                                    @error('content')
                                     <div class="mt-1 text-red-500">
                                         {{$message}}
                                     </div>
@@ -86,10 +50,8 @@ edit
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <input type="submit" value="Edit contact" class="btn btn-success float-left mr-2" />
-                        <a href="#" class="btn btn-secondary mr-2 float-left">Cancel</a>
-                        <a href="{{ route('backend.admin.contacts.show') }}" class="btn btn-primary float-left">Return
-                            to List</a>
+                        <input type="submit" value="Sửa" class="btn btn-success float-left mr-2" />
+                        <a href="{{ route('backend.admin.categories.show') }}" class="btn btn-primary float-left">Quay lại danh sách</a>
                     </div>
                 </div>
             </form>
@@ -97,6 +59,6 @@ edit
         <!-- /.content -->
     </div>
 
-</div> --}}
+</div>
 
 @endsection

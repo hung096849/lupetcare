@@ -22,7 +22,7 @@
 
         <!-- Main content -->
         <section class="content">
-            <form method="POST" action="{{ route('backend.categories.store') }}">
+            <form method="POST" action="{{ route('backend.admin.categories.store') }}">
                 {{--  --}}
                 @csrf
                 <div class="row">
@@ -39,17 +39,6 @@
                                     </div>
                                     @enderror
                                 </div>
-
-                                {{-- <div class="form-group">
-                                    <label for="inputDescription">Slug</label>
-                                    <input type="text" name="slug" id="slug" class="form-control" required />
-                                    @if ($errors->has('slug'))
-                                    <div class="mt-1 text-red-500">
-                                        {{ $errors->first('slug') }}
-                                    </div>
-                                    @endif
-                                </div> --}}
-
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -60,7 +49,7 @@
                 <div class="row">
                     <div class="col-12">
                         <input type="submit" value="Tạo mới" class="btn btn-success float-left mr-2" />
-                        <a href="#" class="btn btn-secondary float-left">Quay lại</a>
+                        <a href="{{ route('backend.admin.categories.show') }}" class="btn btn-secondary float-left">Quay lại</a>
                     </div>
                 </div>
             </form>

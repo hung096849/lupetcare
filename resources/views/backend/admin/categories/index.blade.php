@@ -2,10 +2,10 @@
 @section('content')
 <div class="wrapper">
 
-    {{-- @include('backend.includes.navbar-top', [
-    'list' => 'categories',
-    // 'url' => route('backend.admin.categories.show')
-    ]) --}}
+    @include('backend.includes.navbar-top', [
+    'list' => 'Danh mục',
+    'url' => route('backend.admin.categories.show')
+    ])
 
     @include('backend.components.alert')
 
@@ -16,13 +16,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-8" style="padding:30px;">
-                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i> Categories</h1>
-                        <a href=""
-                        {{-- {{ route('backend.admin.categories.create') }} --}}
-                            class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i> Add new</a>
+                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i> Danh mục</h1>
+                        <a href="{{ route('backend.admin.categories.create') }}"
+                            class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i>Thêm mới</a>
                         <button class="btn btn-danger float-left delete_all"
-                            data-url=""><i
-                            {{-- {{ route('backend.admin.categories.categories.delete') }} --}}
+                            data-url="{{ route('backend.admin.categories.categories.delete') }}"><i
                                 class="fas fa-trash"></i> Bulk Delete</button>
                     </div>
                 </div>
@@ -39,10 +37,7 @@
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
                                         <input type="text" name="search" id="search"
-                                            data-url=""
-                                            {{-- {{ route('backend.admin.categories.search') }} --}}
-                                            class="form-control float-right" placeholder="Search">
-
+                                        data-url="{{ route('backend.admin.categories.search') }}" class="form-control float-right" placeholder="Tìm kiếm">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-default">
                                                 <i class="fas fa-search"></i>
