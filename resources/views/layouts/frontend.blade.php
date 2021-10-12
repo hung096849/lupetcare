@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lupet Spa</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    @include('backend.frontend.style')
+    @include('frontend.includes.style')
 </head>
 <body>
-    @include('backend.frontend.header')
+    @include('frontend.includes.header')
 
     @yield('content')
     
-    @include('backend.frontend.footer')
+    @include('frontend.includes.footer')
 
 
-    @include('backend.frontend.script')
+    @include('frontend.includes.script')
     
     @yield('js')
 </body>
