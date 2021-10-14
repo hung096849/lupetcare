@@ -1,0 +1,40 @@
+.new{
+    &-form{
+         &-title{
+            font-size: 20px;
+            font-weight: 700;
+         }
+         &-delete label{
+             cursor: pointer;
+         }
+    }
+    &-list{
+        &-title{
+            font-size: 25px;
+            font-weight: 700;
+           background-color: #17a2b8;
+           color: #fff;
+           border-radius: 30px;
+        }
+    }
+    &-title-item{
+        font-size: 20px;
+        font-weight: 700
+    }
+    &-detail-title{
+        font-size: 25px;
+        font-weight: 700;
+    }
+    &-detail-name{
+        font-size: 20px;
+        font-weight: 700;
+    }
+    &-detail-content{
+        font-size: 16px;
+        font-weight: 500;
+    }
+}
+.filter-title{
+    font-size: 20px;
+    font-weight: 700;
+}
