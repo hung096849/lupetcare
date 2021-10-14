@@ -40,7 +40,7 @@ class Services extends Model
         return $fileNameToStore;
     }
 
-    public function sluggable() {
+    public function sluggable() : array{
         return [
             'slug' => [
                 'source' => 'title'
