@@ -10,5 +10,6 @@ class PetInformartion extends Model
     use HasFactory;
 
     protected $table = 'pet_informartions';
+    protected $fillable = [];
 
 }
