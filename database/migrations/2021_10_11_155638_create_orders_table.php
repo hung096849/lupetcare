@@ -15,10 +15,15 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('vocher_id');
-            $table->unsignedBigInteger('services_id');
-            $table->char('status');
-            $table->char('price');
+            $table->integer('vocher_id')->nullable();
+            $table->integer('services_id');
+            $table->integer('customer_id')->nullable();
+            $table->char('payment_method')->comment('0:Cash, 1:Card')->default(0);
+            $table->char('is_paid')->comment('0:Unpai, 1:Paid')->default(0);
+            $table->char('status')->comment('0:In process, 1:Success')->default(0);
+            // $table->text('items');
+            // $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            // $table->foreign('services_id')->references('id')->on('services')->onDelete('cascade');
             $table->timestamps();
         });
     }

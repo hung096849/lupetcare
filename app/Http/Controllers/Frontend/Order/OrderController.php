@@ -16,4 +16,9 @@ class OrderController extends Controller
     {
         return view('frontend/order/order');
     }
+
+    public function addForm()
+    {
+        dd(1);
+    }
 }
