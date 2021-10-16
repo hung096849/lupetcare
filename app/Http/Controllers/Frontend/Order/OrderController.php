@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    // public function __construct(type $ = null)
-    // {
-    //     $this-> = $;
-    // }
+    protected $services
+    public function __construct(type $ = null)
+    {
+        $this-> = $;
+    }
 
-    public function index()
+    public function index(Request $request)
     {
         return view('frontend/order/order');
     }
