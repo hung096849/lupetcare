@@ -4,7 +4,7 @@
             <div class="row align-content-center
                 justify-content-between">
                 <div class="col-4 lo-go-none d-block d-lg-none">
-                    <a href="index.html" title="Trang chủ" class="img_
+                    <a href="/" title="Trang chủ" class="img_
                         d-block logo-1"> <img loading="lazy" src="{{ asset('frontend/images/logo.png') }}" alt="" title=""> </a>
                 </div>
 
@@ -20,13 +20,13 @@
         <div class="container-fluid container-padding">
             <div class="row nav-menu">
                 <div class="col-12 col-lg-2">
-                    <a href="#" title="Trang chủ" class="img_ d-block
+                    <a href="/" title="Trang chủ" class="img_ d-block
                         logo"> <img loading="lazy" src="{{ asset('frontend/images/logo.png') }}" alt="" title=""> </a>
                 </div>
                 <div class="col-12 col-lg-7">
                     <div class="menu menu-desktop">
                         <ul>
-                            <li><a rel="" class="active" href="./index.html">Trang
+                            <li><a rel="" class="active" href="/">Trang
                                     chủ</a></li>
                             <li>
                                 <a href="#">Sản Phẩm</a>

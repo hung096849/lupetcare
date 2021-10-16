@@ -36,8 +36,9 @@
                         <div class="button-book d-flex
                             justify-content-center mt-4">
                             <div type="button" class="btn  "><i class="fa fa-heart-o" aria-hidden="true"></i></div>
-                            <button type="button" class="btn
-                                btn-outline-info bright btn__book">BOOK</button>
+                            <button type="button" class="btn btn-outline-info bright btn__book">
+                                <a href="{{ route('frontend.order_services.order',$service->id) }}">Đặt lịch</a>
+                            </button>
                         </div>
                     </div>
                 </div>

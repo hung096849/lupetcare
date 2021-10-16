@@ -14,11 +14,12 @@ Route::name('frontend.')->group(function () {
         Route::get('/services', [ServicesController::class,'index'])->name('show');
             
         // /services/detail/{slug}
-        Route::get('/services/detail', [ServicesController::class,'detail'])->name('detail');
+        Route::get('/services/detail/{id}', [ServicesController::class,'detail'])->name('detail');
     });
 
     Route::name('order_services.')->group(function () {
-        Route::get('/order', [OrderController::class,'index'])->name('show');
+        // {slug}
+        Route::get('/order/{id}', [OrderController::class,'index'])->name('order');
         
         Route::post('/order', [OrderController::class,'addForm'])->name('addForm');
     });
