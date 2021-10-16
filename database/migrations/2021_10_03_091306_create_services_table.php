@@ -15,16 +15,16 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('service_name')->nullable();
+            $table->string('service_name');
             $table->unsignedBigInteger('category_id');
             $table->string('image');
-            $table->string('price');
-            $table->string('price_sale');
-            $table->text('detail');
-            $table->text('description');
+            $table->string('price')->nullable();
+            $table->string('price_sale')->nullable();
+            $table->text('detail')->nullable();
+            $table->text('description')->nullable();
             $table->tinyInteger('status')->default(0);
             // ->comment("0: Active, 1: Deleted")
-            $table->string('time');
+            $table->string('time')->nullable();
             $table->string('slug');
             $table->timestamp('delete_at');
             $table->foreign('category_id')->references('id')->on('categories_services')->onDelete('cascade');

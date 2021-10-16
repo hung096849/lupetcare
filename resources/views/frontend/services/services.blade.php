@@ -20,100 +20,31 @@
                 <div class="pro-cate">
 
                     <div class="row">
-                        <div class="col-12 col-md-4 col-xl-3">
-                            <div class="item_pro-cate">
-                                <div class="images d-block run_hv"><img src="{{ asset('frontend/images/img-in.png') }}" alt="" class="img_ w-100">
-                                </div>
-                                <div class="item_content">
-                                    <h4 class="name">
-                                        <a href="{{ route('frontend.services.detail') }}">Cắt tỉa móng cơ bản</a>
-                                    </h4>
-                                    <p class="price">50.000</p>
-                                    <span class="time"><i class="fa fa-clock-o mr-1" aria-hidden="true"></i>20 PHÚT</span>
-                                    <div class="item_btn d-flex
-                                        justify-content-center mt-4">
-                                        <button type="button" class="btn
-                                            mr-3"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-                                        <a href="{{ route('frontend.order_services.show') }}" class="btn
-                                            btn-info bright
-                                            d-flex
-                                            justify-content-center
-                                            align-items-center">Đặt lịch</a>
+                        @foreach ($services as $service)
+                            <div class="col-12 col-md-4 col-xl-3">
+                                <div class="item_pro-cate">
+                                    <div class="images d-block run_hv"><img src="{{ asset('frontend/images/img-in.png') }}" alt="" class="img_ w-100">
+                                    </div>  
+                                    <div class="item_content">
+                                        <h4 class="name">
+                                            <a href="{{ route('frontend.services.detail',$service->id) }}">Cắt tỉa móng cơ bản</a>
+                                        </h4>
+                                        <p class="price">50.000</p>
+                                        <span class="time"><i class="fa fa-clock-o mr-1" aria-hidden="true"></i>20 PHÚT</span>
+                                        <div class="item_btn d-flex
+                                            justify-content-center mt-4">
+                                            <button type="button" class="btn
+                                                mr-3"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                                            <a href="{{ route('frontend.order_services.order',$service->id) }}" class="btn
+                                                btn-info bright
+                                                d-flex
+                                                justify-content-center
+                                                align-items-center">Đặt lịch</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-md-4 col-xl-3">
-                            <div class="item_pro-cate">
-                                <div class="images d-block run_hv"><img src="{{ asset('frontend/images/img-in.png') }}" alt="" class="img_ w-100">
-                                </div>
-                                <div class="item_content">
-                                    <h4 class="name">
-                                        Cắt tỉa móng cơ bản
-                                    </h4>
-                                    <p class="price">50.000</p>
-                                    <span class="time"><i class="fa fa-clock-o mr-1" aria-hidden="true"></i>20 PHÚT</span>
-                                    <div class="item_btn d-flex
-                                        justify-content-center mt-4">
-                                        <button type="button" class="btn
-                                            mr-3"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-                                        <a href="#" class="btn
-                                            btn-info bright
-                                            d-flex
-                                            justify-content-center
-                                            align-items-center">Đặt lịch</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4 col-xl-3">
-                            <div class="item_pro-cate">
-                                <div class="images d-block run_hv"><img src="{{ asset('frontend/images/img-in.png') }}" alt="" class="img_ w-100">
-                                </div>
-                                <div class="item_content">
-                                    <h4 class="name">
-                                        Cắt tỉa móng cơ bản
-                                    </h4>
-                                    <p class="price">50.000</p>
-                                    <span class="time"><i class="fa fa-clock-o mr-1" aria-hidden="true"></i>20 PHÚT</span>
-                                    <div class="item_btn d-flex
-                                        justify-content-center mt-4">
-                                        <button type="button" class="btn
-                                            mr-3"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-                                        <a href="#" class="btn
-                                            btn-info bright
-                                            d-flex
-                                            justify-content-center
-                                            align-items-center">Đặt lịch</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4 col-xl-3">
-                            <div class="item_pro-cate">
-                                <div class="images d-block run_hv"><img src="{{ asset('frontend/images/img-in.png') }}" alt="" class="img_ w-100">
-                                </div>
-                                <div class="item_content">
-                                    <h4 class="name">
-                                        Cắt tỉa móng cơ bản
-                                    </h4>
-                                    <p class="price">50.000</p>
-                                    <span class="time"><i class="fa fa-clock-o mr-1" aria-hidden="true"></i>20 PHÚT</span>
-                                    <div class="item_btn d-flex
-                                        justify-content-center mt-4">
-                                        <button type="button" class="btn
-                                            mr-3"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-                                        <a href="#" class="btn
-                                            btn-info bright
-                                            d-flex
-                                            justify-content-center
-                                            align-items-center">Đặt lịch</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
+                        @endforeach
                     </div>
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-end">
