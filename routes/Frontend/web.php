@@ -23,5 +23,16 @@ Route::name('frontend.')->group(function () {
         
         Route::post('/order', [OrderController::class,'addForm'])->name('addForm');
     });
+    Route::get('/send-mail', function () {
+   
+        $details = [
+            'title' => 'Mail from ItSolutionStuff.com',
+            'body' => 'This is for testing email using smtp'
+        ];
+       
+        \Mail::to('hunghmph11495@fpt.edu.vn')->send(new \App\Mail\Email($details));
+       
+        dd("Email is Sent.");
+    });
 
 });
