@@ -1,10 +1,12 @@
+
 @extends('layouts.backend')
 @section('content')
+
 <div class="wrapper">
 
     @include('backend.includes.navbar-top', [
     'list' => 'Danh mục',
-    'url' => route('backend.admin.categories.show')
+    'url' => route('backend.admin.services.show')
     ])
 
     @include('backend.components.alert')
@@ -20,8 +22,8 @@
                         <a href="{{ route('backend.admin.categories.create') }}"
                             class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i>Thêm mới</a>
                         <button class="btn btn-danger float-left delete_all"
-                            data-url="{{ route('backend.admin.categories.categories.delete') }}"><i
-                                class="fas fa-trash"></i>Xóa hàng loạt</button>
+                            data-url="{{ route('backend.admin.categories.categories.delete') }}">
+                            <i class="fas fa-trash"></i>Xóa hàng loạt</button>
                     </div>
                 </div>
             </div>
@@ -37,7 +39,8 @@
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
                                         <input type="text" name="search" id="search"
-                                        data-url="{{ route('backend.admin.categories.search') }}" class="form-control float-right" placeholder="Tìm kiếm">
+                                        {{-- data-url="{{ route('backend.admin.categories.search') }}"    --}}
+                                        class="form-control float-right" placeholder="Tìm kiếm">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-default">
                                                 <i class="fas fa-search"></i>
@@ -59,13 +62,18 @@
                                                 </div>
                                             </th>
                                             <th>Số thứ tự</th>
-                                            <th>Tên danh mục</th>
+                                            <th>Tên dịch vụ</th>
+                                            <th>Ảnh</th>
+                                            <th>Giá</th>
+                                            <th>Giảm giá</th>
+                                            <th>Trạng thái</th>
+                                            <th>Thời gian</th>
                                             <th>Slug</th>
                                             <th>Hành động</th>
                                         </tr>
                                     </thead>
                                     <tbody id="search-data">
-                                        @include('backend.admin.categories.search')
+                                        @include('backend.admin.services.search')
                                     </tbody>
                                 </table>
 
@@ -84,7 +92,7 @@
                     </div>
                     <div class="col-sm-12 col-md-7">
                         <div class="dataTables_paginate paging_simple_numbers float-right" id="example2_paginate">
-                            @include('backend.components.pagination', ['paginator' => $categories])
+                            @include('backend.components.pagination', ['paginator' => $services])
                         </div>
                     </div>
                 </div>
@@ -96,5 +104,4 @@
 
     <div id="sidebar-overlay"></div>
 </div>
-
 @endsection
