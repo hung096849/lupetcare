@@ -10,6 +10,8 @@ class Order extends Model
     use HasFactory;
 
     protected $table = 'orders';
-    protected $fillable = [];
+    protected $fillable = [
+        'services_id', 'customer_id', 'payment_method', 'is_paid', 'status'
+    ];
     
 }
