@@ -21,7 +21,7 @@ Route::name('frontend.')->group(function () {
         // {slug}
         Route::get('/order/{id}', [OrderController::class,'index'])->name('order');
         
-        Route::post('/order', [OrderController::class,'addForm'])->name('addForm');
+        Route::post('/order/{id}', [OrderController::class,'addForm'])->name('addForm');
     });
 
 });

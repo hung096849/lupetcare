@@ -15,10 +15,10 @@ class CreatePetInformartionsTable extends Migration
     {
         Schema::create('pet_informartions', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('code');
-            $table->string('weight');
-            $table->string('gender');
+            $table->string('name');
+            $table->string('code')->nullable();
+            $table->string('weight')->nullable();
+            $table->string('gender')->nullable();
             $table->string('slug');
             $table->unsignedBigInteger('service_id');
             // $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
