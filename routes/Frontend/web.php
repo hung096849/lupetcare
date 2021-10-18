@@ -3,11 +3,14 @@
 use App\Http\Controllers\Frontend\Homepage\HomepageController;
 use App\Http\Controllers\Frontend\Order\OrderController;
 use App\Http\Controllers\Frontend\Services\ServicesController;
+use App\Http\Controllers\MailController;
+use App\Http\Controllers\ContactController;
 
 Route::name('frontend.')->group(function () {
 
     Route::name('homepage.')->group(function () {
         Route::get('/', [HomepageController::class,'index'])->name('show');
+        Route::get('/mail',[MailController::class,'sendMail']);
     });
     
     Route::name('services.')->group(function () {
@@ -23,16 +26,11 @@ Route::name('frontend.')->group(function () {
         
         Route::post('/order', [OrderController::class,'addForm'])->name('addForm');
     });
-    Route::get('/send-mail', function () {
-   
-        $details = [
-            'title' => 'Mail from ItSolutionStuff.com',
-            'body' => 'This is for testing email using smtp'
-        ];
-       
-        \Mail::to('hunghmph11495@fpt.edu.vn')->send(new \App\Mail\Email($details));
-       
-        dd("Email is Sent.");
+    Route::name('contact_sendmail')->group(function() {
+        Route::get('/contact-form', [ContactController::class, 'contactForm'])->name('contact-form');
+        Route::post('/contact-form', [ContactController::class, 'sendContact'])->name('contact.send');
     });
+   
+   
 
 });
