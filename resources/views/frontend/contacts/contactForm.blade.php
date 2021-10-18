@@ -1,7 +1,9 @@
+@extends('layouts.frontend')
+@section('content')
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Laravel 8 Contact Form Example - NiceSnippets.com</title>
+    <title>LIÊN HỆ</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +15,7 @@
             <div class="col-8 offset-2 mt-5">
                 <div class="card">
                     <div class="card-header bg-info">
-                        <h3 class="text-white">Laravel 8 Contact Form Example - NiceSnippets.com</h3>
+                        <h3 class="text-white">Liên Hệ Với Chúng Tôi</h3>
                     </div>
                     <div class="card-body">
                         
@@ -73,7 +75,7 @@
                             </div>
                    
                             <div class="form-group text-center">
-                                <button class="btn btn-success btn-submit">Save</button>
+                                <button class="btn btn-success btn-submit">GỬI</button>
                             </div>
                         </form>
                     </div>
@@ -83,3 +85,4 @@
     </div>
 </body>
 </html>
+@endsection

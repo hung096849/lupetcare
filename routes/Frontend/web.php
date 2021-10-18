@@ -10,7 +10,6 @@ Route::name('frontend.')->group(function () {
 
     Route::name('homepage.')->group(function () {
         Route::get('/', [HomepageController::class,'index'])->name('show');
-        Route::get('/mail',[MailController::class,'sendMail']);
     });
     
     Route::name('services.')->group(function () {

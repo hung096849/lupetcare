@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Mail\Email;
-use Illuminate\Http\Request;
+use App\Http\Requests\Frontend\Contact\ContactFormRequest;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Mail;
 
@@ -12,31 +12,9 @@ class ContactController extends Controller
     {
         return view('frontend.contacts.contactForm');
     }
-
-    // public function storeContactForm(Request $request)
-    // {
-    //     $request->validate([
-    //         'name' => 'required',
-    //         'email' => 'required|email',
-    //         'phone' => 'required|digits:11|numeric',
-    //         'message' => 'required',
-    //     ]);
-
-    //     $input = $request->all();
-
-    //     Contact::create($input);
-
-    //     //  Send mail to admin
-    
-    // }
-    public function sendContact(Request $request){
+    public function sendContact(ContactFormRequest $request){
          
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|digits:11|numeric',
-            'message' => 'required',
-        ]);
+      
 
         $input = $request->all();
 
@@ -48,7 +26,7 @@ class ContactController extends Controller
             'message'=>$request->message
         ];
         Mail::to('hung3715482@gmail.com')->send(new Email($details));
-        return redirect()->back()->with(['success' => 'Contact Form Submit Successfully']);
+        return redirect()->back()->with(['success' => 'Cảm ơn bạn đã đóng góp ý kiến']);
    }
    
 }
