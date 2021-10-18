@@ -19,7 +19,7 @@ class CreateCustomersTable extends Migration
             $table->string('slug');
             $table->string('phone');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('email_verified_at')->comment('0:Unconfimred, 1:Confirm')->nullable();
             $table->string('password')->nullable();
             $table->char('status')->comment('0:Member, 1:Customer')->default(0);
             $table->text('note')->nullable();
