@@ -23,6 +23,7 @@ class ContactController extends Controller
             'name'=>$request->name,
             'phone'=>$request->phone,
             'email'=>$request->email,
+            'title'=>$request->title,
             'message'=>$request->message
         ];
         Mail::to('hung3715482@gmail.com')->send(new Email($details));
