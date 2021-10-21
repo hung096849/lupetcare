@@ -3,7 +3,6 @@
 use App\Http\Controllers\Frontend\Homepage\HomepageController;
 use App\Http\Controllers\Frontend\Order\OrderController;
 use App\Http\Controllers\Frontend\Services\ServicesController;
-use App\Http\Controllers\MailController;
 use App\Http\Controllers\ContactController;
 
 Route::name('frontend.')->group(function () {
