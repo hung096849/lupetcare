@@ -13,7 +13,7 @@ class CategoriesFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class CategoriesFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required'
         ];
+    }
+
+    public function messages() {
+        $messages = [
+            'name.required' => 'Vui lòng không để trống'
+        ];
+        return $messages;
     }
 }

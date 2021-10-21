@@ -38,26 +38,27 @@ class OrderController extends Controller
     public function addForm(Request $request)
     {
         try {   
-                DB::beginTransaction();
-                $customer = $this->customer->create([
-                    "name"  =>  $request->name,
-                    "phone" =>  $request->phone,
-                    "email" =>  $request->email,
-                    "note" =>   $request->note,
-                    "status" => Customers::MEMBER,
-                    'slug' => SlugService::createSlug(Customers::class, 'slug', $request->name),
-                ]);
-                
+                // DB::beginTransaction();
+                // $customer = $this->customer->create([
+                //     "name"  =>  $request->name,
+                //     "phone" =>  $request->phone,
+                //     "email" =>  $request->email,
+                //     "note" =>   $request->note,
+                //     "status" => Customers::MEMBER,
+                //     'slug' => SlugService::createSlug(Customers::class, 'slug', $request->name),
+                // ]);
+                dd($request->all());
                 $petName = $request->pet_name;
                 $gender = $request->gender;
                 $serviceId = $request->service_id;
                 $weight = $request->weight;
+                // dd($serviceId);
                 for ($i=0; $i < count($petName) ; $i++) { 
                     $petInfo = $this->petInfo->create([
                         'code'    => IdGenerator::generate(['table' => 'pet_informartions', 'field'=>'code', 'length' => 6, 'prefix' => "PET-$i"]),
                         "name"  =>  $petName[$i],
                         "gender" =>  $gender[$i],
-                        "service_id" => $serviceId[$i],
+                        "service_id" => json_encode($serviceId[$i]),
                         "weight" =>   $weight[$i],
                         'slug' => SlugService::createSlug(PetInformartion::class, 'slug', $petName[$i]),
                     ]);

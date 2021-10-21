@@ -7,7 +7,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\ContactController;
 
 Route::name('frontend.')->group(function () {
-
+    // router ( 'frontend.homepage.contact-form')
     Route::name('homepage.')->group(function () {
         Route::get('/', [HomepageController::class,'index'])->name('show');
     });
@@ -25,7 +25,7 @@ Route::name('frontend.')->group(function () {
         
         Route::post('/order/{id}', [OrderController::class,'addForm'])->name('addForm');
     });
-    Route::name('contact_sendmail')->group(function() {
+    Route::name('contact_sendmail.')->group(function() {
         Route::get('/contact-form', [ContactController::class, 'contactForm'])->name('contact-form');
         Route::post('/contact-form', [ContactController::class, 'sendContact'])->name('contact.send');
     });

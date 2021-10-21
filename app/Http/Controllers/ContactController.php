@@ -25,7 +25,7 @@ class ContactController extends Controller
             'email'=>$request->email,
             'message'=>$request->message
         ];
-        Mail::to('hung3715482@gmail.com')->send(new Email($details));
+        Mail::to($request->email)->send(new Email($details));
         return redirect()->back()->with(['success' => 'Cảm ơn bạn đã đóng góp ý kiến']);
    }
    

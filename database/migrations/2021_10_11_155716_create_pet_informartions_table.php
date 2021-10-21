@@ -20,7 +20,7 @@ class CreatePetInformartionsTable extends Migration
             $table->string('weight')->nullable();
             $table->string('gender')->nullable();
             $table->string('slug');
-            $table->unsignedBigInteger('service_id');
+            $table->text('service_id');
             // $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->timestamps();
         });
