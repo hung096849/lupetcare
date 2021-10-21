@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\BackEnd\Categories;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\Categories\CategoriesFormRequest;
 use App\Models\CategoriesServices;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
@@ -28,7 +29,7 @@ class CategoriesController extends Controller
         return view('backend/admin/categories/create');
     }
 
-    public function store(Request $request)
+    public function store(CategoriesFormRequest $request)
     {
         $this->categories->create([
             'name' => $request->name,

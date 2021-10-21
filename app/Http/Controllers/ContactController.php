@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Mail\Email;
 use App\Http\Requests\Frontend\Contact\ContactFormRequest;
+use App\Jobs\SendWelcomeEmail;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Mail;
 
@@ -26,7 +27,8 @@ class ContactController extends Controller
             'title'=>$request->title,
             'message'=>$request->message
         ];
-        Mail::to('hung3715482@gmail.com')->send(new Email($details));
+        $emailJob = new SendWelcomeEmail($details);
+        dispatch($emailJob);
         return redirect()->back()->with(['success' => 'Cảm ơn bạn đã đóng góp ý kiến']);
    }
    
