@@ -5,7 +5,7 @@
             <div class="col-8 offset-2 mt-5">
                 <div class="card">
                     <div class="card-header bg-info">
-                        <h3 class="text-white">Liên Hệ Với Chúng Tôi</h3>
+                        <h3 class="text-white">BẠN VUI LÒNG ĐỂ LẠI LỜI NHẮN !</h3>
                     </div>
                     <div class="card-body">
                         
@@ -48,6 +48,17 @@
                                         <input type="text" name="phone" class="form-control" placeholder="Phone" value="{{ old('phone') }}">
                                         @if ($errors->has('phone'))
                                             <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <strong>Title:</strong>
+                                        <input type="text" name="title" class="form-control" placeholder="title" value="{{ old('title') }}">
+                                        @if ($errors->has('title'))
+                                            <span class="text-danger">{{ $errors->first('title') }}</span>
                                         @endif
                                     </div>
                                 </div>

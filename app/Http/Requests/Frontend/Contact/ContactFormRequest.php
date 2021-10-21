@@ -23,14 +23,27 @@ class ContactFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|digits:10|numeric',
-            'message' => 'required',
-             
+        return[
+            request()->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+                'phone' => 'required|digits:11|numeric',
+                'title' => 'required',
+                'message' => 'required',
+            ],
+            [
+                'name.required' => ' Cần nhập họ tên',
+                'email.required' => ' Cần nhập email',
+                'email.email' => 'Phải đúng định dạng email',
+                'phone.required' => ' Cần nhập số điện thoại',
+                'phone.digits' => ' Số điện thoại phải đầy đủ 11 chữ số,và không bao gồm chữ cái hoặc kí tự khác ',
+                'title.required' => 'Vui lòng nhập tiêu đề',
+                'message.required' => ' Vui lòng để lại lời nhắn của bạn '
+            ])
         ];
-     
+      
+      
+    
+       
     }
 }
