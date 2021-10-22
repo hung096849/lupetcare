@@ -29,18 +29,17 @@
                     <div class="col-12">
                         <div class="card card-primary">
                             <div class="card-body">
-
+                                {{ method_field('PATCH') }}
                                 <div class="form-group">
                                     <label for="inputName">Danh muc</label>
                                     <select name="category_id" id="">
                                         @foreach ($categories as $categorie )
-                                        {{-- <option
-                                        @if ($categories->id == old('category_id', $services->category_id))
-                                        @endif {{ $services->category_id === $categories->id ? 'selected' : '' }}
-                                        value="{{ $categories->id }}">
-                                        {{ $categories->name }}</option> --}}
+                                        <option
+                                        @if ($categorie->id == old('category_id', $services->category_id))
+                                        @endif {{ $services->category_id === $categorie->id ? 'selected' : '' }}
+                                        value="{{ $categorie->id }}">
+                                        {{ $categorie->name }}</option>
 
-                                        <option value="{{ old('category_id',$categorie->id ) }}">{{ $categorie->name }}</option>
 
                                         @endforeach
 
