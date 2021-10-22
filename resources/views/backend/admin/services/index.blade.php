@@ -5,7 +5,7 @@
 <div class="wrapper">
 
     @include('backend.includes.navbar-top', [
-    'list' => 'Danh mục',
+    'list' => 'Dich vu',
     'url' => route('backend.admin.services.show')
     ])
 
@@ -18,11 +18,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-8" style="padding:30px;">
-                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i> Danh mục</h1>
-                        <a href="{{ route('backend.admin.categories.create') }}"
+                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i> Dich vu</h1>
+                        <a href="{{ route('backend.admin.services.create') }}"
                             class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i>Thêm mới</a>
                         <button class="btn btn-danger float-left delete_all"
-                            data-url="{{ route('backend.admin.categories.categories.delete') }}">
+                            data-url="{{ route('backend.admin.services.services.delete') }}">
                             <i class="fas fa-trash"></i>Xóa hàng loạt</button>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
                                         <input type="text" name="search" id="search"
-                                        {{-- data-url="{{ route('backend.admin.categories.search') }}"    --}}
+                                        data-url="{{ route('backend.admin.services.search') }}"
                                         class="form-control float-right" placeholder="Tìm kiếm">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-default">
@@ -64,10 +64,7 @@
                                             <th>Số thứ tự</th>
                                             <th>Tên dịch vụ</th>
                                             <th>Ảnh</th>
-                                            <th>Giá</th>
-                                            <th>Giảm giá</th>
                                             <th>Trạng thái</th>
-                                            <th>Thời gian</th>
                                             <th>Slug</th>
                                             <th>Hành động</th>
                                         </tr>
