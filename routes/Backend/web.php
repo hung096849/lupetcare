@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\BackEnd\Categories\CategoriesController;
 use App\Http\Controllers\Backend\DashBorad\DashboardController;
-
+use App\Http\Controllers\BackEnd\Contacts\ContactController;
 Route::name('backend.')->group(function () {
     // Route::name('auth.')->group(function () {
     //     Route::get('/backend/login', 'App\Http\Controllers\Backend\Auth\LoginController@index')->name('show');
@@ -25,6 +25,13 @@ Route::name('backend.')->group(function () {
             Route::get('/delete/{id}', [CategoriesController::class, 'delete'])->name('delete');
             Route::delete('/categories/delete', [CategoriesController::class, 'categoriesDelete'])->name('categories.delete');
             Route::get('/search', [CategoriesController::class, 'search'])->name('search');
+        });
+        Route::prefix('/contacts')->name('contacts.')->group(function(){
+            Route::get('/', [ContactController::class, 'index'])->name('show');
+            Route::get('/show/{id}', [ContactController::class, 'view'])->name('view');
+            Route::get('/delete/{id}', [ContactController::class, 'delete'])->name('delete');
+            Route::delete('/contacts/delete', [ContactController::class, 'contactsDelete'])->name('contacts.delete');
+            Route::get('/search', [ContactController::class, 'search'])->name('search');
         });
     });
 

@@ -45,7 +45,7 @@
                             </li>
                             <li><a href="{{ route('frontend.services.show') }}">Dịch Vụ</a></li>
                             <li><a rel="" href="#">Tin tức</a></li>
-                            <li><a rel="" href="#">Liên hệ</a></li>
+                            <li><a rel="" href="{{ route('frontend.contact_sendmail.show') }}">Liên hệ</a></li>
                         </ul>
 
                     </div>

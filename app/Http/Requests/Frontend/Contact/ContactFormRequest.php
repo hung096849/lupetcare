@@ -27,7 +27,7 @@ class ContactFormRequest extends FormRequest
             request()->validate([
                 'name' => 'required',
                 'email' => 'required|email',
-                'phone' => 'required|digits:11|numeric',
+                'phone' => 'required|digits:10|numeric',
                 'title' => 'required',
                 'message' => 'required',
             ],
