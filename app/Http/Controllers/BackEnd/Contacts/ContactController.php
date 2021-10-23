@@ -33,7 +33,7 @@ class ContactController extends Controller
     {
         $contacts = $this->contacts->find($request->id);
         $contacts->delete();
-        return redirect()->route('backend.admin.contacts.show')->with('success', Lang::get('message.delete', ['model' => 'Danh mục']));
+        return redirect()->route('backend.admin.contacts.show')->with('success', Lang::get('message.delete', ['model' => 'Ý kiến khách hàng']));
     }
 
     public function contactsDelete(Request $request)
@@ -47,9 +47,13 @@ class ContactController extends Controller
         if ($request->search != "") {
             $contacts = $this->contacts
                 ->where('name', 'like', '%' . $request->search . '%')
+                ->orWhere('phone','like','%'.$request->search.'%')
+                ->orWhere('email','like','%'.$request->search.'%')
                 ->orderBy('id', 'asc')
                 ->paginate(6);
-        } else {
+        }
+      
+         else {
             $contacts = $this->contacts->paginate(3);
         }
         if ($request->ajax()) {

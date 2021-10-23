@@ -31,6 +31,32 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card card-primary">
+                    <div class="card-body">
+                            <div class="form-group">
+                                <label for="inputName">Số điện thoại</label>
+                                <input type="text" name="phone" id="phone" class="form-control"
+                                    value="{{old('phone',$contacts->phone)}}" readonly/>
+                                @error('phone')
+                                <div class="mt-1 text-red-500">
+                                    {{$message}}
+                                </div>
+                                @enderror
+                            </div>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="inputName">Email</label>
+                                <input type="text" name="email" id="email" class="form-control"
+                                    value="{{old('email',$contacts->email)}}" readonly/>
+                                @error('email')
+                                <div class="mt-1 text-red-500">
+                                    {{$message}}
+                                </div>
+                                @enderror
+                            </div>
+
+                        </div>
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="inputName">Tiêu đề</label>
@@ -44,6 +70,7 @@
                             </div>
 
                         </div>
+                        
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="inputName">Nội dung</label>

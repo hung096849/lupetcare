@@ -43,7 +43,7 @@
                     <i class="fas fa-users mr-2"></i> Thông tin chi tiết
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
+                <a href="{{ route('backend.auth.logout') }}" class="dropdown-item">
                     <i class="fas fa-file mr-2"></i>Đăng xuất
                 </a>
             </div>

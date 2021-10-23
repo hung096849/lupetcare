@@ -35,7 +35,7 @@
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
                                         <input type="text" name="search" id="search"
-                                        data-url="{{ route('backend.admin.categories.search') }}" class="form-control float-right" placeholder="Tìm kiếm">
+                                        data-url="{{ route('backend.admin.contacts.search') }}" class="form-control float-right" placeholder="Tìm kiếm">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-default">
                                                 <i class="fas fa-search"></i>
