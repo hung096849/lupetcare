@@ -36,7 +36,7 @@ class Services extends Model
         $fileNameToStore = $filename.'_'.time().'.'.$extension;
         // Upload Image
         $path = $file->storeAs("public/$folder", $fileNameToStore);
-    
+
         return $fileNameToStore;
     }
 
@@ -47,7 +47,7 @@ class Services extends Model
             ]
         ];
     }
-    
+
     public function categories()
     {
         return $this->belongsTo(CategoriesServices::class, 'category_id', 'id');
