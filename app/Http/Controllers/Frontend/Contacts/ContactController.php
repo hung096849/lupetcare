@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend\Contacts;
+use App\Http\Controllers\Controller;
 use App\Mail\Email;
 use App\Http\Requests\Frontend\Contact\ContactFormRequest;
 use App\Jobs\SendWelcomeEmail;
