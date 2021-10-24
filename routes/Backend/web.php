@@ -40,6 +40,7 @@ Route::name('backend.')->group(function () {
             Route::delete('/contacts/delete', [ContactController::class, 'contactsDelete'])->name('contacts.delete');
             Route::get('/search', [ContactController::class, 'search'])->name('search');
         });
+
         Route::prefix('/services')->name('services.')->group(function () {
             Route::get('/', [ServicesController::class, 'index'])->name('show');
             Route::get('/create', [ServicesController::class, 'create'])->name('create');
