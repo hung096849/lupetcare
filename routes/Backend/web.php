@@ -12,40 +12,36 @@ Route::name('backend.')->group(function () {
         Route::get('/logout', 'App\Http\Controllers\Backend\Auth\LoginController@Logout')->name('logout');
     });
     Route::middleware(['checkLogin'])->group(function () {
+        Route::name('admin.')->group(function () {
 
+            Route::prefix('/dashboard')->name('dashboard.')->group(function () {
+                Route::get('/', [DashboardController::class,'index'])->name('show');
+            });
 
+            Route::prefix('/categories')->name('categories.')->group(function () {
+                Route::get('/', [CategoriesController::class, 'index'])->name('show');
+                Route::get('/create', [CategoriesController::class, 'create'])->name('create');
+                Route::post('/store', [CategoriesController::class, 'store'])->name('store');
+                Route::get('/show/{id}', [CategoriesController::class, 'view'])->name('view');
+                Route::get('/edit/{id}', [CategoriesController::class, 'edit'])->name('edit');
+                Route::patch('/update/categories', [CategoriesController::class, 'update'])->name('update');
+                Route::get('/delete/{id}', [CategoriesController::class, 'delete'])->name('delete');
+                Route::delete('/categories/delete', [CategoriesController::class, 'categoriesDelete'])->name('categories.delete');
+                Route::get('/search', [CategoriesController::class, 'search'])->name('search');
+            });
 
-    Route::name('admin.')->group(function () {
-
-
-        Route::prefix('/dashboard')->name('dashboard.')->group(function () {
-            Route::get('/', [DashboardController::class,'index'])->name('show');
-        });
-
-        Route::prefix('/categories')->name('categories.')->group(function () {
-            Route::get('/', [CategoriesController::class, 'index'])->name('show');
-            Route::get('/create', [CategoriesController::class, 'create'])->name('create');
-            Route::post('/store', [CategoriesController::class, 'store'])->name('store');
-            Route::get('/show/{id}', [CategoriesController::class, 'view'])->name('view');
-            Route::get('/edit/{id}', [CategoriesController::class, 'edit'])->name('edit');
-            Route::patch('/update/categories', [CategoriesController::class, 'update'])->name('update');
-            Route::get('/delete/{id}', [CategoriesController::class, 'delete'])->name('delete');
-            Route::delete('/categories/delete', [CategoriesController::class, 'categoriesDelete'])->name('categories.delete');
-            Route::get('/search', [CategoriesController::class, 'search'])->name('search');
-        });
-
-        Route::prefix('/services')->name('services.')->group(function () {
-            Route::get('/', [ServicesController::class, 'index'])->name('show');
-            Route::get('/create', [ServicesController::class, 'create'])->name('create');
-            Route::post('/store', [ServicesController::class, 'store'])->name('store');
-            Route::get('/show/{id}', [ServicesController::class, 'view'])->name('view');
-            Route::get('/edit/{id}', [ServicesController::class, 'edit'])->name('edit');
-            Route::patch('/update/services', [ServicesController::class, 'update'])->name('update');
-            Route::get('/delete/{id}', [ServicesController::class, 'delete'])->name('delete');
-            Route::delete('/services/delete', [ServicesController::class, 'servicesDelete'])->name('services.delete');
-            Route::get('/search', [ServicesController::class, 'search'])->name('search');
+            Route::prefix('/services')->name('services.')->group(function () {
+                Route::get('/', [ServicesController::class, 'index'])->name('show');
+                Route::get('/create', [ServicesController::class, 'create'])->name('create');
+                Route::post('/store', [ServicesController::class, 'store'])->name('store');
+                Route::get('/show/{id}', [ServicesController::class, 'view'])->name('view');
+                Route::get('/edit/{id}', [ServicesController::class, 'edit'])->name('edit');
+                Route::patch('/update/services', [ServicesController::class, 'update'])->name('update');
+                Route::get('/delete/{id}', [ServicesController::class, 'delete'])->name('delete');
+                Route::delete('/services/delete', [ServicesController::class, 'servicesDelete'])->name('services.delete');
+                Route::get('/search', [ServicesController::class, 'search'])->name('search');
+            });
         });
     });
-});
 
 });
