@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+
 class OrderController extends Controller
 {
     protected $services;
@@ -20,8 +21,13 @@ class OrderController extends Controller
     protected $petInfo;
     protected $orderPet;
     protected $orders;
-    public function __construct(Services $services, Customers $customer, PetInformartion $petInfo, OrderPet $orderPet, Order $orders)
-    {
+    public function __construct(
+        Services $services,
+        Customers $customer,
+        PetInformartion $petInfo,
+        OrderPet $orderPet,
+        Order $orders
+    ) {
         $this->services = $services;
         $this->customer = $customer;
         $this->petInfo = $petInfo;
@@ -35,53 +41,93 @@ class OrderController extends Controller
         return view('frontend/order/order', compact('services'));
     }
 
+    function checkHasPet(string $code) {
+        $listPetInfo = $this->petInfo->where('code', $code)->first();
+        if ($listPetInfo) {
+            return true;
+        }
+        return false;
+    }
+
+    public function addForm2(Request $request) {
+        foreach ($request['code'] as $key => $value) {
+            $this->petInfo->create([
+                'code' => $value[0],
+                'name' => $request['pet_name'][$key][0],
+                'weight' => $request['weight'][$key][0],
+                'gender' => $request['gender'][$key][0],
+            ]);
+        }
+    }
+
     public function addForm(Request $request)
     {
         try {   
-                // DB::beginTransaction();
-                // $customer = $this->customer->create([
-                //     "name"  =>  $request->name,
-                //     "phone" =>  $request->phone,
-                //     "email" =>  $request->email,
-                //     "note" =>   $request->note,
-                //     "status" => Customers::MEMBER,
-                //     'slug' => SlugService::createSlug(Customers::class, 'slug', $request->name),
-                // ]);
-                dd($request->all());
-                $petName = $request->pet_name;
-                $gender = $request->gender;
-                $serviceId = $request->service_id;
-                $weight = $request->weight;
-                // dd($serviceId);
-                for ($i=0; $i < count($petName) ; $i++) { 
-                    $petInfo = $this->petInfo->create([
-                        'code'    => IdGenerator::generate(['table' => 'pet_informartions', 'field'=>'code', 'length' => 6, 'prefix' => "PET-$i"]),
-                        "name"  =>  $petName[$i],
-                        "gender" =>  $gender[$i],
-                        "service_id" => json_encode($serviceId[$i]),
-                        "weight" =>   $weight[$i],
-                        'slug' => SlugService::createSlug(PetInformartion::class, 'slug', $petName[$i]),
-                    ]);
+                DB::beginTransaction();
+                $customer = $this->customer->create([
+                    "name"  =>  $request->name,
+                    "phone" =>  $request->phone,
+                    "email" =>  $request->email,
+                    "note" =>   $request->note,
+                    "status" => Customers::MEMBER,
+                    'slug' => SlugService::createSlug(Customers::class, 'slug', $request->name),
+                ]);
+                $petName = [];
+                $gender = [];
+                $serviceId = [];
+                $weight = [];
+                $listPetInfo = $this->petInfo->all();
+                
+                foreach ($request->pet_name as $value) {
+                    $petName[] = $value;
                 }
-                // $petInfo = $this->petInfo->create([
-                //     'code'    => IdGenerator::generate(['table' => 'pet_informartions', 'field'=>'code', 'length' => 6, 'prefix' => "PET-"]),
-                //     "name"  =>  $request->pet_name,
-                //     "gender" =>  $request->gender,
-                //     "service_id" =>   $request->service_id,
-                //     "weight" =>   $request->weight,
-                //     'slug' => SlugService::createSlug(PetInformartion::class, 'slug', $request->pet_name),
-                // ]);
 
-                // if($customer && $petInfo) {
-                //     $order = $this->orders->create([
-                //         'services_id' => $request->service_id,
-                //         'customer_id' => $customer->id,
-                //         'time' => $request->time,
-                //         'date' => $request->date,
-                //     ]);
-                // }
-            
+                foreach ($request->gender as $value) {
+                   $gender[] = $value;
+                }
 
+                foreach ($request->weight as $value) {
+                    $weight[] = $value;
+                }
+
+                for ($i = 1 ; $i <= count($request->service_id) ; $i ++ ){
+                        $serviceId[] = json_encode($request->service_id[$i]);
+                }
+                foreach ($request['code'] as $key => $value) {
+                    foreach ($listPetInfo as $pet) {
+                        if($value == $pet->code) {
+                            $createPet = $this->petInfo->update([
+                                'code'    => IdGenerator::generate(['table' => 'pet_informartions', 'field'=>'code', 'length' => 10, 'prefix' => "LUPETCARE-"]),
+                                'name' => $request['pet_name'][$key][0],
+                                'weight' => $request['weight'][$key][0],
+                                'gender' => $request['gender'][$key][0],
+                            ]);
+                        } else {
+                            $createPet = $this->petInfo->create([
+                                'code'    => IdGenerator::generate(['table' => 'pet_informartions', 'field'=>'code', 'length' => 10, 'prefix' => "LUPETCARE-"]),
+                                'name' => $request['pet_name'][$key][0],
+                                'weight' => $request['weight'][$key][0],
+                                'gender' => $request['gender'][$key][0],
+                            ]);
+
+                            if($createPet) {
+                                $this->orders->create([
+                                    'vocher_id' => 1,
+                                    'customer_id' => 1,
+                                    'pet_id' => 1,
+                                    "payment_method" => 1,
+                                    'is_paid' => 1,
+                                    'status' => 1,
+                                ]);
+                            }
+                            $this->orderPet->create([
+                                'order_id'  => 1,
+                                'pet_id'     => 1,
+                                'service_id' => $serviceId[0]
+                            ]);
+                        }
+                    }
+                }
             DB::commit();
             Session::flash(
                 'success', 'Đặt lịch thành công !!!',

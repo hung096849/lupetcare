@@ -11,7 +11,7 @@ class Order extends Model
 
     protected $table = 'orders';
     protected $fillable = [
-        'services_id', 'customer_id', 'payment_method', 'is_paid', 'status'
+        'pet_id', 'customer_id', 'payment_method', 'is_paid', 'status'
     ];
     
 }
