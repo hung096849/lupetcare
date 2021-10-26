@@ -24,9 +24,9 @@ Route::name('frontend.')->group(function () {
 
     Route::name('order_services.')->group(function () {
         // {slug}
-        Route::get('/order/{id}', [OrderController::class,'index'])->name('order');
+        Route::get('/dat-hang/{id}', [OrderController::class,'index'])->name('order');
         
-        Route::post('/order/{id}', [OrderController::class,'addForm'])->name('addForm');
+        Route::post('/dat-hang/{id}', [OrderController::class,'addForm'])->name('addForm');
     });
 
     Route::name('contact_sendmail.')->group(function() {
