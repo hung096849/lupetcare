@@ -5,16 +5,20 @@ use App\Http\Controllers\Frontend\Order\OrderController;
 use App\Http\Controllers\Frontend\Services\ServicesController;
 use App\Http\Controllers\Frontend\Contacts\ContactController;
 use App\Http\Controllers\Frontend\Auth\LoginController;
+
 Route::name('frontend.')->group(function () {
     Route::name('homepage.')->group(function () {
         Route::get('/', [HomepageController::class,'index'])->name('show');
     });
     Route::name('login.')->group(function(){
         Route::get('dashboard', [LoginController::class, 'dashboard']); 
-        Route::get('/login',[LoginController::class,'index'])->name('login');
-        Route::post('/login',[LoginController::class,'customLogin'])->name('login');
+        Route::get('/login_form',[LoginController::class,'index'])->name('show');
+        Route::post('/login_form',[LoginController::class,'customLogin'])->name('');
+        Route::get('/registration', [LoginController::class, 'register_form'])->name('register-user');
+        Route::post('/custom-registration', [LoginController::class, 'register'])->name('register.custom'); 
+        Route::get('/verify',[LoginController::class, 'verifyUser'])->name('verify.user');
     });
-  
+    Auth::routes();
     Route::name('services.')->group(function () {
         Route::get('/dich-vu', [ServicesController::class,'index'])->name('show');
             

@@ -12,16 +12,12 @@ Route::name('backend.')->group(function () {
         Route::post('/login', 'App\Http\Controllers\Backend\Auth\LoginController@login')->name('login');
         Route::get('/logout', 'App\Http\Controllers\Backend\Auth\LoginController@Logout')->name('logout');
     });
-    Route::middleware(['checkLogin'])->group(function () {
+    
 
 
 
 
-    Route::name('auth.')->group(function () {
-        Route::get('/login', 'App\Http\Controllers\Backend\Auth\LoginController@index')->name('show');
-        Route::post('/login', 'App\Http\Controllers\Backend\Auth\LoginController@login')->name('login');
-        Route::get('/logout', 'App\Http\Controllers\Backend\Auth\LoginController@Logout')->name('logout');
-    });
+  
     Route::middleware(['checkLogin'])->group(function () {
         Route::name('admin.')->group(function () {
 
@@ -95,5 +91,5 @@ Route::name('backend.')->group(function () {
     });
 });
 
-});
+
 });

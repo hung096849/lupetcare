@@ -1,18 +1,23 @@
 <?php
 
 namespace App\Http\Controllers\Frontend\Auth;
-use Hash;
-use Seesion;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Models\Customers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\MailController;
 class LoginController extends Controller
 {
     //
+
+    // public function __construct()
+    // {
+    //     $this->middleware(['auth']);
+    // }
     public function index()
-    {
+    { 
+        // dd(1);
         return view('frontend.auth.login');
     }  
       
@@ -23,17 +28,47 @@ class LoginController extends Controller
             'name' => ['required'],
             'password' => ['required'],
         ]);
+       if($request->validated()){
         $credentials = $request->only('name', 'password');
-        if (Auth::attempt($credentials)) {
-            if(Auth::check()){
-                return view('frontend.homepage.index');
-            }
+        $credentials['verified']=Customers::VERIFIED;
+        if(Auth::guard('customer')->attempt($credentials)){
+            return redirect()->intended();
         }
-  
-        return redirect("login")->withSuccess('Login details are not valid');
+        else{
+
+        }
+       }
     }
-    
-    
+    public function register_form(){
+        return view('frontend.auth.register');
+    }
+    public function register(Request $request)
+    {
+        $user = new Customers();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+       
+        if($user != null){
+            MailController::sendSignupEmail($user->name, $user->email, $user->verification_code);
+            return redirect()->back()->with(session()->flash('alert-success', 'Your account has been created. Please check email for verification link.'));
+        }
+
+        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong!'));
+    }
+    public function verifyUser(Request $request){
+        $verification_code = \Illuminate\Support\Facades\Request::get('code');
+        $user = Customers::where(['verification_code' => $verification_code])->first();
+        if($user != null){
+            $user->is_verified = 1;
+            $user->save();
+            return redirect()->route('')->with(session()->flash('alert-success', 'Your account is verified. Please login!'));
+        }
+
+       
+    }
     public function dashboard()
     {
         if(Auth::check()){
@@ -90,10 +125,12 @@ class LoginController extends Controller
     // }
     
 
-    // public function signOut() {
-    //     Session::flush();
-    //     Auth::logout();
+    public function signOut(Request $request) {
+      if(Auth::guard('customer')->user()){
+        Auth::guard('customer')->logout();
+      }
+       
   
-    //     return Redirect('login');
-    // }
+        return redirect()->intended('/');
+    }
 }
