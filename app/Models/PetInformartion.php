@@ -12,7 +12,7 @@ class PetInformartion extends Model
 
     protected $table = 'pet_informartions';
     protected $fillable = [
-        'name', 'code', 'weight', 'gender', 'service_id', 'slug'
+        'name', 'code', 'weight', 'gender'
     ];
 
     public function sluggable(): array
