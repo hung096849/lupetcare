@@ -4,6 +4,8 @@ use App\Http\Controllers\BackEnd\Services\ServicesController;
 use App\Http\Controllers\BackEnd\Categories\CategoriesController;
 use App\Http\Controllers\Backend\DashBorad\DashboardController;
 use App\Http\Controllers\BackEnd\Contacts\ContactController;
+use App\Http\Controllers\Backend\Order\OrderController;
+
 Route::prefix('admin')->name('backend.')->group(function () {
     Route::name('auth.')->group(function () {
         Route::get('/login', 'App\Http\Controllers\Backend\Auth\LoginController@index')->name('show');
@@ -48,6 +50,17 @@ Route::prefix('admin')->name('backend.')->group(function () {
                 Route::get('/search', [ContactController::class, 'search'])->name('search');
             });
 
+            Route::prefix('/orders')->name('orders.')->group(function () {
+                Route::get('/', [OrderController::class, 'index'])->name('show');
+                // Route::get('/create', [ServicesController::class, 'create'])->name('create');
+                // Route::post('/store', [ServicesController::class, 'store'])->name('store');
+                Route::get('/show/{id}', [OrderController::class, 'view'])->name('view');
+                // Route::get('/edit/{id}', [ServicesController::class, 'edit'])->name('edit');
+                // Route::patch('/update/services', [ServicesController::class, 'update'])->name('update');
+                // Route::get('/delete/{id}', [ServicesController::class, 'delete'])->name('delete');
+                // Route::delete('/orders/delete', [ServicesController::class, 'servicesDelete'])->name('orders.delete');
+                Route::get('/search', [OrderController::class, 'search'])->name('search');
+            });
         });
     });
 });

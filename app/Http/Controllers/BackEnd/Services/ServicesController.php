@@ -32,8 +32,6 @@ class ServicesController extends Controller
 
     public function view(Request $request)
     {
-        // $categories = $this->categories->all();
-
         $services = $this->services->find($request->id);
         $services->load('categories');
         return view('backend.admin.services.view', compact('services'));

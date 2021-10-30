@@ -11,7 +11,20 @@ class Order extends Model
 
     protected $table = 'orders';
     protected $fillable = [
-        'pet_id', 'customer_id', 'payment_method', 'is_paid', 'status'
+        'customer_id',
+        'payment_method',
+        'is_paid',
+         'status'
     ];
-    
+
+    public function customer()
+    {
+        return $this->belongsTo(Customers::class, 'customer_id', 'id');
+    }
+
+    public function orderpet()
+    {
+        return $this->belongsToMany(PetInformartion::class, 'OrderPet', 'order_id', 'pet_id');
+    }
+
 }

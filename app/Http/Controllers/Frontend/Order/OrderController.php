@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Swift_IdGenerator;
 
 class OrderController extends Controller
 {
@@ -62,7 +63,7 @@ class OrderController extends Controller
 
     public function addForm(Request $request)
     {
-        try {   
+        try {
                 DB::beginTransaction();
                 $customer = $this->customer->create([
                     "name"  =>  $request->name,
@@ -77,7 +78,7 @@ class OrderController extends Controller
                 $serviceId = [];
                 $weight = [];
                 $listPetInfo = $this->petInfo->all();
-                
+
                 foreach ($request->pet_name as $value) {
                     $petName[] = $value;
                 }
