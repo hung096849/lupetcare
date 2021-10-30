@@ -78,6 +78,7 @@ class OrderController extends Controller
                         'weight' => $request['weight'][$key][0],
                         'gender' => $request['gender'][$key][0],
                     ]);
+                    $idPet[] = $createPet->id;
                 }
                 if($createPet) {
                         $order = $this->orders->create([
@@ -87,17 +88,15 @@ class OrderController extends Controller
                             'is_paid' => 1,
                             'status' => 1,
                         ]);
-                        foreach ($serviceId as $service) {
+                        
+                        foreach ($serviceId as $key => $service) {
                             $this->orderPet->create([
                                 'order_id'  => $order->id,
-                                'pet_id'     => $createPet->id,
+                                'pet_id'     => $idPet[$key],
                                 'service_id' => $service
                             ]);
                         }
                     }
-            
-            
-
             DB::commit();
             Session::flash(
                 'success', 'Đặt lịch thành công !!!',
