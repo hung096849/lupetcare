@@ -11,6 +11,7 @@ class MailController extends Controller
 {
     //
     public static function sendSignupEmail($name, $email, $verification_code){
+        // dd($email);
         $data = [
             'name' => $name,
             'verification_code' => $verification_code
