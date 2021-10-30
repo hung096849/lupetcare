@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
-
+use Twilio\Rest\Client;
 class OrderController extends Controller
 {
     protected $services;
@@ -52,6 +52,11 @@ class OrderController extends Controller
     public function addForm2(Request $request) {
         try {
             DB::beginTransaction();
+            $token = getenv("TWILIO_AUTH_TOKEN");
+            $twilio_sid = getenv("TWILIO_SID");
+            $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
+            $twilio_number = getenv("TWILIO_NUMBER");
+
             // $customer = $this->customer->create([
             //     "name"  =>  $request->name,
             //     "phone" =>  $request->phone,
@@ -101,6 +106,15 @@ class OrderController extends Controller
             Session::flash(
                 'success', 'Đặt lịch thành công !!!',
             );
+            $twilio = new Client($twilio_sid, $token);
+            $message = $twilio->messages->create(
+                '+84962845342', // Text this number
+                [
+                  'from' => $twilio_number, // From a valid Twilio number
+                  'body' => 'Hello hiihaaa!'
+                ]
+              );
+
             return back();
         } catch (\Exception $th) {
             DB::rollback();
