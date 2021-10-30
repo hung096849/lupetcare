@@ -17,25 +17,27 @@ Route::name('frontend.')->group(function () {
         Route::post('/dang-ki', [LoginController::class, 'register'])->name('register.custom'); 
         Route::get('/xac-thuc',[LoginController::class, 'verifyUser'])->name('verify.user');
     });
-   
-    Route::name('services.')->group(function () {
-        Route::get('/dich-vu', [ServicesController::class,'index'])->name('show');
+    Route::middleware(['checkCustomer'])->group(function (){
+        Route::name('services.')->group(function () {
+            Route::get('/dich-vu', [ServicesController::class,'index'])->name('show');
+                
+            // /services/detail/{slug}
+            Route::get('/dich-vu/chi-tiet/{id}', [ServicesController::class,'detail'])->name('detail');
+        });
+    
+        Route::name('order_services.')->group(function () {
+            // {slug}
+            Route::get('/dat-hang/{id}', [OrderController::class,'index'])->name('order');
             
-        // /services/detail/{slug}
-        Route::get('/dich-vu/chi-tiet/{id}', [ServicesController::class,'detail'])->name('detail');
+            Route::post('/dat-hang/{id}', [OrderController::class,'addForm2'])->name('addForm');
+        });
+    
+        Route::name('contact_sendmail.')->group(function() {
+            Route::get('/lien-he', [ContactController::class, 'contactForm'])->name('show');
+            Route::post('/lien-he', [ContactController::class, 'sendContact'])->name('contact.send');
+        });
     });
-
-    Route::name('order_services.')->group(function () {
-        // {slug}
-        Route::get('/dat-hang/{id}', [OrderController::class,'index'])->name('order');
-        
-        Route::post('/dat-hang/{id}', [OrderController::class,'addForm'])->name('addForm');
-    });
-
-    Route::name('contact_sendmail.')->group(function() {
-        Route::get('/lien-he', [ContactController::class, 'contactForm'])->name('show');
-        Route::post('/lien-he', [ContactController::class, 'sendContact'])->name('contact.send');
-    });
+    
    
    
 

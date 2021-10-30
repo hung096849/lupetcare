@@ -25,7 +25,7 @@
                                         <div class="book-form-title">
                                             <h2 class="text-center">Thông tin chủ sở hữu</h2>
                                         </div>
-                                        <div class="row">
+                                        {{-- <div class="row">
                                             <div class="col-md-6">
                                                 <label for="Name " class="pt-4 pb-2 book-form-text">Họ và tên *</label>
                                                 <input type="text" name="name" required class="form-control input-form-service">
@@ -62,7 +62,7 @@
                                                 <textarea class="form-control input-form-service" name="note"
                                                     id="exampleFormControlTextarea1" rows="4"></textarea>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-12 d-flex justify-content-center mt-4 mb-4">
                                                 <button type="submit" class="btn btn-lg btn-info px-5">
                                                     ĐẶT LỊCH
@@ -158,7 +158,6 @@
                                 </div> --}}
 
                                 <div class="float-right my-4 pr-2 d-flex add-form-pet">
-                                    {{-- <div class=""><i class="fas fa-plus-circle"></i></div> --}}
                                     <button type="button" class="btn btn-primary pl-3" id="clickAddForm">Thêm thú cưng</button>
                                 </div>
                             </div>
@@ -168,9 +167,9 @@
                 </div>
             </form>
         </div>
-        @if(Session::has('message'))
+        @if(Session::has('success'))
         <p class="alert alert-success">
-            {{Session::get('message')}}
+            {{Session::get('success')}}
         </p>
         @endif
     </div>
@@ -194,7 +193,6 @@
     // function add form
     let box = document.querySelector("#box_quan")
     var index = 1
-    
     const childForm = {
         render(i) {
             return `<div class="book-form-service">
@@ -219,7 +217,6 @@
                             class="form-control input-form-service">
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-12">
                         <label for="Name " class="pt-4 pb-2 book-form-text">Chọn dịch vụ

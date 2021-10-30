@@ -1,42 +1,58 @@
-<main class="login-form">
-    <div class="cotainer">
-        <div class="row justify-content-center">
-            <div class="col-md-4">
+@extends('layouts.frontend')
+@section('content')
+<div class="container">
+        <div class="row mt-5 mb-5">
+            <div class="col-8 offset-2 mt-5">
                 <div class="card">
-                    <h3 class="card-header text-center">Login</h3>
+                    <div class="card-header bg-info">
+                        <h3 class="text-white">ĐĂNG NHẬP!!</h3>
+                    </div>
                     <div class="card-body">
+                        
+                        @if(Session::has('success'))
+                        <div class="alert alert-success">
+                            {{ Session::get('success') }}
+                            @php
+                                Session::forget('success');
+                            @endphp
+                        </div>
+                        @endif
+                   
                         <form method="POST" action="{{ route('frontend.login.login-user') }}">
-                            @csrf
-                            <div class="form-group mb-3">
-                                <input type="text" placeholder="name" id="name" class="form-control" name="name" required
-                                    autofocus>
-                                @if ($errors->has('name'))
-                                <span class="text-danger">{{ $errors->first('name') }}</span>
-                                @endif
+                  
+                            {{ csrf_field() }}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <strong>Name:</strong>
+                                        <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}">
+                                        @if ($errors->has('name'))
+                                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                              
                             </div>
-
-                            <div class="form-group mb-3">
-                                <input type="password" placeholder="Password" id="password" class="form-control" name="password" required>
-                                @if ($errors->has('password'))
-                                <span class="text-danger">{{ $errors->first('password') }}</span>
-                                @endif
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
+                           
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <strong>Password:</strong>
+                                        <input type="password" name="password" class="form-control" placeholder="password" value="{{ old('password') }}">
+                                        @if ($errors->has('password'))
+                                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="d-grid mx-auto">
-                                <button type="submit" class="btn btn-dark btn-block">Signin</button>
+                           
+                            <div class="form-group text-center">
+                                <button class="btn btn-success btn-submit">Đăng Nhập</button>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection

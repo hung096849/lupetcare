@@ -34,10 +34,6 @@ class SendSignupEmail implements ShouldQueue
     public function handle()
     {
         $customer=$this->customer;
-        // $customer = [
-        //     'name' => $name,
-        //     'verification_code' => $verification_code
-        // ];
         Mail::to($customer['email'],['verification_code'])->send(new SignupMail($customer));
     }
 }

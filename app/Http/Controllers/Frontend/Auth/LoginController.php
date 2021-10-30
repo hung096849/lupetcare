@@ -7,7 +7,6 @@ use App\Models\Customers;
 use App\Jobs\sendSignupEmail;
 use Illuminate\Http\Request;
 use App\Http\Requests\Frontend\Auth\CustomerRequest;
-use App\Http\Controllers\MailController;
 use Carbon\Carbon;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Facades\Auth;
@@ -21,12 +20,11 @@ class LoginController extends Controller
     }  
       
 
-    public function customLogin(Request $request)
+    public function customLogin(CustomerRequest $request)
     {
       
         $credentials = $request->only('name', 'password');
        
-        // dd($credentials);
        
         if (Auth::guard('customers')->attempt($credentials)) {
             $credentials['is_verified'] = Customers::CONFIRM;
@@ -57,24 +55,6 @@ class LoginController extends Controller
         dispatch($emailJob);
         return redirect()->back()->with(['success' => 'Bạn hãy kiểm tra mail của bạn để xác nhận']);
 
-        // $user = new Customers();
-        // $user->name = $request->name;
-        // $user->slug = SlugService::createSlug(Customers::class, 'slug', $request->name);
-        // $user->phone= $request->phone;
-        // $user->status= Customers::MEMBER;
-        // $user->email_verified_at = Carbon::now();
-        // $user->email = $request->email;
-        // $user->password = Hash::make($request->password);
-        // $user->verification_code = sha1(time());
-        // $user->save();
-        
-        // if($input != null){
-        //     MailController::sendSignupEmail($input->name, $input->email, $input->verification_code);
-        //     return back();
-        //     // ->route('alert-success', 'Your account has been created. Please check email for verification link.');
-        // }
-
-        // return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong!'));
     }
     public function verifyUser(Request $request){
         $verification_code = \Illuminate\Support\Facades\Request::get('code');
