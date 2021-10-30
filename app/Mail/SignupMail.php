@@ -7,22 +7,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class Email extends Mailable implements ShouldQueue
+class SignupMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
-
-    public $details;
-  
+    public $customer;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct($customer)
     {
-        $this->details = $details;
+        //
+        $this->customer = $customer;
     }
-  
+
     /**
      * Build the message.
      *
@@ -30,8 +29,8 @@ class Email extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->from('hung3715482@gmail.com')
-                    ->subject('Mail from Lupetcare')
-                    ->view('frontend.contacts.contactMail');
+        return $this->from(env('MAIL_USERNAME'))
+                    ->subject("Chào mừng bạn đến với dịch vụ chăm sóc thú cưng!")
+                    ->view('frontend.mail.signup-email');
     }
 }
