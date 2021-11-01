@@ -47,7 +47,7 @@ class LoginController extends Controller
         $customer->phone= $request->phone;
         $customer->status= Customers::MEMBER;
         $customer->email_verified_at = Carbon::now();
-        $customer->email = $request->email;
+        $customer->email = $request->email; 
         $customer->password = Hash::make($request->password);
         $customer->verification_code = sha1(time());
         $customer->save();

@@ -5,8 +5,15 @@ use App\Http\Controllers\Frontend\Order\OrderController;
 use App\Http\Controllers\Frontend\Services\ServicesController;
 use App\Http\Controllers\Frontend\Contacts\ContactController;
 use App\Http\Controllers\Frontend\Auth\LoginController;
+use App\Http\Controllers\Frontend\Payment\PaymentController;
+
 Auth::routes();
 Route::name('frontend.')->group(function () {
+    Route::name('payment.')->group(function() {
+        Route::get('/thanh-toan', [PaymentController::class, 'getPayment'])->name('getPayment');
+        Route::post('/thanh-toan', [PaymentController::class, 'postPayment'])->name('postPayment');
+    });
+
     Route::name('homepage.')->group(function () {
         Route::get('/', [HomepageController::class,'index'])->name('show');
     });
@@ -17,7 +24,11 @@ Route::name('frontend.')->group(function () {
         Route::post('/dang-ki', [LoginController::class, 'register'])->name('register.custom'); 
         Route::get('/xac-thuc',[LoginController::class, 'verifyUser'])->name('verify.user');
     });
+    
     Route::middleware(['checkCustomer'])->group(function (){
+
+    });
+
         Route::name('services.')->group(function () {
             Route::get('/dich-vu', [ServicesController::class,'index'])->name('show');
                 
@@ -36,9 +47,5 @@ Route::name('frontend.')->group(function () {
             Route::get('/lien-he', [ContactController::class, 'contactForm'])->name('show');
             Route::post('/lien-he', [ContactController::class, 'sendContact'])->name('contact.send');
         });
-    });
-    
-   
-   
 
 });

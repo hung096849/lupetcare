@@ -195,9 +195,11 @@
     var index = 1
     const childForm = {
         render(i) {
-            return `<div class="book-form-service">
-                <div class="book-form-title">
-                    <h2 class="text-center">Thông tin thú cưng</h2>
+            return `<div class="book-form-service" style="border: 1px solid #ccc; border-radius: 12px; margin: 0px 0px 28px; padding: 16px">
+                <div class="book-form-title" style="position: relative">
+                    <h2 class="text-center" style="margin-right: 20px">Thông tin thú cưng ${i}</h2>
+                    <!-- <i class="fas fa-minus-square"></i> -->
+                    <button type="buton" class="btn btn-danger btn-sm" id="removePet-${i}" style="position: absolute; top: 0; right: 0;">Xoa</button>
                 </div>
 
                 <div class="row">
@@ -221,7 +223,7 @@
                     <div class="col-12">
                         <label for="Name " class="pt-4 pb-2 book-form-text">Chọn dịch vụ
                             *</label>
-                        <select id="" class="form-control input-form-service js-select-pet"
+                        <select id="js-select-pet-${i}" class="form-control input-form-service"
                             multiple name="service_id[${i}][]">
                             @foreach ($services as $service)
                                 <option value="{{ $service->id }}"> {{ $service->service_name }}
@@ -269,22 +271,32 @@
     }
 
     function action () {
-        $(document).ready(function () {
-            $(`.js-select-pet`).select2();
-        });
         let node = document.createElement("DIV")
         node.setAttribute("class", "book-form")
         box.appendChild(node)
         const form = document.getElementById("box_quan").lastElementChild
-        form.innerHTML = childForm.render(index ++)
+        form.innerHTML = childForm.render(index)
+        $(document).ready(function () {
+            let idPet = `#js-select-pet-${index}`
+            $(idPet).select2();
+            removeFormPet()
+            index++
+        });
+    }
+    function removeFormPet () {
+        document.querySelector(`#removePet-${index}`).addEventListener("click", function (e) {
+            e.preventDefault();
+            this.parentElement.parentElement.remove()
+        })
     }
 
     const run = () => {
         action()
+        document.querySelector("#removePet-1").style.display = "none"
         document.querySelector("#clickAddForm").addEventListener("click", function () {
-            console.log(index)
             action()
         })
+        
     }
     
     window.addEventListener("DOMContentLoaded", run)
