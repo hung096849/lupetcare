@@ -30,7 +30,7 @@ class LoginController extends Controller
             $credentials['is_verified'] = Customers::CONFIRM;
             return redirect()->route('frontend.homepage.show');
         } else {
-            return redirect()->back()->withInput();
+            return redirect()->back()->with(['fail' => 'Sai tài khoản hoặc mật khẩu']);
         }
 
        

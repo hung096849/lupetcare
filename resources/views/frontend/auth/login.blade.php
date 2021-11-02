@@ -9,11 +9,11 @@
                     </div>
                     <div class="card-body">
                         
-                        @if(Session::has('success'))
+                        @if(Session::has('fail'))
                         <div class="alert alert-success">
-                            {{ Session::get('success') }}
+                            {{ Session::get('fail') }}
                             @php
-                                Session::forget('success');
+                                Session::forget('fail');
                             @endphp
                         </div>
                         @endif
