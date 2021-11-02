@@ -10,7 +10,7 @@
                     <div class="card-body">
                         
                         @if(Session::has('fail'))
-                        <div class="alert alert-success">
+                        <div class="alert alert-danger">
                             {{ Session::get('fail') }}
                             @php
                                 Session::forget('fail');

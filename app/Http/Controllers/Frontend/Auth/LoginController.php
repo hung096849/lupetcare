@@ -20,7 +20,7 @@ class LoginController extends Controller
     }  
       
 
-    public function customLogin(CustomerRequest $request)
+    public function customLogin(Request $request)
     {
       
         $credentials = $request->only('name', 'password');
