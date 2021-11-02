@@ -16,8 +16,8 @@ class CreateOrderPetsTable extends Migration
         Schema::create('order_pets', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('order_id')->unsigned();
-            $table->text('pet_id');
-            $table->text('service_id');
+            $table->integer('pet_id');
+            $table->integer('service_id');
             // $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             // $table->foreign('pet_id')->references('id')->on('pet_informartions')->onDelete('cascade');
             // $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');

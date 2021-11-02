@@ -55,6 +55,7 @@ Route::prefix('admin')->name('backend.')->group(function () {
                 // Route::get('/create', [ServicesController::class, 'create'])->name('create');
                 // Route::post('/store', [ServicesController::class, 'store'])->name('store');
                 Route::get('/show/{id}', [OrderController::class, 'view'])->name('view');
+                Route::get('/show/view/{id}', [OrderController::class, 'viewOrder'])->name('viewOrder');
                 // Route::get('/edit/{id}', [ServicesController::class, 'edit'])->name('edit');
                 // Route::patch('/update/services', [ServicesController::class, 'update'])->name('update');
                 // Route::get('/delete/{id}', [ServicesController::class, 'delete'])->name('delete');

@@ -18,10 +18,10 @@
                     <div class="row mb-2">
                         <div class="col-sm-8" style="padding:30px;">
                             <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i>Khách Hàng Đặt Lịch</h1>
-                            <a href="{{ route('backend.admin.services.create') }}"
+                            <a href=""
                                 class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i>Thêm mới</a>
                             <button class="btn btn-danger float-left delete_all"
-                                data-url="{{ route('backend.admin.services.services.delete') }}">
+                                data-url="">
                                 <i class="fas fa-trash"></i>Xóa hàng loạt</button>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                                     <div class="card-tools">
                                         <div class="input-group input-group-sm" style="width: 150px;">
                                             <input type="text" name="search" id="search"
-                                                data-url="{{ route('backend.admin.orders.search') }}"
+                                                data-url=""
                                                 class="form-control float-right" placeholder="Tìm kiếm">
                                             <div class="input-group-append">
                                                 <button type="submit" class="btn btn-default">
@@ -63,6 +63,7 @@
                                                 <th>Số thứ tự</th>
                                                 <th>Khách hàng</th>
                                                 <th>Pet</th>
+                                                <th>Dịch vụ</th>
                                                 <th>Hành động</th>
                                             </tr>
                                         </thead>
@@ -81,10 +82,11 @@
                                                     </td>
                                                     <td>{{ $order->id }}</td>
                                                     <td>{{ $order->customer->name}}</td>
-                                                    <td>{{ $order->PetInformartion->name }}</td>
+                                                    <td>{{ $order->name }}</td>
+                                                    <td>{{ $order->service_id }}</td>
                                                     <td>
                                                         <a
-                                                        {{-- href="{{ route('backend.admin.orders.viewOrder', $order->id) }}" --}}
+                                                        href="{{ route('backend.admin.orders.viewOrder' , $order->id) }}"
                                                             class="btn btn-warning btn-sm btn-warning-edit"><i
                                                                 class="fas fa-eye"></i> View</a>
                                                         <a

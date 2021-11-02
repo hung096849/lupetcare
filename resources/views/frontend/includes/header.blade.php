@@ -78,7 +78,7 @@
                                             </header>
                                             <ul class="header__notify-list">
                                                 <li class="header__notify-item header__notify-item--viewed">
-                                                    <a href="" class="header__notify-link">
+                                                    <a href="{{ route('frontend.login.register-user') }}" class="header__notify-link">
                                                         <i class="fa fa-user icon-hd icon-login " aria-hidden="true"></i>
                                                         <div class="header__notify-info">
                                                         
@@ -88,7 +88,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="header__notify-item">
-                                                    <a href="" class="header__notify-link">
+                                                    <a href="{{ route('frontend.login.show') }}" class="header__notify-link">
                                                         <i class="fa fa-user icon-hd icon-login " aria-hidden="true"></i>
                                                             <div class="header__notify-info">
                                                                 

@@ -5,35 +5,47 @@ use App\Http\Controllers\Frontend\Order\OrderController;
 use App\Http\Controllers\Frontend\Services\ServicesController;
 use App\Http\Controllers\Frontend\Contacts\ContactController;
 use App\Http\Controllers\Frontend\Auth\LoginController;
+use App\Http\Controllers\Frontend\Payment\PaymentController;
+
+// Auth::routes();
 Route::name('frontend.')->group(function () {
+    Route::name('payment.')->group(function() {
+        Route::get('/thanh-toan', [PaymentController::class, 'getPayment'])->name('getPayment');
+        Route::post('/thanh-toan', [PaymentController::class, 'postPayment'])->name('postPayment');
+    });
+
     Route::name('homepage.')->group(function () {
         Route::get('/', [HomepageController::class,'index'])->name('show');
     });
     Route::name('login.')->group(function(){
-        Route::get('dashboard', [LoginController::class, 'dashboard']); 
-        Route::get('/login',[LoginController::class,'index'])->name('login');
-        Route::post('/login',[LoginController::class,'customLogin'])->name('login');
-    });
-  
-    Route::name('services.')->group(function () {
-        Route::get('/dich-vu', [ServicesController::class,'index'])->name('show');
-            
-        // /services/detail/{slug}
-        Route::get('/dich-vu/chi-tiet/{id}', [ServicesController::class,'detail'])->name('detail');
+        Route::get('/dang-nhap',[LoginController::class,'index'])->name('show');
+        Route::post('/dang-nhap',[LoginController::class,'customLogin'])->name('login-user');
+        Route::get('/dang-ki', [LoginController::class, 'register_form'])->name('register-user');
+        Route::post('/dang-ki', [LoginController::class, 'register'])->name('register.custom');
+        Route::get('/xac-thuc',[LoginController::class, 'verifyUser'])->name('verify.user');
     });
 
-    Route::name('order_services.')->group(function () {
-        // {slug}
-        Route::get('/dat-hang/{id}', [OrderController::class,'index'])->name('order');
-        
-        Route::post('/dat-hang/{id}', [OrderController::class,'addForm'])->name('addForm');
+    Route::middleware(['checkCustomer'])->group(function (){
+
     });
 
-    Route::name('contact_sendmail.')->group(function() {
-        Route::get('/contact-form', [ContactController::class, 'contactForm'])->name('show');
-        Route::post('/contact-form', [ContactController::class, 'sendContact'])->name('contact.send');
-    });
-   
-   
+        Route::name('services.')->group(function () {
+            Route::get('/dich-vu', [ServicesController::class,'index'])->name('show');
+
+            // /services/detail/{slug}
+            Route::get('/dich-vu/chi-tiet/{id}', [ServicesController::class,'detail'])->name('detail');
+        });
+
+        Route::name('order_services.')->group(function () {
+            // {slug}
+            Route::get('/dat-hang/{id}', [OrderController::class,'index'])->name('order');
+
+            Route::post('/dat-hang/{id}', [OrderController::class,'addForm2'])->name('addForm');
+        });
+
+        Route::name('contact_sendmail.')->group(function() {
+            Route::get('/lien-he', [ContactController::class, 'contactForm'])->name('show');
+            Route::post('/lien-he', [ContactController::class, 'sendContact'])->name('contact.send');
+        });
 
 });

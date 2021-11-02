@@ -32,9 +32,9 @@
 
                                 <div class="form-group">
                                     <label for="inputName">Danh muc</label>
-                                    <select name="category_id" id="">
+                                    <select name="category_id" id="" class="custom-select">
                                         @foreach ($categories as $categorie )
-                                            <option value="{{ old('category_id',$categorie->id ) }}">{{ $categorie->name }}</option>
+                                            <option  value="{{ old('category_id',$categorie->id ) }}">{{ $categorie->name }}</option>
                                         @endforeach
 
                                     </select>
