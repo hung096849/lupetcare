@@ -6,9 +6,14 @@ use App\Http\Controllers\Frontend\Services\ServicesController;
 use App\Http\Controllers\Frontend\Contacts\ContactController;
 use App\Http\Controllers\Frontend\Auth\LoginController;
 use App\Http\Controllers\Frontend\Payment\PaymentController;
+use App\Http\Controllers\TestController;
 
 Auth::routes();
 Route::name('frontend.')->group(function () {
+    
+    Route::get('/test',[TestController::class, 'index']);
+    // Route::get('/test',[TestController::class, 'index']);
+
     Route::name('payment.')->group(function() {
         Route::get('/thanh-toan', [PaymentController::class, 'getPayment'])->name('getPayment');
         Route::post('/thanh-toan', [PaymentController::class, 'postPayment'])->name('postPayment');
