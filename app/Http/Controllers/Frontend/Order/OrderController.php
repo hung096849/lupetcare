@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Twilio\Rest\Client;
+use Illuminate\Support\Collection;
 class OrderController extends Controller
 {
     protected $services;
@@ -57,17 +58,21 @@ class OrderController extends Controller
             $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
             $twilio_number = getenv("TWILIO_NUMBER");
 
-            // $customer = $this->customer->create([
-            //     "name"  =>  $request->name,
-            //     "phone" =>  $request->phone,
-            //     "email" =>  $request->email,
-            //     "note" =>   $request->note,
-            //     "status" => Customers::MEMBER,
-            //     'slug' => SlugService::createSlug(Customers::class, 'slug', $request->name),
-            // ]);
+            $customer = $this->customer->get();
+            
+            $customerForm = $this->customer->create([
+                "name"  =>  $request->name,
+                "phone" =>  $request->phone,
+                "email" =>  $request->email,
+                "note" =>   $request->note,
+                "status" => Customers::MEMBER,
+                'slug' => SlugService::createSlug(Customers::class, 'slug', $request->name),
+            ]);
+
             for ($i = 1 ; $i <= count($request->service_id) ; $i ++ ){
-                $serviceId[] = json_encode($request->service_id[$i]);
+                $serviceId[] = $request->service_id[$i];
             }
+
             foreach ($request['code'] as $key => $value) {
                     // if($this->checkHasPet($value[0])){
                     // $createPet = $this->petInfo->where('code', $value[0])->update([
@@ -88,18 +93,20 @@ class OrderController extends Controller
                 if($createPet) {
                         $order = $this->orders->create([
                             'vocher_id' => 1,
-                            'customer_id' => 1,
+                            'customer_id' => isset($customer->email) || isset($customer->phone) ? $customer->id : $customerForm->id,
                             "payment_method" => 1,
                             'is_paid' => 1,
                             'status' => 1,
                         ]);
                         
-                        foreach ($serviceId as $key => $service) {
-                            $this->orderPet->create([
-                                'order_id'  => $order->id,
-                                'pet_id'     => $idPet[$key],
-                                'service_id' => $service
-                            ]);
+                        foreach ($serviceId as $key => $value) {
+                            foreach ($value as $service) {
+                                $this->orderPet->create([
+                                    'order_id'  => $order->id,
+                                    'pet_id'     => $idPet[$key],
+                                    'service_id' => $service
+                                ]);
+                            }
                         }
                     }
             DB::commit();
@@ -111,7 +118,7 @@ class OrderController extends Controller
                 '+84962845342', // Text this number
                 [
                   'from' => $twilio_number, // From a valid Twilio number
-                  'body' => 'Hello hiihaaa!'
+                  'body' => 'Test send sms !'
                 ]
               );
 

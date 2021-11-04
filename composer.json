@@ -7,7 +7,6 @@
     "require": {
         "php": "^7.3|^8.0",
         "cviebrock/eloquent-sluggable": "^8.0",
-        "darkaonline/l5-swagger": "^8.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "haruncpi/laravel-id-generator": "^1.1",
@@ -15,7 +14,8 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
-        "prettus/l5-repository": "^2.7",
+        "mservice/payment": "dev-master",
+        "phpviet/laravel-omnipay": "^1.1",
         "stripe/stripe-php": "^7.100",
         "twilio/sdk": "^6.30",
         "zircote/swagger-php": "^3.2"
