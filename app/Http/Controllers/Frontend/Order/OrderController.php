@@ -53,10 +53,10 @@ class OrderController extends Controller
     public function addForm2(Request $request) {
         try {
             DB::beginTransaction();
-            $token = getenv("TWILIO_AUTH_TOKEN");
-            $twilio_sid = getenv("TWILIO_SID");
-            $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
-            $twilio_number = getenv("TWILIO_NUMBER");
+            // $token = getenv("TWILIO_AUTH_TOKEN");
+            // $twilio_sid = getenv("TWILIO_SID");
+            // $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
+            // $twilio_number = getenv("TWILIO_NUMBER");
 
             $customer = $this->customer->get();
             
@@ -104,7 +104,8 @@ class OrderController extends Controller
                                 $this->orderPet->create([
                                     'order_id'  => $order->id,
                                     'pet_id'     => $idPet[$key],
-                                    'service_id' => $service
+                                    'service_id' => $service,
+                                    'quantity' => 1
                                 ]);
                             }
                         }
@@ -113,14 +114,14 @@ class OrderController extends Controller
             Session::flash(
                 'success', 'Đặt lịch thành công !!!',
             );
-            $twilio = new Client($twilio_sid, $token);
-            $message = $twilio->messages->create(
-                '+84962845342', // Text this number
-                [
-                  'from' => $twilio_number, // From a valid Twilio number
-                  'body' => 'Test send sms !'
-                ]
-              );
+            // $twilio = new Client($twilio_sid, $token);
+            // $message = $twilio->messages->create(
+            //     '+84962845342', // Text this number
+            //     [
+            //       'from' => $twilio_number, // From a valid Twilio number
+            //       'body' => 'Test send sms !'
+            //     ]
+            //   );
 
             return back();
         } catch (\Exception $th) {
