@@ -52,7 +52,7 @@
                                     @endif
                                 </div>
 
-                                <div id="paypal-button"></div>
+                               
 
                                 <div class="forn-btn">
 

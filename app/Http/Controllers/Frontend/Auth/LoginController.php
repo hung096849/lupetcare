@@ -69,14 +69,16 @@ class LoginController extends Controller
         return redirect()->route('frontend.login.show')->with(session()->flash('alert-danger', 'Invalid verification code!'));
        
     }
-    // public function signOut(Request $request) {
-    //   if(Auth::guard('customer')->user()){
-    //     Auth::guard('customer')->logout();
-    //   }
+    public function signOut(Request $request) {
+        Auth::logout();
+
+        $request->session()->invalidate();
+    
+        $request->session()->regenerateToken();
        
   
-    //     return redirect()->intended('/');
-    // }
+        return redirect()->intended('/');
+    }
     public function showForgetPasswordForm()
     {
        return view('frontend.auth.forget');

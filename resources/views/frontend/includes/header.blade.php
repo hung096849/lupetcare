@@ -77,13 +77,15 @@
                                             
                                             </header>
                                             <ul class="header__notify-list">
+                                                @if(!Auth::guard('customers')->check())
+                                        
                                                 <li class="header__notify-item header__notify-item--viewed">
                                                     <a href="{{ route('frontend.login.register-user') }}" class="header__notify-link">
                                                         <i class="fa fa-user icon-hd icon-login " aria-hidden="true"></i>
                                                         <div class="header__notify-info">
                                                         
                                                             <span class="header__notify-name">Đăng kí </span>
-                                                     
+                                                            
                                                         </div>
                                                     </a>
                                                 </li>
@@ -97,6 +99,19 @@
                                                             </div>
                                                     </a>
                                                 </li>
+                                                @else
+                                                <li class="header__notify-item header__notify-item--viewed">
+                                                    
+                                                        <i class="fa fa-user icon-hd icon-login " aria-hidden="true"></i>
+                                                        <div class="header__notify-info">
+                                                        
+                                                            <span class="header__notify-name">{{ Auth::guard('customers')->user()->name }}</span>
+                                                            
+                                                        </div>
+                                                    
+                                                </li>
+                                                <li><a rel="" href="{{ route('frontend.login.logout') }}">Đăng xuất</a></li>
+                                                @endif
                                        
                                             </ul>
                                             <!-- <div class="header__notify-footer">
