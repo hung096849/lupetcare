@@ -6,7 +6,6 @@ use App\Http\Controllers\Frontend\Services\ServicesController;
 use App\Http\Controllers\Frontend\Contacts\ContactController;
 use App\Http\Controllers\Frontend\Auth\LoginController;
 use App\Http\Controllers\Frontend\Payment\PaymentController;
-
 Auth::routes();
 Route::name('frontend.')->group(function () {
     Route::name('payment.')->group(function() {

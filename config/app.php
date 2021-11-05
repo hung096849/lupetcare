@@ -161,7 +161,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
         
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         /*
@@ -178,6 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
     ],
+    
 
     /*
     |--------------------------------------------------------------------------
