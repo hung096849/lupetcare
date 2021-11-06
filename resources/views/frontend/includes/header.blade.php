@@ -77,13 +77,15 @@
                                             
                                             </header>
                                             <ul class="header__notify-list">
+                                                @if(!Auth::guard('customers')->check())
+                                        
                                                 <li class="header__notify-item header__notify-item--viewed">
                                                     <a href="{{ route('frontend.login.register-user') }}" class="header__notify-link">
                                                         <i class="fa fa-user icon-hd icon-login " aria-hidden="true"></i>
                                                         <div class="header__notify-info">
                                                         
                                                             <span class="header__notify-name">Đăng kí </span>
-                                                     
+                                                            
                                                         </div>
                                                     </a>
                                                 </li>
@@ -97,6 +99,19 @@
                                                             </div>
                                                     </a>
                                                 </li>
+                                                @else
+                                                <li class="header__notify-item header__notify-item--viewed">
+                                                    
+                                                        <i class="fa fa-user icon-hd icon-login " aria-hidden="true"></i>
+                                                        <div class="header__notify-info">
+                                                        
+                                                            <span class="header__notify-name">{{ Auth::guard('customers')->user()->name }}</span>
+                                                            
+                                                        </div>
+                                                    
+                                                </li>
+                                                <li><a rel="" href="{{ route('frontend.login.logout') }}">Đăng xuất</a></li>
+                                                @endif
                                        
                                             </ul>
                                             <!-- <div class="header__notify-footer">
@@ -121,7 +136,7 @@
 
 </section>
 
-<section class="banner">
+<!-- <section class="banner">
     <div class="swiper mySwiper swiper-banner overflow-hidden swiper-container-initialized swiper-container-horizontal">
         <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-4557px, 0px, 0px);"><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="2" style="width: 1519px;">
                 <div class="images">
@@ -154,4 +169,4 @@
         <div class="swiper-button-prev d-none banner-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
         <div class="swiper-pagination d-none banner-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3"></span></div>
     <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-</section>
+</section> -->

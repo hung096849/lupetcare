@@ -10,7 +10,9 @@ use App\Http\Requests\Frontend\Auth\CustomerRequest;
 use Carbon\Carbon;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 class LoginController extends Controller
 {
    
@@ -20,7 +22,7 @@ class LoginController extends Controller
     }  
       
 
-    public function customLogin(CustomerRequest $request)
+    public function customLogin(Request $request)
     {
       
         $credentials = $request->only('name', 'password');
@@ -30,7 +32,7 @@ class LoginController extends Controller
             $credentials['is_verified'] = Customers::CONFIRM;
             return redirect()->route('frontend.homepage.show');
         } else {
-            return redirect()->back()->withInput();
+            return redirect()->back()->with(['fail' => 'Sai tài khoản hoặc mật khẩu']);
         }
 
        
@@ -67,15 +69,85 @@ class LoginController extends Controller
         return redirect()->route('frontend.login.show')->with(session()->flash('alert-danger', 'Invalid verification code!'));
        
     }
-   
-    
+    public function signOut(Request $request) {
+        Auth::logout();
 
-    // public function signOut(Request $request) {
-    //   if(Auth::guard('customer')->user()){
-    //     Auth::guard('customer')->logout();
-    //   }
+        $request->session()->invalidate();
+    
+        $request->session()->regenerateToken();
        
   
-    //     return redirect()->intended('/');
-    // }
+        return redirect()->intended('/');
+    }
+    public function showForgetPasswordForm()
+    {
+       return view('frontend.auth.forget');
+    }
+
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function submitForgetPasswordForm(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:customers',
+        ]);
+
+        $token = Str::random(64);
+
+        DB::table('password_resets')->insert([
+            'email' => $request->email, 
+            'token' => $token, 
+            'created_at' => Carbon::now()
+          ]);
+
+        Mail::send('frontend.auth.forgetLink', ['token' => $token], function($message) use($request){
+            $message->to($request->email);
+            $message->subject('Reset Password');
+        });
+
+        return back()->with('message', 'Bạn hãy kiểm tra email của bạn để lấy lại mật khảu!');
+    }
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function showResetPasswordForm($token) { 
+       return view('frontend.auth.reset', ['token' => $token]);
+    }
+
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function submitResetPasswordForm(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:customers',
+            'password' => 'required|string|min:6|confirmed',
+            'password_confirmation' => 'required'
+        ]);
+
+        $updatePassword = DB::table('password_resets')
+                            ->where([
+                              'email' => $request->email, 
+                              'token' => $request->token
+                            ])
+                            ->first();
+
+        if(!$updatePassword){
+            return back()->withInput()->with('error', 'Invalid token!');
+        }
+
+        $user = Customers::where('email', $request->email)
+                    ->update(['password' => Hash::make($request->password)]);
+
+        DB::table('password_resets')->where(['email'=> $request->email])->delete();
+
+        return redirect('/dang-nhap')->with('message', 'Your password has been changed!');
+    }
 }

@@ -6,7 +6,9 @@ use App\Http\Controllers\Frontend\Services\ServicesController;
 use App\Http\Controllers\Frontend\Contacts\ContactController;
 use App\Http\Controllers\Frontend\Auth\LoginController;
 use App\Http\Controllers\Frontend\Payment\PaymentController;
+use App\Http\Controllers\Frontend\Payment\PaypalController;
 use App\Http\Controllers\TestController;
+
 
 Auth::routes();
 Route::name('frontend.')->group(function () {
@@ -17,6 +19,7 @@ Route::name('frontend.')->group(function () {
     Route::name('payment.')->group(function() {
         Route::get('/thanh-toan', [PaymentController::class, 'getPayment'])->name('getPayment');
         Route::post('/thanh-toan', [PaymentController::class, 'postPayment'])->name('postPayment');
+        Route::get('/thanh-toan-paypal',[PaypalController::class, 'getPaypal'])->name('getPaypal');
     });
 
     Route::name('homepage.')->group(function () {
@@ -28,6 +31,11 @@ Route::name('frontend.')->group(function () {
         Route::get('/dang-ki', [LoginController::class, 'register_form'])->name('register-user');
         Route::post('/dang-ki', [LoginController::class, 'register'])->name('register.custom'); 
         Route::get('/xac-thuc',[LoginController::class, 'verifyUser'])->name('verify.user');
+        Route::get('/dang-xuat',[LoginController::class, 'signOut'])->name('logout');
+        Route::get('/forget-password', [LoginController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+        Route::post('/forget-password', [LoginController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+        Route::get('/reset-password/{token}', [LoginController::class, 'showResetPasswordForm'])->name('reset.password.get');
+        Route::post('/reset-password', [LoginController::class, 'submitResetPasswordForm'])->name('reset.password.post');
     });
     
     Route::middleware(['checkCustomer'])->group(function (){
