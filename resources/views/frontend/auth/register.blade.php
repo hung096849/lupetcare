@@ -1,14 +1,38 @@
+
 @extends('layouts.frontend')
 @section('content')
-    <div class="container">
-        <div class="row mt-5 mb-5">
-            <div class="col-8 offset-2 mt-5">
-                <div class="card">
-                    <div class="card-header bg-info">
-                        <h3 class="text-white">ĐĂNG KÍ THÀNH VIÊN!</h3>
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1,
+            viewport-fit=cover" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Login</title>
+        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/animate.css') }}">
+        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/font-awesome.css') }}">
+        <!-- <link rel="stylesheet" href="theme/frontend/fancybox/dist/jquery.fancybox.min.css) }}"> -->
+        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/reset.css') }}">
+        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/swiper.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/home.css') }}" />
+        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/style.css') }}" />
+        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/main.css') }}" />
+        <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('frontend/css/jquery-ui.css') }}" />
+        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/register.css') }}" />
+    </head>
+<body class="scrollstyle1">
+        <section class="register">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="images d-block run_hv">
+                            <img src="{{ asset('frontend/images/img-new_service.png ') }}" alt="" class="w-100" srcset="">
+                        </div>
+
                     </div>
-                    <div class="card-body">
-                        
+                    <div class="col-12 col-md-6">
+                        <div class="register_form">
+                            <h4 class="title w-100">Tạo tài khoản</h4>
+                             
                         @if(Session::has('success'))
                         <div class="alert alert-success">
                             {{ Session::get('success') }}
@@ -17,60 +41,66 @@
                             @endphp
                         </div>
                         @endif
-                   
-                        <form method="POST" action="{{ route('frontend.login.register.custom') }}">
-                  
+                            <form class="w-100" method="POST" action="{{ route('frontend.login.register.custom') }}">
                             {{ csrf_field() }}
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <strong>Name:</strong>
-                                        <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}">
-                                        @if ($errors->has('name'))
+                                
+                                <div class="mb-3 d-flex">
+                                    <label for="exampleInputUserName" class="form-label mr-3"><i class="fa
+                                            fa-user-circle-o" aria-hidden="true"></i></label>
+                                    <input type="text" class="form-control" id="exampleInputUserName" name="name" aria-describedby="UserNameHelp">
+                                    @if ($errors->has('name'))
                                             <span class="text-danger">{{ $errors->first('name') }}</span>
                                         @endif
-                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <strong>Email:</strong>
-                                        <input type="text" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}">
-                                        @if ($errors->has('email'))
+                                <div class="mb-3 d-flex">
+                                    <label for="exampleInputEmail1" class="form-label mr-3"><i class="fa
+                                            fa-envelope-o" aria-hidden="true"></i></label>
+                                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    @if ($errors->has('email'))
                                             <span class="text-danger">{{ $errors->first('email') }}</span>
                                         @endif
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <strong>Phone:</strong>
-                                        <input type="text" name="phone" class="form-control" placeholder="Phone" value="{{ old('phone') }}">
-                                        @if ($errors->has('phone'))
+                                <div class="mb-3 d-flex">
+                                    <label for="exampleInputPhone" class="form-label mr-3"><i class="fa
+                                            fa-phone" aria-hidden="true"></i></label>
+                                    <input type="tel" class="form-control" name="phone" id="exampleInputPhone" aria-describedby="PhoneHelp">
+                                    @if ($errors->has('phone'))
                                             <span class="text-danger">{{ $errors->first('phone') }}</span>
                                         @endif
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <strong>Password:</strong>
-                                        <input type="password" name="password" class="form-control" placeholder="password" value="{{ old('password') }}">
-                                        @if ($errors->has('password'))
+                                <div class="mb-3 d-flex">
+                                    <label for="exampleInputPassword " class="form-label mr-3"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                                    </label>
+                                    <input type="password" class="form-control" name="password" id="exampleInputPassword">
+                                </div>
+                                @if ($errors->has('password'))
                                             <span class="text-danger">{{ $errors->first('password') }}</span>
-                                        @endif
-                                    </div>
+                                    @endif
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Đăng kí nhận thông tin</label>
                                 </div>
-                            </div>
-                           
-                            <div class="form-group text-center">
-                                <button class="btn btn-success btn-submit">Đăng Kí</button>
-                            </div>
-                        </form>
+                                <div class="forn-btn">
+
+                                    <button type="submit" class="btn btn-primary btn-register">ĐĂNG KÝ</button>
+                                    <p class="link mt-1">Nếu bạn có tài khoản , hãy <a href="{{ route('frontend.login.show') }}" class="pl-1">ĐĂNG NHẬP?</a></p>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+
+
+        <span class="back-to-top"><i class="fa fa-arrow-up" aria-hidden="true"></i></span>
+        <script src="theme/frontend/js/jquery-3.4.1.min.js" defer=""></script>
+        <script src="theme/frontend/js/bootstrap.min.js" defer=""></script>
+        <script src="theme/frontend/js/wow.min.js" defer=""></script>
+        <!-- <script src="theme/frontend/fancybox/dist/jquery.fancybox.min.js" defer></script> -->
+        <script src="theme/frontend/js/swiper.min.js" defer=""></script>
+        <script src="theme/frontend/js/script.js" defer=""></script>
+    
+
+</body>
 @endsection

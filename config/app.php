@@ -164,6 +164,8 @@ return [
 
         
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
+
+
         /*
          * Package Service Providers...
          */
@@ -178,6 +180,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
     ],
+    
 
     /*
     |--------------------------------------------------------------------------
