@@ -53,11 +53,11 @@ class OrderController extends Controller
         $orders = $this->orders
         ->where('orders.id', '=', $id)
         ->join('order_pets', 'orders.id', '=', 'order_pets.order_id')
-        ->join('customers', 'orders.customer_id', '=', 'customers.id')
         ->join('pet_informartions', 'order_pets.pet_id', '=', 'pet_informartions.id')
-        ->select('orders.*', 'customers.*', 'order_pets.*', 'pet_informartions.*')
+        ->select('orders.*', 'order_pets.*', 'pet_informartions.*')
+        ->group
         ->get();
-        // dd($orders->id);
+
         return view('backend.admin.orders.viewOrder', compact('orders'));
 
     }

@@ -17,101 +17,118 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-8" style="padding:30px;">
-                            <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i>Khách Hàng Đặt Lịch</h1>
-                            <a href=""
-                                class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i>Thêm mới</a>
-                            <button class="btn btn-danger float-left delete_all"
-                                data-url="">
-                                <i class="fas fa-trash"></i>Xóa hàng loạt</button>
+                            <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i> Khách Hàng Đặt Lịch</h1>
+                            <a href="" class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i> Thêm mới</a>
+                            <button class="btn btn-danger float-left delete_all" data-url="">
+                                <i class="fas fa-trash"></i> Xóa hàng loạt</button>
                         </div>
                     </div>
                 </div>
             </section>
-
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="card-tools">
-                                        <div class="input-group input-group-sm" style="width: 150px;">
-                                            <input type="text" name="search" id="search"
-                                                data-url=""
-                                                class="form-control float-right" placeholder="Tìm kiếm">
-                                            <div class="input-group-append">
-                                                <button type="submit" class="btn btn-default">
-                                                    <i class="fas fa-search"></i>
-                                                </button>
+                            <div class="info col-3 ">
+
+                                <div class="row">
+                                    <h6 class="col-6">Họ và tên :</h6>
+                                    <span class="col-6"></span>
+                                </div>
+                                <div class="row">
+                                    <h6 class="col-6">SĐT :</h6>
+                                    <span class="col-6"></span>
+                                </div>
+                                <div class="row">
+                                    <h6 class="col-6">Email :</h6>
+                                    <span class="col-6"></span>
+                                </div>
+                                <div class="row">
+                                    <h6 class="col-6">Mã khách hàng :</h6>
+                                    <span class="col-6"></span>
+                                </div>
+
+                            </div>
+                            <div class=" col-8 ">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-tools">
+                                            <div class="input-group input-group-sm" style="width: 150px;">
+                                                <input type="text" name="search" id="search" data-url=""
+                                                    class="form-control float-right" placeholder="Tìm kiếm">
+                                                <div class="input-group-append">
+                                                    <button type="submit" class="btn btn-default">
+                                                        <i class="fas fa-search"></i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="card-body table-responsive p-0">
-                                    <table class="table table-hover text-nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    <div class="form-group">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input form__check-all" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </th>
-                                                <th>Số thứ tự</th>
-                                                <th>Khách hàng</th>
-                                                <th>Pet</th>
-                                                <th>Dịch vụ</th>
-                                                <th>Hành động</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="search-data">
-                                            @foreach ($orders as $order)
+                                    <!-- /.card-header -->
+                                    <div class="card-body table-responsive p-0">
+                                        <table class="table table-hover text-nowrap">
+                                            <thead>
                                                 <tr>
-                                                    <td>
+                                                    <th>
                                                         <div class="form-group">
                                                             <div class="form-check">
-                                                                <input value="{{ $order->id }}"
-                                                                    data-id="{{ $order->id }}"
-                                                                    class="form__check-all-target form-check-input sub_chk"
+                                                                <input class="form-check-input form__check-all"
                                                                     type="checkbox">
                                                             </div>
                                                         </div>
-                                                    </td>
-                                                    <td>{{ $order->id }}</td>
-                                                    <td>{{ $order->customer->name}}</td>
-                                                    <td>{{ $order->name }}</td>
-                                                    <td>{{ $order->service_id }}</td>
-                                                    <td>
-                                                        <a
-                                                        href="{{ route('backend.admin.orders.viewOrder' , $order->id) }}"
-                                                            class="btn btn-warning btn-sm btn-warning-edit"><i
-                                                                class="fas fa-eye"></i> View</a>
-                                                        <a
-                                                         {{-- href="{{ route('backend.admin.orders.edit', $order->id) }}" --}}
-                                                            class="btn btn-info btn-sm"><i class="fas fa-edit"></i>
-                                                            Edit</a>
-                                                        <a
-                                                        {{-- href="{{ route('backend.admin.orders.delete', $order->id) }}" --}}
-                                                            class="btn btn-danger btn-sm"> <i
-                                                                class="fas fa-trash"></i>Delete</a>
-                                                    </td>
+                                                    </th>
+                                                    <th scope="col">Mã đơn hàng <i class="fas fa-sort"></th>
+                                                    <th scope="col">Dịch vụ <i class="fas fa-sort"></th>
+                                                    <th scope="col">Thanh toán </th>
+                                                    <th scope="col">Gía <i class="fas fa-sort"></th>
+                                                    <th scope="col">Thời gian </th>
+                                                    <th scope="col">Trạng thái <i class="fas fa-sort"></th>
+                                                    <th scope="col">Hành động </th>
                                                 </tr>
+                                            </thead>
+                                            <tbody id="search-data">
+                                                @foreach ($orders as $order)
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <div class="form-check">
+                                                                    <input value="{{ $order->id }}"
+                                                                        data-id="{{ $order->id }}"
+                                                                        class="form__check-all-target form-check-input sub_chk"
+                                                                        type="checkbox">
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td></td>
+                                                        <td>{{ $order->service_id }}</td>
+                                                        <td>{{ $order->payment_method}}</td>
+                                                        <td>{{ $order->price }}</td>
+                                                        <td>{{ $order->date }}</td>
+                                                        <td>
+                                                            {{ $order->status === 0 ? "Da thanh toan": 'Chua thanh toan' }}
+                                                        </td>
+                                                        <td>
+                                                            <a {{-- href="{{ route('backend.admin.orders.edit', $order->id) }}" --}} class="btn btn-info btn-sm"><i
+                                                                    class="fas fa-edit"></i>
+                                                                Edit</a>
+                                                            <a {{-- href="{{ route('backend.admin.orders.delete', $order->id) }}" --}} class="btn btn-danger btn-sm"> <i
+                                                                    class="fas fa-trash"></i>Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
 
-                                            @endforeach
-                                        </tbody>
-                                    </table>
 
-                                    <div class="ajax-load text-center" style="display:none">
-                                        <p><img src="{{ asset('backend/image/common/search.gif') }}" width="100px" /></p>
+                                        <div class="ajax-load text-center" style="display:none">
+                                            <p><img src="{{ asset('backend/image/common/search.gif') }}" width="100px" />
+                                            </p>
+                                        </div>
                                     </div>
+                                    <!-- /.card-body -->
                                 </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                        </div>
+
+
                     </div>
                     {{-- <div class="row">
                         <div class="col-sm-12 col-md-5">
@@ -127,6 +144,5 @@
             </section>
             <!-- /.content -->
         </div>
-        <div id="sidebar-overlay"></div>
-    </div>
-@endsection
+
+    @endsection

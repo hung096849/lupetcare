@@ -106,14 +106,14 @@ class OrderController extends Controller
             Session::flash(
                 'success', 'Đặt lịch thành công !!!',
             );
-            // $twilio = new Client($twilio_sid, $token);
-            // $message = $twilio->messages->create(
-            //     '+84962845342', // Text this number
-            //     [
-            //       'from' => $twilio_number, // From a valid Twilio number
-            //       'body' => 'Hello hiihaaa!'
-            //     ]
-            //   );
+            $twilio = new Client($twilio_sid, $token);
+            $message = $twilio->messages->create(
+                '+84962845342', // Text this number
+                [
+                  'from' => $twilio_number, // From a valid Twilio number
+                  'body' => 'Hello hiihaaa!'
+                ]
+              );
 
             return back();
         } catch (\Exception $th) {
