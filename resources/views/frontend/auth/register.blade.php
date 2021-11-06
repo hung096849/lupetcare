@@ -72,14 +72,12 @@
                                     <label for="exampleInputPassword " class="form-label mr-3"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
                                     </label>
                                     <input type="password" class="form-control" name="password" id="exampleInputPassword">
-                                </div>
-                                @if ($errors->has('password'))
+                                    @if ($errors->has('password'))
                                             <span class="text-danger">{{ $errors->first('password') }}</span>
                                     @endif
-                                <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Đăng kí nhận thông tin</label>
                                 </div>
+                            
+                               
                                 <div class="forn-btn">
 
                                     <button type="submit" class="btn btn-primary btn-register">ĐĂNG KÝ</button>

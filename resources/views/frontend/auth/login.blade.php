@@ -50,13 +50,13 @@
                                         class="form-label mr-3"><i class="fa
                                             fa-user-circle-o"
                                             aria-hidden="true"></i></label>
-                                    <input type="text" class="form-control"
+                                    <input type="email" class="form-control"
                                         id="exampleInputUserName"
-                                        name="name" value="{{ old('name') }}">
+                                        name="email" value="{{ old('email') }}">
                                     
                                 </div>
-                                @if ($errors->has('name'))
-                                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                                @if ($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
                                     @endif
                                 <div class="mb-3 d-flex">
                                     <label for="exampleInputPassword "

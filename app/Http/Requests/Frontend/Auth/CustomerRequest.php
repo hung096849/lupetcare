@@ -26,12 +26,12 @@ class CustomerRequest extends FormRequest
         return[
             request()->validate([
                 'name' => 'required',
-                'email' => 'required|email|unique:users',
+                'email' => 'required|email|unique:customers',
                 'phone' => 'required|digits:10|numeric',
                 'password'=> 'required'
             ],
             [
-                'name.required' => ' Cần nhập tên đăng nhập',
+                'name.required' => ' Cần nhập họ và tên',
                 'email.required' => ' Cần nhập email',
                 'email.email' => 'Phải đúng định dạng email',
                 'email.unique' => 'Email này đã được sử dụng',

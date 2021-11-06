@@ -25,7 +25,7 @@ class LoginController extends Controller
     public function customLogin(Request $request)
     {
       
-        $credentials = $request->only('name', 'password');
+        $credentials = $request->only('email', 'password');
        
        
         if (Auth::guard('customers')->attempt($credentials)) {
