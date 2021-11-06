@@ -9,6 +9,7 @@ use App\Models\OrderPet;
 use App\Models\PetInformartion;
 use App\Models\Services;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -33,34 +34,20 @@ class OrderController extends Controller
 
     public function index()
     {
-        $customers = $this->customers->paginate(5);
+        $customers = $this->orders
+        ->select('customer_id', DB::raw('count(*) as total'))
+        ->groupBy('customer_id')
+        ->get();
         return view('backend.admin.orders.index', compact('customers'));
     }
 
     public function view(Request $request , $id)
     {
         $orders = $this->orders
-        ->join('order_pets', 'orders.id', '=', 'order_pets.order_id')
-        ->join('pet_informartions', 'order_pets.pet_id', '=', 'pet_informartions.id')
-        ->select('orders.*', 'pet_informartions.name', 'order_pets.service_id')
         ->where('orders.customer_id', '=', $id)
         ->get();
-        return view('backend.admin.orders.searchOrder', compact('orders'));
+        $customer = $this->customers->find($id);
+        return view('backend.admin.orders.searchOrder', compact('orders','customer'));
     }
-
-    public function viewOrder(Request $request , $id)
-    {
-        $orders = $this->orders
-        ->where('orders.id', '=', $id)
-        ->join('order_pets', 'orders.id', '=', 'order_pets.order_id')
-        ->join('pet_informartions', 'order_pets.pet_id', '=', 'pet_informartions.id')
-        ->select('orders.*', 'order_pets.*', 'pet_informartions.*')
-        ->group
-        ->get();
-
-        return view('backend.admin.orders.viewOrder', compact('orders'));
-
-    }
-
 
 }

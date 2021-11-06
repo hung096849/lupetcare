@@ -71,17 +71,17 @@
                                                     <td>
                                                         <div class="form-group">
                                                             <div class="form-check">
-                                                                <input value="{{ $customer->id }}"
-                                                                    data-id="{{ $customer->id }}"
+                                                                <input value="{{ $customer->customer_id }}"
+                                                                    data-id="{{ $customer->customer_id }}"
                                                                     class="form__check-all-target form-check-input sub_chk"
                                                                     type="checkbox">
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td>{{ $customer->id }}</td>
-                                                    <td>{{ $customer->name }}</td>
+                                                    <td>{{ $customer->total}}</td>
+                                                    <td>{{ $customer->customer->name }}</td>
                                                     <td>
-                                                        <a href="{{ route('backend.admin.orders.view', $customer->id) }}"
+                                                        <a href="{{ route('backend.admin.orders.view', $customer->customer_id) }}"
                                                             class="btn btn-warning btn-sm btn-warning-edit"><i
                                                                 class="fas fa-eye"></i> View</a>
                                                     </td>
@@ -100,7 +100,7 @@
                             <!-- /.card -->
                         </div>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-sm-12 col-md-5">
                             <!-- <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div> -->
                         </div>
@@ -109,7 +109,7 @@
                                 @include('backend.components.pagination', ['paginator' => $customers])
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div><!-- /.container-fluid -->
             </section>
             <!-- /.content -->

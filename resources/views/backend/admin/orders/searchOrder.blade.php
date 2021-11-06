@@ -33,19 +33,15 @@
 
                                 <div class="row">
                                     <h6 class="col-6">Họ và tên :</h6>
-                                    <span class="col-6"></span>
+                                    <span class="col-6">{{ $customer->name }}</span>
                                 </div>
                                 <div class="row">
                                     <h6 class="col-6">SĐT :</h6>
-                                    <span class="col-6"></span>
+                                    <span class="col-6">{{ $customer->phone }}</span>
                                 </div>
                                 <div class="row">
                                     <h6 class="col-6">Email :</h6>
-                                    <span class="col-6"></span>
-                                </div>
-                                <div class="row">
-                                    <h6 class="col-6">Mã khách hàng :</h6>
-                                    <span class="col-6"></span>
+                                    <span class="col-6">{{ $customer->email }}</span>
                                 </div>
 
                             </div>
@@ -100,7 +96,7 @@
                                                             </div>
                                                         </td>
                                                         <td></td>
-                                                        <td>{{ $order->service_id }}</td>
+                                                        <td>{{ $order->order_pet->service->name }}</td>
                                                         <td>{{ $order->payment_method}}</td>
                                                         <td>{{ $order->price }}</td>
                                                         <td>{{ $order->date }}</td>
