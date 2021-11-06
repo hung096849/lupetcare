@@ -25,7 +25,7 @@
                                         <div class="book-form-title">
                                             <h2 class="text-center">Thông tin chủ sở hữu</h2>
                                         </div>
-                                        {{-- <div class="row">
+                                        <div class="row">
                                             <div class="col-md-6">
                                                 <label for="Name " class="pt-4 pb-2 book-form-text">Họ và tên *</label>
                                                 <input type="text" name="name" required class="form-control input-form-service">
@@ -62,7 +62,7 @@
                                                 <textarea class="form-control input-form-service" name="note"
                                                     id="exampleFormControlTextarea1" rows="4"></textarea>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                         <div class="col-12 d-flex justify-content-center mt-4 mb-4">
                                                 <button type="submit" class="btn btn-lg btn-info px-5">
                                                     ĐẶT LỊCH

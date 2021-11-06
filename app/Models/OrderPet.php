@@ -11,7 +11,7 @@ class OrderPet extends Model
 
     protected $table = 'order_pets';
     protected $fillable = [
-        'order_id', 'pet_id', 'service_id'
+        'order_id', 'pet_id', 'service_id', 'quantity'
     ];
 
 }
