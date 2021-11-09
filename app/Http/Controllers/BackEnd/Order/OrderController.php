@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderPet;
 use App\Models\PetInformartion;
 use App\Models\Services;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -44,10 +45,68 @@ class OrderController extends Controller
     public function view(Request $request , $id)
     {
         $orders = $this->orders
+        ->join('order_pets', 'order_pets.order_id', '=', 'orders.id')
+        ->join('pet_informartions', 'pet_informartions.id', '=', 'order_pets.pet_id')
         ->where('orders.customer_id', '=', $id)
         ->get();
+        $services = $this->services->all();
         $customer = $this->customers->find($id);
-        return view('backend.admin.orders.searchOrder', compact('orders','customer'));
+        return view('backend.admin.orders.searchOrder', compact('orders','customer', 'services'));
     }
 
+    public function create()
+    {
+        $services = $this->services->all();
+        $customers = $this->customers->all();
+        return view('backend.admin.orders.create',compact('services','customers'));
+    }
+
+
+    public function store(Request $request) {
+        try {
+            for ($i = 1 ; $i <= count($request->service_id) ; $i ++ ){
+                $serviceId[] = $request->service_id[$i];
+            }
+
+            foreach ($request['code'] as $key => $value) {
+                    $createPet = $this->petInfo->create([
+                        'code' => 'LUPETCARE-'.rand(1,1000),
+                        'name' => $request['pet_name'][$key][0],
+                        'weight' => $request['weight'][$key][0],
+                        'gender' => $request['gender'][$key][0],
+                    ]);
+                    $idPet[] = $createPet->id;
+                }
+                if($createPet) {
+                        $order = $this->orders->create([
+                            'vocher_id' => 1,
+                            'customer_id' => $request->customer_id,
+                            "payment_method" => 1,
+                            'is_paid' => 1,
+                            'status' => 1,
+                        ]);
+
+                        foreach ($serviceId as $key => $value) {
+                            foreach ($value as $service) {
+                                $this->orderPet->create([
+                                    'order_id'  => $order->id,
+                                    'pet_id'     => $idPet[$key],
+                                    'service_id' => $service,
+                                    'quantity' => 1
+                                ]);
+                            }
+                        }
+                    }
+            DB::commit();
+            Session::flash(
+                'success', 'Đặt lịch thành công !!!',
+            );
+
+            return back();
+        } catch (\Exception $th) {
+            DB::rollback();
+            Session::flash('message', $th->getMessage());
+            return back();
+        }
+    }
 }

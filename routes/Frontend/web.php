@@ -8,11 +8,11 @@ use App\Http\Controllers\Frontend\Auth\LoginController;
 use App\Http\Controllers\Frontend\Payment\PaymentController;
 use App\Http\Controllers\Frontend\Payment\PaypalController;
 use App\Http\Controllers\TestController;
-
+use Illuminate\Routing\Route;
 
 // Auth::routes();
 Route::name('frontend.')->group(function () {
-    
+
     Route::get('/test',[TestController::class, 'index']);
     // Route::get('/test',[TestController::class, 'index']);
 
@@ -33,7 +33,7 @@ Route::name('frontend.')->group(function () {
         Route::get('/xac-thuc',[LoginController::class, 'verifyUser'])->name('verify.user');
         Route::get('/dang-xuat',[LoginController::class, 'signOut'])->name('logout');
         Route::get('/forget-password', [LoginController::class, 'showForgetPasswordForm'])->name('forget.password.get');
-        Route::post('/forget-password', [LoginController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+        Route::post('/forget-password', [LoginController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
         Route::get('/reset-password/{token}', [LoginController::class, 'showResetPasswordForm'])->name('reset.password.get');
         Route::post('/reset-password', [LoginController::class, 'submitResetPasswordForm'])->name('reset.password.post');
     });

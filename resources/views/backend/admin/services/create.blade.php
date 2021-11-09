@@ -116,7 +116,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">time</label>
-                                    <input type="text" name="time" id="title" class="form-control"
+                                    <input type="time" name="time" id="title" class="form-control"
                                         value="{{old('time')}}" placeholder="" />
                                     @error('time')
                                     <div class="mt-1 text-red-500">

@@ -21,13 +21,9 @@ class CreateCustomersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
-<<<<<<< HEAD
-            $table->tinyInteger('status')->comment('0:Member, 1:Customer')->default(0);
-=======
             $table->string('verification_code')->nullable();
             $table->integer('is_verified')->default(0)->comment('1:Unconfimred, 0:Confirm');
             $table->char('status')->comment('0:Member, 1:Customer')->default(0);
->>>>>>> 3753c01988b47605c05f2bf52a11987004686ea6
             $table->text('note')->nullable();
             $table->timestamps();
         });

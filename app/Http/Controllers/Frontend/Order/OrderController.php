@@ -59,7 +59,7 @@ class OrderController extends Controller
             // $twilio_number = getenv("TWILIO_NUMBER");
 
             $customer = $this->customer->get();
-            
+
             $customerForm = $this->customer->create([
                 "name"  =>  $request->name,
                 "phone" =>  $request->phone,
@@ -98,16 +98,7 @@ class OrderController extends Controller
                             'is_paid' => 1,
                             'status' => 1,
                         ]);
-<<<<<<< HEAD
 
-                        foreach ($serviceId as $key => $service) {
-                            $this->orderPet->create([
-                                'order_id'  => $order->id,
-                                'pet_id'     => $idPet[$key],
-                                'service_id' => $service
-                            ]);
-=======
-                        
                         foreach ($serviceId as $key => $value) {
                             foreach ($value as $service) {
                                 $this->orderPet->create([
@@ -117,7 +108,6 @@ class OrderController extends Controller
                                     'quantity' => 1
                                 ]);
                             }
->>>>>>> 3753c01988b47605c05f2bf52a11987004686ea6
                         }
                     }
             DB::commit();

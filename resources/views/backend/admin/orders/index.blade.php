@@ -18,7 +18,7 @@
                     <div class="row mb-2">
                         <div class="col-sm-8" style="padding:30px;">
                             <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i>Khách Hàng Đặt Lịch</h1>
-                            <a href="{{ route('backend.admin.services.create') }}"
+                            <a href="{{ route('backend.admin.orders.create') }}"
                                 class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i>Thêm mới</a>
                             <button class="btn btn-danger float-left delete_all"
                                 data-url="{{ route('backend.admin.services.services.delete') }}">
