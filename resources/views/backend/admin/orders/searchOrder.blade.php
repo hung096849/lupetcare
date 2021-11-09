@@ -97,13 +97,14 @@
                                                     <td></td>
                                                     <td>
                                                         @foreach ($services as $service)
-                                                            <p
-                                                            @if ($order->service_id == $service->id)
-                                                            @endif
-                                                            {{ $order->service_id === $service->id ? 'selected' : '' }}
-                                                            value="{{ $service->id }}">{{ $service->service_name }}
-                                                            </p>
-                                                        @endforeach
+                                                            <p>
+                                                            @if ($service->id == $order->service_id)
+                                                        @endif
+                                                        {{ $order->service_id === $service->id ? $service->service_name : '' }}
+
+
+                                                    </p>
+                                            @endforeach
                                             </td>
                                             <td><img src="{{ asset('storage/logo-vector-vnpayqr.jpg') }}" alt=""
                                                     width="100"></td>
@@ -113,10 +114,10 @@
                                                 {{ $order->status === 0 ? 'Da thanh toan' : 'Chua thanh toan' }}
                                             </td>
                                             <td>
-                                                <a {{-- href="{{ route('backend.admin.orders.edit', $order->id) }}" --}} class="btn btn-info btn-sm"><i
+                                                <a href="" class="btn btn-info btn-sm"><i
                                                         class="fas fa-edit"></i>
                                                     Edit</a>
-                                                <a {{-- href="{{ route('backend.admin.orders.delete', $order->id) }}" --}} class="btn btn-danger btn-sm"> <i
+                                                <a href="{{ route('backend.admin.orders.delete', $order->id ) }}" class="btn btn-danger btn-sm"> <i
                                                         class="fas fa-trash"></i>Delete</a>
                                             </td>
                                             </tr>

@@ -24,7 +24,7 @@
             <section class="form-book-service">
                 <div class="container-fluid container-padding">
                     <div class="content">
-                        <form action="" method="POST">
+                        <form action="{{ route('backend.admin.orders.store') }}" method="POST">
                             @csrf
                             <div class="container">
                                 <div class="book-content">
@@ -54,6 +54,21 @@
                                                                 tháng
                                                                 *</label>
                                                             <input type="text" name="date" value="{{ old('date') }}"
+                                                                class="form-control input-form-service" id="datepicker">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label  class="pt-5 pb-2 book-form-text">payment_method
+                                                            </label>
+                                                            <select id="" name="payment_method"
+                                                                class="form-control input-form-service">
+                                                                <option value="1">The ngan hang</option>
+                                                                <option value="2">Tra tien mat</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label  class="pt-5 pb-2 book-form-text">vocher
+                                                            </label>
+                                                            <input type="text" name="vocher_id" value="{{ old('vocher_id') }}"
                                                                 class="form-control input-form-service" id="datepicker">
                                                         </div>
                                                     </div>
@@ -92,14 +107,6 @@
                 $(function() {
                     $("#datepicker").datepicker();
                 });
-
-                // jQuery('#datetimepicker5').datetimepicker({
-                //     datepicker:false,
-                //     allowTimes:[
-                //     '12:00', '13:00', '15:00',
-                //     '17:00', '17:05', '17:20', '19:00', '20:00'
-                //     ]
-                // });
 
                 // function add form
                 let box = document.querySelector("#box_quan")
