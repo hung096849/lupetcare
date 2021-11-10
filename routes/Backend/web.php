@@ -4,6 +4,7 @@ use App\Http\Controllers\BackEnd\Services\ServicesController;
 use App\Http\Controllers\BackEnd\Categories\CategoriesController;
 use App\Http\Controllers\Backend\DashBorad\DashboardController;
 use App\Http\Controllers\BackEnd\Contacts\ContactController;
+use App\Http\Controllers\BackEnd\Customer\CustomerController;
 Route::prefix('admin')->name('backend.')->group(function () {
     Route::name('auth.')->group(function () {
         Route::get('/login', 'App\Http\Controllers\Backend\Auth\LoginController@index')->name('show');
@@ -46,6 +47,18 @@ Route::prefix('admin')->name('backend.')->group(function () {
                 Route::get('/delete/{id}', [ContactController::class, 'delete'])->name('delete');
                 Route::delete('/contacts/delete', [ContactController::class, 'contactsDelete'])->name('contacts.delete');
                 Route::get('/search', [ContactController::class, 'search'])->name('search');
+            });
+
+            Route::prefix('/customers')->name('customers.')->group(function(){
+                Route::get('/', [CustomerController::class, 'index'])->name('show');
+                Route::get('/create', [CustomerController::class, 'create'])->name('create');
+                Route::post('/store', [CustomerController::class, 'store'])->name('store');
+                Route::get('/show/{id}', [CustomerController::class, 'view'])->name('view');
+                Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('edit');
+                Route::patch('/update/services', [CustomerController::class, 'update'])->name('update');
+                Route::get('/delete/{id}', [CustomerController::class, 'delete'])->name('delete');
+                Route::delete('/customers/delete', [CustomerController::class, 'customersDelete'])->name('customers.delete');
+                Route::get('/search', [CustomerController::class, 'search'])->name('search');
             });
 
         });

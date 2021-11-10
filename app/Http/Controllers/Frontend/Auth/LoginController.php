@@ -24,7 +24,17 @@ class LoginController extends Controller
 
     public function customLogin(Request $request)
     {
-      
+        $credentials = $request->validate(
+           [
+            'email' => 'required|email',
+            'password' => 'required',
+           ], 
+           [
+            'password.required' => ' Cần nhập mật khẩu',
+            'email.required' => ' Cần nhập email',
+            'email.email' => 'Phải đúng định dạng email',
+           ]
+        );
         $credentials = $request->only('email', 'password');
        
        

@@ -53,11 +53,11 @@
                                     <input type="email" class="form-control"
                                         id="exampleInputUserName"
                                         name="email" value="{{ old('email') }}">
-                                    
-                                </div>
-                                @if ($errors->has('email'))
+                                        @if ($errors->has('email'))
                                         <span class="text-danger">{{ $errors->first('email') }}</span>
                                     @endif
+                                </div>
+                              
                                 <div class="mb-3 d-flex">
                                     <label for="exampleInputPassword "
                                         class="form-label mr-3"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
