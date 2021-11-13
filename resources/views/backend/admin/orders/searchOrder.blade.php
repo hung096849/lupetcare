@@ -29,7 +29,7 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="info col-3 ">
+                        <div class="info col-2 ">
 
                             <div class="row">
                                 <h6 class="col-6">Họ và tên :</h6>
@@ -45,7 +45,7 @@
                             </div>
 
                         </div>
-                        <div class=" col-8 ">
+                        <div class=" col-10 ">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-tools">
@@ -73,6 +73,7 @@
                                                     </div>
                                                 </th>
                                                 <th scope="col">Mã đơn hàng <i class="fas fa-sort"></th>
+                                                <th scope="col">Thu cung<i class="fas fa-sort"></th>
                                                 <th scope="col">Dịch vụ <i class="fas fa-sort"></th>
                                                 <th scope="col">Thanh toán </th>
                                                 <th scope="col">Gía <i class="fas fa-sort"></th>
@@ -94,33 +95,33 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td></td>
+                                                    <td>{{ $order->id }}</td>
                                                     <td>
-                                                        @foreach ($services as $service)
-                                                            <p>
-                                                            @if ($service->id == $order->service_id)
-                                                        @endif
-                                                        {{ $order->service_id === $service->id ? $service->service_name : '' }}
-
-
-                                                    </p>
-                                            @endforeach
-                                            </td>
-                                            <td><img src="{{ asset('storage/logo-vector-vnpayqr.jpg') }}" alt=""
-                                                    width="100"></td>
-                                            <td>{{ $order->price }}</td>
-                                            <td>{{ $order->date }}</td>
-                                            <td>
-                                                {{ $order->status === 0 ? 'Da thanh toan' : 'Chua thanh toan' }}
-                                            </td>
-                                            <td>
-                                                <a href="" class="btn btn-info btn-sm"><i
-                                                        class="fas fa-edit"></i>
-                                                    Edit</a>
-                                                <a href="{{ route('backend.admin.orders.delete', $order->id ) }}" class="btn btn-danger btn-sm"> <i
-                                                        class="fas fa-trash"></i>Delete</a>
-                                            </td>
-                                            </tr>
+                                                        @foreach ($order->order_pets as $order_pet)
+                                                        <p>{{  $order_pet->name }}</p>
+                                                        @endforeach
+                                                    </td>
+                                                    <td>
+                                                        @foreach ($order->order_services as $order_service)
+                                                            <p>{{ $order_service->service_name }}</p>
+                                                        @endforeach
+                                                    </td>
+                                                    <td><img src="{{ asset('storage/logo-vector-vnpayqr.jpg') }}" alt=""
+                                                            width="100"></td>
+                                                    <td>{{ $order->price }}</td>
+                                                    <td>{{ $order->date }}</td>
+                                                    <td>
+                                                        {{ $order->status === 0 ? 'Da thanh toan' : 'Chua thanh toan' }}
+                                                    </td>
+                                                    <td>
+                                                        <p><a href="" class="btn btn-info btn-sm"><i
+                                                                    class="fas fa-edit"></i>
+                                                                Edit</a></p>
+                                                        <p><a href="{{ route('backend.admin.orders.delete', $order->id) }}"
+                                                                class="btn btn-danger btn-sm"> <i
+                                                                    class="fas fa-trash"></i>Delete</a></p>
+                                                    </td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>

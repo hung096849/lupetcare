@@ -45,13 +45,14 @@ class OrderController extends Controller
     public function view(Request $request, $id)
     {
         $orders = $this->orders
-            ->join('order_pets', 'order_pets.order_id', '=', 'orders.id')
-            ->join('pet_informartions', 'pet_informartions.id', '=', 'order_pets.pet_id')
             ->where('orders.customer_id', '=', $id)
-            ->get();
+            ->get()
+            ->load('order_pets','order_services');
+            // dd($orders);
         $services = $this->services->all();
         $customer = $this->customers->find($id);
-        return view('backend.admin.orders.searchOrder', compact('orders', 'customer', 'services'));
+        $petInfo = $this->petInfo->all();
+        return view('backend.admin.orders.searchOrder', compact('orders', 'customer', 'services', 'petInfo'));
     }
 
     public function create()
@@ -119,10 +120,11 @@ class OrderController extends Controller
 
     public function delete($id)
     {
+        $orderPet = $this->orderPet->where('order_pets.order_id', $id)->get();
         $orders = $this->orders->find($id);
-        $orderPet = $this->orderPet->where('orderPet.order_id', $id)->get();
-        $orders->delete();
-        $orderPet->delete();
+        // $orders->delete();
+        // $orderPet->delete();
+        dd( $orders,$orderPet , $id);
         return redirect()->route('backend.admin.services.view');
     }
 }

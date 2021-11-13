@@ -8,7 +8,8 @@ use App\Http\Controllers\Frontend\Auth\LoginController;
 use App\Http\Controllers\Frontend\Payment\PaymentController;
 use App\Http\Controllers\Frontend\Payment\PaypalController;
 use App\Http\Controllers\TestController;
-use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 // Auth::routes();
 Route::name('frontend.')->group(function () {

@@ -5,7 +5,7 @@ use App\Http\Controllers\BackEnd\Categories\CategoriesController;
 use App\Http\Controllers\Backend\DashBorad\DashboardController;
 use App\Http\Controllers\BackEnd\Contacts\ContactController;
 use App\Http\Controllers\Backend\Order\OrderController;
-use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('backend.')->group(function () {
     Route::name('auth.')->group(function () {

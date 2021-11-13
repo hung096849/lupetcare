@@ -19,4 +19,14 @@ class Order extends Model
         return $this->belongsTo(Customers::class, 'customer_id', 'id');
     }
 
+    public function order_services()
+    {
+        return $this->belongsToMany(Services::class, 'order_pets', 'order_id', 'service_id');
+    }
+
+    public function order_pets()
+    {
+        return $this->belongsToMany(PetInformartion::class ,'order_pets', 'order_id', 'pet_id');
+    }
+
 }
