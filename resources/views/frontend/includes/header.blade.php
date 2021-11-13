@@ -26,9 +26,9 @@
                 <div class="col-12 col-lg-7">
                     <div class="menu menu-desktop">
                         <ul>
-                            <li><a rel="" class="active" href="/">Trang
+                            <li><a rel="" href="/" class="{{ (request()->is('/')) ? 'active' : '' }}">Trang
                                     chủ</a></li>
-                            <li>
+                            {{-- <li>
                                 <a href="#">Sản Phẩm</a>
                                 <ul>
                                     <li>
@@ -42,10 +42,11 @@
                                         </ul>
                                     </li>
                                 </ul>
-                            </li>
-                            <li><a href="{{ route('frontend.services.show') }}">Dịch Vụ</a></li>
+                            </li> --}}
+                            <li><a href="{{ route('frontend.services.show') }}" class="{{ (request()->is('dich-vu')) ? 'active' : '' }}">Dịch Vụ</a></li>
                             <li><a rel="" href="#">Tin tức</a></li>
-                            <li><a rel="" href="{{ route('frontend.contact_sendmail.show') }}">Liên hệ</a></li>
+                            <li>
+                                <a rel="" href="{{ route('frontend.contact_sendmail.show') }}" class="{{ (request()->is('lien-he')) ? 'active' : '' }}">Liên hệ</a></li>
                         </ul>
 
                     </div>
