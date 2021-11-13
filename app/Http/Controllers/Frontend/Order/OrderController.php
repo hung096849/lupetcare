@@ -57,9 +57,10 @@ class OrderController extends Controller
             // $twilio_sid = getenv("TWILIO_SID");
             // $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
             // $twilio_number = getenv("TWILIO_NUMBER");
-
+            // dd($request->all());
             $customer = $this->customer->get();
-            
+<<<<<<< HEAD
+
             $customerForm = $this->customer->create([
                 "name"  =>  $request->name,
                 "phone" =>  $request->phone,
@@ -69,10 +70,23 @@ class OrderController extends Controller
                 'slug' => SlugService::createSlug(Customers::class, 'slug', $request->name),
             ]);
 
+=======
+            
+            // $customerForm = $this->customer->create([
+            //     "name"  =>  $request->name,
+            //     "phone" =>  $request->phone,
+            //     "email" =>  $request->email,
+            //     "note" =>   $request->note,
+            //     "status" => Customers::MEMBER,
+            //     'slug' => SlugService::createSlug(Customers::class, 'slug', $request->name),
+            // ]);
+            dd($request->all());
+>>>>>>> 21518da (update popup payemnt)
             for ($i = 1 ; $i <= count($request->service_id) ; $i ++ ){
                 $serviceId[] = $request->service_id[$i];
             }
 
+            $total = 0;
             foreach ($request['code'] as $key => $value) {
                     // if($this->checkHasPet($value[0])){
                     // $createPet = $this->petInfo->where('code', $value[0])->update([
@@ -82,6 +96,7 @@ class OrderController extends Controller
                     //     'gender' => $request['gender'][$key][0],
                     // ]);
                     // }
+                    
                     $createPet = $this->petInfo->create([
                         'code' => 'LUPETCARE-'.rand(1,1000),
                         'name' => $request['pet_name'][$key][0],
@@ -89,30 +104,49 @@ class OrderController extends Controller
                         'gender' => $request['gender'][$key][0],
                     ]);
                     $idPet[] = $createPet->id;
+                    $quantity[] = $createPet->weight;
                 }
                 if($createPet) {
                         $order = $this->orders->create([
                             'vocher_id' => 1,
-                            'customer_id' => isset($customer->email) || isset($customer->phone) ? $customer->id : $customerForm->id,
+                            'customer_id' => isset($customer->email) || isset($customer->phone) ? $customer->id : 1,
                             "payment_method" => 1,
                             'is_paid' => 1,
                             'status' => 1,
                         ]);
-                        
+<<<<<<< HEAD
+
+=======
+>>>>>>> 21518da (update popup payemnt)
                         foreach ($serviceId as $key => $value) {
                             foreach ($value as $service) {
-                                $this->orderPet->create([
+                                $orderPetInfo = $this->orderPet->create([
                                     'order_id'  => $order->id,
                                     'pet_id'     => $idPet[$key],
                                     'service_id' => $service,
-                                    'quantity' => 1
+                                    'quantity' => $quantity[$key]
                                 ]);
+                                if($orderPetInfo) {
+                                    $orderServicedId[] = $orderPetInfo->service_id;
+                                    $unit[] = $orderPetInfo->quantity;
+                                }
                             }
                         }
+                        $servicesDetail = $this->services->whereIn('id',$orderServicedId)->get();
+                                foreach ($servicesDetail as $key => $value) {
+                                    dump($value->price);
+
+                                    $total += $unit[$key]*$value->price;
+                                }
+                        dump($total);
+                        die;
                     }
             DB::commit();
             Session::flash(
-                'success', 'Đặt lịch thành công !!!',
+               [
+                'success' => 'Đặt lịch thành công !!!',
+                'total' => $total
+               ]
             );
             // $twilio = new Client($twilio_sid, $token);
             // $message = $twilio->messages->create(

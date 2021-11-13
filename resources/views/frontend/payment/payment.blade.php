@@ -25,7 +25,6 @@
 <body>
 
     <div class="container">
-    
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default credit-card-box">
@@ -107,7 +106,6 @@
                 </div>        
             </div>
         </div>
-        
     </div>
 </body>
   
@@ -167,6 +165,6 @@ $(function() {
             }
         }
     
-    });
+});
 </script>
 </html>

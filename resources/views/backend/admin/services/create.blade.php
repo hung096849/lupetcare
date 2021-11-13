@@ -32,9 +32,9 @@
 
                                 <div class="form-group">
                                     <label for="inputName">Danh muc</label>
-                                    <select name="category_id" id="">
+                                    <select name="category_id" id="" class="custom-select">
                                         @foreach ($categories as $categorie )
-                                            <option value="{{ old('category_id',$categorie->id ) }}">{{ $categorie->name }}</option>
+                                            <option  value="{{ old('category_id',$categorie->id ) }}">{{ $categorie->name }}</option>
                                         @endforeach
 
                                     </select>
@@ -116,7 +116,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">time</label>
-                                    <input type="text" name="time" id="title" class="form-control"
+                                    <input type="time" name="time" id="title" class="form-control"
                                         value="{{old('time')}}" placeholder="" />
                                     @error('time')
                                     <div class="mt-1 text-red-500">

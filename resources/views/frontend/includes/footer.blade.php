@@ -38,7 +38,7 @@
                     <div class="menu-ft">
                         <ul class="d-flex justify-content-center">
                             <li><a href="#">Trang Chủ </a></li>
-                            <li><a href="#">Sản Phẩm </a></li>
+                            {{-- <li><a href="#">Sản Phẩm </a></li> --}}
                             <li><a href="#">Dịch vụ </a></li>
                             <li><a href="#">Tin tức </a></li>
                             <li><a href="#">Liên hệ</a></li>

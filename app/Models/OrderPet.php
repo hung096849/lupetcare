@@ -14,4 +14,5 @@ class OrderPet extends Model
         'order_id', 'pet_id', 'service_id', 'quantity'
     ];
 
+    
 }
