@@ -59,7 +59,7 @@ class OrderController extends Controller
             // $twilio_number = getenv("TWILIO_NUMBER");
 
             $customer = $this->customer->get();
-            
+
             $customerForm = $this->customer->create([
                 "name"  =>  $request->name,
                 "phone" =>  $request->phone,
@@ -98,7 +98,7 @@ class OrderController extends Controller
                             'is_paid' => 1,
                             'status' => 1,
                         ]);
-                        
+
                         foreach ($serviceId as $key => $value) {
                             foreach ($value as $service) {
                                 $this->orderPet->create([

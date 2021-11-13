@@ -34,9 +34,21 @@
     color: red;
     font-weight: 500;
 }
-.p-info{
+
+.p-info {
     width: 400px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.info {
+    box-shadow: 1px 1px 2px 2px #eeebeb;
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.info h6 {
+    font-weight: bold;
 }

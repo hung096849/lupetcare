@@ -36,11 +36,10 @@
                                         @foreach ($categories as $categorie )
                                         <option
                                         @if ($categorie->id == old('category_id', $services->category_id))
-                                        @endif {{ $services->category_id === $categorie->id ? 'selected' : '' }}
+                                        @endif
+                                         {{ $services->category_id === $categorie->id ? 'selected' : '' }}
                                         value="{{ $categorie->id }}">
                                         {{ $categorie->name }}</option>
-
-
                                         @endforeach
 
                                     </select>
