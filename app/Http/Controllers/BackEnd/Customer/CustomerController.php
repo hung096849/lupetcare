@@ -32,6 +32,10 @@ class CustomerController extends Controller
         $this->customers->create([
             'name' => $request->name,
             'slug' => SlugService::createSlug(Customers::class, 'slug', $request->name),
+            'phone' => $request->phone,
+            'email' =>$request->email,
+            'password'=>$request->password,
+            'status'=>$request=0
         ]);
         return redirect()->route('backend.admin.customers.show')->with('success', Lang::get('message.create', ['model' => 'Danh sách khách hàng']));
     }
@@ -47,7 +51,10 @@ class CustomerController extends Controller
         $customer = $this->customers->where('id', $request->id)->first();
         $customer->update([
             'name' => $request->name,
-            'slug' => SlugService::createSlug(customersServices::class, 'slug', $request->name),
+            'slug' => SlugService::createSlug(Customers::class, 'slug', $request->name),
+            'phone' => $request->phone,
+            'email' =>$request->email,
+            'password'=>$request->password,
         ]);
         return redirect()->route('backend.admin.customers.show')->with('success', Lang::get('message.update', ['model' => 'Danh sách khách hàng']));
     }
