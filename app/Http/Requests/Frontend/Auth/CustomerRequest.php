@@ -28,7 +28,8 @@ class CustomerRequest extends FormRequest
                 'name' => 'required',
                 'email' => 'required|email|unique:customers',
                 'phone' => 'required|digits:10|numeric',
-                'password'=> 'required'
+                'password'=> 'required|min:6',
+                're_password' => 'required_with:password|same:password|min:6'
             ],
             [
                 'name.required' => ' Cần nhập họ và tên',
@@ -36,6 +37,9 @@ class CustomerRequest extends FormRequest
                 'email.email' => 'Phải đúng định dạng email',
                 'email.unique' => 'Email này đã được sử dụng',
                 'password.required' => ' Cần nhập mật khẩu',
+                'password.min' => 'Mật khẩu phải ít nhất  kí tự',
+                're_password' => 'Cần nhập lại mật khẩu ',
+                're_password.same' => 'Mật khẩu nhập lại không khớp với mật khẩu trên ',
                 'phone.required' => ' Cần nhập số điện thoại',
                 'phone.digits' => ' Số điện thoại phải đầy đủ 10 chữ số,và không bao gồm chữ cái hoặc kí tự khác ',
                

@@ -76,6 +76,14 @@
                                             <span class="text-danger">{{ $errors->first('password') }}</span>
                                     @endif
                                 </div>
+                                <div class="mb-3 d-flex">
+                                    <label for="exampleInputPassword " class="form-label mr-3"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                                    </label>
+                                    <input type="password" class="form-control" name="re_password" id="exampleInputPassword">
+                                    @if ($errors->has('re_password'))
+                                            <span class="text-danger">{{ $errors->first('re_password') }}</span>
+                                    @endif
+                                </div>
                             
                                
                                 <div class="forn-btn">

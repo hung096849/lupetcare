@@ -76,6 +76,24 @@
                       </li>
                   </ul>
               </li>
+              <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Khách hàng
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/customers" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh sách khách hàng</p>
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </li>
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -100,7 +118,23 @@
                         </li>
                     </ul>
                 </li>
-
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-phone"></i>
+                        <p>
+                            Góp ý của khách hàng
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/contacts" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh sách</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
