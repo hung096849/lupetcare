@@ -57,16 +57,16 @@
                                                                 class="form-control input-form-service" id="datepicker">
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <label  class="pt-5 pb-2 book-form-text">payment_method
+                                                            <label  class="pt-5 pb-2 book-form-text">Phương thức thanh toán
                                                             </label>
                                                             <select id="" name="payment_method"
                                                                 class="form-control input-form-service">
-                                                                <option value="1">The ngan hang</option>
-                                                                <option value="2">Tra tien mat</option>
+                                                                <option value="1">Thẻ ngân hàng</option>
+                                                                <option value="2">Trả tiền mặt</option>
                                                             </select>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <label  class="pt-5 pb-2 book-form-text">vocher
+                                                            <label  class="pt-5 pb-2 book-form-text">Vocher
                                                             </label>
                                                             <input type="text" name="vocher_id" value="{{ old('vocher_id') }}"
                                                                 class="form-control input-form-service" id="datepicker">
