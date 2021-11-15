@@ -70,7 +70,7 @@ Route::prefix('admin')->name('backend.')->group(function () {
                 Route::get('/create', [OrderController::class, 'create'])->name('create');
                 Route::post('/store', [OrderController::class, 'store'])->name('store');
                 Route::get('/delete/{id}', [OrderController::class, 'delete'])->name('delete');
-                // Route::get('/edit/{id}', [OrderController::class, 'edit'])->name('edit');
+                Route::get('/edit/{order_id}', [OrderController::class, 'edit'])->name('edit');
                 // Route::patch('/update/services', [OrderController::class, 'update'])->name('update');
                 // Route::delete('/orders/delete', [OrderController::class, 'servicesDelete'])->name('orders.delete');
                 Route::get('/search', [OrderController::class, 'search'])->name('search');

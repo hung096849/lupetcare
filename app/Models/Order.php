@@ -9,9 +9,17 @@ class Order extends Model
 {
     use HasFactory;
 
+    const IN_PROCESS = 0;
+    const PROCESS = 1;
+    const UNPAID = 0;
+    const PAID = 1;
+    const PILE = 2;
+    const CASH = 0;
+    const CARD = 1;
+
     protected $table = 'orders';
     protected $fillable = [
-        'customer_id', 'payment_method', 'is_paid', 'date', 'status'
+        'customer_id', 'payment_method', 'is_paid', 'date', 'status', 'total_price', 'pile'
     ];
 
     public function customer()

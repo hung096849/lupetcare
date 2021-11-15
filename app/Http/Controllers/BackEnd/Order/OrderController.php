@@ -46,13 +46,11 @@ class OrderController extends Controller
     {
         $orders = $this->orders
             ->where('orders.customer_id', '=', $id)
-            ->get()
-            ->load('order_pets','order_services');
-            // dd($orders);
+            ->get();
         $services = $this->services->all();
         $customer = $this->customers->find($id);
         $petInfo = $this->petInfo->all();
-        return view('backend.admin.orders.searchOrder', compact('orders', 'customer', 'services', 'petInfo'));
+        return view('backend.admin.orders.view', compact('orders', 'customer', 'services', 'petInfo'));
     }
 
     public function create()
@@ -117,6 +115,19 @@ class OrderController extends Controller
             return back();
         }
     }
+
+    public function edit(Request $request)
+    {
+        $petInfo = $this->orderPet->where('order_id', $request->order_id)->get();
+        if($petInfo){
+            foreach ($petInfo as $key => $value) {
+                $petId[] = $value->pet_id;
+                $serviceId[] = $value->service_id;
+            }
+        }
+        dump($petId);
+        dd($serviceId);
+    } 
 
     public function delete($id)
     {

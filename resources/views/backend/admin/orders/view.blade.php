@@ -1,4 +1,4 @@
-{{-- @extends('layouts.backend')
+@extends('layouts.backend')
 @section('content')
 
 <div class="wrapper">
@@ -79,14 +79,16 @@
                                                     </div>
                                                 </div>
                                             </th>
-                                            <th>Mã đơn hàng <i class="fas fa-sort"></th>
+                                            {{-- <th>Mã đơn hàng <i class="fas fa-sort"></th> --}}
                                             <th>Mã thú cưng</th>
                                             <th>Dịch vụ</th>
-                                            <th>Phương thức thanh toán </th>
+                                            <th>Phương thức</th>
                                             <th>Tiền cọc</th>
-                                            <th>Tổng giá </th>
-                                            <th>Thời gian </th>
-                                            <th>Trạng thái <i class="fas fa-sort"></th>
+                                            <th>Tổng giá</th>
+                                            <th>Thời gian</th>
+                                            <th>Trạng thái</th>
+                                            <th>Thanh Toán</th>
+                                            <th>In hóa đơn</th>
                                             <th>Hành động </th>
                                         </tr>
                                     </thead>
@@ -122,4 +124,4 @@
         <!-- /.content -->
     </div>
 </div>
-@endsection --}}
+@endsection

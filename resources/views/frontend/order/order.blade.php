@@ -2,10 +2,17 @@
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<form role="form" action="{{ route('frontend.payment.postPayment') }}" method="post" class="require-validation"
+<form role="form" action="" method="post" class="require-validation"
+{{-- {{ route('frontend.order_services.addForm', $request->id) }} --}}
     data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
     @csrf
-    <input type="hidden" id="paymentPrice" name="total" value="">
+    @if (Session::has('message'))
+        <div class="alert alert-danger text-center">
+            <p>{{ Session::get('message') }}</p>
+        </div>
+    @endif
+    <input type="hidden" id="paymentPrice" name="pile" value="">
+    <input type="hidden" name="total_price" id="totalPrice">
     <section class="form-book-service">
         <div class="container-fluid container-padding">
             <div class="page-title text-center">
@@ -18,10 +25,15 @@
                     CỦA LUPET CARE
                 </p>
             </div>
-            @if(Session::has('total'))
-            <p class="alert alert-success">
-                {{Session::get('total')}}
-            </p>
+            @if (Session::has('success'))
+                <div class="alert alert-success text-center">
+                    <p class="alert alert-success">
+                        {{Session::get('success')}}
+                    </p>
+                    <p>
+                        Tổng tiền bạn vừa thanh toán cọc trước là : {{Session::get('total')}}
+                    </p>
+                </div>
             @endif
             <div class="content">
                 {{-- <form action="" method="POST">
@@ -80,7 +92,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-12 d-flex justify-content-center mt-4 mb-4">
-                                                <button type="button" class="btn btn-lg btn-info px-5" id="appointment">
+                                                <button type="button" class="btn btn-lg btn-info px-5" id="appointment" style="focus: none; outline: none;">
                                                     ĐẶT LỊCH
                                                 </button>
                                             </div>
@@ -180,7 +192,7 @@
                                     </div> --}}
 
                                     <div class="float-right my-4 pr-2 d-flex add-form-pet">
-                                        <button type="button" class="btn btn-primary pl-3" id="clickAddForm">Thêm thú
+                                        <button type="button" class="btn btn-primary pl-3" id="clickAddForm" style="focus: none; outline: none;">Thêm thú
                                             cưng</button>
                                     </div>
                                 </div>
@@ -188,26 +200,19 @@
                             </div>
                         </div>
                     </div>
-                    {{--
-                </form> --}}
+
             </div>
-            @if(Session::has('success'))
-            <p class="alert alert-success">
-                {{Session::get('success')}}
-            </p>
-            @endif
         </div>
     </section>
     <section id="popupBill" style="z-index: 999; display: none;">
         <section id="contentBill"
             style="position: fixed; top: 0; width: 100%; height: 100%; background: rgba(121, 121, 121, 0.6);">
             <div
-                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 250px; background: white; border: 1px solid aqua;">
-                <div id="billDetail">
-                    <h2>Hóa đơn chi tiết</h2>
-                    <hr>
-                    <div>
-                        <div>
+                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 620px; min-height: 320px; max-height: 610px; background: white; border: 1px solid aqua;">
+                <div id="billDetail" style="padding: 0 38px 20px;">
+                    <h3 class="text-center">Hóa đơn chi tiết</h3>
+                    <div id="showService" style="max-height: 240px; overflow: auto;">
+                        {{-- <div>
                             Dịch vụ pet: <span id="servName"></span>
                         </div>
                         <div class="d-flex justify-content-between align-items-center">
@@ -215,46 +220,38 @@
                                 Giá tiền :
                             </div>
                             <div id="servPrice"></div>
-                        </div>
+                        </div> --}}
                     </div>
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-end align-items-center" style="font-weight: bold; font-size: 20px; margin-top: 12px;">
                         <div>
                             Tổng tiền :
                         </div>
-                        <div id="totalPrice"></div>
+                        <div id="totalPrice" class="text-info text-right" style="min-width: 120px;"></div>
                     </div>
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-end align-items-center" style="font-weight: bold; font-size: 20px;">
                         <div>
-                            Số tiền bạn phải cọc cho dịch vụ là 10% :
+                            Số tiền cọc cho dịch vụ là 10% :
                         </div>
-                        <div id="paymentCOC"></div>
+                        <div id="paymentCOC" class="text-danger text-right" style="min-width: 120px;"></div>
                     </div>
-                    <div>
-                        <button type="button" class="btn btn-sm btn-info" id="payment">Đồng ý</button>
-                        <button type="button" class="btn btn-sm btn-danger" id="popupNone">Quay lại</button>
+                    <div class="d-flex justify-content-center align-items-center" style="margin: 20px 0px;">
+                        <button type="button" class="btn btn-sm btn-info" id="payment" style="margin-right: 12px; focus: none; outline: none;">Đồng ý</button>
+                        <button type="button" class="btn btn-sm btn-danger" id="popupNone" style="focus: none; outline: none;">Quay lại</button>
                     </div>
                 </div>
                 <div id="formBanking" style="display: none;">
                     {{-- <div class="col-md-6 col-md-offset-3"> --}}
-                        <div class="panel panel-default credit-card-box">
+                        <div class="panel panel-default" style="margin: 16px 24px;">
                             <div class="panel-heading display-table">
-                                <div class="row display-tr">
-                                    <h3 class="panel-title display-td">Thanh toán </h3>
-                                    <div class="display-td">
+                                <div class="">
+                                    <div class="d-flex justify-content-center" style="max-height: 99px">
                                         <img class="img-responsive pull-right"
-                                            src="http://i76.imgup.net/accepted_c22e0.png">
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRscRnNVQTCEyhmp2LjZ1Rtixj7V9plkiuXrA&usqp=CAU">
                                     </div>
                                 </div>
                             </div>
                             <div class="panel-body">
-
-                                @if (Session::has('success'))
-                                <div class="alert alert-success text-center">
-                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                                    <p>{{ Session::get('success') }}</p>
-                                </div>
-                                @endif
-
+                                
                                 <div class='form-row row'>
                                     <div class='col-xs-12 form-group required'>
                                         <label class='control-label'>Tên chủ thẻ</label> <input class='form-control'
@@ -306,9 +303,14 @@
                         {{--
                     </div> --}}
                     <div class="">
-                        <a type="button" href="javascript:void(0)" class="btn btn-sm btn-warning" id="backTo">Quay lại
-                            hóa đơn</a>
-                        <a href="#">Hủy không muốn đặt nữa</a>
+                        <div class="d-flex justify-content-center">
+                            <a type="button" href="javascript:void(0)" class="btn btn-sm btn-warning" id="backTo">Quay lại
+                                hóa đơn</a>
+                        </div>
+                        
+                            <div class="d-flex justify-content-end" style="margin: 10px;">
+                                <a href="#">Hủy không muốn đặt nữa</a>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -326,6 +328,8 @@
         })
         document.querySelector("#popupNone").addEventListener("click", function () {
             document.querySelector("#popupBill").style.display = "none"
+            document.querySelector("#showService").innerHTML = ""
+            totalPrice = 0
         })
         document.querySelector("#payment").addEventListener("click", function () {
             document.querySelector("#billDetail").style.display = "none"
@@ -398,6 +402,8 @@
     // function add form
     let box = document.querySelector("#box_quan")
     var index = 1
+    var totalPrice = 0
+    const boxShowServie = document.querySelector("#showService")
     const childForm = {
         render(i) {
             return /*html*/`<div class="book-form-service" style="border: 1px solid #ccc; border-radius: 12px; margin: 0px 0px 28px; padding: 16px">
@@ -431,11 +437,19 @@
                         <select id="js-select-pet-${i}" class="form-control input-form-service"
                             multiple name="service_id[${i}][]">
                             @foreach ($services as $service)
-                                <option id="option-{{ $service->id }}" value="{{ $service->id }}" data-price="{{ $service->price }}"> {{ $service->service_name }}
+                                <option 
+                                    value="{{ $service->id }}"
+                                >
+                                {{ $service->id }}.{{ $service->service_name }}
                                 </option>
                             @endforeach
                         </select>
                     </div>
+                </div>
+                <div class="row">
+                    @foreach ($services as $service)
+                        <input type="hidden" id="price-${i}-{{ $service->id }}" value="{{ $service->price }}">
+                    @endforeach
                 </div>
                 <div class="row">
                     <div class="col-12">
@@ -475,23 +489,67 @@
         },
         afterRender(i) {
             document.querySelector("#appointment").addEventListener("click", function () {
-                getInfoService(`#petName_${i}`, `#js-select-pet-${i}`, `#petWeight_${i}`)
-
+                getInfoService(`#petName_${i}`, `#js-select-pet-${i}`, `#petWeight_${i}`, i)
             })
         }
     }
 
-    function getInfoService (name, serv, weight) {
+    function getInfoService (name, serv, weight, i) {
         const _name = document.querySelector(name).value
-        const _serv = document.querySelector(serv)
-        const price = _serv.options[_serv.selectedIndex].dataset.price
         const _weight = document.querySelector(weight).value
-        // console.log(_name, _weight, price)
-        document.querySelector("#servName").innerHTML = _serv.value
-        document.querySelector("#paymentPrice").value = `${price*_weight/10}`
-        document.querySelector("#servPrice").innerHTML = price
-        document.querySelector("#totalPrice").innerHTML = price*_weight
-        document.querySelector("#paymentCOC").innerHTML = price*_weight/10
+        const arrSer = checkService(`#select2-js-select-pet-${i}-container`, i)
+        const result = {
+            petName: _name,
+            servicer: arrSer,
+            weight: _weight
+        }
+        console.log(result)
+        totalPrice += result.servicer.reduce((acc, curr) => acc + parseInt(curr.price), 0) * parseInt(result.weight)
+        console.log("total price: ", totalPrice)
+        document.querySelector("#totalPrice").innerHTML = `${totalPrice} VND`
+        document.querySelector("#paymentCOC").innerHTML = `${totalPrice / 10} VND`
+        document.querySelector('#totalPrice').value = totalPrice
+        document.querySelector("#paymentPrice").value = totalPrice / 10
+
+
+        const serlist = result.servicer.map(item => {
+            return `<div>
+                        Dịch vụ pet: <span id="servName" style="font-weight: bold; font-size: 20px; margin-left: 20px;">${item.name}</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            Giá tiền :
+                        </div>
+                        <div id="servPrice" style="font-weight: bold; font-size: 22px;" class="text-info">${parseInt(item.price) * parseInt(_weight)} VND</div>
+                    </div>`
+        }).join("")
+        const element = {
+            render() {
+                return `<div style="margin-top: 12px">
+                    <div style="margin-left: 50px; font-weight: bold; font-size: 22px;" class="text-info">Pet name: ${result.petName}</div>
+                    ${serlist}
+                </div>`
+            }
+        }
+        const node = document.createElement("DIV")
+        boxShowServie.appendChild(node)
+        const lastE = document.querySelector("#showService").lastElementChild
+        lastE.innerHTML = element.render()
+
+    }
+
+    function checkService (_cl, i) {
+        const ele = document.querySelector(_cl)
+        const arraySer = []
+        Array.from(ele.childNodes).forEach(item => {
+            const e = `price-${i}-${item.getAttribute("title").trim().split(".")[0]}`
+            const price = document.querySelector(`#${e}`).value
+            arraySer.push({
+                name: item.getAttribute("title").trim(),
+                price: price
+            })
+        })
+        return arraySer
     }
 
     function action () {
@@ -508,6 +566,7 @@
             index++
         });
     }
+
     function removeFormPet () {
         document.querySelector(`#removePet-${index}`).addEventListener("click", function (e) {
             e.preventDefault();
