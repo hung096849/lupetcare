@@ -18,7 +18,7 @@ class CustomerController extends Controller
     }
     public function profile(Request $request){
         $customers = $this->customers->find($request->id);
-        return view('', compact('customers'));
+        return view('frontend.customers.profile', compact('customers'));
     }
     public function changePassword(Request $request)
     {       

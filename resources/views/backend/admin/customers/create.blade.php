@@ -69,8 +69,20 @@
                                 <div class="form-group">
                                     <label for="inputName">Password</label>
                                     <input type="password" name="password" id="title" class="form-control"
-                                        value="{{old('password')}}" placeholder="assword ..." />
+                                        value="{{old('password')}}" placeholder="Password ..." />
                                     @error('password')
+                                    <div class="mt-1 text-red-500">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="inputName">Confirm Password</label>
+                                    <input type="password" name="re_password" id="title" class="form-control"
+                                        value="{{old('re_password')}}" placeholder="Password ..." />
+                                    @error('re_password')
                                     <div class="mt-1 text-red-500">
                                         {{$message}}
                                     </div>

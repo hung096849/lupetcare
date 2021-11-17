@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Frontend\Auth\CustomerRequest;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Lang;
 class CustomerController extends Controller
 { 
@@ -34,8 +35,9 @@ class CustomerController extends Controller
             'slug' => SlugService::createSlug(Customers::class, 'slug', $request->name),
             'phone' => $request->phone,
             'email' =>$request->email,
-            'password'=>$request->password,
-            'status'=>$request=0
+            'password'=>Hash::make($request->password),
+            're_password'=> $request->re_password,
+            'status'=>Customers::MEMBER
         ]);
         return redirect()->route('backend.admin.customers.show')->with('success', Lang::get('message.create', ['model' => 'Danh sách khách hàng']));
     }
@@ -55,6 +57,7 @@ class CustomerController extends Controller
             'phone' => $request->phone,
             'email' =>$request->email,
             'password'=>$request->password,
+            're_password'=> $request->re_password,
         ]);
         return redirect()->route('backend.admin.customers.show')->with('success', Lang::get('message.update', ['model' => 'Danh sách khách hàng']));
     }

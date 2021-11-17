@@ -61,7 +61,7 @@ class LoginController extends Controller
         $customer->email_verified_at = Carbon::now();
         $customer->email = $request->email; 
         $customer->password = Hash::make($request->password);
-        $customer->re_password = $request->re_password;
+        $customer->re_password = Hash::make($request->re_password);
         $customer->verification_code = sha1(time());
         $customer->save();
         $emailJob = new SendSignupEmail($customer);

@@ -25,6 +25,7 @@ class Customers extends Authenticatable implements MustVerifyEmail
           'email', 
           'email_verified_at',
            'password',
+           're_password',
            'verification_code',
            'is_verified', 'status', 'note', 'slug'
     ];
