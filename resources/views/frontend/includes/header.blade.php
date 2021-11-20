@@ -106,7 +106,7 @@
                                                         <i class="fa fa-user icon-hd icon-login " aria-hidden="true"></i>
                                                         <div class="header__notify-info">
                                                         
-                                                            <span class="header__notify-name">{{ Auth::guard('customers')->user()->name }}</span>
+                                                        <a href="{{ route('frontend.customers.profile') }}" class="header__notify-link"> <span class="header__notify-name">{{ Auth::guard('customers')->user()->name }}</span></a>
                                                             
                                                         </div>
                                                     

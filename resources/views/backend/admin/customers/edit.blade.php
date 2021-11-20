@@ -80,6 +80,18 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="inputName">Nhập lai mật khẩu</label>
+                                    <input type="text" name="re_password" id="title" class="form-control"
+                                        value="{{old('re_password',$customers->re_password)}}" placeholder="Password ..." />
+                                    @error('re_password')
+                                    <div class="mt-1 text-red-500">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                         <!-- /.card-body -->
                     </div>
