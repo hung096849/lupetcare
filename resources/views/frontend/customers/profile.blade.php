@@ -11,12 +11,9 @@
         <!-- <link rel="stylesheet" href="theme/frontend/fancybox/dist/jquery.fancybox.min.css) }}"> -->
         <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/reset.css') }}">
         <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/swiper.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/home.css') }}" />
         <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/style.css') }}" />
         <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/main.css') }}" />
-        <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('frontend/css/jquery-ui.css') }}" />
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/register.css') }}" />
+        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/my-account.css') }}">
     </head>
 
 <section class="my-account">
@@ -29,7 +26,7 @@
                                 <div class="images">
                                     <img src="theme/frontend/images/img-hot_service.png" alt="" srcset="">
                                 </div>
-                                <span class="title">ThuTra Mai</span>
+                                <span class="title">{{ Auth::guard('customers')->user()->name }}</span>
                             </div>
                             <div class="list-cateaccount">
                                 <div class="accordion my-3" id="accordionExample">
@@ -53,7 +50,7 @@
                                                     <li><a href="#">Đổi thông
                                                             tin</a></li>
 
-                                                    <li><a href="#">Đổi mật khẩu</a></li>
+                                                    <li><a href="{{ route('frontend.customers.show') }}">Đổi mật khẩu</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -80,39 +77,25 @@
                             <div class="content-account-list">
                                 <div class="row">
                                     <div class="col-12 col-md-6">
-                                        <div class="item">
-                                            <span class="title t-text">Tên đăng
-                                                nhập :</span>
-                                            <span class="sub t-text"> ThuTra Mai</span>
-                                        </div>
+        
                                         <div class="item">
                                             <span class="title t-text">Họ và tên
                                                 : </span>
-                                            <span class="sub t-text"> Mai Thu
-                                                Trà</span>
+                                            <span class="sub t-text">{{ Auth::guard('customers')->user()->name }}
+                                                </span>
                                         </div>
                                         <div class="item">
                                             <span class="title t-text">Email:
                                             </span>
-                                            <span class="sub t-text">tramtph11386@fpt.edu.vn</span>
+                                            <span class="sub t-text">{{ Auth::guard('customers')->user()->email }}</span>
                                         </div>
                                         <div class="item">
                                             <span class="title t-text">Số điện
                                                 thoại : </span>
                                             <span class="sub t-text">
-                                                01111111111</span>
+                                            {{ Auth::guard('customers')->user()->phone }}</span>
                                         </div>
-                                        <div class="item">
-                                            <span class="title t-text">Sinh nhật
-                                                : </span>
-                                            <span class="sub t-text">15 / 12/
-                                                2001</span>
-                                        </div>
-                                        <div class="item">
-                                            <span class="title t-text">Giới tính
-                                                : </span>
-                                            <span class="sub t-text">Nữ</span>
-                                        </div>
+                                       
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="images">

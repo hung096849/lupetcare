@@ -45,6 +45,8 @@ Route::name('frontend.')->group(function () {
     });
         Route::name('customers.')->group(function(){
             Route::get('/ho-so',[CustomerController::class,'profile'])->name('profile');
+            Route::get('/change-password',[CustomerController::class,'changePass'])->name('show'); 
+            Route::post('/change-password',[CustomerController::class,'changePassword'])->name('changepass'); 
         });
 
         Route::name('services.')->group(function () {
