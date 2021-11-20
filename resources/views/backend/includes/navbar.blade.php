@@ -86,7 +86,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/customers" class="nav-link">
+                            <a href="{{ route('backend.admin.customers.show') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Danh sách khách hàng</p>
                             </a>
@@ -105,13 +105,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/categories" class="nav-link">
+                            <a href="{{ route('backend.admin.categories.show') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Danh mục dịch vụ</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/services" class="nav-link">
+                            <a href="{{ route('backend.admin.services.show') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Dịch vụ</p>
                             </a>
@@ -128,7 +128,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/contacts" class="nav-link">
+                            <a href="{{ route('backend.admin.contacts.show') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Danh sách</p>
                             </a>
@@ -145,7 +145,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/orders" class="nav-link">
+                            <a href="{{ route('backend.admin.orders.show') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Danh sách</p>
                             </a>
