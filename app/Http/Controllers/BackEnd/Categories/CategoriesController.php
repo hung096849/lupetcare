@@ -8,6 +8,7 @@ use App\Models\CategoriesServices;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Str;
 
 class CategoriesController extends Controller
 {
@@ -20,7 +21,7 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        $categories = $this->categories->paginate(3);
+        $categories = $this->categories->sortable()->paginate(3);
         return view('backend.admin.categories.index', compact('categories'));
     }
 
@@ -33,7 +34,7 @@ class CategoriesController extends Controller
     {
         $this->categories->create([
             'name' => $request->name,
-            'slug' => SlugService::createSlug(CategoriesServices::class, 'slug', $request->name),
+            'slug' => Str::slug($request->name),
         ]);
         return redirect()->route('backend.admin.categories.show')->with('success', Lang::get('message.create', ['model' => 'Danh mục']));
     }

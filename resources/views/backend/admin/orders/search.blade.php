@@ -10,6 +10,9 @@
     </td>
     {{-- <td>{{ $order->id }}</td> --}}
     <td>
+        @php
+            
+        @endphp
         @foreach ($order->order_pets as $order_pet)
             <p>{{ $order_pet->code }}</p>
         @endforeach
@@ -42,10 +45,14 @@
         <a href="">Xuất hóa đơn</a>
     </td>
     <td>
-        <p><a href="{{ route('backend.admin.orders.edit', ['order_id' => $order->id]) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>
+        <p><a href="{{ route('backend.admin.orders.edit', ['order_id' => $order->id]) }}" class="btn btn-info btn-sm btn-warning"><i class="fas fa-edit"></i>
                 Sửa</a></p>
         <p><a href="{{ route('backend.admin.orders.delete', $order->id) }}" class="btn btn-danger btn-sm"> <i
                     class="fas fa-trash"></i>Xóa</a></p>
+    </td>
+    <td>
+        <p><a href="{{ route('backend.admin.orders.edit', ['order_id' => $order->id]) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>
+                Chi tiết</a></p>
     </td>
 </tr>
 @endforeach

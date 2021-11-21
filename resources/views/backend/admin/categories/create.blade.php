@@ -2,10 +2,10 @@
 @section('content')
 <div class="wrapper">
 
-    {{-- @include('backend.includes.navbar-top', [
+    @include('backend.includes.navbar-top', [
     'add' => 'categories',
     'url' => route('backend.admin.categories.show')
-    ]) --}}
+    ])
 
     <div class="content-wrapper" style="min-height: 1602px;">
         <!-- Content Header (Page header) -->

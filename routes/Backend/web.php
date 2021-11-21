@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\DashBorad\DashboardController;
 use App\Http\Controllers\BackEnd\Contacts\ContactController;
 use App\Http\Controllers\BackEnd\Customer\CustomerController;
 use App\Http\Controllers\Backend\Order\OrderController;
+use App\Http\Controllers\Backend\PetInformation\PetInformationController;
 use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->name('backend.')->group(function () {
     Route::name('auth.')->group(function () {
@@ -63,6 +64,17 @@ Route::prefix('admin')->name('backend.')->group(function () {
                 Route::get('/search', [CustomerController::class, 'search'])->name('search');
             });
 
+            Route::prefix('/pet-informations')->name('petinformation.')->group(function(){
+                Route::get('/', [PetInformationController::class, 'index'])->name('show');
+                Route::get('/create', [PetInformationController::class, 'create'])->name('create');
+                Route::post('/store', [PetInformationController::class, 'store'])->name('store');
+                Route::get('/show/{id}', [PetInformationController::class, 'view'])->name('view');
+                Route::get('/edit/{id}', [PetInformationController::class, 'edit'])->name('edit');
+                Route::patch('/update/pet-information', [PetInformationController::class, 'update'])->name('update');
+                Route::get('/delete/{id}', [PetInformationController::class, 'delete'])->name('delete');
+                Route::delete('/pet-information/delete', [PetInformationController::class, 'petDelete'])->name('pet.information.delete');
+                Route::get('/search', [PetInformationController::class, 'search'])->name('search');
+            });
 
             Route::prefix('/orders')->name('orders.')->group(function () {
                 Route::get('/', [OrderController::class, 'index'])->name('show');

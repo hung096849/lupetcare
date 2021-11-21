@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Kyslik\ColumnSortable\Sortable;
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory, Sortable;
 
     const IN_PROCESS = 0;
     const PROCESS = 1;
@@ -21,6 +21,8 @@ class Order extends Model
     protected $fillable = [
         'customer_id', 'payment_method', 'is_paid', 'date', 'status', 'total_price', 'pile'
     ];
+
+    public $sortable = ['customer_id', 'date', 'status', 'total_price', 'pile'];
 
     public function customer()
     {

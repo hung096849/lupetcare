@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
-
+use Kyslik\ColumnSortable\Sortable;
 class CategoriesServices extends Model
 {
-    use HasFactory;
+    use HasFactory, Sortable;
     use Sluggable;
 
     protected $table = "categories_services";
@@ -18,6 +18,7 @@ class CategoriesServices extends Model
         'delete_at'
     ];
 
+    public $sortable = ['id', 'name'];
 
     public function sluggable(): array
     {

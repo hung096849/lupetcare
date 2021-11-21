@@ -13,7 +13,8 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6" style="padding:30px;">
-                            <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i>Them Order</h1>
+                            <a href="{{ route('backend.admin.orders.create') }}"
+                                class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i>Thêm mới</a>
                         </div>
                     </div>
                 </div>

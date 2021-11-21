@@ -55,6 +55,8 @@ Route::name('frontend.')->group(function () {
             Route::get('/dat-hang/{id}', [OrderController::class,'index'])->name('order');
 
             Route::post('/dat-hang/{id}', [OrderController::class,'addForm'])->name('addForm');
+
+            Route::post('check-form', [OrderController::class,'checkValidateForm'])->name('checkValidateForm');
         });
 
         Route::name('contact_sendmail.')->group(function() {
