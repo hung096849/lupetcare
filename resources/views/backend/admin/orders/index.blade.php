@@ -18,8 +18,8 @@
                     <div class="row mb-2">
                         <div class="col-sm-8" style="padding:30px;">
                             <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i>Khách Hàng Đặt Lịch</h1>
-                            <a href="{{ route('backend.admin.orders.create') }}"
-                                class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i>Thêm mới</a>
+                            {{-- <a href="{{ route('backend.admin.orders.create') }}"
+                                class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i>Thêm mới</a> --}}
                             <button class="btn btn-danger float-left delete_all"
                                 data-url="{{ route('backend.admin.services.services.delete') }}">
                                 <i class="fas fa-trash"></i>Xóa hàng loạt</button>
@@ -61,33 +61,14 @@
                                                     </div>
                                                 </th>
                                                 <th>Số đơn hàng</th>
-                                                <th>Khách hàng</th>
+                                                <th>
+                                                    @sortablelink('customer_id', 'Khách hàng')
+                                                </th>
                                                 <th>Hành động</th>
                                             </tr>
                                         </thead>
                                         <tbody id="search-data">
-                                            @foreach ($customers as $customer)
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <div class="form-check">
-                                                                <input value="{{ $customer->customer_id }}"
-                                                                    data-id="{{ $customer->customer_id }}"
-                                                                    class="form__check-all-target form-check-input sub_chk"
-                                                                    type="checkbox">
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>{{ $customer->total}}</td>
-                                                    <td>{{ $customer->customer->name }}</td>
-                                                    <td>
-                                                        <a href="{{ route('backend.admin.orders.view', $customer->customer_id) }}"
-                                                            class="btn btn-warning btn-sm btn-warning-edit"><i
-                                                                class="fas fa-eye"></i> View</a>
-                                                    </td>
-                                                </tr>
-
-                                            @endforeach
+                                            @include('backend.admin.orders.listCustomerOrder')
                                         </tbody>
                                     </table>
 

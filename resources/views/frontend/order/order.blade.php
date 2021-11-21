@@ -31,13 +31,11 @@
                         {{Session::get('success')}}
                     </p>
                     <p>
-                        Tổng tiền bạn vừa thanh toán cọc trước là : {{Session::get('total')}}
+                        Tổng tiền bạn vừa thanh toán cọc trước là : {{Session::get('pile')}}
                     </p>
                 </div>
             @endif
             <div class="content">
-                {{-- <form action="" method="POST">
-                    @csrf --}}
                     <div class="container">
                         <div class="book-content">
                             <div class="row">
@@ -51,23 +49,26 @@
                                                 <div class="col-md-6">
                                                     <label for="Name " class="pt-4 pb-2 book-form-text">Họ và tên
                                                         *</label>
-                                                    <input type="text" name="name"
+                                                    <input type="text" name="name" id="name"
                                                         class="form-control input-form-service">
+                                                    <span class="error_name text-danger"></span>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="phoneNumber" class="pt-4 pb-2 book-form-text">Số điện
                                                         thoại
                                                         *</label>
-                                                    <input type="text" name="phone"
+                                                    <input type="text" name="phone" id="phone"
                                                         class="form-control input-form-service">
+                                                    <span class="error_phone text-danger"></span>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
                                                     <label for="Name " class="pt-4 pb-2 book-form-text">Email của bạn
                                                         *</label>
-                                                    <input type="text" name="email"
+                                                    <input type="text" name="email" id="email"
                                                         class="form-control input-form-service">
+                                                    <span class="error_email text-danger"></span>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -75,13 +76,15 @@
                                                     <label for="Name" class="pt-5 pb-2 book-form-text">Giờ *</label>
                                                     <input type="time" id="datetimepicker5" name="time"
                                                         value="{{ old('time')}}"
-                                                        class="form-control input-form-service">
+                                                        class="form-control input-form-service time">
+                                                        <span class="error_time text-danger"></span>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="phoneNumber" class="pt-5 pb-2 book-form-text">Ngày tháng
                                                         *</label>
                                                     <input type="text" name="date" value="{{ old('date')}}"
-                                                        class="form-control input-form-service" id="datepicker">
+                                                        class="form-control input-form-service date" id="datepicker">
+                                                        <span class="error_date text-danger"></span>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -92,7 +95,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-12 d-flex justify-content-center mt-4 mb-4">
-                                                <button type="button" class="btn btn-lg btn-info px-5" id="appointment" style="focus: none; outline: none;">
+                                                <button type="button" class="btn btn-lg btn-info px-5" id="appointment" data-route="{{ route('frontend.order_services.checkValidateForm') }}" style="focus: none; outline: none;">
                                                     ĐẶT LỊCH
                                                 </button>
                                             </div>
@@ -322,9 +325,63 @@
 @section('js')
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     function bill () {
         document.querySelector("#appointment").addEventListener("click", function () {
-            document.querySelector("#popupBill").style.display = "block"
+            
+            var route = $(this).data('route');
+            $.ajax({
+                type: "POST",
+                url: route,
+                data: {
+                    email: $('#email').val(),
+                    name: $('#name').val(),
+                    phone: $('#phone').val(),
+                    time: $('.time').val(),
+                    date: $('.date').val(),
+                    // pet_name: $('.pet_name').val(),
+                },
+                dataType: "json",
+                success: function(response) {
+                    console.log(response);
+                    if (response.status == 200) {
+                        document.querySelector("#popupBill").style.display = "block";
+                    } else if (response.status == 422) {
+                        if(response.error.name){
+                            $('.error_name').text(response.error.name);
+                        }else{
+                            $('.error_name').text("");
+                        }
+
+                        if(response.error.phone){
+                            $('.error_phone').text(response.error.phone);
+                        }else{
+                            $('.error_phone').text("");
+                        }
+                        if(response.error.email){
+                            $('.error_email').text(response.error.email);
+                        }else{
+                            $('.error_email').text("");
+                        }
+                        if(response.error.time){
+                            $('.error_time').text(response.error.time);
+                        }else{
+                            $('.error_time').text("");
+                        }
+
+                        if(response.error.date){
+                            $('.error_date').text(response.error.date);
+                        }else{
+                            $('.error_date').text("");
+                        }
+                        
+                    }
+                }
+            });
         })
         document.querySelector("#popupNone").addEventListener("click", function () {
             document.querySelector("#popupBill").style.display = "none"
@@ -437,9 +494,7 @@
                         <select id="js-select-pet-${i}" class="form-control input-form-service"
                             multiple name="service_id[${i}][]">
                             @foreach ($services as $service)
-                                <option 
-                                    value="{{ $service->id }}"
-                                >
+                                <option value="{{ $service->id }}">
                                 {{ $service->id }}.{{ $service->service_name }}
                                 </option>
                             @endforeach
@@ -457,10 +512,9 @@
                             cưng*</label>
                         <select id="petWeight_${i}" name="weight[${i}][]"
                             class="form-control input-form-service">
-                            <option value="1"> &lt;5kg </option>
-                            <option value="2">5kg-8kg</option>
-                            <option value="3">8kg-10kg</option>
-                            <option value="4">&gt;10kg</option>
+                            @foreach (Config::get('dataWeight.WEIGHT') as $key => $value)
+                                <option value="{{$key}}" @if($key==old('weight')) selected @endif >{{$value}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
