@@ -3,8 +3,8 @@
 <div class="wrapper">
 
     @include('backend.includes.navbar-top', [
-    'list' => 'Danh mục',
-    'url' => route('backend.admin.categories.show')
+    'list' => 'Danh sách khách hàng',
+    'url' => route('backend.admin.petinformation.show')
     ])
 
     @include('backend.components.alert')
@@ -16,11 +16,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-8" style="padding:30px;">
-                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i> Danh mục</h1>
-                        <a href="{{ route('backend.admin.categories.create') }}"
+                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i> Danh sách</h1>
+                        <a href="{{ route('backend.admin.petinformation.create') }}"
                             class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i>Thêm mới</a>
                         <button class="btn btn-danger float-left delete_all"
-                            data-url="{{ route('backend.admin.categories.categories.delete') }}"><i
+                            data-url="{{ route('backend.admin.petinformation.pet.information.delete') }}"><i
                                 class="fas fa-trash"></i>Xóa hàng loạt</button>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
                                         <input type="text" name="search" id="search"
-                                        data-url="{{ route('backend.admin.categories.search') }}" class="form-control float-right" placeholder="Tìm kiếm">
+                                        data-url="{{ route('backend.admin.petinformation.search') }}" class="form-control float-right" placeholder="Tìm kiếm">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-default">
                                                 <i class="fas fa-search"></i>
@@ -57,18 +57,14 @@
                                                     </div>
                                                 </div>
                                             </th>
-                                            <th>
-                                                @sortablelink('id', 'Số thứ tự')
-                                            </th>
-                                            <th>
-                                                @sortablelink('name', 'Tên danh mục')
-                                            </th>
-                                            <th>Slug</th>
+                                            <th>Số thứ tự</th>
+                                            <th>@sortablelink('name', 'Tên thú cưng')</th>
+                                            <th>@sortablelink('code', 'Mã thú cưng')</th>
                                             <th>Hành động</th>
                                         </tr>
                                     </thead>
                                     <tbody id="search-data">
-                                        @include('backend.admin.categories.search')
+                                        @include('backend.admin.pet_infomation.search')
                                     </tbody>
                                 </table>
 
@@ -87,7 +83,7 @@
                     </div>
                     <div class="col-sm-12 col-md-7">
                         <div class="dataTables_paginate paging_simple_numbers float-right" id="example2_paginate">
-                            @include('backend.components.pagination', ['paginator' => $categories])
+                            @include('backend.components.pagination', ['paginator' => $petInfomations])
                         </div>
                     </div>
                 </div>

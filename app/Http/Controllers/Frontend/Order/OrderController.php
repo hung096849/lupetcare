@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\Order;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\Order\CustomerFormRequest;
 use App\Models\Customers;
 use App\Models\Order;
 use App\Models\OrderPet;
@@ -12,8 +13,6 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use \Cviebrock\EloquentSluggable\Services\SlugService;
-use Illuminate\Support\Collection;
 use Stripe;
 use Twilio\Rest\Client;
 use Illuminate\Support\Str;
@@ -51,6 +50,16 @@ class OrderController extends Controller
             return true;
         }
         return false;
+    }
+
+    public function checkValidateForm(CustomerFormRequest $request)
+    {
+        $data = $request->all();
+        return response()->json([
+            'status' => 200,
+            'data' => $data,
+            'message' => 'success'
+        ]);
     }
 
     public function addForm2(Request $request)
@@ -165,7 +174,7 @@ class OrderController extends Controller
     function addForm(Request $request)
     {
         try {
-            dd($request->all());
+            // dd($request->all());
             DB::beginTransaction();
             // $token = getenv("TWILIO_AUTH_TOKEN");
             // $twilio_sid = getenv("TWILIO_SID");
@@ -218,7 +227,7 @@ class OrderController extends Controller
                     'status' => Order::PROCESS,
                     'date' => $date,
                     'pile' => $pile,
-                    'total' => $totalPrice
+                    'total_price' => $totalPrice
                 ]);
                 foreach ($serviceId as $key => $value) {
                     foreach ($value as $service) {
@@ -233,7 +242,7 @@ class OrderController extends Controller
             }
 
             Session::flash('success', 'Đặt lịch thành công !!!');
-            Session::flash('total', $pile);
+            Session::flash('pile', $pile);
 
             // $twilio = new Client($twilio_sid, $token);
             // $message = $twilio->messages->create(

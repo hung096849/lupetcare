@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'create' => 'Thêm mới : thành công',
-    'update' => 'Sửa : thành công',
-    'delete' => 'Xóa : thành công',
+    'create' => 'Thêm mới :model thành công',
+    'update' => 'Sửa :model thành công',
+    'delete' => 'Xóa :model thành công',
 
 ];
