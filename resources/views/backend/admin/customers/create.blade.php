@@ -13,7 +13,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6" style="padding:30px;">
-                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i> Danh mục </h1>
+                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i> Danh sách </h1>
                     </div>
                 </div>
             </div>
@@ -30,9 +30,9 @@
                         <div class="card card-primary">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputName">Name</label>
+                                    <label for="inputName">Tên</label>
                                     <input type="text" name="name" id="title" class="form-control"
-                                        value="{{old('name')}}" placeholder="Name ..." />
+                                        value="{{old('name')}}" placeholder="Tên ..." />
                                     @error('name')
                                     <div class="mt-1 text-red-500">
                                         {{$message}}
@@ -43,9 +43,9 @@
                            
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputName">Phone</label>
+                                    <label for="inputName">Số điện thoại</label>
                                     <input type="number" name="phone" id="title" class="form-control"
-                                        value="{{old('phone')}}" placeholder="Phone ..." />
+                                        value="{{old('phone')}}" placeholder="Số điện thoại ..." />
                                     @error('phone')
                                     <div class="mt-1 text-red-500">
                                         {{$message}}
@@ -67,9 +67,9 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputName">Password</label>
+                                    <label for="inputName">Mật khẩu</label>
                                     <input type="password" name="password" id="title" class="form-control"
-                                        value="{{old('password')}}" placeholder="Password ..." />
+                                        value="{{old('password')}}" placeholder="Mật khẩu ..." />
                                     @error('password')
                                     <div class="mt-1 text-red-500">
                                         {{$message}}
@@ -79,9 +79,9 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputName">Confirm Password</label>
+                                    <label for="inputName">Xác nhận mật khẩu</label>
                                     <input type="password" name="re_password" id="title" class="form-control"
-                                        value="{{old('re_password')}}" placeholder="Password ..." />
+                                        value="{{old('re_password')}}" placeholder="Xác nhận mật khẩu ..." />
                                     @error('re_password')
                                     <div class="mt-1 text-red-500">
                                         {{$message}}
