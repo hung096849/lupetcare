@@ -24,7 +24,7 @@
                             <div class="name d-flex align-items-center
                                 justify-content-center">
                                 <div class="images">
-                                    <img src="theme/frontend/images/img-hot_service.png" alt="" srcset="">
+                                    <img src="{{ asset('frontend/css/theme/frontend/images/img-hot_service.png') }}" alt="" srcset="">
                                 </div>
                                 <span class="title">{{ Auth::guard('customers')->user()->name }}</span>
                             </div>

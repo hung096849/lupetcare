@@ -26,8 +26,8 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <strong>Name:</strong>
-                            <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}">
+                            <strong>Họ và tên:</strong>
+                            <input type="text" name="name" class="form-control" placeholder="Họ và tên" value="{{ old('name') }}">
                             @if ($errors->has('name'))
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                             @endif
@@ -46,8 +46,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <strong>Phone:</strong>
-                            <input type="text" name="phone" class="form-control" placeholder="Phone" value="{{ old('phone') }}">
+                            <strong>Số điện thoại:</strong>
+                            <input type="text" name="phone" class="form-control" placeholder="Số điện thoại" value="{{ old('phone') }}">
                             @if ($errors->has('phone'))
                                 <span class="text-danger">{{ $errors->first('phone') }}</span>
                             @endif
@@ -57,8 +57,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <strong>Title:</strong>
-                            <input type="text" name="title" class="form-control" placeholder="title" value="{{ old('title') }}">
+                            <strong>Tiêu đề:</strong>
+                            <input type="text" name="title" class="form-control" placeholder="Tiêu đề" value="{{ old('title') }}">
                             @if ($errors->has('title'))
                                 <span class="text-danger">{{ $errors->first('title') }}</span>
                             @endif
@@ -68,7 +68,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <strong>Message:</strong>
+                            <strong>Nội dung:</strong>
                             <textarea name="message" rows="3" class="form-control">{{ old('message') }}</textarea>
                             @if ($errors->has('message'))
                                 <span class="text-danger">{{ $errors->first('message') }}</span>

@@ -57,7 +57,7 @@ class LoginController extends Controller
         $customer->name = $request->name;
         $customer->slug = SlugService::createSlug(Customers::class, 'slug', $request->name);
         $customer->phone= $request->phone;
-        $customer->status= Customers::MEMBER;
+        $customer->status= Customers::CUSTOMER;
         $customer->email_verified_at = Carbon::now();
         $customer->email = $request->email; 
         $customer->password = Hash::make($request->password);
@@ -74,8 +74,13 @@ class LoginController extends Controller
         $user = Customers::where(['verification_code' => $verification_code])->first();
         if($user != null){
             $user->is_verified = Customers::CONFIRM;
+             $user->status= Customers::MEMBER;
             $user->save();
             return redirect()->route('frontend.login.show')->with(session()->flash('alert-success', 'Your account is verified. Please login!'));
+        }
+        else {
+            $user->is_verified = Customers::UNCONFIRM;
+            $user->status= Customers::CUSTOMER;
         }
         return redirect()->route('frontend.login.show')->with(session()->flash('alert-danger', 'Invalid verification code!'));
        

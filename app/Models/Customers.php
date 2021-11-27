@@ -15,8 +15,8 @@ class Customers extends Authenticatable implements MustVerifyEmail
     use Sluggable;
     const MEMBER = 0;
     const CUSTOMER = 1;
-    const CONFIRM = 1;
-    const UNCONFIRM = 0;
+    const CONFIRM = 0;
+    const UNCONFIRM = 1;
 
     protected $table = 'customers'; 
     protected $fillable = [
