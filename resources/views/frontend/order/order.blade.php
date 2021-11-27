@@ -75,7 +75,7 @@
                                                 <div class="col-md-6">
                                                     <label for="Name" class="pt-5 pb-2 book-form-text">Giờ *</label>
                                                     <input type="time" id="datetimepicker5" name="time"
-                                                        value="{{ old('time')}}"
+                                                        value="{{ old('time')}}" min="08:00" max="21:00"
                                                         class="form-control input-form-service time">
                                                         <span class="error_time text-danger"></span>
                                                 </div>
@@ -332,7 +332,8 @@
     });
     function bill () {
         document.querySelector("#appointment").addEventListener("click", function () {
-            
+            console.log($('#datetimepicker5').val())
+            var i = 1;
             var route = $(this).data('route');
             $.ajax({
                 type: "POST",
@@ -343,13 +344,23 @@
                     phone: $('#phone').val(),
                     time: $('.time').val(),
                     date: $('.date').val(),
-                    // pet_name: $('.pet_name').val(),
+                    pet_name: $(`#petName_${i}`).val(),
+                    service_id: $(`#js-select-pet-${i}`).val(),
                 },
                 dataType: "json",
                 success: function(response) {
-                    console.log(response);
+                    // console.log(response);
                     if (response.status == 200) {
                         document.querySelector("#popupBill").style.display = "block";
+                        // $("#clickAddForm").attr(attributeName);
+                        // $('#clickAddForm').addClass('d-block');
+                        $('.error_name').text("");
+                        $('.error_email').text("");
+                        $('.error_time').text("");
+                        $('.error_date').text("");
+                        $(`.error_pet_name_${i}`).text("");
+                        $(`.error_pet_service_${i}`).text("");
+
                     } else if (response.status == 422) {
                         if(response.error.name){
                             $('.error_name').text(response.error.name);
@@ -378,7 +389,18 @@
                         }else{
                             $('.error_date').text("");
                         }
+
+                        if(response.error.pet_name){
+                            $(`.error_pet_name_${i}`).text(response.error.pet_name);
+                        }else{
+                            $(`.error_pet_name_${i}`).text("");
+                        }
                         
+                        if(response.error.service_id){
+                            $(`.error_pet_service_${i}`).text(response.error.service_id);
+                        }else{
+                            $(`.error_pet_service_${i}`).text("");
+                        }
                     }
                 }
             });
@@ -399,56 +421,56 @@
     }
 
     $(function() {
-    var $form = $(".require-validation");
-    
-    $('form.require-validation').bind('submit', function(e) {
-        var $form         = $(".require-validation"),
-        inputSelector = ['input[type=email]', 'input[type=password]',
-                            'input[type=text]', 'input[type=file]',
-                            'textarea'].join(', '),
-        $inputs       = $form.find('.required').find(inputSelector),
-        $errorMessage = $form.find('div.error'),
-        valid         = true;
-        $errorMessage.addClass('hide');
-    
-        $('.has-error').removeClass('has-error');
-        $inputs.each(function(i, el) {
-            var $input = $(el);
-            if ($input.val() === '') {
-            $input.parent().addClass('has-error');
-            $errorMessage.removeClass('hide');
-            e.preventDefault();
+        var $form = $(".require-validation");
+        
+        $('form.require-validation').bind('submit', function(e) {
+            var $form         = $(".require-validation"),
+            inputSelector = ['input[type=email]', 'input[type=password]',
+                                'input[type=text]', 'input[type=file]',
+                                'textarea'].join(', '),
+            $inputs       = $form.find('.required').find(inputSelector),
+            $errorMessage = $form.find('div.error'),
+            valid         = true;
+            $errorMessage.addClass('hide');
+        
+            $('.has-error').removeClass('has-error');
+            $inputs.each(function(i, el) {
+                var $input = $(el);
+                if ($input.val() === '') {
+                $input.parent().addClass('has-error');
+                $errorMessage.removeClass('hide');
+                e.preventDefault();
+                }
+            });
+        
+            if (!$form.data('cc-on-file')) {
+                e.preventDefault();
+                Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+                Stripe.createToken({
+                number: $('.card-number').val(),
+                cvc: $('.card-cvc').val(),
+                exp_month: $('.card-expiry-month').val(),
+                exp_year: $('.card-expiry-year').val()
+                }, stripeResponseHandler);
             }
+        
         });
-    
-        if (!$form.data('cc-on-file')) {
-            e.preventDefault();
-            Stripe.setPublishableKey($form.data('stripe-publishable-key'));
-            Stripe.createToken({
-            number: $('.card-number').val(),
-            cvc: $('.card-cvc').val(),
-            exp_month: $('.card-expiry-month').val(),
-            exp_year: $('.card-expiry-year').val()
-            }, stripeResponseHandler);
+        
+        function stripeResponseHandler(status, response) {
+            if (response.error) {
+                $('.error')
+                    .removeClass('hide')
+                    .find('.alert')
+                    .text(response.error.message);
+            } else {
+                /* token contains id, last4, and card type */
+                var token = response['id'];
+                
+                $form.find('input[type=text]').empty();
+                $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+                $form.get(0).submit();
+            }
         }
-    
-    });
-    
-    function stripeResponseHandler(status, response) {
-        if (response.error) {
-            $('.error')
-                .removeClass('hide')
-                .find('.alert')
-                .text(response.error.message);
-        } else {
-            /* token contains id, last4, and card type */
-            var token = response['id'];
-            
-            $form.find('input[type=text]').empty();
-            $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
-            $form.get(0).submit();
-        }
-    }
     
     });
 
@@ -476,6 +498,7 @@
                             *</label>
                         <input type="text" name="pet_name[${i}][]" id="petName_${i}"
                             class="form-control input-form-service">
+                            <span class="error_pet_name_${i} text-danger"></span>
                     </div>
                 </div>
                 <div class="row">
@@ -499,6 +522,7 @@
                                 </option>
                             @endforeach
                         </select>
+                        <span class="error_pet_service_${i} text-danger"></span>
                     </div>
                 </div>
                 <div class="row">
@@ -557,9 +581,9 @@
             servicer: arrSer,
             weight: _weight
         }
-        console.log(result)
+        // console.log(result)
         totalPrice += result.servicer.reduce((acc, curr) => acc + parseInt(curr.price), 0) * parseInt(result.weight)
-        console.log("total price: ", totalPrice)
+        // console.log("total price: ", totalPrice)
         document.querySelector("#totalPrice").innerHTML = `${totalPrice} VND`
         document.querySelector("#paymentCOC").innerHTML = `${totalPrice / 10} VND`
         document.querySelector('#totalPrice').value = totalPrice

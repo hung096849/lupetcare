@@ -18,10 +18,10 @@
                     <div class="row mb-2">
                         <div class="col-sm-8" style="padding:30px;">
                             <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i>Khách Hàng Đặt Lịch</h1>
-                            {{-- <a href="{{ route('backend.admin.orders.create') }}"
-                                class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i>Thêm mới</a> --}}
+                            <a href="{{ route('backend.admin.orders.create') }}"
+                                class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i>Thêm mới</a>
                             <button class="btn btn-danger float-left delete_all"
-                                data-url="{{ route('backend.admin.services.services.delete') }}">
+                                data-url="{{ route('backend.admin.orders.orders.delete') }}">
                                 <i class="fas fa-trash"></i>Xóa hàng loạt</button>
                         </div>
                     </div>
@@ -60,11 +60,25 @@
                                                         </div>
                                                     </div>
                                                 </th>
-                                                <th>Số đơn hàng</th>
+                                                {{-- <th>Số đơn hàng</th> --}}
                                                 <th>
                                                     @sortablelink('customer_id', 'Khách hàng')
                                                 </th>
-                                                <th>Hành động</th>
+                                                <th>
+                                                    Mã hóa đơn
+                                                </th>
+                                                <th>
+                                                    Tiền cọc
+                                                </th>
+                                                <th>
+                                                    Tổng tiền
+                                                </th>
+                                                <th>
+                                                    Trạng thái
+                                                </th>
+                                                <th>
+                                                    Hành động
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody id="search-data">

@@ -8,9 +8,11 @@ use App\Models\Order;
 use App\Models\OrderPet;
 use App\Models\PetInformartion;
 use App\Models\Services;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Lang;
 
 class OrderController extends Controller
 {
@@ -35,113 +37,126 @@ class OrderController extends Controller
 
     public function index()
     {
-        $customers = $this->orders
-            ->select('customer_id', DB::raw('count(*) as total'))
-            ->groupBy('customer_id')
-            ->get();
-        return view('backend.admin.orders.index', compact('customers'));
+        $orders = $this->orders->get();
+        return view('backend.admin.orders.index', compact('orders'));
     }
 
     public function view(Request $request, $id)
     {
-        $orders = $this->orders
-            ->where('orders.customer_id', '=', $id)
+        $orderPet = $this->orderPet->with('petInformation', 'petServices')
+            ->where('order_id', $id)
             ->get();
-        
-        $services = $this->services->all();
-        $customer = $this->customers->find($id);
-        
-        return view('backend.admin.orders.view', compact('orders', 'customer', 'services'));
+        $orders = $this->orders->find($id);
+        return view('backend.admin.orders.view', compact('orderPet', 'orders'));
     }
 
     public function create()
     {
         $services = $this->services->all();
         $customers = $this->customers->all();
-        return view('backend.admin.orders.create', compact('services', 'customers'));
+        $petInfomation = $this->petInfo->all();
+        return view('backend.admin.orders.create', compact('services', 'customers', 'petInfomation'));
     }
-
 
     public function store(Request $request)
     {
-        try {
+        // dd($request->service_id);
+        $date = Carbon::parse($request->date.' '.$request->time)->format("Y-m-d H:i:s");
 
-            DB::beginTransaction();
+        $petInfomation = $this->petInfo->find($request->pet_id);
 
-            for ($i = 1; $i <= count($request->service_id); $i++) {
-                $serviceId[] = $request->service_id[$i];
-            }
+        $order = $this->orders->create([
+            'customer_id' => $request->customer_id,
+            'order_code' => "ORDER-LUPET-".rand(1, 100000),
+            "payment_method" => $request->payment_method,
+            "vocher_id" => isset($request->vocher_id) ? $request->vocher_id : "",
+            'status' => Order::PROCESS,
+            'date' => $date,
+            'pile' => isset($request->pile) ? $request->pile : null,
+            'total_price' => ($request->total_price_input)*$petInfomation->weight
+        ]);
 
-            foreach ($request['code'] as $key => $value) {
-                $createPet = $this->petInfo->create([
-                    'code' => 'LUPETCARE-' . rand(1, 1000),
-                    'name' => $request['pet_name'][$key][0],
-                    'weight' => $request['weight'][$key][0],
-                    'gender' => $request['gender'][$key][0],
+        if($order) {
+            foreach ($request->service_id as $value) {
+                $this->orderPet->create([
+                    'order_id' => $order->id,
+                    'pet_id' => $petInfomation->id,
+                    'service_id' => $value,
+                    'quantity' => $petInfomation->weight
                 ]);
-                $idPet[] = $createPet->id;
             }
-
-
-            $order = $this->orders->create([
-                'vocher_id' => 1,
-                'customer_id' => $request->customer_id,
-                "payment_method" => $request->payment_method,
-                'is_paid' => 1,
-                'date' => $request->date,
-                'status' => 1,
-            ]);
-
-            foreach ($serviceId as $key => $value) {
-                foreach ($value as $service) {
-                    $this->orderPet->create([
-                        'order_id'  => $order->id,
-                        'pet_id'     => $idPet[$key],
-                        'service_id' => $service,
-                        'quantity' => 1
-                    ]);
-                }
-            }
-
-            DB::commit();
-            Session::flash(
-                'success',
-                'Đặt lịch thành công !!!',
-            );
-
-            return back();
-        } catch (\Exception $th) {
-            DB::rollback();
-            Session::flash('message', $th->getMessage());
-            return back();
         }
+        
+        return redirect()->back()->with('success', Lang::get('message.create', ['model' => 'Dịch vụ thú cưng']));
     }
 
     public function edit(Request $request)
     {
         $services = $this->services->all();
         $orderPet = $this->orderPet->where('order_id', $request->order_id)->get();
+
         if($orderPet){
             foreach ($orderPet as $key => $value) {
                 $petId[] = $value->pet_id;
                 $serviceId[] = $value->service_id;
             }
         }
-        dump($petId);
         $petInfomation = $this->petInfo->whereIn('id', $petId)->get();
-        dump($petInfomation);
-        // dd($serviceId);
 
         return view('backend.admin.orders.edit', compact('orderPet', 'services'));
     } 
 
+    public function insert()
+    {
+        $petInfo = $this->petInfo->all();
+        $services = $this->services->all();
+        $order = $this->orders->all();
+        
+        return view('backend.admin.orders.insert', compact('petInfo', 'services', 'order'));
+    }
+
+    public function insertStore(Request $request)
+    {
+        $petInformation = $this->petInfo->find($request->pet_id);
+        $service = $this->services->find($request->service_id);
+        $orders = $this->orders->find($request->order_id);
+
+        $orders->update([
+            'total_price' => ($orders->total_price)+($petInformation->weight*$service->price)
+        ]);
+
+        $this->orderPet->create([
+            'order_id' => $orders->id,
+            'pet_id' => $petInformation->id,
+            'service_id' => $request->service_id,
+            'quantity' => $petInformation->weight
+        ]);
+        return redirect()->back()->with('success', Lang::get('message.create', ['model' => 'Dịch vụ thú cưng']));
+    }
+
     public function delete($id)
     {
-        $orderPet = $this->orderPet->where('order_pets.order_id', $id)->get();
-        $orders = $this->orders->find($id);
-        // $orders->delete();
-        // $orderPet->delete();
-        dd( $orders,$orderPet , $id);
-        return redirect()->route('backend.admin.services.view');
+        $orderPet = $this->orderPet->find($id);
+        $orders =$this->orders->find($orderPet->order_id);
+        $orders->update([
+            'total_price' => ($orders->total_price)-($orderPet->petServices->price*$orderPet->quantity)
+        ]);
+        
+        $orderPet->delete();
+        return redirect()->back()->with('success', Lang::get('message.delete', ['model' => 'Dịch vụ thú cưng']));
+    }
+
+    public function orderDeleteMany(Request $request)
+    {
+        $this->orders->whereIn('id', explode(",", $request->ids))->delete();
+        return response()->json(['success' => "Xóa thú cưng thành công"]);
+    }
+
+    public function orderDelete(Request $request)
+    {
+        $orders =$this->orders->find($request->id);
+        $orders->delete();
+
+        return redirect()->back()->with('success', Lang::get('message.delete', ['model' => 'Đơn hàng']));
     }
 }
