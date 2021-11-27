@@ -17,11 +17,14 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-8" style="padding:30px;">
-                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i> Khách Hàng Đặt Lịch
+                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-paw"></i> Chi tiết hóa đơn
                         </h1>
-                        <a href="" class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i> Thêm mới</a>
-                        <button class="btn btn-danger float-left delete_all" data-url="">
-                            <i class="fas fa-trash"></i> Xóa hàng loạt</button>
+                        <a href="{{ route('backend.admin.orders.show') }}" class="btn btn-primary float-left mr-2">
+                            <i class="fas fa-arrow-left"></i> Quay lại</a>
+                        <a href="{{ route('backend.admin.orders.insert.service') }}" class="btn btn-success float-left mr-2">
+                            <i class="fas fa-plus"></i> Thêm dịch vụ thú cưng</a>
+                        {{-- <button class="btn btn-danger float-left delete_all" data-url="{{ route('backend.admin.orders.orders.delete') }}">
+                            <i class="fas fa-trash"></i>  Xóa nhiều</button> --}}
                     </div>
                 </div>
             </div>
@@ -36,17 +39,32 @@
                             <div class="card-header">
                                 <div>
                                     <p>
-                                        <b>Họ và tên : </b> {{ $customer->name }}
+                                        <b>Họ và tên : </b> {{ $orders->customer->name }}
                                     </p>
                                 </div>
                                 <div>
                                     <p>
-                                        <b>Số điện thoại :</b> {{ $customer->phone }}
+                                        <b>Mã đơn hàng : </b> {{ $orders->order_code }}
                                     </p>
                                 </div>
                                 <div>
                                     <p>
-                                        <b>Name Email :</b> {{ $customer->email }} 
+                                        <b>Số điện thoại :</b> {{ $orders->customer->phone }}
+                                    </p>
+                                </div>
+                                <div>
+                                    <p>
+                                        <b> Email :</b> {{ $orders->customer->email }} 
+                                    </p>
+                                </div>
+                                <div>
+                                    <p>
+                                        <b> Tiền cọc :</b> {{ $orders->pile == "" ? "Chưa cọc" : $orders->pile }} 
+                                    </p>
+                                </div>
+                                <div>
+                                    <p>
+                                        <b> Tổng tiền :</b> <span class="total_price">{{ $orders->total_price }}</span>
                                     </p>
                                 </div>
                             </div>
@@ -79,16 +97,14 @@
                                                     </div>
                                                 </div>
                                             </th>
-                                            {{-- <th>Mã đơn hàng <i class="fas fa-sort"></th> --}}
-                                            <th>Mã thú cưng</th>
+                                            <th>Tên</th>
+                                            <th>Mã</th>
                                             <th>Dịch vụ</th>
-                                            <th>Phương thức</th>
-                                            <th>Tiền cọc</th>
-                                            <th>Tổng giá</th>
-                                            <th>Thời gian</th>
-                                            <th>Trạng thái</th>
-                                            <th>Thanh Toán</th>
-                                            <th>In hóa đơn</th>
+                                            <th>Giá </th>
+                                            <th>Cân nặng</th>
+                                            <th>Giá theo cân nặng</th>
+                                            {{-- <th>Thanh Toán</th>
+                                            <th>In hóa đơn</th> --}}
                                             <th>Hành động </th>
                                         </tr>
                                     </thead>
@@ -124,4 +140,11 @@
         <!-- /.content -->
     </div>
 </div>
+@endsection
+@section('js')
+<script>
+    $(document).ready(function () {
+        $('.total_price').html();
+    });
+</script>
 @endsection

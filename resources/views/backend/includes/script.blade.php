@@ -33,6 +33,8 @@
     <script src="{{ asset('backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('backend/dist/js/adminlte.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery-ui.js') }}"></script>
+
     <script>
         $(function () {
             bsCustomFileInput.init();

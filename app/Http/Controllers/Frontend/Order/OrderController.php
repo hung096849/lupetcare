@@ -209,7 +209,7 @@ class OrderController extends Controller
             $customerId = $customer->id;
             foreach ($request['code'] as $key => $value) {
                 $createPet = $this->petInfo->create([
-                    'code' => 'LUPETCARE-' . rand(1, 1000),
+                    'code' => 'LUPETCARE-' . rand(1, 10000),
                     'name' => $request['pet_name'][$key][0],
                     'weight' => $request['weight'][$key][0],
                     'gender' => $request['gender'][$key][0],
@@ -220,6 +220,7 @@ class OrderController extends Controller
 
             if ($createPet) {
                 $order = $this->orders->create([
+                    'order_code' => "ORDER-LUPET-".rand(1, 100000),
                     'vocher_id' => 1,
                     'customer_id' => $customerId,
                     "payment_method" => Order::CARD,

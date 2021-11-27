@@ -27,7 +27,7 @@ class CustomerFormRequest extends FormRequest
      */
     public function rules()
     {
-        $now = Carbon::now()->format('m/d/Y');
+        $now = Carbon::now()->subDays(1)->format('m/d/Y');
         return [
             'name' => [
                 'required',
@@ -44,10 +44,32 @@ class CustomerFormRequest extends FormRequest
             'date' => [
                 'required', "after:$now"
             ],
-            // 'pet_name' => [
-            //     'required'
-            // ]
+            'pet_name' => [
+                'required'
+            ],
+            'service_id' => [
+                'required'
+            ],
         ];
+    }
+
+    public function messages() {
+        $now = Carbon::now()->format('m/d/Y');
+        $messages = [
+            'name.required' => 'Vui lòng không để trống',
+            'phone.required' => 'Vui lòng không để trống',
+            'phone.regex' => 'Vui lòng nhập đúng định dạng số điện thoại',
+            'email.required' => 'Vui lòng không để trống',
+            'email.email' => 'Vui lòng nhập đúng định dạng email',
+            'email.regex' => 'Vui lòng nhập đúng định dạng email',
+            'time.required' => 'Vui lòng không để trống',
+            'date.required' => 'Vui lòng không để trống',
+            'date.after' => "Vui lòng chọn ngày ít nhất từ ngày $now",
+            'pet_name.required' => 'Vui lòng không để trống',
+            'service_id.required' => 'Vui lòng chọn dịch vụ',
+            
+        ];
+        return $messages;
     }
 
     function failedValidation(ValidationValidator $validator)

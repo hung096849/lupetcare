@@ -19,7 +19,7 @@ class Order extends Model
 
     protected $table = 'orders';
     protected $fillable = [
-        'customer_id', 'payment_method', 'is_paid', 'date', 'status', 'total_price', 'pile'
+        'customer_id', 'payment_method', 'is_paid', 'date', 'status', 'total_price', 'pile', 'order_code'
     ];
 
     public $sortable = ['customer_id', 'date', 'status', 'total_price', 'pile'];

@@ -24,6 +24,7 @@
         <!-- Sweetalert2 -->
         <link rel="stylesheet" href="{{ asset('backend/plugins/toastr/toastr.min.css') }}">
         <link rel="stylesheet" href="{{ asset('backend/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('frontend/css/jquery-ui.css') }}" />
 
         <link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
         <!-- Ckeditor -->

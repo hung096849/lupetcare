@@ -24,4 +24,11 @@ class PermissionConstant
     const CUSTOMER_PERMISSION_CREATE = "create-customers";
     const CUSTOMER_PERMISSION_VIEW   = "view-customers";
     const CUSTOMER_PERMISSION_DELETE = "delete-customers";
+
+    /** permission permission */
+    const PERMISSION_PERMISSION_LIST   = "list-permissions";
+    const PERMISSION_PERMISSION_EDIT   = "edit-permissions";
+    const PERMISSION_PERMISSION_CREATE = "create-permissions";
+    const PERMISSION_PERMISSION_VIEW   = "view-permissions";
+    const PERMISSION_PERMISSION_DELETE = "delete-permissions";
 }
