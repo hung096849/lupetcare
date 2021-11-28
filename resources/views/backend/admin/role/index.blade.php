@@ -4,7 +4,7 @@
 <div class="wrapper">
 
     @include('backend.includes.navbar-top', [
-        'list' => 'Users',
+        'list' => 'Vai trò',
         'url' => route('backend.admin.users.show')
     ])
 
@@ -17,9 +17,9 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6" style="padding:30px;">
-                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> Role</h1>
-                        <a href="{{ route('backend.admin.role.create') }}" class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i> Add new</a>
-                        <button class="btn btn-danger float-left delete_all" data-url="{{ route('backend.admin.role.role.delete') }}"><i class="fas fa-trash"></i> Bulk Delete</button>
+                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> Vai trò</h1>
+                        <a href="{{ route('backend.admin.role.create') }}" class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i> Thêm mới</a>
+                        <button class="btn btn-danger float-left delete_all" data-url="{{ route('backend.admin.role.role.delete') }}"><i class="fas fa-trash"></i> Xóa nhiều</button>
                     </div>
                 </div>
             </div>
@@ -58,8 +58,8 @@
                                                     </div>
                                                 </div>
                                             </th>
-                                            <th style="width:60%;">Name</th>                                       
-                                            <th>Action</th>
+                                            <th style="width:60%;">Vai trò</th>                                       
+                                            <th>Hành động</th>
                                         </tr>
                                     </thead>
                                     <tbody id="search-data">

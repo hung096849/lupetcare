@@ -57,19 +57,19 @@
                   </a>
                   <ul class="nav nav-treeview">
                       <li class="nav-item">
-                          <a href="" class="nav-link">
+                          <a href="{{ route('backend.admin.users.show') }}" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Người dùng</p>
                           </a>
                       </li>
                       <li class="nav-item">
-                          <a href="" class="nav-link">
+                          <a href="{{ route('backend.admin.role.show') }}" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Vai trò</p>
                           </a>
                       </li>
                       <li class="nav-item">
-                          <a href="" class="nav-link">
+                          <a href="{{ route('backend.admin.permissions.show') }}" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Quyền</p>
                           </a>
@@ -77,22 +77,12 @@
                   </ul>
               </li>
               <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-user"></i>
+                    <a href="{{ route('backend.admin.customers.show') }}" class="nav-link">
+                    <i class="nav-icon fas fa-users"></i>
                         <p>
-                            Khách hàng
-                            <i class="fas fa-angle-left right"></i>
+                            Danh sách khách hàng
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('backend.admin.customers.show') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Danh sách khách hàng</p>
-                            </a>
-                        </li>
-                       
-                    </ul>
                 </li>
 
                 <li class="nav-item">

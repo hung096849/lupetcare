@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\Calender\CalenderController;
 use App\Http\Controllers\BackEnd\Services\ServicesController;
 use App\Http\Controllers\BackEnd\Categories\CategoriesController;
 use App\Http\Controllers\Backend\DashBorad\DashboardController;
@@ -129,6 +130,11 @@ Route::prefix('admin')->name('backend.')->group(function () {
 
                 // Route::patch('/update/services', [OrderController::class, 'update'])->name('update');
                 Route::get('/search', [OrderController::class, 'search'])->name('search');
+            });
+
+            Route::prefix('/scheduled')->name('scheduled.')->group(function () {
+                Route::get('fullcalender', [CalenderController::class, 'index']);
+                Route::post('fullcalenderAjax', [CalenderController::class, 'ajax']);
             });
 
         });

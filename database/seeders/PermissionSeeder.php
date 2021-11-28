@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Permission;
 use Illuminate\Support\Facades\DB;
 use App\Constant\PermissionConstant;
 
@@ -16,7 +15,6 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-
         DB::table('permissions')->insert([
             ['id' => 1, 'name' => 'users', 'slug' => PermissionConstant::USER_PERMISSION_LIST, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
             ['id' => 2, 'name' => 'users', 'slug' => PermissionConstant::USER_PERMISSION_VIEW, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
