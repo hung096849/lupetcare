@@ -15,6 +15,9 @@
         <td>{{ $order->pile == "" ? "Chưa cọc" : $order->pile }}</td>
         <td>{{ $order->total_price }}</td>
         <td>{{ $order->status ==  App\Models\Order::IN_PROCESS ? "Chưa xác nhận" : "Xác nhận"}}</td>
+        <th>
+            <a href="{{ route('backend.admin.orders.export.pdf', $order->id) }}">Xuất hóa đơn</a>
+        </th>
         <td>
             <a href="{{ route('backend.admin.orders.view', $order->id) }}"
                 class="btn btn-warning btn-sm btn-warning-edit">

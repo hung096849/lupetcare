@@ -125,10 +125,9 @@
                     <img src="{{ asset('frontend/imgs/download-pdf/WaveEvolution_Logo_I_RGB_colour.png') }}" alt="" class="logo mb-3">
         
                     <address>
-                            Wave Evolution Pte Ltd
-                            16 Raffles Quay
-                            #41-07, Hong Leong Building
-                            Singapore 048581                    
+                        LupetCare <br>
+                        Địa Chỉ: Số 1 Trịnh Văn Bô , Nam Từ Liêm , Hà Nội
+                        1900 1088          
                     </address>
     
                 </aside>
@@ -143,11 +142,11 @@
                         <div class="d-flex justify-content-between">
             
                             <span>
-                                Invoice Code
+                                Mã hóa đơn
                             </span>
                             
                             <span id="code">
-                                #{{ $order->code }}
+                                 # {{ $order->order_code }}
                             </span>
             
                         </div>
@@ -155,13 +154,13 @@
                         <div class="d-flex justify-content-between">
             
                             <span>
-                                Issue Date 
+                                Ngày phát hành
                             </span>
                             
                             <span>
-                                {{ date('d-m-Y', strtotime($order->created_at)) }}
+                                 {{ date('d-m-Y', strtotime($order->created_at)) }}
                             </span>
-            
+                            
                         </div>
             
                     </div>
@@ -175,48 +174,21 @@
     
                 <div class="basic-info d-flex justify-content-between mb-3">
                     <span>
-                        Bill To : {{ $order->customers->first_name }} {{ $order->customers->last_name }}
+                        Hóa đơn của :
+                        {{ $order->customer->name }}
                     </span>
     
                     <div class="rounded col-md-5 d-flex justify-content-between px-0" style="border:1px solid #1a283d;">
                         <span style="background: #1a283d; color:  white; display: inline-block; padding: 0.2rem 2rem;" >
-                            PAID 
+                            Thanh toán :
                         </span>
                         <span style="display: inline-block;padding: 0.2rem .5rem">
-                            {{ number_format($order->total) }} {{ $order->currency == "USD" ? "$" : $order->currency }}
+                            {{--  {{ $order->currency == "USD" ? "$" : $order->currency }} --}}
+                            {{ number_format($order->total_price - $order->pile) }} VNĐ
                         </span>
                     </div>                
                 </div>
-    
-                <dl class="mb-5">
-    
-                    <dd>
-                        Wave Evolution Pte Ltd
-                    </dd>
-    
-                    <dd>
-                        Travis Saw -
-                    </dd>
-    
-                    <dd>
-                        16 Raffles Quay. #41-07,
-                    </dd>
-    
-                    <dd>
-                        Hong Leong Building
-                    </dd>
-    
-                    <dd>
-                        Singapore, 048581
-                    </dd>
-    
-                    <dd>
-                        SG
-                    </dd>
-    
-    
-                </dl>
-    
+
                 <table class="w-100 mb-5">
     
                     <thead>
@@ -224,144 +196,90 @@
         
                             <th>
                                 <h3>
-                                    Plan
+                                    Tên pet
                                 </h3>
                             </th>
                             <th>
-                                Quantity
+                                <h3>
+                                    Mã pet
+                                </h3>
                             </th>
                             <th>
-                                Method
+                                Dịch vụ
                             </th>
                             <th>
-                                Total
+                                Đơn giá
                             </th>
-        
+                            <th>
+                                Giá theo cân nặng
+                            </th>
+                            
                         </tr>
                     </thead>
     
                     <tbody>
-    
+                        @foreach ($orderPet as $item)
                         <tr>
-    
                             <th>
-                                {{ $item->name }}
+                                {{ $item->petInformation->name }} 
                             </th>
                             <th>
-                                {{ $order->credits }} Credits
+                                {{ $item->petInformation->code }} 
                             </th>
                             <th>
-                                    <img width="100px" src="{{ $order->method == App\Constant\PlanConstant::STRIPE ? asset('/frontend/imgs/home/waveleads_Img/images.png') : asset('/frontend/imgs/home/waveleads_Img/Group 2616.png') }}" alt="">
+                                {{ $item->petServices->service_name }} 
                             </th>
                            
                             <th>
-                                {{ number_format($order->total) }} {{ $order->currency == "USD" ? "$" : $order->currency }}
+                                {{ $item->petServices->price }}
                             </th>
-                            
+                            <th>
+                                {{ $item->petServices->price*$item->quantity }}
+                            </th>
                         </tr>
+                        @endforeach
     
-                        <!-- br between each line -->
                         <tr class="break-line">
                             <td colspan="4">
-                                <hr>
+                                Tiền cọc : 
                             </td>
                         </tr>
-    
+                        <tr>
+
+                        </tr>
                        
                         <!-- br between each line -->
                         <tr class="break-line">
                             <td colspan="3">
-                                <hr>
+                                {{ isset($order->pile) ? $order->pile : 0 }}
+                            </td>
+                        </tr>
+
+                        <!-- br between each line -->
+                        <tr class="break-line">
+                            <td colspan="4">
+                                Tổng tiền cần thanh toán : 
+                            </td>
+                        </tr>
+                        <tr>
+
+                        </tr>
+                       
+                        <!-- br between each line -->
+                        <tr class="break-line">
+                            <td colspan="3">
+                                {{ $order->total_price - $order->pile }}
                             </td>
                         </tr>
     
                     </tbody>
-                    <tfoot>
-    
-                        <td colspan="3">
-                            <div>
-                                <p>
-                                    <b>
-                                        Billed From:
-                                    </b>
-                                    Wave Evolution SAS
-                                </p>
-                            </div>
-                        </td>
-    
-                    </tfoot>
                 </table>
     
             </main>
-    
-            <footer>
-    
-                <div class="row mx-0 mb-5">
-                    <aside class="col-md-7 px-0 pr-4">
-                        <div class="info">
-                            <p>
-                                * All invoice dates listed above reflect a period of midnight to midnight (UTC)
-                            </p>
-                            <p>
-                                Wave Evolution SAS | FR67524536992 | SAS au capital de 78 699,66€ | Siret:
-                                524 536 00059 | RCS: Paris B 524 536 992 - APE 6311Z 
-                            </p>
-                        </div>
-                    </aside>
-                    <aside class="col-md-5">
-    
-                        <div class="price">
-                            <hr class="mt-0 mb-2">
-                            <div class="mb-2 d-flex justify-content-between">
-                                <span class="col-8 text-right">
-                                    <b>
-                                        GRAND TOTAL
-                                    </b>
-                                </span>
-                                <span class="col-4 text-right">
-                                    {{ number_format($order->total) }} {{ $order->currency }}
-                                </span>
-                            </div>
-    
-                            <hr class="mt-0 mb-2">                        
-                            <div class="mb-2 d-flex justify-content-between">
-                                <span class="col-8 text-right">
-                                    Payments 
-                                </span>
-                                <span class="col-4 text-right">
-                                    {{ number_format($order->total) }} {{ $order->currency }}
-                                </span>
-                            </div>
-                        </div>
-                        
-                    </aside>
-                </div>
-    
-                <h4 style="font-size: 16px;">
-                    Invoice History 
-                </h4>
-    
-                
-                    <p style="font-size : 14px;">
-                        <b>
-                            {{ $order->created_at }}
-                        </b>
-                        @if($order->method === "STRIPE")
-                        Credit card payment: 
-                        <span>
-                            {{ number_format($order->total) }} VND
-                        </span>
-                        (Master, XXXX-XXXX-XXXX-XXXX)
-                        @endif
-                    </p>
-               
-    
-            </footer>
-    
         </div>
     </div>
     {{-- {{ asset('frontend/js/js-pdf/html2pdf.bundle.min.js') }} --}}
-    <script src="" ></script>
+    <script src=""></script>
     <script>
         var nameFile = "Billing"+document.getElementById('code').innerText;
         var element = document.getElementById('element-to-print');

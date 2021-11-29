@@ -122,14 +122,16 @@ Route::prefix('admin')->name('backend.')->group(function () {
                 Route::get('/delete/{id}', [OrderController::class, 'delete'])->name('delete');
                 Route::delete('/orders/delete', [OrderController::class, 'orderDeleteMany'])->name('orders.delete');
                 Route::get('/delete/order/{id}', [OrderController::class, 'orderDelete'])->name('orderDelete');
-                Route::get('/edit/{order_id}', [OrderController::class, 'edit'])->name('edit');
+
+                Route::get('/edit/{id}', [OrderController::class, 'edit'])->name('edit');
+                Route::patch('/update/order-pet', [OrderController::class, 'update'])->name('update');
 
                 Route::get('/insertService',[OrderController::class, 'insert'])->name('insert.service');
                 Route::post('/insertStore',[OrderController::class, 'insertStore'])->name('insert.service.store');
                 // Route::get('/orders/delete{id}', [OrderController::class, 'serviceDelete'])->name('orders.delete');
-
-                // Route::patch('/update/services', [OrderController::class, 'update'])->name('update');
                 Route::get('/search', [OrderController::class, 'search'])->name('search');
+
+                Route::get('/exportPDF/{id}',[OrderController::class, 'exportFile'])->name('export.pdf');
             });
 
             Route::prefix('/scheduled')->name('scheduled.')->group(function () {

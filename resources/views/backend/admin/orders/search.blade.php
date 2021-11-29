@@ -35,9 +35,9 @@
             {{ $order->petServices->price*$order->quantity }}
         </td>
         <td>
-            <a href="{{ route('backend.admin.orders.delete', $order->id) }}" type="button" class="btn btn-danger" >Xóa</a>
-            {{-- {{ $order->petInformation->id }} |
-            {{ $order->service_id }} --}}
+            <a href="{{ route('backend.admin.orders.delete', $order->id) }}" type="button" class="btn btn-sm btn-danger" >Xóa</a>
+            <a href="{{ route('backend.admin.orders.edit', $order->id) }}" type="button" class="btn btn-warning btn-sm btn-warning-edit">Sửa</a>
+            
         </td>
     </tr>
 @endforeach
