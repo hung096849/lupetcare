@@ -11,6 +11,7 @@ use App\Models\Role;
 use App\Services\RoleService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 class RoleController extends Controller
 {
@@ -52,7 +53,7 @@ class RoleController extends Controller
                     $permissions =  $this->permissionRepository->whereIn('slug', $request['permissions'])->get();
                     $role->permissions()->attach($permissions);
                 }
-                return redirect()->route('backend.admin.role.show')->with('success', Lang::get('message.create', ['model' => 'role']));
+                return redirect()->route('backend.admin.role.show')->with('success', Lang::get('message.create', ['model' => 'Vai trò']));
             }
         // }
     }
@@ -99,7 +100,7 @@ class RoleController extends Controller
         // if(Auth::user()->can(PermissionConstant::ROLE_PERMISSION_DELETE)) {
             $user = $this->roleRepository->find($request->id);
             $user->delete();
-            return redirect()->route('backend.admin.users.show')->with('success', Lang::get('message.delete', ['model' => 'User']));
+            return redirect()->back()->with('success', Lang::get('message.delete', ['model' => 'Vai trò']));
         // }
     }
 

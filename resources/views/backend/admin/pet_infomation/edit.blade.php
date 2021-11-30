@@ -42,7 +42,7 @@
                                 <div class="form-group">
                                     <label for="inputName">Tên thú cưng</label>
                                     <input type="text" name="name" class="form-control"
-                                        value="{{old('name',$petinfomation->name)}}" />
+                                        value="{{old('name', $petinfomation->name)}}" />
                                 </div>
                                 
                                 <div class="form-group">

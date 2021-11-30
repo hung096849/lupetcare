@@ -58,7 +58,7 @@
                                                     </div>
                                                 </div>
                                             </th>
-                                            <th style="width:40%;">Name</th> 
+                                            <th style="width:40%;">Tên</th> 
                                             <th style="width: 30%;">Slug</th>                                      
                                             <th>Action</th>
                                         </tr>

@@ -42,6 +42,7 @@
     </script>
     <!-- Toastr App -->
     <script src="{{ asset('backend/plugins/toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('backend/js/permission.js') }}"></script>
     <!-- Toastr App -->
     <script src="{{ asset('backend/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
