@@ -135,7 +135,7 @@ Route::prefix('admin')->name('backend.')->group(function () {
             });
 
             Route::prefix('/scheduled')->name('scheduled.')->group(function () {
-                Route::get('fullcalender', [CalenderController::class, 'index']);
+                Route::get('fullcalender', [CalenderController::class, 'index'])->name('show');
                 Route::post('fullcalenderAjax', [CalenderController::class, 'ajax']);
             });
 

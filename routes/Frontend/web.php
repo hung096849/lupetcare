@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\Auth\LoginController;
 use App\Http\Controllers\Frontend\Customer\CustomerController;
 use App\Http\Controllers\Frontend\Payment\PaymentController;
 use App\Http\Controllers\Frontend\Payment\PaypalController;
+use App\Http\Controllers\Frontend\PetInformation\PetInformationController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -40,16 +41,7 @@ Route::name('frontend.')->group(function () {
         Route::post('/reset-password', [LoginController::class, 'submitResetPasswordForm'])->name('reset.password.post');
     });
 
-    Route::middleware(['checkCustomer'])->group(function (){
-
-    });
-        Route::name('customers.')->group(function(){
-            Route::get('/ho-so',[CustomerController::class,'profile'])->name('profile');
-            Route::get('/change-password',[CustomerController::class,'changePass'])->name('show'); 
-            Route::post('/change-password',[CustomerController::class,'changePassword'])->name('changepass'); 
-        });
-
-        Route::name('services.')->group(function () {
+    Route::name('services.')->group(function () {
             Route::get('/dich-vu', [ServicesController::class,'index'])->name('show');
 
             // /services/detail/{slug}
@@ -69,5 +61,22 @@ Route::name('frontend.')->group(function () {
             Route::get('/lien-he', [ContactController::class, 'contactForm'])->name('show');
             Route::post('/lien-he', [ContactController::class, 'sendContact'])->name('contact.send');
         });
+
+    Route::middleware(['checkCustomer'])->group(function (){
+
+        Route::name('customers.')->group(function(){
+            Route::get('/ho-so',[CustomerController::class,'profile'])->name('profile');
+            Route::get('/change-password',[CustomerController::class,'changePass'])->name('show'); 
+            Route::post('/change-password',[CustomerController::class,'changePassword'])->name('changepass');
+
+        });
+
+        Route::get('/chi-tiet-hoa-don', [PetInformationController::class, 'show'])->name('profile-pet');
+
+
+
+    });
+        
+        
 
 });

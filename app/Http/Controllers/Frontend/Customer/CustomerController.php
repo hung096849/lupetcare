@@ -17,13 +17,16 @@ class CustomerController extends Controller
     {
         $this->customers = $customers;
     }
+
     public function profile(Request $request){
         $customers = $this->customers->find($request->id);
         return view('frontend.customers.profile', compact('customers'));
     }
+
     public function changePass(){
         return view('frontend.customers.changepass');
     }
+    
     public function changePassword(Request $request)
     {       
         
