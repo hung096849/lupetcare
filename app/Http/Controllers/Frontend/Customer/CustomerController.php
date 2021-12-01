@@ -37,4 +37,18 @@ class CustomerController extends Controller
    
          return redirect()->back()->with(['success' => 'Đổi mật khẩu thành công']);
     }
+    public function showChangeProfile(Request $request){
+        $customers = $this->customers->find($request->id);
+        return view('frontend.customers.changeProfile',compact('customers'));
+    }
+    public function changeProfile(Request $request){
+        $request->validate([
+            'name' => 'name',
+            'phone' => 'phone',
+        ]);
+   
+        Customers::find(auth('customers')->user()->id)->update(['name','phone']);
+        
+        return redirect()->back()->with(['success' => 'Đổi mật khẩu thành công']);
+    }
 }

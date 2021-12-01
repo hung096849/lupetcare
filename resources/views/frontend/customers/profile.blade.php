@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
-<head>
+
         <meta name="viewport" content="width=device-width, initial-scale=1,
             viewport-fit=cover" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/style.css') }}" />
         <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/main.css') }}" />
         <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/my-account.css') }}">
-    </head>
+
 
 <section class="my-account">
             <div class="container container-fluid container-padding">
@@ -47,7 +47,7 @@
                                                 <ul>
                                                     <li><a href="#" class="acctive">Hồ
                                                             sơ</a></li>
-                                                    <li><a href="#">Đổi thông
+                                                    <li><a href="{{ route('frontend.customers.showProfile') }}">Đổi thông
                                                             tin</a></li>
 
                                                     <li><a href="{{ route('frontend.customers.show') }}">Đổi mật khẩu</a></li>
@@ -97,14 +97,7 @@
                                         </div>
                                        
                                     </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="images">
-
-                                            <img src="theme/frontend/images/img-hot_service.png" alt="" class="img d-block">
-                                            <p class="title d-block">Ảnh đại
-                                                diện</p>
-                                        </div>
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>

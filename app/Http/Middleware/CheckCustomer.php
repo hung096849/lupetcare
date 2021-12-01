@@ -20,7 +20,7 @@ class CheckCustomer
         if(Auth::check()){
             return $next($request);
         }else{
-            return redirect(route('frontend.auth.login'));
+            return redirect(route('frontend.login.show'));
         }
     }
 }

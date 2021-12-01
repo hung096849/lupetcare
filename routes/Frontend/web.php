@@ -18,12 +18,6 @@ Route::name('frontend.')->group(function () {
     Route::get('/test',[TestController::class, 'index']);
     // Route::get('/test',[TestController::class, 'index']);
 
-    Route::name('payment.')->group(function() {
-        Route::get('/thanh-toan', [PaymentController::class, 'getPayment'])->name('getPayment');
-        Route::post('/thanh-toan', [PaymentController::class, 'postPayment'])->name('postPayment');
-        Route::get('/thanh-toan-paypal',[PaypalController::class, 'getPaypal'])->name('getPaypal');
-    });
-
     Route::name('homepage.')->group(function () {
         Route::get('/', [HomepageController::class,'index'])->name('show');
     });
@@ -41,14 +35,20 @@ Route::name('frontend.')->group(function () {
     });
 
     Route::middleware(['checkCustomer'])->group(function (){
-
+        Route::name('payment.')->group(function() {
+            Route::get('/thanh-toan', [PaymentController::class, 'getPayment'])->name('getPayment');
+            Route::post('/thanh-toan', [PaymentController::class, 'postPayment'])->name('postPayment');
+            Route::get('/thanh-toan-paypal',[PaypalController::class, 'getPaypal'])->name('getPaypal');
+        });
     });
         Route::name('customers.')->group(function(){
             Route::get('/ho-so',[CustomerController::class,'profile'])->name('profile');
-            Route::get('/change-password',[CustomerController::class,'changePass'])->name('show'); 
-            Route::post('/change-password',[CustomerController::class,'changePassword'])->name('changepass'); 
+            Route::get('/doi-thong-tin',[CustomerController::class,'showChangeProfile'])->name('showProfile');
+            Route::post('/doi-thong-tin',[CustomerController::class,'changeProfile'])->name('changeProfile');
+            Route::get('/doi-mat-khau',[CustomerController::class,'changePass'])->name('show'); 
+            Route::post('/doi-mat-khau',[CustomerController::class,'changePassword'])->name('changepass'); 
         });
-
+ 
         Route::name('services.')->group(function () {
             Route::get('/dich-vu', [ServicesController::class,'index'])->name('show');
 

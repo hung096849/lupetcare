@@ -85,6 +85,19 @@
                             </div>
 
                         </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="inputName">Trạng thái</label>
+                                <input type="datetime" name="status" id="title" class="form-control"
+                                    value=" {{ $customers->status == 0 ? 'Khách hàng' : 'Thành viên' }}" readonly/>
+                                @error('status')
+                                <div class="mt-1 text-red-500">
+                                    {{$message}}
+                                </div>
+                                @enderror
+                            </div>
+
+                        </div>
                         
                         <!-- /.card-body -->
                     </div>
