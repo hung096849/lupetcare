@@ -3,7 +3,7 @@
 <div class="wrapper">
 
     @include('backend.includes.navbar-top', [
-        'edit' => 'Role',
+        'edit' => 'Vai trò',
         'id' => $role->id,
         'url' => route('backend.admin.role.show')
     ])

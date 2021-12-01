@@ -60,7 +60,6 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->service_id);
         $date = Carbon::parse($request->date.' '.$request->time)->format("Y-m-d H:i:s");
 
         $petInfomation = $this->petInfo->find($request->pet_id);
@@ -92,19 +91,25 @@ class OrderController extends Controller
 
     public function edit(Request $request)
     {
+        $orderPet = $this->orderPet->with('petInformation', 'petServices')
+            ->find($request->id);
         $services = $this->services->all();
-        $orderPet = $this->orderPet->where('order_id', $request->order_id)->get();
-
-        if($orderPet){
-            foreach ($orderPet as $key => $value) {
-                $petId[] = $value->pet_id;
-                $serviceId[] = $value->service_id;
-            }
-        }
-        $petInfomation = $this->petInfo->whereIn('id', $petId)->get();
-
         return view('backend.admin.orders.edit', compact('orderPet', 'services'));
-    } 
+    }
+
+    public function update(Request $request)
+    {
+        $orderPet = $this->orderPet->find($request->id);
+        $orderPet->update([
+            'service_id' => $request->service_id,
+        ]);
+
+        $orders = $this->orders->find($orderPet->order->id);
+        $orders->update([
+            'total_price' => '1'
+        ]);
+        return redirect()->back()->with('success', Lang::get('message.update', ['model' => 'Dịch vụ thú cưng']));
+    }
 
     public function insert()
     {
@@ -158,5 +163,14 @@ class OrderController extends Controller
         $orders->delete();
 
         return redirect()->back()->with('success', Lang::get('message.delete', ['model' => 'Đơn hàng']));
+    }
+
+    public function exportFile(Request $request)
+    {
+        $orderPet = $this->orderPet->with('petInformation', 'petServices')
+            ->where('order_id', $request->id)
+            ->get();
+        $order = $this->orders->find($request->id);
+        return view('backend/admin/orders/exportOrderPDF', compact('orderPet', 'order'));
     }
 }

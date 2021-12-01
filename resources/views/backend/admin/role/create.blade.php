@@ -3,7 +3,7 @@
 <div class="wrapper">
 
     @include('backend.includes.navbar-top', [
-    'add' => 'Users',
+    'add' => 'Vai trò',
     'url' => route('backend.admin.users.show')
     ])
 
@@ -13,7 +13,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6" style="padding:30px;">
-                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> User Add</h1>
+                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> Thêm mới vai trò</h1>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                         <div class="card card-primary">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputName">Name</label>
+                                    <label for="inputName">Vai trò</label>
                                     <input type="text" name="name" id="title" class="form-control" required />
                                     @if ($errors->has('name'))
                                     <div class="mt-1 text-red-500">

@@ -17,6 +17,11 @@ class OrderPet extends Model
 
     public $sortable = ['order_id', 'pet_id'];    
     
+    public function order()
+    {
+        return $this->belongsTo(PetInformartion::class, 'order_id', 'id');
+    }
+    
     public function petInformation()
     {
         return $this->belongsTo(PetInformartion::class, 'pet_id', 'id');

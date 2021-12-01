@@ -15,7 +15,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6" style="padding:30px;">
-                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> Permission Add</h1>
+                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> Thêm quyền</h1>
                     </div>
                 </div>
             </div>
@@ -31,14 +31,14 @@
                         <div class="card card-primary">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputStatus">Permission Table</label>
+                                    <label for="inputStatus">Bảng phân quyền</label>
                                     <select id="inputStatus" name="name" class="form-control custom-select" required>
                                         <option value="{{ $data['users'] }}">{{ $data['users'] }}</option>
                                         <option value="{{ $data['roles'] }}">{{ $data['roles'] }}</option>
                                         <option value="{{ $data['customers'] }}">{{ $data['customers'] }}</option>
                                         <option value="{{ $data['customers'] }}">{{ $data['permissions'] }}</option>
-                                        <option value="{{ $data['plans'] }}">{{ $data['plans'] }}</option>
-                                        <option value="{{ $data['categories_plans'] }}">{{ $data['categories_plans'] }}</option>
+                                        {{-- <option value="{{ $data['plans'] }}">{{ $data['plans'] }}</option> --}}
+                                        {{-- <option value="{{ $data['categories_plans'] }}">{{ $data['categories_plans'] }}</option> --}}
                                     </select>  
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                                 <div class="form-group">
                                     <label for="inputStatus">Key</label>
                                     <select id="inputStatus" name="slug" class="form-control show-permission-table" required>
-                                        <option value="">Select your permission value</option>
+                                        <option value="">Chọn giá trị quyền của bạn</option>
                                     </select>  
                                 </div>
                             </div>
@@ -67,7 +67,7 @@
                 <div class="row">
                     <div class="col-12">
                         <input type="submit" value="Create new permission" class="btn btn-success float-left mr-2" />
-                        <a href="#" class="btn btn-secondary float-left">Cancel</a>
+                        <a href="#" class="btn btn-secondary float-left">Hủy bỏ</a>
                     </div>
                 </div>
             </form>

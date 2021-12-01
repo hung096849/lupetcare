@@ -55,7 +55,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="./pet-acc.html" class="list-text t-lisst
+                                    <a href="{{ route('frontend.profile-pet') }}" class="list-text t-lisst
                                         d-block"><i class="fa fa-paw icon-user" aria-hidden="true"></i>Thú cưng của
                                         tôi </a>
                                     <a href="./change-account.html" class="list-text t-lisst

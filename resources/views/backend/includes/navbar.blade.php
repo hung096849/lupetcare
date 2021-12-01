@@ -57,19 +57,19 @@
                   </a>
                   <ul class="nav nav-treeview">
                       <li class="nav-item">
-                          <a href="" class="nav-link">
+                          <a href="{{ route('backend.admin.users.show') }}" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Người dùng</p>
                           </a>
                       </li>
                       <li class="nav-item">
-                          <a href="" class="nav-link">
+                          <a href="{{ route('backend.admin.role.show') }}" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Vai trò</p>
                           </a>
                       </li>
                       <li class="nav-item">
-                          <a href="" class="nav-link">
+                          <a href="{{ route('backend.admin.permissions.show') }}" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Quyền</p>
                           </a>
@@ -77,22 +77,12 @@
                   </ul>
               </li>
               <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-user"></i>
+                    <a href="{{ route('backend.admin.customers.show') }}" class="nav-link">
+                    <i class="nav-icon fas fa-users"></i>
                         <p>
-                            Khách hàng
-                            <i class="fas fa-angle-left right"></i>
+                            Danh sách khách hàng
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('backend.admin.customers.show') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Danh sách khách hàng</p>
-                            </a>
-                        </li>
-                       
-                    </ul>
                 </li>
 
                 <li class="nav-item">
@@ -119,21 +109,12 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('backend.admin.contacts.show') }}" class="nav-link">
                         <i class="nav-icon fas fa-phone"></i>
                         <p>
-                            Góp ý của khách hàng
-                            <i class="fas fa-angle-left right"></i>
+                            Liên hệ
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('backend.admin.contacts.show') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Danh sách</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('backend.admin.petinformation.show') }}" class="nav-link">
@@ -145,9 +126,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
+                        <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>
-                            Order
+                            Đơn hàng
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -159,6 +140,14 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('backend.admin.scheduled.show') }}" class="nav-link">
+                        <i class="nav-icon fas fa-calendar-alt"></i>
+                        <p>
+                            Xếp lịch
+                        </p>
+                    </a>
                 </li>
             </ul>
         </nav>

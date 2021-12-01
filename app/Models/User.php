@@ -44,18 +44,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function role() {
+    public function roles()
+    {
         return $this->belongsTo(Role::class, 'role_id');
     }
-    
-    public function uploadAvatar($file) {
+
+    public function uploadAvatar($file)
+    {
         $filenameWithExt = $file->getClientOriginalName();
         //Get just filename
         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
         // Get just ext
         $extension = $file->getClientOriginalExtension();
         // Filename to store
-        $fileNameToStore = $filename.'_'.time().'.'.$extension;
+        $fileNameToStore = $filename . '_' . time() . '.' . $extension;
         // Upload Image
         $path = $file->storeAs('public/avatars', $fileNameToStore);
 

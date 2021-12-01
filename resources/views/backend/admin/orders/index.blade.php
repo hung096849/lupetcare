@@ -77,6 +77,9 @@
                                                     Trạng thái
                                                 </th>
                                                 <th>
+                                                    
+                                                </th>
+                                                <th>
                                                     Hành động
                                                 </th>
                                             </tr>
