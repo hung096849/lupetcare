@@ -104,17 +104,17 @@
                                                     class="form-control"
                                                     id="exampleInputName"
                                                     name="name"
-                                                    value="">
+                                                    value="{{old('name', Auth::guard('customers')->user()->name)}}">
                                             </div>
                                             <div class="form-group d-flex
                                                 align-items-center">
                                                 <label for="exampleInputPhone">Số
                                                     điện thoại:</label>
                                                 <input type="phone"
-                                                name="phone"
+                                                     name="phone"
                                                     class="form-control"
                                                     id="exampleInputPhone"
-                                                    value="">
+                                                    value="{{old('phone', Auth::guard('customers')->user()->phone)}}">
 
                                             </div>
                                            

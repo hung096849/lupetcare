@@ -8,7 +8,8 @@ use App\Rules\MatchOldPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\DB;
 class CustomerController extends Controller
 {
     protected $customers;
@@ -46,12 +47,15 @@ class CustomerController extends Controller
     }
     public function changeProfile(Request $request){
         $request->validate([
-            'name' => 'name',
-            'phone' => 'phone',
+            'name' => 'required',
+            'phone' => 'required',
         ]);
-   
-        Customers::find(auth('customers')->user()->id)->update(['name','phone']);
-        
-        return redirect()->back()->with(['success' => 'Đổi mật khẩu thành công']);
+        $userUpdate = [
+            'name'          =>  $request->name,
+            'slug' => SlugService::createSlug(Customers::class, 'slug', $request->name),
+            'phone'         =>  $request->phone,
+        ];
+        Customers::find(auth('customers')->user()->id)->update($userUpdate);
+        return redirect()->back()->with(['success' => 'Đổi thông tin thành công']);
     }
 }
