@@ -9,6 +9,8 @@ use App\Models\Services;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
+use App\Http\Requests\Backend\Services\ServicesFormRequest;
+
 
 use function App\Helpers\uploadFile;
 
@@ -56,7 +58,7 @@ class ServicesController extends Controller
         return view('backend/admin/services/create', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(ServicesFormRequest $request)
     {
 
         $this->services->create([
@@ -83,6 +85,7 @@ class ServicesController extends Controller
 
     public function update(Request $request)
     {
+
         $services = $this->services->where('id', $request->id)->first();
         if($request->image == ""){
             $image = $services->image;

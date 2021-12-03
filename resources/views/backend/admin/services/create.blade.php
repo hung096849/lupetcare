@@ -29,63 +29,108 @@
                     <div class="col-12">
                         <div class="card card-primary">
                             <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="inputName">Danh mục</label>
+                                            <select name="category_id" id="" class="custom-select">
+                                                @foreach ($categories as $categorie )
+                                                    <option  value="{{ old('category_id',$categorie->id ) }}">{{ $categorie->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('category_id')
+                                            <div class="mt-1 text-red-500">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputName">Tên dịch vụ</label>
+                                            <input type="text" name="service_name" id="title" class="form-control"
+                                                value="{{old('service_name')}}" placeholder="Name ..." />
+                                            @error('service_name')
+                                            <div class="mt-1 text-red-500">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputName">Hình ảnh</label>
+                                            <input type="file" name="image" id="title" class="form-control"
+                                                value="{{old('image')}}" placeholder="" />
+                                            <img id="blah" src="" width="100px" class="mt-2" />
+                                            @error('image')
+                                            <div class="mt-1 text-red-500">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                            <script>
+                                                function readURL(input) {
+                                                       if (input.files && input.files[0]) {
+                                                           var reader = new FileReader();
+                                                           reader.onload = function(e) {
+                                                               $('#blah').attr('src', e.target.result);
+                                                           }
+                                                           reader.readAsDataURL(input.files[0]);
+                                                       }
+                                                   }
+                                                   $(document).ready(function() {
+                                                       $("#image").change(function(e) {
+                                                           readURL(this);
+                                                           console.log(this.files);
+                                                       });
+                                                   });
+                                               </script>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="inputName">Giá</label>
+                                            <input type="text" name="price" id="title" class="form-control"
+                                                value="{{old('price')}}" placeholder="" />
+                                            @error('price')
+                                            <div class="mt-1 text-red-500">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputName">Giảm giá</label>
+                                            <input type="text" name="price_sale" id="title" class="form-control"
+                                                value="{{old('price_sale')}}" placeholder="" />
+                                            @error('price_sale')
+                                            <div class="mt-1 text-red-500">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
 
-                                <div class="form-group">
-                                    <label for="inputName">Danh muc</label>
-                                    <select name="category_id" id="" class="custom-select">
-                                        @foreach ($categories as $categorie )
-                                            <option  value="{{ old('category_id',$categorie->id ) }}">{{ $categorie->name }}</option>
-                                        @endforeach
-
-                                    </select>
-                                    @error('category_id')
-                                    <div class="mt-1 text-red-500">
-                                        {{$message}}
+                                        <div class="form-group">
+                                            <label for="inputName">Trạng thái</label>
+                                            <select name="status" id="" class="custom-select">
+                                                <option value="{{ old('status', 0 ) }}">Hoạt động</option>
+                                                <option value="{{ old('status', 1 ) }}">Không hoạt động</option>
+                                            </select>
+                                            @error('status')
+                                            <div class="mt-1 text-red-500">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputName">Thời gian</label>
+                                            <input type="text" name="time" id="title" class="form-control"
+                                                value="{{old('time')}}" placeholder="" />
+                                            @error('time')
+                                            <div class="mt-1 text-red-500">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
                                     </div>
-                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName">Ten dich vu</label>
-                                    <input type="text" name="service_name" id="title" class="form-control"
-                                        value="{{old('service_name')}}" placeholder="Name ..." />
-                                    @error('service_name')
-                                    <div class="mt-1 text-red-500">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputName">image</label>
-                                    <input type="file" name="image" id="title" class="form-control"
-                                        value="{{old('image')}}" placeholder="" />
-                                    @error('image')
-                                    <div class="mt-1 text-red-500">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputName">price</label>
-                                    <input type="text" name="price" id="title" class="form-control"
-                                        value="{{old('price')}}" placeholder="" />
-                                    @error('price')
-                                    <div class="mt-1 text-red-500">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputName">price_sale</label>
-                                    <input type="text" name="price_sale" id="title" class="form-control"
-                                        value="{{old('price_sale')}}" placeholder="" />
-                                    @error('price_sale')
-                                    <div class="mt-1 text-red-500">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputName">detail</label>
+                                    <label for="inputName">Chi tiết</label>
                                     <input type="text" name="detail" id="title" class="form-control"
                                         value="{{old('detail')}}" placeholder="" />
                                     @error('detail')
@@ -95,7 +140,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName">description</label>
+                                    <label for="inputName">Miêu tả</label>
                                     <input type="text" name="description" id="title" class="form-control"
                                         value="{{old('description')}}" placeholder="" />
                                     @error('description')
@@ -104,26 +149,7 @@
                                     </div>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputName">status</label>
-                                    <input type="text" name="status" id="title" class="form-control"
-                                        value="{{old('status')}}" placeholder="" />
-                                    @error('status')
-                                    <div class="mt-1 text-red-500">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputName">time</label>
-                                    <input type="time" name="time" id="title" class="form-control"
-                                        value="{{old('time')}}" placeholder="" />
-                                    @error('time')
-                                    <div class="mt-1 text-red-500">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
+
                             </div>
                         </div>
                         <!-- /.card-body -->
