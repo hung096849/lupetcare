@@ -9,8 +9,8 @@ use Kyslik\ColumnSortable\Sortable;
 
 class PetInformartion extends Model
 {
-    use Sluggable, Sortable;
-    use HasFactory;
+    use Sluggable;
+    use HasFactory , Sortable;
 
     protected $table = 'pet_informartions';
     protected $fillable = [

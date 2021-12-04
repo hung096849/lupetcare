@@ -8,7 +8,7 @@ use Kyslik\ColumnSortable\Sortable;
 
 class OrderPet extends Model
 {
-    use HasFactory, Sortable;
+    use HasFactory , Sortable;
 
     protected $table = 'order_pets';
     protected $fillable = [
