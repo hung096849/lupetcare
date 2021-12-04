@@ -131,8 +131,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Chi tiết</label>
-                                    <input type="text" name="detail" id="title" class="form-control"
+                                    <input type="text" name="detail" id="detail" class="form-control"
                                         value="{{old('detail')}}" placeholder="" />
+                                        <script>
+                                            CKEDITOR.replace( 'detail' );
+                                        </script>
                                     @error('detail')
                                     <div class="mt-1 text-red-500">
                                         {{$message}}
@@ -141,15 +144,25 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Miêu tả</label>
-                                    <input type="text" name="description" id="title" class="form-control"
-                                        value="{{old('description')}}" placeholder="" />
+                                    <textarea type="text" name="description" id="description" class="form-control"></textarea>
+                                    <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+                                    <script>
+                                        CKEDITOR.replace( 'description' );
+                                    </script>
+
                                     @error('description')
                                     <div class="mt-1 text-red-500">
                                         {{$message}}
                                     </div>
                                     @enderror
-                                </div>
 
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <input type="submit" value="Tạo mới" class="btn btn-success float-left mr-2" />
+                                        <a href="{{ route('backend.admin.services.show') }}" class="btn btn-secondary float-left">Quay lại</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -157,12 +170,7 @@
                     <!-- /.card -->
                 </div>
 
-                <div class="row">
-                    <div class="col-12">
-                        <input type="submit" value="Tạo mới" class="btn btn-success float-left mr-2" />
-                        <a href="{{ route('backend.admin.services.show') }}" class="btn btn-secondary float-left">Quay lại</a>
-                    </div>
-                </div>
+
             </form>
         </section>
         <!-- /.content -->

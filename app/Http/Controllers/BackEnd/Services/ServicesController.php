@@ -60,7 +60,6 @@ class ServicesController extends Controller
 
     public function store(ServicesFormRequest $request)
     {
-
         $this->services->create([
             'category_id' => $request->category_id,
             'service_name' => $request->service_name,

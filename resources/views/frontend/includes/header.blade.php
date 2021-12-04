@@ -44,7 +44,7 @@
                                 </ul>
                             </li> --}}
                             <li><a href="{{ route('frontend.services.show') }}" class="{{ (request()->is('dich-vu')) ? 'active' : '' }}">Dịch Vụ</a></li>
-                            <li><a rel="" href="#">Tin tức</a></li>
+                            <li><a rel=""  href="{{ route('frontend.tin-tuc.show') }}" class="{{ (request()->is('tin-tuc')) ? 'active' : '' }}">Tin tức</a></li>
                             <li>
                                 <a rel="" href="{{ route('frontend.contact_sendmail.show') }}" class="{{ (request()->is('lien-he')) ? 'active' : '' }}">Liên hệ</a></li>
                         </ul>
@@ -71,22 +71,22 @@
                             </div>
                             <div class="col-md-2 d-flex
                                 justify-content-center">
-                              
+
                                     <i class="fa fa-user icon-hd icon-login" aria-hidden="true" onclick="showSearch()"></i>
                                         <div class="header__notify">
                                             <header class="header__notify-header">
-                                            
+
                                             </header>
                                             <ul class="header__notify-list">
                                                 @if(!Auth::guard('customers')->check())
-                                        
+
                                                 <li class="header__notify-item header__notify-item--viewed">
                                                     <a href="{{ route('frontend.login.register-user') }}" class="header__notify-link">
                                                         <i class="" aria-hidden="true"></i>
                                                         <div class="header__notify-info">
-                                                        
+
                                                             <span class="header__notify-name">Đăng kí </span>
-                                                            
+
                                                         </div>
                                                     </a>
                                                 </li>
@@ -94,35 +94,35 @@
                                                     <a href="{{ route('frontend.login.show') }}" class="header__notify-link">
                                                         <i class="" aria-hidden="true"></i>
                                                             <div class="header__notify-info">
-                                                                
+
                                                                 <span class="header__notify-name">Đăng nhập </span>
-                                                          
+
                                                             </div>
                                                     </a>
                                                 </li>
                                                 @else
                                                 <li class="header__notify-item header__notify-item--viewed">
-                                                    
-                                                        <i class="" aria-hidden="true"></i>
+
+                                                        <i class="fa fa-user icon-hd icon-login " aria-hidden="true"></i>
                                                         <div class="header__notify-info">
-                                                        
+
                                                         <a href="{{ route('frontend.customers.profile') }}" class="header__notify-link"> <span class="header__notify-name">{{ Auth::guard('customers')->user()->name }}</span></a>
-                                                            
+
                                                         </div>
-                                                    
+
                                                 </li>
                                                 <li class="header__notify-item">
                                                     <a href="{{ route('frontend.login.logout') }}" class="header__notify-link">
                                                         <i class="" aria-hidden="true"></i>
                                                             <div class="header__notify-info">
-                                                                
+
                                                                 <span class="header__notify-name">Đăng xuất </span>
-                                                          
+
                                                             </div>
                                                     </a>
                                                 </li>
                                                 @endif
-                                       
+
                                             </ul>
                                             <!-- <div class="header__notify-footer">
                                                 <a href="" class="header__notify-footer-btn">

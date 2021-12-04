@@ -151,8 +151,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputName">Miêu tả</label>
-                                        <input type="text" name="description" id="title" class="form-control"
-                                            value="{{ old('description', $services->description) }}" placeholder="" />
+                                        <textarea type="text" name="description" id="title" class="form-control"
+                                            value="{{ old('description', $services->description) }}" placeholder="" ></textarea>
                                         @error('description')
                                             <div class="mt-1 text-red-500">
                                                 {{ $message }}
