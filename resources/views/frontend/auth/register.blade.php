@@ -48,43 +48,43 @@
                                     <label for="exampleInputUserName" class="form-label mr-3"><i class="fa
                                             fa-user-circle-o" aria-hidden="true"></i></label>
                                     <input type="text" class="form-control" id="exampleInputUserName" name="name" placeholder= "Họ và tên" aria-describedby="UserNameHelp">
-                                    @if ($errors->has('name'))
-                                            <span class="text-danger">{{ $errors->first('name') }}</span>
-                                        @endif
                                 </div>
+                                @if ($errors->has('name'))
+                                            <span style="color: red; margin-left: 70px;">{{ $errors->first('name') }}</span>
+                                        @endif
                                 <div class="mb-3 d-flex">
                                     <label for="exampleInputEmail1" class="form-label mr-3"><i class="fa
                                             fa-envelope-o" aria-hidden="true"></i></label>
                                     <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder= "Email" aria-describedby="emailHelp">
-                                    @if ($errors->has('email'))
-                                            <span class="text-danger">{{ $errors->first('email') }}</span>
-                                        @endif
+                        
                                 </div>
+                                @if ($errors->has('email'))
+                                            <span style="color: red; margin-left: 70px;">{{ $errors->first('email') }}</span>
+                                        @endif
                                 <div class="mb-3 d-flex">
                                     <label for="exampleInputPhone" class="form-label mr-3"><i class="fa
                                             fa-phone" aria-hidden="true"></i></label>
                                     <input type="tel" class="form-control" name="phone" id="exampleInputPhone" placeholder= "Số điện thoại" aria-describedby="PhoneHelp">
-                                    @if ($errors->has('phone'))
-                                            <span class="text-danger">{{ $errors->first('phone') }}</span>
-                                        @endif
                                 </div>
+                                @if ($errors->has('phone'))
+                                            <span style="color: red; margin-left: 70px;">{{ $errors->first('phone') }}</span>
+                                        @endif
                                 <div class="mb-3 d-flex">
                                     <label for="exampleInputPassword " class="form-label mr-3"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
                                     </label>
                                     <input type="password" class="form-control" name="password" placeholder= "Mật khẩu" id="exampleInputPassword">
-                                    @if ($errors->has('password'))
-                                            <span class="text-danger">{{ $errors->first('password') }}</span>
-                                    @endif
                                 </div>
+                                @if ($errors->has('password'))
+                                            <span style="color: red; margin-left: 70px;">{{ $errors->first('password') }}</span>
+                                    @endif
                                 <div class="mb-3 d-flex">
                                     <label for="exampleInputPassword " class="form-label mr-3"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
                                     </label>
                                     <input type="password" class="form-control" name="re_password" placeholder= "Xác nhận mật khẩu" id="exampleInputPassword">
-                                    @if ($errors->has('re_password'))
-                                            <span class="text-danger">{{ $errors->first('re_password') }}</span>
-                                    @endif
                                 </div>
-                            
+                               @if ($errors->has('re_password'))
+                                            <span style="color: red; margin-left: 70px;">{{ $errors->first('re_password') }}</span>
+                                    @endif
                                
                                 <div class="forn-btn">
 

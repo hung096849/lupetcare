@@ -53,22 +53,22 @@
                                     <input type="email" class="form-control"
                                         id="exampleInputUserName"
                                         name="email" value="{{ old('email') }}">
-                                        @if ($errors->has('email'))
-                                        <span class="text-danger">{{ $errors->first('email') }}</span>
-                                    @endif
+                                      
                                 </div>
-                              
+                                @if ($errors->has('email'))
+                                        <span style="color: red; margin-left: 70px;">{{ $errors->first('email') }}</span>
+                                    @endif
                                 <div class="mb-3 d-flex">
                                     <label for="exampleInputPassword "
                                         class="form-label mr-3"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
                                     </label>
                                     <input type="password" class="form-control" name="password"
                                         id="exampleInputPassword">
-                                        @if ($errors->has('password'))
-                                            <span class="text-danger">{{ $errors->first('password') }}</span>
-                                        @endif
-                                </div>
                                 
+                                </div>
+                                @if ($errors->has('password'))
+                                            <span style="color: red; margin-left: 70px;">{{ $errors->first('password') }}</span>
+                                        @endif
                                 <div class="forn-btn">
 
                                     <button type="submit" class="btn btn-primary btn-register">ĐĂNG nhập</button>

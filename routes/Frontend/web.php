@@ -63,7 +63,7 @@ Route::name('frontend.')->group(function () {
         });
 
     Route::middleware(['checkCustomer'])->group(function (){
-    });
+   
 
         Route::name('customers.')->group(function(){
             Route::get('/ho-so',[CustomerController::class,'profile'])->name('profile');
@@ -72,7 +72,7 @@ Route::name('frontend.')->group(function () {
             Route::get('/change-password',[CustomerController::class,'changePass'])->name('show'); 
             Route::post('/change-password',[CustomerController::class,'changePassword'])->name('changepass');
 
-       
+        });
         Route::get('/chi-tiet-hoa-don', [PetInformationController::class, 'show'])->name('profile-pet');
 
 
