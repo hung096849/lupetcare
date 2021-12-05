@@ -38,7 +38,7 @@ class ClearUnverifiedCustomers extends Command
      */
     public function handle()
     {
-        Customers::where('is_verified','==1',true)->delete();
+        Customers::all()->where('is_verified','=1')->delete();
         $this->info('Clear unverified users!');
         return Command::SUCCESS;
     }
