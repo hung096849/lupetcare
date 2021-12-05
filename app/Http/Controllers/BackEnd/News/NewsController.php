@@ -75,7 +75,7 @@ class NewsController extends Controller
         if($request->image == ""){
             $image = $news->image;
         }else{
-            $image = uploadFile($request->image, 'Service_image');
+            $image = uploadFile($request->image, 'News_image');
         }
         $this->news->create([
             'id' => $request->id,
