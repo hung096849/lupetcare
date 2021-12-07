@@ -4,7 +4,7 @@
 <div class="wrapper">
 
     @include('backend.includes.navbar-top', [
-        'list' => 'Permissions',
+        'list' => 'Danh sách quyền',
         'url' => route('backend.admin.permissions.show')
     ])
 
@@ -17,9 +17,9 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-8" style="padding:30px;">
-                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> Permissions</h1>
-                        <a href="{{ route('backend.admin.permissions.create') }}" class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i> Add new</a>
-                        <button class="btn btn-danger float-left delete_all" data-url="{{ route('backend.admin.permissions.permissions.delete') }}"><i class="fas fa-trash"></i> Bulk Delete</button>
+                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> Quyền</h1>
+                        <a href="{{ route('backend.admin.permissions.create') }}" class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i> Thêm mới</a>
+                        <button class="btn btn-danger float-left delete_all" data-url="{{ route('backend.admin.permissions.permissions.delete') }}"><i class="fas fa-trash"></i> Xóa nhiều</button>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                                             </th>
                                             <th style="width:40%;">Tên</th> 
                                             <th style="width: 30%;">Slug</th>                                      
-                                            <th>Action</th>
+                                            <th>Hành động</th>
                                         </tr>
                                     </thead>
                                     <tbody id="search-data">

@@ -45,7 +45,7 @@ var calendar = $('#calendar').fullCalendar({
                     selectable: true,
                     selectHelper: true,
                     select: function (start, end, allDay) {
-                        var title = prompt('Event Title:');
+                        var title = prompt('Thêm lịch :');
                         if (title) {
                             var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
                             var end = $.fullCalendar.formatDate(end, "Y-MM-DD");
@@ -59,7 +59,7 @@ var calendar = $('#calendar').fullCalendar({
                                 },
                                 type: "POST",
                                 success: function (data) {
-                                    displayMessage("Event Created Successfully");
+                                    displayMessage("Tạo mới thành công");
   
                                     calendar.fullCalendar('renderEvent',
                                         {
@@ -90,12 +90,12 @@ var calendar = $('#calendar').fullCalendar({
                             },
                             type: "POST",
                             success: function (response) {
-                                displayMessage("Event Updated Successfully");
+                                displayMessage("Sửa thành công");
                             }
                         });
                     },
                     eventClick: function (event) {
-                        var deleteMsg = confirm("Do you really want to delete?");
+                        var deleteMsg = confirm("Bạn có chắc chắn muốn xóa ?");
                         if (deleteMsg) {
                             $.ajax({
                                 type: "POST",
@@ -106,7 +106,7 @@ var calendar = $('#calendar').fullCalendar({
                                 },
                                 success: function (response) {
                                     calendar.fullCalendar('removeEvents', event.id);
-                                    displayMessage("Event Deleted Successfully");
+                                    displayMessage("Xóa thành công !");
                                 }
                             });
                         }

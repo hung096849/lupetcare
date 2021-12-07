@@ -3,7 +3,7 @@
 <div class="wrapper">
 
     @include('backend.includes.navbar-top', [
-    'add' => 'Pet Information',
+    'add' => 'Thông tin thú cưng',
     'url' => route('backend.admin.petinformation.show')
     ])
 

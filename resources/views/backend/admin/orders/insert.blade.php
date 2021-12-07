@@ -50,7 +50,7 @@
                                   <label for="">Mã hóa đơn</label>
                                   <select class="form-control" name="order_id" id="">
                                       @foreach ($order as $item)
-                                        <option value="{{ $item->id }}"> {{ $item->customer->name }} - {{ $item->id }}</option>
+                                        <option value="{{ $item->id }}"> {{ $item->order_code }}</option>
                                       @endforeach
                                   </select>
                                 </div>

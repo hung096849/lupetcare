@@ -60,23 +60,23 @@ class UserController extends Controller
     }
 
     public function view(Request $request) {
-        if(Auth::user()->can(PermissionConstant::USER_PERMISSION_VIEW)) {
+        // if(Auth::user()->can(PermissionConstant::USER_PERMISSION_VIEW)) {
             $user = $this->userRepository->find($request->id);
             $roles = $this->roleRepository->all();
             return view('backend/admin/users/view', compact('user', 'roles'));
-        }
+        // }
     }
 
     public function edit(Request $request) {
-        if(Auth::user()->can(PermissionConstant::USER_PERMISSION_EDIT)) {
+        // if(Auth::user()->can(PermissionConstant::USER_PERMISSION_EDIT)) {
             $user = $this->userRepository->find($request->id);
             $roles = $this->roleRepository->all();
             return view('backend/admin/users/edit', compact('user', 'roles'));
-        }
+        // }
     }
 
     public function update(UpdateUsersRequest $request) {
-        if(Auth::user()->can(PermissionConstant::USER_PERMISSION_EDIT)) {
+        // if(Auth::user()->can(PermissionConstant::USER_PERMISSION_EDIT)) {
             if($request->validated()) {
                 $role = $this->roleRepository->where('id', $request['role_id'])->first();
                 if(!$role) {
@@ -96,26 +96,26 @@ class UserController extends Controller
                 // $permissions = $this->roleRepository->with('permissions')->where('id', $role->id)->first();
                 // $user->permissions()->syncWithoutDetaching($permissions->permissions);
                 return redirect()->route('backend.admin.users.edit', $user->id)->with('success', Lang::get('message.update', ['model' => 'User']));;
-            }
+            // }
         }
     }
 
     public function delete(Request $request) {
-        if(Auth::user()->can(PermissionConstant::USER_PERMISSION_DELETE)) {
+        // if(Auth::user()->can(PermissionConstant::USER_PERMISSION_DELETE)) {
             if(Auth::user()->id === (int)$request->id) {
                 return redirect()->route('backend.admin.users.show')->with('wrong', Lang::get('message.wrong', ['model' => 'User']));
             }
             $user = $this->userRepository->find($request->id);
             $user->delete();
             return redirect()->route('backend.admin.users.show')->with('success', Lang::get('message.delete', ['model' => 'User']));
-        }
+        // }
     }
 
     public function usersDelete(Request $request) {
-        if(Auth::user()->can(PermissionConstant::USER_PERMISSION_DELETE)) {
+        // if(Auth::user()->can(PermissionConstant::USER_PERMISSION_DELETE)) {
             $this->userRepository->whereIn('id', explode(",", $request->ids))->delete();
             return response()->json(['success' => "Delete user successful"]);
-        }
+        // }
     }
 
     public function search(Request $request) {

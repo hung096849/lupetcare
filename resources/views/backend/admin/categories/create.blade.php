@@ -3,7 +3,7 @@
 <div class="wrapper">
 
     @include('backend.includes.navbar-top', [
-    'add' => 'categories',
+    'add' => 'Danh mục',
     'url' => route('backend.admin.categories.show')
     ])
 
@@ -30,9 +30,9 @@
                         <div class="card card-primary">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputName">Name</label>
+                                    <label for="inputName">Tên danh mục</label>
                                     <input type="text" name="name" id="title" class="form-control"
-                                        value="{{old('name')}}" placeholder="Name ..." />
+                                        value="{{old('name')}}" placeholder="Tên danh mục ..." />
                                     @error('name')
                                     <div class="mt-1 text-red-500">
                                         {{$message}}

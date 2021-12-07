@@ -58,7 +58,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title" style="font-weight: bold;">Permissions</h3>
+                                <h3 class="card-title" style="font-weight: bold;">Quyền</h3>
                             </div>
                             <!-- ./card-header -->
                             <div class="card-body p-0">
@@ -67,9 +67,9 @@
                                         <tr>
                                             <td class="border-0">
                                                 &nbsp;
-                                                <a href="#" class="check_permission_all">Select All </a>
+                                                <a href="#" class="check_permission_all">Chọn tất cả </a>
                                                 /&nbsp;
-                                                <a href="#" class="deselect_permission_all">Deselect All</a>
+                                                <a href="#" class="deselect_permission_all">Bỏ chọn tất cả</a>
                                             </td>
                                         </tr>
                                         @foreach($permissions as $key => $permission)
@@ -128,8 +128,8 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <input type="submit" value="Create new user" class="btn btn-success float-left mr-2" />
-                        <a href="#" class="btn btn-secondary float-left">Cancel</a>
+                        <input type="submit" value="Tạo mới vai trò" class="btn btn-success float-left mr-2" />
+                        <a href="#" class="btn btn-secondary float-left">Hủy bỏ</a>
                     </div>
                 </div>
             </form>
