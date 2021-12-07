@@ -3,7 +3,7 @@
 <div class="wrapper">
 
     @include('backend.includes.navbar-top', [
-        'add' => 'Permissions',
+        'add' => 'Quyền',
         'url' => route('backend.admin.permissions.show')
     ])
 
@@ -66,7 +66,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <input type="submit" value="Create new permission" class="btn btn-success float-left mr-2" />
+                        <input type="submit" value="Tạo mới quyền" class="btn btn-success float-left mr-2" />
                         <a href="#" class="btn btn-secondary float-left">Hủy bỏ</a>
                     </div>
                 </div>

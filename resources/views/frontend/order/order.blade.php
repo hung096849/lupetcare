@@ -49,7 +49,7 @@
                                                 <div class="col-md-6">
                                                     <label for="Name " class="pt-4 pb-2 book-form-text">Họ và tên
                                                         *</label>
-                                                    <input type="text" name="name" id="name"
+                                                    <input type="text" value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->name : ""  }}" name="name" id="name"
                                                         class="form-control input-form-service">
                                                     <span class="error_name text-danger"></span>
                                                 </div>
@@ -57,7 +57,7 @@
                                                     <label for="phoneNumber" class="pt-4 pb-2 book-form-text">Số điện
                                                         thoại
                                                         *</label>
-                                                    <input type="text" name="phone" id="phone"
+                                                    <input type="text" value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->phone : ""  }}" name="phone" id="phone"
                                                         class="form-control input-form-service">
                                                     <span class="error_phone text-danger"></span>
                                                 </div>
@@ -66,7 +66,7 @@
                                                 <div class="col-12">
                                                     <label for="Name " class="pt-4 pb-2 book-form-text">Email của bạn
                                                         *</label>
-                                                    <input type="text" name="email" id="email"
+                                                    <input type="text" value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->email : ""  }}" name="email" id="email"
                                                         class="form-control input-form-service">
                                                     <span class="error_email text-danger"></span>
                                                 </div>

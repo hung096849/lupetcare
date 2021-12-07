@@ -29,7 +29,7 @@
             {{ $order->petServices->price }}
         </td>
         <td>
-            {{ $order->quantity }}
+            Loại {{ $order->quantity }}
         </td>
         <td>
             {{ $order->petServices->price*$order->quantity }}

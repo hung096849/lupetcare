@@ -42,12 +42,12 @@
                   </div>
                 </div>
               </div>
-              <a href="{{ route('frontend.profile-pet') }}" class="list-text t-lisst
+              {{-- <a href="{{ route('frontend.customers.pet.information') }}" class="list-text t-lisst
                                 d-block"><i class="fa fa-paw icon-user" aria-hidden="true"></i>Thú cưng của
-                tôi </a>
-              <a href="./change-account.html" class="list-text t-lisst
+                tôi </a> --}}
+              <a href="{{ route('frontend.order.customer') }}" class="list-text t-lisst
                                 d-block"><i class="fa fa-briefcase
-                                    icon-user" aria-hidden="true"></i>Đơn mua </a>
+                                    icon-user" aria-hidden="true"></i>Đơn hàng của tôi </a>
               <a href="./purchase-order.html" class="list-text t-lisst
                                 d-block"><i class="fa fa-bell icon-user" aria-hidden="true"></i>Thông báo
               </a>
@@ -58,7 +58,7 @@
       </div>
       <div class="col-12 col-md-9">
         @foreach ($orders as $item)
-        <div class="content-account">
+        <div class="content-account mb-3">
           <div class="title-content d-flex justify-content-between px-4 py-4">
             <span class="text">Đơn hàng : {{ $item->order_code }}</span>
             <span class="sub"> {{ $customer->name }}
@@ -75,11 +75,15 @@
                   <span class="title t-text">Ngày :</span>
                   <span class="sub t-text">{{ $item->created_at }}</span>
                 </div>
+                {{-- <div class="item">
+                  <span class="title t-text">Trạng thái đơn hàng :</span>
+                  <span class="sub t-text">{{ $item->is_paid }}</span>
+                </div> --}}
                 <div class="item">
-                  <span class="title t-text">Xem chi tiết</span>
-                  <span class="sub t-text"><a href="">Click</a></span>
+                  <span class="sub t-text"><a href="{{ route('frontend.show.order.detail', $item->id) }}" >Xem chi tiết hóa đơn</a></span>
                 </div>
               </div>
+
               <div class="col-12 col-md-6">
                 <div class="images">
                   <img src="{{ asset('frontend/images/img-hot_service.png') }}" class="img d-block" />
