@@ -141,8 +141,10 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputName">Chi tiết</label>
-                                        <input type="text" name="detail" id="title" class="form-control"
-                                            value="{{ old('detail', $services->detail) }}" placeholder="" />
+                                        <textarea type="text" name="detail" id="detail" class="form-control">{{ $services->detail }}</textarea>
+                                        <script>
+                                            CKEDITOR.replace( 'detail' );
+                                        </script>
                                         @error('detail')
                                             <div class="mt-1 text-red-500">
                                                 {{ $message }}
@@ -151,8 +153,10 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputName">Miêu tả</label>
-                                        <textarea type="text" name="description" id="title" class="form-control"
-                                            value="{{ old('description', $services->description) }}" placeholder="" ></textarea>
+                                        <textarea type="text" name="description" id="description" class="form-control">{{ $services->description }}</textarea>
+                                    <script>
+                                        CKEDITOR.replace( 'description' );
+                                    </script>
                                         @error('description')
                                             <div class="mt-1 text-red-500">
                                                 {{ $message }}

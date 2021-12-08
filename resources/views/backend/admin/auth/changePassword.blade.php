@@ -13,7 +13,6 @@
 <body>
 
     <body class="scrollstyle1">
-
         <section class="vh-100">
             <div class="container-fluid h-custom">
                 <div class="row d-flex justify-content-center align-items-center h-100">
@@ -22,40 +21,39 @@
                             srcset="" class="img-fluid">
                     </div>
                     <div class="col-md-8 col-lg-6 col-xl-4 ">
-                        <h1 class="title w-100">Đăng nhập</h1>
-                        <form class="w-100" method="POST" action="{{ route('backend.auth.login') }}">
+                        <h1 class="title w-100">Đổi mật khẩu</h1>
+                        <form class="w-100" method="POST" action="{{ route('backend.auth.postchangePassword') }}">
                             @csrf
-                            <!-- Email input -->
-                            <div class="form-outline mb-4">
-
-                                <input type="text" placeholder="Email" id="email" class="form-control form-control-lg"
-                                    name="email">
-                                @if ($errors->has('email'))
-                                    <span class="text-danger">{{ $errors->first('email') }}</span>
-                                @endif
-                            </div>
                             <!-- Password input -->
                             <div class="form-outline mb-3">
                                 <input type="password" placeholder="Password" id="password"
-                                    class="form-control form-control-lg" name="password">
+                                    class="form-control form-control-lg" name="password" >
                                 @if ($errors->has('password'))
                                     <span class="text-danger">{{ $errors->first('password') }}</span>
                                 @endif
                             </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <!-- Checkbox -->
-                                <div class="form-check mb-0">
-                                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                                    <label class="form-check-label" for="form2Example3">
-                                        Remember me
-                                    </label>
-                                </div>
-                                <a href="#!" class="text-body">Forgot password?</a>
+                            @if (session('msg'))
+                            <span class="text-danger"> {{session('msg')  }}</span>
+                            @endif
+                            <!--New Password input -->
+                            <div class="form-outline mb-3">
+                                <input type="password" placeholder="newpassword" id="newpassword"
+                                    class="form-control form-control-lg" name="newpassword" >
+                                @if ($errors->has('newpassword'))
+                                    <span class="text-danger">{{ $errors->first('newpassword') }}</span>
+                                @endif
                             </div>
-
+                            <!--Confirm new Password input -->
+                            <div class="form-outline mb-3">
+                                <input type="password" placeholder="comfirm-password" id="comfirm-password"
+                                    class="form-control form-control-lg" name="comfirm-password">
+                                @if ($errors->has('comfirm-password'))
+                                    <span class="text-danger">{{ $errors->first('comfirm-password') }}</span>
+                                @endif
+                            </div>
                             <div class="text-center text-lg-start mt-4 pt-2">
                                 <button type="submit" class="btn btn-primary btn-lg"
-                                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Đổi mật khẩu</button>
                             </div>
                         </form>
                     </div>

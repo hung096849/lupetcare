@@ -10,7 +10,6 @@
     </td>
     <td>{{ $category->id }}</td>
     <td>{{ $category->name }}</td>
-    {{-- <td>{{ $category->slug }}</td> --}}
     <td>
         <a href="{{ route('backend.admin.categories.view', $category->id) }}"
             class="btn btn-warning btn-sm btn-warning-edit"><i class="fas fa-eye"></i> Chi tiết</a>

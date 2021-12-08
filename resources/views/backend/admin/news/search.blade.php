@@ -10,7 +10,6 @@
     </td>
     <td>{{ $news->id}}</td>
     <td>{{ $news->title }}</td>
-    <td>{{ $news->slug }}</td>
     <td>
         <a href="{{ route('backend.admin.news.view', $news->id) }}"
             class="btn btn-warning btn-sm btn-warning-edit"><i class="fas fa-eye"></i> View</a>

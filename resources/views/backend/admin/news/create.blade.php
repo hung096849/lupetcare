@@ -30,7 +30,7 @@
                         <div class="card card-primary">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputName">Tên dịch vụ</label>
+                                    <label for="inputName">Tiêu đề</label>
                                     <input type="text" name="title" id="title" class="form-control"
                                         value="{{old('title')}}" placeholder="Name ..." />
                                     @error('title')

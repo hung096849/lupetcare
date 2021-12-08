@@ -63,7 +63,6 @@
                                             <th>
                                                 @sortablelink('name', 'Tên danh mục')
                                             </th>
-                                            {{-- <th>Slug</th> --}}
                                             <th>Hành động</th>
                                         </tr>
                                     </thead>

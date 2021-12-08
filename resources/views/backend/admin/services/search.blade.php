@@ -14,7 +14,6 @@
     <td>
         {{ $service->status == 0 ? "Đang hoạt động" : "Không hoạt động" }}
     </td>
-    <td>{{ $service->slug }}</td>
     <td>
         <a href="{{ route('backend.admin.services.view', $service->id) }}"
             class="btn btn-warning btn-sm btn-warning-edit"><i class="fas fa-eye"></i> View</a>

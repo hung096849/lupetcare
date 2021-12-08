@@ -31,7 +31,7 @@
                             <div class="card-body">
                                 {{ method_field('PATCH') }}
                                 <div class="form-group">
-                                    <label for="inputName">Tên bài viết</label>
+                                    <label for="inputName">Tiêu đề</label>
                                     <input type="text" name="title" id="title" class="form-control"
                                         value="{{old('title', $news->title)}}" placeholder="Name ..." />
                                     @error('title')

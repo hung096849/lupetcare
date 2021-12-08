@@ -2,6 +2,11 @@
 @section('content')
 <div class="wrapper">
 
+    @include('backend.includes.navbar-top', [
+
+    'url' => route('backend.admin.dashboard.show')
+    ])
+
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="{{ asset('backend/dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60"
@@ -61,7 +66,7 @@
                 <i class="ion ion-person-add"></i>
               </div>
               <a href="{{ route('backend.admin.customers.show') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              
+
             </div>
           </div>
 

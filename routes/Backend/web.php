@@ -15,6 +15,8 @@ Route::prefix('admin')->name('backend.')->group(function () {
         Route::get('/login', 'App\Http\Controllers\Backend\Auth\LoginController@index')->name('show');
         Route::post('/login', 'App\Http\Controllers\Backend\Auth\LoginController@login')->name('login');
         Route::get('/logout', 'App\Http\Controllers\Backend\Auth\LoginController@Logout')->name('logout');
+        Route::get('/changepassword', 'App\Http\Controllers\Backend\Auth\LoginController@changepassword')->name('changepassword');
+        Route::post('/changepassword', 'App\Http\Controllers\Backend\Auth\LoginController@postchangePassword')->name('postchangePassword');
     });
 
     Route::middleware(['checkLogin'])->group(function () {

@@ -131,8 +131,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Chi tiết</label>
-                                    <input type="text" name="detail" id="detail" class="form-control"
-                                        value="{{old('detail')}}" placeholder="" />
+
+                                        <textarea type="text" name="detail" id="detail" class="form-control"></textarea>
                                         <script>
                                             CKEDITOR.replace( 'detail' );
                                         </script>
@@ -145,7 +145,6 @@
                                 <div class="form-group">
                                     <label for="inputName">Miêu tả</label>
                                     <textarea type="text" name="description" id="description" class="form-control"></textarea>
-                                    <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
                                     <script>
                                         CKEDITOR.replace( 'description' );
                                     </script>

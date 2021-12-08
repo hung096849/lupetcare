@@ -65,7 +65,6 @@
                                             <th>Tên dịch vụ</th>
                                             <th>Ảnh</th>
                                             <th>Trạng thái</th>
-                                            <th>Slug</th>
                                             <th>Hành động</th>
                                         </tr>
                                     </thead>
