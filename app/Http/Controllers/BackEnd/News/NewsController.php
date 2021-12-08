@@ -53,7 +53,6 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $this->news->create([
-            'id' => $request->id,
             'title' => $request->title,
             'image' => uploadFile($request->image, 'News_image'),
             'detail' => $request->detail,
