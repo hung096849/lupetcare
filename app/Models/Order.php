@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Kyslik\ColumnSortable\Sortable;
+// use Kyslik\ColumnSortable\Sortable;, Sortable
 class Order extends Model
 {
-    use HasFactory, Sortable;
+    use HasFactory;
 
     const IN_PROCESS = 0;
     const PROCESS = 1;
