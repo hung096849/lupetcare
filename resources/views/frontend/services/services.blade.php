@@ -29,7 +29,9 @@
                                         <h4 class="name">
                                             <a href="{{ route('frontend.services.detail',$service->id) }}">Cắt tỉa móng cơ bản</a>
                                         </h4>
-                                        <p class="price">50.000</p>
+                                        <p class="price">
+                                            <a href="{{ route('frontend.order_services.order-normal') }}">50.000-- không cọc</a> 
+                                        </p>
                                         <span class="time"><i class="fa fa-clock-o mr-1" aria-hidden="true"></i>20 PHÚT</span>
                                         <div class="item_btn d-flex
                                             justify-content-center mt-4">
