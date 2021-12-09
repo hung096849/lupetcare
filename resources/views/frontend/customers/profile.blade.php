@@ -5,8 +5,8 @@
             viewport-fit=cover" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Login</title>
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/animate.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/bootstrap.min.css') }}">
+        {{-- <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/animate.css') }}">
+        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/bootstrap.min.css') }}"> --}}
         <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/font-awesome.css') }}">
         <!-- <link rel="stylesheet" href="theme/frontend/fancybox/dist/jquery.fancybox.min.css) }}"> -->
         <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/reset.css') }}">
@@ -24,7 +24,7 @@
                             <div class="name d-flex align-items-center
                                 justify-content-center">
                                 <div class="images">
-                                    <img src="{{ asset('frontend/css/theme/frontend/images/img-hot_service.png') }}" alt="" srcset="">
+                                    <img src="{{ asset('frontend/images/img-hot_service.png') }}" alt="" srcset="">
                                 </div>
                                 <span class="title">{{ Auth::guard('customers')->user()->name }}</span>
                             </div>
@@ -55,13 +55,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="./pet-acc.html" class="list-text t-lisst
-                                    d-block"><i class="fa fa-paw icon-user"
-                                        aria-hidden="true"></i>Thú cưng của
-                                    tôi </a>
-                                    <a href="./change-account.html" class="list-text t-lisst
+                                    {{-- <a href="{{ route('frontend.customers.pet.information') }}" class="list-text t-lisst
+                                        d-block"><i class="fa fa-paw icon-user" aria-hidden="true"></i>Thú cưng của
+                                        tôi </a> --}}
+                                    <a href="{{ route('frontend.order.customer') }}" class="list-text t-lisst
                                         d-block"><i class="fa fa-briefcase
-                                            icon-user" aria-hidden="true"></i>Đơn mua </a>
+                                            icon-user" aria-hidden="true"></i>Đơn hàng của tôi </a>
                                     <a href="./purchase-order.html" class="list-text t-lisst
                                         d-block"><i class="fa fa-bell icon-user" aria-hidden="true"></i>Thông báo
                                     </a>
@@ -98,7 +97,14 @@
                                         </div>
                                        
                                     </div>
-                                   
+                                    <div class="col-12 col-md-6">
+                                        <div class="images">
+
+                                            <img src="{{ asset('frontend/images/img-hot_service.png') }}" alt="" class="img d-block">
+                                            <p class="title d-block">Ảnh đại
+                                                diện</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

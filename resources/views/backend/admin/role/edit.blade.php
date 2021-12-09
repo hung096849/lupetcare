@@ -3,8 +3,7 @@
 <div class="wrapper">
 
     @include('backend.includes.navbar-top', [
-        'edit' => 'Vai trò',
-        'id' => $role->id,
+        'show' => 'Danh sách vai trò',
         'url' => route('backend.admin.role.show')
     ])
 
@@ -16,7 +15,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6" style="padding:30px;">
-                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> Role Edit</h1>
+                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> Sửa vai trò</h1>
                     </div>
                 </div>
             </div>
@@ -34,7 +33,7 @@
                         <div class="card card-primary">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputName">Name</label>
+                                    <label for="inputName">Tên vai trò</label>
                                     <input type="text" name="name" value="{{ $role->name }}" id="title" class="form-control" required />
                                     @if ($errors->has('name'))
                                     <div class="mt-1 text-red-500">
@@ -62,7 +61,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title" style="font-weight: bold;">Permissions</h3>
+                                <h3 class="card-title" style="font-weight: bold;">Quyền</h3>
                             </div>
                             <!-- ./card-header -->
                             <div class="card-body p-0">
@@ -71,9 +70,9 @@
                                         <tr>
                                             <td class="border-0">
                                                 &nbsp;
-                                                <a href="#" class="check_permission_all">Select All </a>
+                                                <a href="#" class="check_permission_all">Chọn tất cả </a>
                                                 /&nbsp;
-                                                <a href="#" class="deselect_permission_all">Deselect All</a>
+                                                <a href="#" class="deselect_permission_all">Bỏ chọn tất cả</a>
                                             </td>
                                         </tr>
                                         @foreach($permissions as $key => $permission)
@@ -132,8 +131,8 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <input type="submit" value="Edit user" class="btn btn-success float-left mr-2" />
-                        <a href="#" class="btn btn-secondary float-left">Cancel</a>
+                        <input type="submit" value="Sửa vai trò" class="btn btn-success float-left mr-2" />
+                        <a href="#" class="btn btn-secondary float-left">Hủy bỏ</a>
                     </div>
                 </div>
             </form>

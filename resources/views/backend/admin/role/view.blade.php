@@ -3,8 +3,7 @@
     <div class="wrapper">
 
         @include('backend.includes.navbar-top', [
-            'show' => 'Role',
-            'id' => $role->id,
+            'show' => 'Danh sách vai trò',
             'url' => route('backend.admin.role.show')
         ])
 
@@ -14,9 +13,9 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6" style="padding:30px;">
-                            <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> Role View</h1>
-                            <a href="{{ route('backend.admin.role.edit', $role->id) }}" class="btn btn-success float-left mr-2"><i class="fas fa-edit"></i> Edit</a>
-                            <a href="{{ route('backend.admin.role.delete', $role->id) }}" class="btn btn-danger float-left mr-2"><i class="fas fa-edit"></i> Delete</a>
+                            <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> Chi tiết vai trò</h1>
+                            <a href="{{ route('backend.admin.role.edit', $role->id) }}" class="btn btn-success float-left mr-2"><i class="fas fa-edit"></i> Sửa</a>
+                            <a href="{{ route('backend.admin.role.delete', $role->id) }}" class="btn btn-danger float-left mr-2"><i class="fas fa-edit"></i> Xóa</a>
                         </div>
                     </div>
                 </div>
@@ -31,7 +30,7 @@
                             <div class="card card-primary">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="inputName">Name</label>
+                                        <label for="inputName">Tên vai trò</label>
                                         <input type="text" name="name" value="{{ $role->name }}" id="inputName" class="form-control" disabled/>
                                     </div>
 
@@ -51,7 +50,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title" style="font-weight: bold;">Permissions</h3>
+                                <h3 class="card-title" style="font-weight: bold;">Quyền</h3>
                             </div>
                             <!-- ./card-header -->
                             <div class="card-body p-0">

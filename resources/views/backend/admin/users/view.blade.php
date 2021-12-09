@@ -3,8 +3,7 @@
     <div class="wrapper">
 
         @include('backend.includes.navbar-top', [
-            'show' => 'User',
-            'id' => $user->id,
+            'list' => 'Danh sách người dùng',
             'url' => route('backend.admin.users.show')
         ])
 
@@ -14,9 +13,9 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6" style="padding:30px;">
-                            <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> User View</h1>
-                            <a href="{{ route('backend.admin.users.edit', $user->id) }}" class="btn btn-success float-left mr-2"><i class="fas fa-edit"></i> Edit</a>
-                            <a href="{{ route('backend.admin.users.delete', $user->id) }}" class="btn btn-danger float-left mr-2"><i class="fas fa-edit"></i> Delete</a>
+                            <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> Chi tiết người dùng</h1>
+                            <a href="{{ route('backend.admin.users.edit', $user->id) }}" class="btn btn-success float-left mr-2"><i class="fas fa-edit"></i> Sửa</a>
+                            <a href="{{ route('backend.admin.users.delete', $user->id) }}" class="btn btn-danger float-left mr-2"><i class="fas fa-edit"></i> Xóa</a>
                         </div>
                     </div>
                 </div>
@@ -31,7 +30,7 @@
                             <div class="card card-primary">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="inputName">Name</label>
+                                        <label for="inputName">Tên</label>
                                         <input type="text" name="name" value="{{ $user->name }}" id="inputName" class="form-control" disabled/>
                                     </div>
 
@@ -41,13 +40,13 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="inputDescription">Password</label>
+                                        <label for="inputDescription">Mật khẩu</label>
                                         <input type="password" value="{{ $user->password }}" name="password" id="password" class="form-control" disabled/>
 
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="inputStatus">Primary Role</label>
+                                        <label for="inputStatus">Vai trò chính</label>
                                         <select id="inputStatus" name="role_id" class="form-control custom-select" disabled>
                                             @foreach($roles as $role)
                                                 <option value="{{ $role->id }}" {{ old('role_id', $user->role_id == $role->id ? 'selected' : '') }}>{{ $role->name }}</option>

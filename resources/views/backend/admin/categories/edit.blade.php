@@ -16,7 +16,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6" style="padding:30px;">
-                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> categories Edit</h1>
+                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> Danh mục</h1>
                     </div>
                 </div>
             </div>

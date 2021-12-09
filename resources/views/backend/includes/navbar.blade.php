@@ -42,7 +42,7 @@
                         {{-- {{ route('Request') }} --}}
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Dashboard
+                            Trang điều khiển
                         </p>
                     </a>
                 </li>
