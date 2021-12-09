@@ -1,14 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
-<link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/animate.css')}}" />
-    <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/bootstrap.min.css')}}" />
-    <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/font-awesome.css')}}" />
-    <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/reset.css')}}" />
-    <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/swiper.min.css')}}" />
-    <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/bookservice.css')}}" />
-    <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/style.css')}}" />
-    <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/main.css')}}" />
-  
+
 <div class="container">
     <div class="contact">
     <div class="title py-3" style="color: #529ebe">
