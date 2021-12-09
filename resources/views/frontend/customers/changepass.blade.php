@@ -58,11 +58,11 @@
                                                     <li><a href="{{ route('frontend.customers.profile') }}">Hồ
                                                             sơ</a></li>
                                                     <li><a href="{{ route('frontend.customers.showProfile') }}"
-                                                            class="acctive">Đổi
+                                                            >Đổi
                                                             thông
                                                             tin</a></li>
 
-                                                    <li><a href="#">Đổi mật khẩu</a></li>
+                                                    <li><a class="acctive" href="#">Đổi mật khẩu</a></li>
                                                 </ul>
                                             </div>
                                         </div>

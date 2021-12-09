@@ -55,9 +55,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
-                                        d-block"><i class="fa fa-paw icon-user" aria-hidden="true"></i>Thú cưng của
-                                        tôi </a>
+                                    <a href="./pet-acc.html" class="list-text t-lisst
+                                    d-block"><i class="fa fa-paw icon-user"
+                                        aria-hidden="true"></i>Thú cưng của
+                                    tôi </a>
                                     <a href="./change-account.html" class="list-text t-lisst
                                         d-block"><i class="fa fa-briefcase
                                             icon-user" aria-hidden="true"></i>Đơn mua </a>

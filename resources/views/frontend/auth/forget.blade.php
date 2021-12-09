@@ -59,7 +59,7 @@
                                     <button type="submit" class="btn btn-primary
                                         btn-register">Tiếp Tục</button>
                                    
-                                    <p class="out-s mt-1"> <a href="{{ route('frontend.login.show') }}" class="pl-1"><i class="fa fa-sign-out mr-1" aria-hidden="true"></i>Quay lại tangg đăng nhập</a></p>
+                                    <p class="link mt-1"> <a href="{{ route('frontend.login.show') }}" class="pl-1"><i class="fa fa-sign-out mr-1" aria-hidden="true"></i>Quay lại trang đăng nhập</a></p>
                                 </div>
                             </form>
                         </div>

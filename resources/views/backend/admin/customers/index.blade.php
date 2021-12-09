@@ -59,10 +59,8 @@
                                             </th>
                                             <th>Số thứ tự</th>
                                             <th>Tên khách hàng</th>
-                                            <th>Slug</th>
                                             <th>Số điện thoại</th>
                                             <th>Email</th>
-                                            <th>Ngày tạo</th>
                                             <th>Trạng thái</th>
                                             <th>Hành động</th>
                                         </tr>

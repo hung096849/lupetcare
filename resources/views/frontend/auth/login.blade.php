@@ -51,7 +51,7 @@
                                             fa-user-circle-o"
                                             aria-hidden="true"></i></label>
                                     <input type="email" class="form-control"
-                                        id="exampleInputUserName"
+                                        id="exampleInputUserName" placeholder="Email"
                                         name="email" value="{{ old('email') }}">
                                       
                                 </div>
@@ -62,7 +62,7 @@
                                     <label for="exampleInputPassword "
                                         class="form-label mr-3"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
                                     </label>
-                                    <input type="password" class="form-control" name="password"
+                                    <input type="password" placeholder="Mật khẩu" class="form-control" name="password"
                                         id="exampleInputPassword">
                                 
                                 </div>
@@ -72,8 +72,8 @@
                                 <div class="forn-btn">
 
                                     <button type="submit" class="btn btn-primary btn-register">ĐĂNG nhập</button>
-                                    <p class="link mt-1">Nếu bạn chưa có tài khoản , hãy <a href="{{ route('frontend.login.register-user') }}" class="pl-1">ĐĂNG Ký?</a></p>
-                                    <p class="forgot_pass mt-1"> <a href="{{ route('frontend.login.forget.password.get') }}" class="pl-1">Quên mật khẩu?</a></p>
+                                    <p class="link mt-1">Nếu bạn chưa có tài khoản , hãy <a href="{{ route('frontend.login.register-user') }}" class="pl-1">ĐĂNG KÝ?</a></p>
+                                    <p class="link mt-1"> <a href="{{ route('frontend.login.forget.password.get') }}" class="pl-1">Quên mật khẩu?</a></p>
                                 </div>
                             </form>
                         </div>

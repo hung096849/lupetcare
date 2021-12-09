@@ -80,7 +80,7 @@
                     <a href="{{ route('backend.admin.customers.show') }}" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                         <p>
-                            Danh sách khách hàng
+                             Khách hàng
                         </p>
                     </a>
                 </li>

@@ -10,10 +10,8 @@
     </td>
     <td>{{ $customer->id }}</td>
     <td>{{ $customer->name }}</td>
-    <td>{{ $customer->slug }}</td>
     <td>{{ $customer->phone }}</td>
     <td>{{ $customer->email }}</td>
-    <td>{{ $customer->created_at }}</td>
     <td>  {{ $customer->status == 0 ? 'Khách hàng' : 'Thành viên' }}</td>
     <td>
         <a href="{{ route('backend.admin.customers.view', $customer->id) }}"
