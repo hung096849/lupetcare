@@ -1,13 +1,12 @@
-<h2>Hey !</h2> <br><br>
+<h2>Xin chào !</h2> <br><br>
 
-You received an email from : {{ $details['name'] }} <br><br>
+Bạn vừa nhận được ý kiến từ: {{ $details['name'] }} <br><br>
 
-User details: <br><br>
+Thông tin: <br><br>
 
-Name: {{ $details['name'] }} <br>
-Title: {{ $details['title']}} <br>
+Tên: {{ $details['name'] }} <br>
+Tiêu đề: {{ $details['title']}} <br>
 Email:  {{ $details['email'] }} <br>
-Phone:  {{ $details['phone'] }} <br>
-Message:{{ $details['message'] }} <br><br>
+Số điện thọai:  {{ $details['phone'] }} <br>
+Ý kiến:{{ $details['message'] }} <br><br>
 
-Thanks

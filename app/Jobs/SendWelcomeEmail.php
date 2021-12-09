@@ -34,6 +34,6 @@ class SendWelcomeEmail implements ShouldQueue
     public function handle()
     {
         $details = $this->details;
-        Mail::to($details['email'])->send(new Email($details));
+        Mail::to('hung3715482@gmail.com')->send(new Email($details));
     }
 }

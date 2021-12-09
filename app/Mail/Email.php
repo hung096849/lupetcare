@@ -30,7 +30,7 @@ class Email extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->from('hung3715482@gmail.com')
+        return $this->from(env('MAIL_USERNAME'))
                     ->subject('Mail from Lupetcare')
                     ->view('frontend.contacts.contactMail');
     }

@@ -1,7 +1,7 @@
 
 @extends('layouts.frontend')
 @section('content')
-<head>
+
         <meta name="viewport" content="width=device-width, initial-scale=1,
             viewport-fit=cover" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('frontend/css/jquery-ui.css') }}" />
         <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/register.css') }}" />
-    </head>
+    
 <body class="scrollstyle1">
         <section class="register">
             <div class="container">
@@ -47,44 +47,44 @@
                                 <div class="mb-3 d-flex">
                                     <label for="exampleInputUserName" class="form-label mr-3"><i class="fa
                                             fa-user-circle-o" aria-hidden="true"></i></label>
-                                    <input type="text" class="form-control" id="exampleInputUserName" name="name" aria-describedby="UserNameHelp">
-                                    @if ($errors->has('name'))
-                                            <span class="text-danger">{{ $errors->first('name') }}</span>
-                                        @endif
+                                    <input type="text" class="form-control" id="exampleInputUserName" name="name" placeholder= "Họ và tên" aria-describedby="UserNameHelp">
                                 </div>
+                                @if ($errors->has('name'))
+                                            <span style="color: red; margin-left: 70px;">{{ $errors->first('name') }}</span>
+                                        @endif
                                 <div class="mb-3 d-flex">
                                     <label for="exampleInputEmail1" class="form-label mr-3"><i class="fa
                                             fa-envelope-o" aria-hidden="true"></i></label>
-                                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                    @if ($errors->has('email'))
-                                            <span class="text-danger">{{ $errors->first('email') }}</span>
-                                        @endif
+                                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder= "Email" aria-describedby="emailHelp">
+                        
                                 </div>
+                                @if ($errors->has('email'))
+                                            <span style="color: red; margin-left: 70px;">{{ $errors->first('email') }}</span>
+                                        @endif
                                 <div class="mb-3 d-flex">
                                     <label for="exampleInputPhone" class="form-label mr-3"><i class="fa
                                             fa-phone" aria-hidden="true"></i></label>
-                                    <input type="tel" class="form-control" name="phone" id="exampleInputPhone" aria-describedby="PhoneHelp">
-                                    @if ($errors->has('phone'))
-                                            <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                    <input type="tel" class="form-control" name="phone" id="exampleInputPhone" placeholder= "Số điện thoại" aria-describedby="PhoneHelp">
+                                </div>
+                                @if ($errors->has('phone'))
+                                            <span style="color: red; margin-left: 70px;">{{ $errors->first('phone') }}</span>
                                         @endif
-                                </div>
                                 <div class="mb-3 d-flex">
                                     <label for="exampleInputPassword " class="form-label mr-3"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
                                     </label>
-                                    <input type="password" class="form-control" name="password" id="exampleInputPassword">
-                                    @if ($errors->has('password'))
-                                            <span class="text-danger">{{ $errors->first('password') }}</span>
-                                    @endif
+                                    <input type="password" class="form-control" name="password" placeholder= "Mật khẩu" id="exampleInputPassword">
                                 </div>
+                                @if ($errors->has('password'))
+                                            <span style="color: red; margin-left: 70px;">{{ $errors->first('password') }}</span>
+                                    @endif
                                 <div class="mb-3 d-flex">
                                     <label for="exampleInputPassword " class="form-label mr-3"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
                                     </label>
-                                    <input type="password" class="form-control" name="re_password" id="exampleInputPassword">
-                                    @if ($errors->has('re_password'))
-                                            <span class="text-danger">{{ $errors->first('re_password') }}</span>
-                                    @endif
+                                    <input type="password" class="form-control" name="re_password" placeholder= "Xác nhận mật khẩu" id="exampleInputPassword">
                                 </div>
-                            
+                               @if ($errors->has('re_password'))
+                                            <span style="color: red; margin-left: 70px;">{{ $errors->first('re_password') }}</span>
+                                    @endif
                                
                                 <div class="forn-btn">
 
@@ -100,13 +100,7 @@
 
 
         <span class="back-to-top"><i class="fa fa-arrow-up" aria-hidden="true"></i></span>
-        <script src="theme/frontend/js/jquery-3.4.1.min.js" defer=""></script>
-        <script src="theme/frontend/js/bootstrap.min.js" defer=""></script>
-        <script src="theme/frontend/js/wow.min.js" defer=""></script>
-        <!-- <script src="theme/frontend/fancybox/dist/jquery.fancybox.min.js" defer></script> -->
-        <script src="theme/frontend/js/swiper.min.js" defer=""></script>
-        <script src="theme/frontend/js/script.js" defer=""></script>
-    
+       
 
 </body>
 @endsection

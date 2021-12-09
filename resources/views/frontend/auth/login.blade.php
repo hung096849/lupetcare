@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
-    <head>
+   
         <meta name="viewport" content="width=device-width, initial-scale=1,
             viewport-fit=cover" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('frontend/css/jquery-ui.css') }}" />
         <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/register.css') }}" />
-    </head>
+    
 
     <body class="scrollstyle1">
         <section class="register">
@@ -51,29 +51,29 @@
                                             fa-user-circle-o"
                                             aria-hidden="true"></i></label>
                                     <input type="email" class="form-control"
-                                        id="exampleInputUserName"
+                                        id="exampleInputUserName" placeholder="Email"
                                         name="email" value="{{ old('email') }}">
-                                        @if ($errors->has('email'))
-                                        <span class="text-danger">{{ $errors->first('email') }}</span>
-                                    @endif
+                                      
                                 </div>
-                              
+                                @if ($errors->has('email'))
+                                        <span style="color: red; margin-left: 70px;">{{ $errors->first('email') }}</span>
+                                    @endif
                                 <div class="mb-3 d-flex">
                                     <label for="exampleInputPassword "
                                         class="form-label mr-3"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
                                     </label>
-                                    <input type="password" class="form-control" name="password"
+                                    <input type="password" placeholder="Mật khẩu" class="form-control" name="password"
                                         id="exampleInputPassword">
-                                        @if ($errors->has('password'))
-                                            <span class="text-danger">{{ $errors->first('password') }}</span>
-                                        @endif
-                                </div>
                                 
+                                </div>
+                                @if ($errors->has('password'))
+                                            <span style="color: red; margin-left: 70px;">{{ $errors->first('password') }}</span>
+                                        @endif
                                 <div class="forn-btn">
 
                                     <button type="submit" class="btn btn-primary btn-register">ĐĂNG nhập</button>
-                                    <p class="link mt-1">Nếu bạn chưa có tài khoản , hãy <a href="{{ route('frontend.login.register-user') }}" class="pl-1">ĐĂNG Ký?</a></p>
-                                    <p class="forgot_pass mt-1"> <a href="{{ route('frontend.login.forget.password.get') }}" class="pl-1">Quên mật khẩu?</a></p>
+                                    <p class="link mt-1">Nếu bạn chưa có tài khoản , hãy <a href="{{ route('frontend.login.register-user') }}" class="pl-1">ĐĂNG KÝ?</a></p>
+                                    <p class="link mt-1"> <a href="{{ route('frontend.login.forget.password.get') }}" class="pl-1">Quên mật khẩu?</a></p>
                                 </div>
                             </form>
                         </div>
@@ -83,12 +83,7 @@
         </section>
 
         <span class="back-to-top" style="display: none;"><i class="fa fa-arrow-up" aria-hidden="true"></i></span>
-        <script src="theme/frontend/js/jquery-3.4.1.min.js" defer=""></script>
-        <script src="theme/frontend/js/bootstrap.min.js" defer=""></script>
-        <script src="theme/frontend/js/wow.min.js" defer=""></script>
-        <!-- <script src="theme/frontend/fancybox/dist/jquery.fancybox.min.js" defer></script> -->
-        <script src="theme/frontend/js/swiper.min.js" defer=""></script>
-        <script src="theme/frontend/js/script.js" defer=""></script>
+       
     </body>
 
 

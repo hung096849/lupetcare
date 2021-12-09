@@ -17,10 +17,10 @@ class CheckCustomer
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check()){
+        if(Auth::guard('customers')->check()){
             return $next($request);
         }else{
-            return redirect(route('frontend.auth.login'));
+            return redirect(route('frontend.login.show'));
         }
     }
 }

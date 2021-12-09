@@ -14,7 +14,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-8" style="padding:30px;">
-                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i> Danh sách khách hàng</h1>
+                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-user"></i>  Khách hàng</h1>
                         <a href="{{ route('backend.admin.customers.edit', $customers->id) }}"
                             class="btn btn-success float-left mr-2"><i class="fas fa-edit"></i> Sửa</a>
                         <a href="{{ route('backend.admin.customers.delete', $customers->id) }}"
@@ -45,7 +45,19 @@
                             </div>
 
                         </div>
-                        
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="inputName">Slug</label>
+                                <input type="text" name="slug" id="title" class="form-control"
+                                    value="{{old('slug',$customers->slug)}}" readonly/>
+                                @error('slug')
+                                <div class="mt-1 text-red-500">
+                                    {{$message}}
+                                </div>
+                                @enderror
+                            </div>
+
+                        </div>
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="inputName">Số điện thoại</label>
@@ -78,6 +90,19 @@
                                 <input type="datetime" name="created_at" id="title" class="form-control"
                                     value="{{old('created_at',$customers->created_at)}}" readonly/>
                                 @error('created_at')
+                                <div class="mt-1 text-red-500">
+                                    {{$message}}
+                                </div>
+                                @enderror
+                            </div>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="inputName">Trạng thái</label>
+                                <input type="datetime" name="status" id="title" class="form-control"
+                                    value=" {{ $customers->status == 0 ? 'Khách hàng' : 'Thành viên' }}" readonly/>
+                                @error('status')
                                 <div class="mt-1 text-red-500">
                                     {{$message}}
                                 </div>

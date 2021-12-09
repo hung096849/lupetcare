@@ -1,5 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
+
 <div class="container">
     <div class="contact">
     <div class="title py-3" style="color: #529ebe">
@@ -10,7 +11,7 @@
     </div>
     <div class="main row col-12 py-4 mx-4">
         <div class="message col-6 border border-1 p-4 mx-5 rounded-3">
-            <div class="title border-bottom py-3 bg-info">
+            <div class="title border-bottom py-3 ">
                 <h4>BẠN VUI LÒNG ĐỂ LẠI LỜI NHẮN !</h4>
             </div>
             @if(Session::has('success'))
@@ -76,9 +77,11 @@
                         </div>  
                     </div>
                 </div>
-                <div class="form-group text-center">
-                    <button class="btn btn-success btn-submit">GỬI</button>
-                </div>
+               
+                <button type="submit" class="btn btn-primary btn-lg">
+                GỬI NGAY
+              </button>
+                
             </form>
         </div>
         <div class="info col-4 border border-1 p-4 mx-3 rounded-3" style="height: 320px">
@@ -114,4 +117,5 @@
     </div>
     <div class="our_team"></div>
 </div>
+    
 @endsection
