@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
-// use Kyslik\ColumnSortable\Sortable; , Sortable
+use Kyslik\ColumnSortable\Sortable;
 
 class PetInformartion extends Model
 {
-    use Sluggable;
+    use Sluggable, Sortable;
     use HasFactory;
 
     protected $table = 'pet_informartions';

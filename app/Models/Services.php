@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-// use Cviebrock\EloquentSluggable\Sluggable;,Sluggable
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Services extends Model
 {
-    use HasFactory;
+    use HasFactory,Sluggable;
 
     protected $table = "services";
 

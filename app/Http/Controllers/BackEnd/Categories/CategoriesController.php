@@ -21,7 +21,7 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        $categories = $this->categories->paginate(3);
+        $categories = $this->categories->sortable()->paginate(3);
         return view('backend.admin.categories.index', compact('categories'));
     }
 
