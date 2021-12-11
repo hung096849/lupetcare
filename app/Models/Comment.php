@@ -12,7 +12,7 @@ class Comment extends Model
     protected $table ='comments';
 
     protected $fillable = [
-        'customer_id', 'service_id', 'content', 'slug'
+        'customer_id', 'service_id', 'content'
     ];
 
     public function customer()
