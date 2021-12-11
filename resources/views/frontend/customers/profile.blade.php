@@ -77,7 +77,7 @@
                             <div class="content-account-list">
                                 <div class="row">
                                     <div class="col-12 col-md-6">
-        
+                                        @if(Auth::guard('customers')->check())
                                         <div class="item">
                                             <span class="title t-text">Họ và tên
                                                 : </span>
@@ -95,7 +95,7 @@
                                             <span class="sub t-text">
                                             {{ Auth::guard('customers')->user()->phone }}</span>
                                         </div>
-                                       
+                                    @endif
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="images">

@@ -1,14 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
-<style>
-    .header-body{
-        /* width: 100px; */
-    }
-</style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<form role="form" action="" method="post" class="require-validation"
-    data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
+<form role="form" action="" method="post" id="payment-form">
     @csrf
     @if (Session::has('message'))
         <div class="alert alert-danger text-center">
@@ -33,9 +25,6 @@
                 <div class="alert alert-success text-center">
                     <p class="alert alert-success">
                         {{Session::get('success')}}
-                    </p>
-                    <p>
-                        Tổng tiền bạn vừa thanh toán cọc trước là : {{Session::get('pile')}}
                     </p>
                 </div>
             @endif
@@ -109,95 +98,6 @@
 
                                 <div id="box_bookService" class="col-md-5 mt-4">
                                     <div id="box_quan"></div>
-                                    {{-- <div class="book-form">
-                                        <div class="book-form-service">
-                                            <div class="book-form-title">
-                                                <h2 class="text-center">Thông tin thú cưng</h2>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label for="phoneNumber" class="pt-4 pb-2 book-form-text">Tên thú
-                                                        cưng
-                                                        *</label>
-                                                    <input type="text" name="pet_name[1][]"
-                                                        class="form-control input-form-service">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label for="phoneNumber" class="pt-4 pb-2 book-form-text">Mã thú
-                                                        cưng
-                                                        *</label>
-                                                    <input type="text" name="code[1][]"
-                                                        placeholder="Nếu bạn tới lần đầu thì có thể để trống ... "
-                                                        class="form-control input-form-service">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label for="phoneNumber" class="pt-4 pb-2 book-form-text">Mã thú
-                                                        cưng
-                                                        *</label>
-                                                    <input type="text" name="code[2][]"
-                                                        placeholder="Nếu bạn tới lần đầu thì có thể để trống ... "
-                                                        class="form-control input-form-service">
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <label for="Name " class="pt-4 pb-2 book-form-text">Chọn dịch vụ
-                                                        *</label>
-                                                    <select id="" class="form-control input-form-service js-select2"
-                                                        multiple name="service_id[1][]">
-                                                        @foreach ($services as $service)
-                                                        <option value="{{ $service->id }}"> {{ $service->service_name }}
-                                                        </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <label for="Name " class="pt-4 pb-2 book-form-text">Chọn cân nặng
-                                                        thú
-                                                        cưng*</label>
-                                                    <select id="" name="weight[1][]"
-                                                        class="form-control input-form-service">
-                                                        <option value="1"> &lt;5kg </option>
-                                                        <option value="2">5kg-8kg</option>
-                                                        <option value="3">8kg-10kg</option>
-                                                        <option value="4">&gt;10kg</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <label for="Name " class="pt-4 pb-2 book-form-text">Chọn thú cưng
-                                                        của
-                                                        bạn</label>
-                                                    <select id="" name="type[1][]"
-                                                        class="form-control input-form-service">
-                                                        <option value="1"> Chó </option>
-                                                        <option value="2">Mèo</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <label for="Name " class="pt-4 pb-2 book-form-text">Chọn giới
-                                                        tính</label>
-                                                    <select id="" name="gender[1][]"
-                                                        class="form-control input-form-service">
-                                                        <option value="1"> Đực </option>
-                                                        <option value="2">Cái</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-
                                     <div class="float-right my-4 pr-2 d-flex add-form-pet">
                                         <button type="button" class="btn btn-primary pl-3" id="clickAddForm" style="focus: none; outline: none;">Thêm thú
                                             cưng</button>
@@ -226,90 +126,18 @@
                         </div>
                         <div id="totalPrice" class="text-info text-right" style="min-width: 120px;"></div>
                     </div>
-                    <div class="d-flex justify-content-end align-items-center" style="font-weight: bold; font-size: 20px;">
+                    <div class="d-flex justify-content-end align-items-center" style="font-weight: bold; font-size: 20px; display: none!important">
                         <div>
                             Số tiền cọc cho dịch vụ là 10% :
                         </div>
                         <div id="paymentCOC" class="text-danger text-right" style="min-width: 120px;"></div>
                     </div>
                     <div class="d-flex justify-content-center align-items-center" style="margin: 20px 0px;">
-                        <button type="submit" class="btn btn-sm btn-info" id="payment-pile" style="margin-right: 12px; focus: none; outline: none;">Đặt lịch k cọc</button>
-                        <button type="button" class="btn btn-sm btn-info" id="payment" style="margin-right: 12px; focus: none; outline: none;">Đồng ý</button>
+                        <button type="submit" class="btn btn-sm btn-info" id="payment" style="margin-right: 12px; focus: none; outline: none;">Đồng ý</button>
                         <button type="button" class="btn btn-sm btn-danger" id="popupNone" style="focus: none; outline: none;">Quay lại</button>
-                    </div>
-                </div>
-                <div id="formBanking" style="display: none;">
-                    {{-- <div class="col-md-6 col-md-offset-3"> --}}
-                        <div class="panel panel-default" style="margin: 16px 24px;">
-                            <div class="panel-heading display-table">
-                                <div class="">
-                                    <div class="d-flex justify-content-center" style="max-height: 99px">
-                                        <img class="img-responsive pull-right"
-                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRscRnNVQTCEyhmp2LjZ1Rtixj7V9plkiuXrA&usqp=CAU">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                
-                                <div class='form-row row'>
-                                    <div class='col-xs-12 form-group required'>
-                                        <label class='control-label'>Tên chủ thẻ</label> <input class='form-control'
-                                            size='4' type='text'>
-                                    </div>
-                                </div>
-
-                                <div class='form-row row'>
-                                    <div class='col-xs-12 form-group card required'>
-                                        <label class='control-label'>Số thẻ</label> <input autocomplete='off'
-                                            class='form-control card-number' size='20' type='text'>
-                                    </div>
-                                </div>
-
-                                <div class='form-row row'>
-                                    <div class='col-xs-12 col-md-4 form-group cvc required'>
-                                        <label class='control-label'>Số CVC</label> <input autocomplete='off'
-                                            class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
-                                    </div>
-                                    <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                        <label class='control-label'>Nhập tháng</label> <input
-                                            class='form-control card-expiry-month' placeholder='MM' size='2'
-                                            type='text'>
-                                    </div>
-                                    <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                        <label class='control-label'>Nhập năm</label> <input
-                                            class='form-control card-expiry-year' placeholder='YYYY' size='4'
-                                            type='text'>
-                                    </div>
-                                </div>
-
-                                <div class='form-row row'>
-                                    <div class='col-md-12 error form-group hide'>
-                                        <div class='alert-danger alert'>Please correct the errors and try
-                                            again.</div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <button class="btn btn-primary btn-lg btn-block" type="submit">Thanh
-                                            toán</button>
-                                    </div>
-                                </div>
-
-
-                            </div>
+                        <div class="d-flex justify-content-end" style="margin: 10px;">
+                            <a href="#">Hủy không muốn đặt nữa</a>
                         </div>
-                        {{--
-                    </div> --}}
-                    <div class="">
-                        <div class="d-flex justify-content-center">
-                            <a type="button" href="javascript:void(0)" class="btn btn-sm btn-warning" id="backTo">Quay lại
-                                hóa đơn</a>
-                        </div>
-                        
-                            <div class="d-flex justify-content-end" style="margin: 10px;">
-                                <a href="#">Hủy không muốn đặt nữa</a>
-                            </div>
                     </div>
                 </div>
             </div>
@@ -319,7 +147,6 @@
 </form>
 @endsection
 @section('js')
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
     $.ajaxSetup({
         headers: {
@@ -408,70 +235,8 @@
         })
         document.querySelector("#payment").addEventListener("click", function () {
             document.querySelector("#billDetail").style.display = "none"
-            document.querySelector("#formBanking").style.display = "block"
-        })
-        document.querySelector("#payment-pile").addEventListener("click", function () {
-            console.log($('#servName').text());
-        })
-        document.querySelector("#backTo").addEventListener("click", function () {
-            document.querySelector("#formBanking").style.display = "none"
-            document.querySelector("#billDetail").style.display = "block"
         })
     }
-
-    $(function() {
-        var $form = $(".require-validation");
-        
-        $('form.require-validation').bind('submit', function(e) {
-            var $form         = $(".require-validation"),
-            inputSelector = ['input[type=email]', 'input[type=password]',
-                                'input[type=text]', 'input[type=file]',
-                                'textarea'].join(', '),
-            $inputs       = $form.find('.required').find(inputSelector),
-            $errorMessage = $form.find('div.error'),
-            valid         = true;
-            $errorMessage.addClass('hide');
-        
-            $('.has-error').removeClass('has-error');
-            $inputs.each(function(i, el) {
-                var $input = $(el);
-                if ($input.val() === '') {
-                $input.parent().addClass('has-error');
-                $errorMessage.removeClass('hide');
-                e.preventDefault();
-                }
-            });
-        
-            if (!$form.data('cc-on-file')) {
-                e.preventDefault();
-                Stripe.setPublishableKey($form.data('stripe-publishable-key'));
-                Stripe.createToken({
-                number: $('.card-number').val(),
-                cvc: $('.card-cvc').val(),
-                exp_month: $('.card-expiry-month').val(),
-                exp_year: $('.card-expiry-year').val()
-                }, stripeResponseHandler);
-            }
-        
-        });
-        
-        function stripeResponseHandler(status, response) {
-            if (response.error) {
-                $('.error')
-                    .removeClass('hide')
-                    .find('.alert')
-                    .text(response.error.message);
-            } else {
-                /* token contains id, last4, and card type */
-                var token = response['id'];
-                
-                $form.find('input[type=text]').empty();
-                $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
-                $form.get(0).submit();
-            }
-        }
-    
-    });
 
     $( function() {
         $("#datepicker").datepicker();
