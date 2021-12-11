@@ -75,18 +75,10 @@ Route::name('frontend.')->group(function () {
         });
 
     Route::middleware(['checkCustomer'])->group(function (){
-<<<<<<< HEAD
-
-        Route::name('customers.')->group(function(){
-            Route::get('/ho-so',[CustomerController::class,'profile'])->name('profile');
-            // Route::get('/thong-tin-thu-cung', [PetInformationController::class, 'info'])->name('pet.information');
-
-=======
 
 
         Route::name('customers.')->group(function(){
             Route::get('/ho-so',[CustomerController::class,'profile'])->name('profile');
->>>>>>> 3900516 (tin tuc)
             Route::get('/change-password',[CustomerController::class,'changePass'])->name('show');
             Route::post('/change-password',[CustomerController::class,'changePassword'])->name('changepass');
 
@@ -104,7 +96,3 @@ Route::name('frontend.')->group(function () {
 
 
 });
-<<<<<<< HEAD
-
-=======
->>>>>>> 3900516 (tin tuc)
