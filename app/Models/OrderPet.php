@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Kyslik\ColumnSortable\Sortable;
+// use Kyslik\ColumnSortable\Sortable;, Sortable
 
 class OrderPet extends Model
 {
-    use HasFactory, Sortable;
+    use HasFactory ;
 
     protected $table = 'order_pets';
     protected $fillable = [

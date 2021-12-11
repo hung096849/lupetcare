@@ -62,7 +62,6 @@
                                             </th>
                                             <th>STT</th>
                                             <th>Tiêu đề</th>
-
                                             <th>Hành động</th>
                                         </tr>
                                     </thead>

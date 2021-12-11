@@ -10,7 +10,7 @@
     @include('backend.includes.style')
 </head>
 
-<body>
+
 
     <body class="scrollstyle1">
 
@@ -63,11 +63,11 @@
             </div>
 
         </section>
+
         @include('backend.includes.footer')
         @include('backend.includes.script')
         @yield('js')
 
     </body>
-
 
 </html>
