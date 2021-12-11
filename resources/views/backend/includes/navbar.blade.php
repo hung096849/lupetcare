@@ -151,20 +151,20 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('backend.admin.news.show') }}" class="nav-link">
-                        <i class="nav-icon fas fa-calendar-alt"></i>
+                        <i class="nav-icon fas fa-newspaper"></i>
                         <p>
                             Tin Tức
                         </p>
                     </a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a href="{{ route('backend.admin.commet') }}" class="nav-link">
-                        <i class="nav-icon fas fa-calendar-alt"></i>
+                <li class="nav-item">
+                    <a href="{{ route('backend.admin.comments.show') }}" class="nav-link">
+                        <i class="nav-icon fas fa-comments"></i>
                         <p>
-                            Tin Tức
+                            Bình luận
                         </p>
                     </a>
-                </li> --}}
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
