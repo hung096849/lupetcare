@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\Services;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Services;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,12 @@ class ServicesController extends Controller
      * Class constructor.
      */
     protected $services;
-    public function __construct(Services $services)
+    protected $comments;
+    public function __construct(Services $services , Comment $comments)
     {
         $this->services = $services;
+        $this->comments = $comments;
+
     }
     public function index() {
         $services = $this->services->all();
@@ -23,6 +27,7 @@ class ServicesController extends Controller
 
     public function detail(Request $request) {
         $service = $this->services->where('id', $request->id)->first();
-        return view("frontend/services/service_detail", compact('service'));
+        $comments = $this->comments->where('service_id', $service->id)->get();
+        return view("frontend/services/service_detail", compact('service','comments'));
     }
 }

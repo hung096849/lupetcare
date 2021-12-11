@@ -13,7 +13,7 @@ class ServicesFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,29 @@ class ServicesFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'service_name' => 'required',
+            'image' => 'required|mimes:png,jpg',
+            'price' => 'required|min:0',
+            'price_sale' => 'min:0',
+            'detail' => 'required',
+            'description' => 'required',
+            'time' => 'required|min:0'
         ];
+    }
+
+    public function messages() {
+        $messages = [
+            'service_name.required' => 'Vui lòng không để trống',
+            'image.required' => 'Vui lòng không để trống',
+            'image.mimes' => 'Vui lòng chỉ chọn ảnh đuôi png,jpg',
+            'price.required' => 'Vui lòng không để trống',
+            'price.min' => 'Vui lòng nhập trên 0 đồng',
+            'price_sale.min' => 'Vui lòng nhập trên 0 đồng',
+            'detail.required' => 'Vui lòng không để trống',
+            'description.required' => 'Vui lòng không để trống',
+            'time.required' => 'Vui lòng không để trống',
+            'time.min' => 'Vui lòng nhập trên 0'
+        ];
+        return $messages;
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\BackEnd\Categories\CategoriesController;
 use App\Http\Controllers\Backend\DashBorad\DashboardController;
 use App\Http\Controllers\BackEnd\Contacts\ContactController;
 use App\Http\Controllers\BackEnd\Customer\CustomerController;
+use App\Http\Controllers\BackEnd\News\NewsController;
 use App\Http\Controllers\Backend\Order\OrderController;
 use App\Http\Controllers\Backend\PetInformation\PetInformationController;
 use Illuminate\Support\Facades\Route;
@@ -14,8 +15,10 @@ Route::prefix('admin')->name('backend.')->group(function () {
         Route::get('/login', 'App\Http\Controllers\Backend\Auth\LoginController@index')->name('show');
         Route::post('/login', 'App\Http\Controllers\Backend\Auth\LoginController@login')->name('login');
         Route::get('/logout', 'App\Http\Controllers\Backend\Auth\LoginController@Logout')->name('logout');
+        Route::get('/changepassword', 'App\Http\Controllers\Backend\Auth\LoginController@changepassword')->name('changepassword');
+        Route::post('/changepassword', 'App\Http\Controllers\Backend\Auth\LoginController@postchangePassword')->name('postchangePassword');
     });
-    
+
     Route::middleware(['checkLogin'])->group(function () {
         Route::name('admin.')->group(function () {
             Route::prefix('/dashboard')->name('dashboard.')->group(function () {
@@ -137,6 +140,18 @@ Route::prefix('admin')->name('backend.')->group(function () {
             Route::prefix('/scheduled')->name('scheduled.')->group(function () {
                 Route::get('fullcalender', [CalenderController::class, 'index'])->name('show');
                 Route::post('fullcalenderAjax', [CalenderController::class, 'ajax']);
+            });
+
+            Route::prefix('/news')->name('news.')->group(function () {
+                Route::get('/', [NewsController::class, 'index'])->name('show');
+                Route::get('/create', [NewsController::class, 'create'])->name('create');
+                Route::post('/store', [NewsController::class, 'store'])->name('store');
+                Route::get('/show/{id}', [NewsController::class, 'view'])->name('view');
+                Route::get('/edit/{id}', [NewsController::class, 'edit'])->name('edit');
+                Route::patch('/update/news', [NewsController::class, 'update'])->name('update');
+                Route::get('/delete/{id}', [NewsController::class, 'delete'])->name('delete');
+                Route::delete('/news/delete', [NewsController::class, 'newsDelete'])->name('news.delete');
+                Route::get('/search', [NewsController::class, 'search'])->name('search');
             });
 
         });

@@ -5,7 +5,9 @@ use App\Http\Controllers\Frontend\Order\OrderController;
 use App\Http\Controllers\Frontend\Services\ServicesController;
 use App\Http\Controllers\Frontend\Contacts\ContactController;
 use App\Http\Controllers\Frontend\Auth\LoginController;
+use App\Http\Controllers\Frontend\Comments\CommentsController;
 use App\Http\Controllers\Frontend\Customer\CustomerController;
+use App\Http\Controllers\Frontend\News\NewsController;
 use App\Http\Controllers\Frontend\Payment\PaymentController;
 use App\Http\Controllers\Frontend\Payment\PaypalController;
 use App\Http\Controllers\Frontend\PetInformation\PetInformationController;
@@ -27,6 +29,13 @@ Route::name('frontend.')->group(function () {
     Route::name('homepage.')->group(function () {
         Route::get('/', [HomepageController::class,'index'])->name('show');
     });
+
+    Route::name('tin-tuc.')->group(function () {
+        Route::get('/tin-tuc', [NewsController::class,'index'])->name('show');
+        Route::get('/tin-tuc/view/{id}', [NewsController::class,'view'])->name('view');
+
+    });
+
     Route::name('login.')->group(function(){
         Route::get('/dang-nhap',[LoginController::class,'index'])->name('show');
         Route::post('/dang-nhap',[LoginController::class,'customLogin'])->name('login-user');
@@ -62,31 +71,26 @@ Route::name('frontend.')->group(function () {
         });
 
     Route::middleware(['checkCustomer'])->group(function (){
-   
 
         Route::name('customers.')->group(function(){
             Route::get('/ho-so',[CustomerController::class,'profile'])->name('profile');
-
-            Route::get('/doi-thong-tin',[CustomerController::class,'showChangeProfile'])->name('showProfile');
-            Route::post('/doi-thong-tin',[CustomerController::class,'changeProfile'])->name('changeProfile');
-
             // Route::get('/thong-tin-thu-cung', [PetInformationController::class, 'info'])->name('pet.information');
 
-
-            Route::get('/change-password',[CustomerController::class,'changePass'])->name('show'); 
+            Route::get('/change-password',[CustomerController::class,'changePass'])->name('show');
             Route::post('/change-password',[CustomerController::class,'changePassword'])->name('changepass');
 
         });
-        
+
         Route::prefix('/chi-tiet-hoa-don')->group(function () {
             Route::get('/', [PetInformationController::class, 'show'])->name('order.customer');
             Route::get('/{id}', [PetInformationController::class, 'showDetail'])->name('show.order.detail');
         });
 
-
+        Route::post('/dich-vu/chi-tiet/binh-luan/{id}',[CommentsController::class,'comment'])->name('service.comment');
 
     });
-        
-        
+
+
 
 });
+
