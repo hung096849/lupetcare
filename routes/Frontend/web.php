@@ -11,14 +11,10 @@ use App\Http\Controllers\Frontend\News\NewsController;
 use App\Http\Controllers\Frontend\Payment\PaymentController;
 use App\Http\Controllers\Frontend\Payment\PaypalController;
 use App\Http\Controllers\Frontend\PetInformation\PetInformationController;
-use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 // Auth::routes();
 Route::name('frontend.')->group(function () {
-
-    Route::get('/test',[TestController::class, 'index']);
-    // Route::get('/test',[TestController::class, 'index']);
 
     Route::name('payment.')->group(function() {
         Route::get('/thanh-toan', [PaymentController::class, 'getPayment'])->name('getPayment');

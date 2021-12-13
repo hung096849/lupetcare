@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BackEnd\Auth\LoginController;
 use App\Http\Controllers\Backend\Calender\CalenderController;
 use App\Http\Controllers\BackEnd\Services\ServicesController;
 use App\Http\Controllers\BackEnd\Categories\CategoriesController;
@@ -8,15 +9,17 @@ use App\Http\Controllers\BackEnd\Contacts\ContactController;
 use App\Http\Controllers\BackEnd\Customer\CustomerController;
 use App\Http\Controllers\BackEnd\News\NewsController;
 use App\Http\Controllers\Backend\Order\OrderController;
+use App\Http\Controllers\Backend\Permissions\PermissionController;
 use App\Http\Controllers\Backend\PetInformation\PetInformationController;
+use App\Http\Controllers\Backend\Role\RoleController;
 use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->name('backend.')->group(function () {
     Route::name('auth.')->group(function () {
-        Route::get('/login', 'App\Http\Controllers\Backend\Auth\LoginController@index')->name('show');
-        Route::post('/login', 'App\Http\Controllers\Backend\Auth\LoginController@login')->name('login');
-        Route::get('/logout', 'App\Http\Controllers\Backend\Auth\LoginController@Logout')->name('logout');
-        Route::get('/changepassword', 'App\Http\Controllers\Backend\Auth\LoginController@changepassword')->name('changepassword');
-        Route::post('/changepassword', 'App\Http\Controllers\Backend\Auth\LoginController@postchangePassword')->name('postchangePassword');
+        Route::get('/login', [LoginController::class, 'index'])->name('show');
+        Route::post('/login', [LoginController::class, 'login'])->name('login');
+        Route::get('/logout', [LoginController::class, 'Logout'])->name('logout');
+        Route::get('/changepassword', [LoginController::class,'changepassword'])->name('changepassword');
+        Route::post('/changepassword', [LoginController::class, 'postchangePassword'])->name('postchangePassword');
     });
 
     Route::middleware(['checkLogin'])->group(function () {
@@ -26,39 +29,39 @@ Route::prefix('admin')->name('backend.')->group(function () {
             });
 
             Route::prefix('/users')->name('users.')->group(function () {
-                Route::get('/', 'App\Http\Controllers\Backend\Users\UserController@index')->name('show');
-                Route::get('/create', 'App\Http\Controllers\Backend\Users\UserController@create')->name('create');
-                Route::post('/store/user', 'App\Http\Controllers\Backend\Users\UserController@store')->name('store');
-                Route::get('/view/{id}', 'App\Http\Controllers\Backend\Users\UserController@view')->name('view');
-                Route::get('/edit/{id}', 'App\Http\Controllers\Backend\Users\UserController@edit')->name('edit');
-                Route::patch('/update/user', 'App\Http\Controllers\Backend\Users\UserController@update')->name('update');
-                Route::get('/delete/{id}', 'App\Http\Controllers\Backend\Users\UserController@delete')->name('delete');
-                Route::delete('/users/delete', 'App\Http\Controllers\Backend\Users\UserController@usersDelete')->name('users.delete');
-                Route::get('/search', 'App\Http\Controllers\Backend\Users\UserController@search')->name('search');
+                Route::get('/', [UserController::class, 'index'])->name('show');
+                Route::get('/create', [UserController::class, 'create'])->name('create');
+                Route::post('/store/user', [UserController::class, 'store'])->name('store');
+                Route::get('/view/{id}', [UserController::class, 'view'])->name('view');
+                Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
+                Route::patch('/update/user', [UserController::class, 'update'])->name('update');
+                Route::get('/delete/{id}', [UserController::class, 'delete'])->name('delete');
+                Route::delete('/users/delete', [UserController::class, 'usersDelete'])->name('users.delete');
+                Route::get('/search', [UserController::class, 'search'])->name('search');
             });
 
             Route::prefix('/role')->name('role.')->group(function () {
-                Route::get('/', 'App\Http\Controllers\Backend\Role\RoleController@index')->name('show');
-                Route::get('/create', 'App\Http\Controllers\Backend\Role\RoleController@create')->name('create');
-                Route::post('/store/user', 'App\Http\Controllers\Backend\Role\RoleController@store')->name('store');
-                Route::get('/view/{id}', 'App\Http\Controllers\Backend\Role\RoleController@view')->name('view');
-                Route::get('/edit/{id}', 'App\Http\Controllers\Backend\Role\RoleController@edit')->name('edit');
-                Route::patch('/update/user', 'App\Http\Controllers\Backend\Role\RoleController@update')->name('update');
-                Route::get('/delete/{id}', 'App\Http\Controllers\Backend\Role\RoleController@delete')->name('delete');
-                Route::delete('/users/delete', 'App\Http\Controllers\Backend\Role\RoleController@usersDelete')->name('role.delete');
-                Route::get('/search', 'App\Http\Controllers\Backend\Role\RoleController@search')->name('search');
+                Route::get('/', [RoleController::class, 'index'])->name('show');
+                Route::get('/create', [RoleController::class, 'create'])->name('create');
+                Route::post('/store/user', [RoleController::class, 'store'])->name('store');
+                Route::get('/view/{id}', [RoleController::class, 'view'])->name('view');
+                Route::get('/edit/{id}', [RoleController::class, 'edit'])->name('edit');
+                Route::patch('/update/user', [RoleController::class, 'update'])->name('update');
+                Route::get('/delete/{id}', [RoleController::class, 'delete'])->name('delete');
+                Route::delete('/users/delete', [RoleController::class, 'usersDelete'])->name('role.delete');
+                Route::get('/search', [RoleController::class, 'search'])->name('search');
             });
 
             Route::prefix('/permissions')->name('permissions.')->group(function () {
-                Route::get('/', 'App\Http\Controllers\Backend\Permissions\PermissionController@index')->name('show');
-                Route::get('/create', 'App\Http\Controllers\Backend\Permissions\PermissionController@create')->name('create');
-                Route::post('/store/permision', 'App\Http\Controllers\Backend\Permissions\PermissionController@store')->name('store');
-                Route::get('/view/{id}', 'App\Http\Controllers\Backend\Permissions\PermissionController@view')->name('view');
-                Route::get('/edit/{id}', 'App\Http\Controllers\Backend\Permissions\PermissionController@edit')->name('edit');
-                Route::patch('/update/permission', 'App\Http\Controllers\Backend\Permissions\PermissionController@update')->name('update');
-                Route::get('/delete/{id}', 'App\Http\Controllers\Backend\Permissions\PermissionController@delete')->name('delete');
-                Route::delete('/permissions/delete', 'App\Http\Controllers\Backend\Permissions\PermissionController@permissionsDelete')->name('permissions.delete');
-                Route::get('/search', 'App\Http\Controllers\Backend\Permissions\PermissionController@search')->name('search');
+                Route::get('/', [PermissionController::class, 'index'])->name('show');
+                Route::get('/create', [PermissionController::class, 'create'])->name('create');
+                Route::post('/store/permision', [PermissionController::class, 'store'])->name('store');
+                Route::get('/view/{id}', [PermissionController::class, 'view'])->name('view');
+                Route::get('/edit/{id}', [PermissionController::class, 'edit'])->name('edit');
+                Route::patch('/update/permission', [PermissionController::class, 'update'])->name('update');
+                Route::get('/delete/{id}', [PermissionController::class, 'delete'])->name('delete');
+                Route::delete('/permissions/delete', [PermissionController::class, 'permissionsDelete'])->name('permissions.delete');
+                Route::get('/search', [PermissionController::class, 'search'])->name('search');
             });
 
             Route::prefix('/categories')->name('categories.')->group(function () {
