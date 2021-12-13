@@ -24,7 +24,6 @@ class CommentsController extends Controller
             'customer_id' => Auth::guard('customers')->user()->id,
             'service_id' => $request->id,
             'content' => $request->content,
-            'slug' => Str::slug($request->content),
         ]);
         return back();
 

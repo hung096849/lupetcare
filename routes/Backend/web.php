@@ -4,6 +4,7 @@ use App\Http\Controllers\BackEnd\Auth\LoginController;
 use App\Http\Controllers\Backend\Calender\CalenderController;
 use App\Http\Controllers\BackEnd\Services\ServicesController;
 use App\Http\Controllers\BackEnd\Categories\CategoriesController;
+use App\Http\Controllers\Backend\Comments\CommentsController;
 use App\Http\Controllers\Backend\DashBorad\DashboardController;
 use App\Http\Controllers\BackEnd\Contacts\ContactController;
 use App\Http\Controllers\BackEnd\Customer\CustomerController;
@@ -155,6 +156,13 @@ Route::prefix('admin')->name('backend.')->group(function () {
                 Route::get('/delete/{id}', [NewsController::class, 'delete'])->name('delete');
                 Route::delete('/news/delete', [NewsController::class, 'newsDelete'])->name('news.delete');
                 Route::get('/search', [NewsController::class, 'search'])->name('search');
+            });
+
+            Route::prefix('/comments')->name('comments.')->group(function () {
+                Route::get('/', [CommentsController::class, 'index'])->name('show');
+                Route::get('/delete/{id}', [CommentsController::class, 'delete'])->name('delete');
+                Route::delete('/comments/delete', [CommentsController::class, 'commentsDelete'])->name('comments.delete');
+                Route::get('/search', [CommentsController::class, 'search'])->name('search');
             });
 
         });
