@@ -13,7 +13,6 @@ use App\Http\Controllers\Frontend\Payment\PaypalController;
 use App\Http\Controllers\Frontend\PetInformation\PetInformationController;
 use Illuminate\Support\Facades\Route;
 
-// Auth::routes();
 Route::name('frontend.')->group(function () {
 
     Route::name('payment.')->group(function() {
