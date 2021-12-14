@@ -57,7 +57,7 @@
                                                 <ul>
                                                     <li><a href="{{ route('frontend.customers.profile') }}">Hồ
                                                             sơ</a></li>
-                                                    <li><a href="{{ route('frontend.customers.showProfile') }}"
+                                                    <li><a href="{{ route('frontend.customers.show') }}"
                                                             >Đổi
                                                             thông
                                                             tin</a></li>
