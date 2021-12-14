@@ -47,7 +47,7 @@
                                                 <ul>
                                                     <li><a href="#" class="acctive">Hồ
                                                             sơ</a></li>
-                                                    <li><a href="{{ route('frontend.customers.showProfile') }}">Đổi thông
+                                                    <li><a href="{{ route('frontend.customers.show') }}">Đổi thông
                                                             tin</a></li>
 
                                                     <li><a href="{{ route('frontend.customers.show') }}">Đổi mật khẩu</a></li>
