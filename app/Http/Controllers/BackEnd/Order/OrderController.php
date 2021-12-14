@@ -46,11 +46,8 @@ class OrderController extends Controller
         $orderPet = $this->orderPet->with('petInformation', 'petServices')
             ->where('order_id', $id)
             ->get();
-
-        $services = $this->services->all();
-        $customer = $this->customers->find($id);
-
-        return view('backend.admin.orders.view', compact('orders', 'customer', 'services'));
+        $orders = $this->orders->find($id);
+        return view('backend.admin.orders.view', compact('orderPet', 'orders'));
     }
 
     public function create()
@@ -88,7 +85,7 @@ class OrderController extends Controller
                 ]);
             }
         }
-
+        
         return redirect()->back()->with('success', Lang::get('message.create', ['model' => 'Dịch vụ thú cưng']));
     }
 
@@ -100,13 +97,80 @@ class OrderController extends Controller
         return view('backend.admin.orders.edit', compact('orderPet', 'services'));
     }
 
+    public function update(Request $request)
+    {
+        $orderPet = $this->orderPet->find($request->id);
+        $orderPet->update([
+            'service_id' => $request->service_id,
+        ]);
+
+        $orders = $this->orders->find($orderPet->order->id);
+        $orders->update([
+            'total_price' => '1'
+        ]);
+        return redirect()->back()->with('success', Lang::get('message.update', ['model' => 'Dịch vụ thú cưng']));
+    }
+
+    public function insert()
+    {
+        $petInfo = $this->petInfo->all();
+        $services = $this->services->all();
+        $order = $this->orders->all();
+        
+        return view('backend.admin.orders.insert', compact('petInfo', 'services', 'order'));
+    }
+
+    public function insertStore(Request $request)
+    {
+        $petInformation = $this->petInfo->find($request->pet_id);
+        $service = $this->services->find($request->service_id);
+        $orders = $this->orders->find($request->order_id);
+
+        $orders->update([
+            'total_price' => ($orders->total_price)+($petInformation->weight*$service->price)
+        ]);
+
+        $this->orderPet->create([
+            'order_id' => $orders->id,
+            'pet_id' => $petInformation->id,
+            'service_id' => $request->service_id,
+            'quantity' => $petInformation->weight
+        ]);
+        return redirect()->back()->with('success', Lang::get('message.create', ['model' => 'Dịch vụ thú cưng']));
+    }
+
     public function delete($id)
     {
-        $orderPet = $this->orderPet->where('order_pets.order_id', $id)->get();
-        $orders = $this->orders->find($id);
-        // $orders->delete();
-        // $orderPet->delete();
-        dd( $orders,$orderPet , $id);
-        return redirect()->route('backend.admin.orders.view');
+        $orderPet = $this->orderPet->find($id);
+        $orders =$this->orders->find($orderPet->order_id);
+        $orders->update([
+            'total_price' => ($orders->total_price)-($orderPet->petServices->price*$orderPet->quantity)
+        ]);
+        
+        $orderPet->delete();
+        return redirect()->back()->with('success', Lang::get('message.delete', ['model' => 'Dịch vụ thú cưng']));
+    }
+
+    public function orderDeleteMany(Request $request)
+    {
+        $this->orders->whereIn('id', explode(",", $request->ids))->delete();
+        return response()->json(['success' => "Xóa thú cưng thành công"]);
+    }
+
+    public function orderDelete(Request $request)
+    {
+        $orders =$this->orders->find($request->id);
+        $orders->delete();
+
+        return redirect()->back()->with('success', Lang::get('message.delete', ['model' => 'Đơn hàng']));
+    }
+
+    public function exportFile(Request $request)
+    {
+        $orderPet = $this->orderPet->with('petInformation', 'petServices')
+            ->where('order_id', $request->id)
+            ->get();
+        $order = $this->orders->find($request->id);
+        return view('backend/admin/orders/exportOrderPDF', compact('orderPet', 'order'));
     }
 }

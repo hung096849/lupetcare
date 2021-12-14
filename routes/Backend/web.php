@@ -124,7 +124,7 @@ Route::prefix('admin')->name('backend.')->group(function () {
 
             Route::prefix('/orders')->name('orders.')->group(function () {
                 Route::get('/', [OrderController::class, 'index'])->name('show');
-                Route::get('/show/{id}', [OrderController::class, 'view'])->name('view');
+                Route::get('/show/{order_id}', [OrderController::class, 'view'])->name('view');
                 Route::get('/create', [OrderController::class, 'create'])->name('create');
                 Route::post('/store', [OrderController::class, 'store'])->name('store');
                 Route::get('/delete/{id}', [OrderController::class, 'delete'])->name('delete');

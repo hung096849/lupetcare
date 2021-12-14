@@ -1,5 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
+<link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/list-service.css') }}" />
 
 <div class="list-service">
     <div class="container-fluid container-padding">
