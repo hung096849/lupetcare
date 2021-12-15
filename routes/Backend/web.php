@@ -166,6 +166,10 @@ Route::prefix('admin')->name('backend.')->group(function () {
                 Route::get('/search', [CommentsController::class, 'search'])->name('search');
             });
 
+
+            Route::get('/recurring_events', function () {
+                return view('backend/admin/calender/index');
+            });
         });
     });
 });

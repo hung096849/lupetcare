@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Admin\CategoriesController;
 use App\Http\Controllers\Api\Admin\ServicesController;
+use App\Http\Controllers\Backend\Event\RecurringEventController;
 use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/testing',[TestController::class,'index']);
+Route::resource('/recurringEvents', RecurringEventController::class);
 
 Route::name('admin.')->prefix('/admin')->group(function () {
 
