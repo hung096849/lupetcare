@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\Services;
 
 use App\Http\Controllers\Controller;
+use App\Models\CategoriesServices;
 use App\Models\Comment;
 use App\Models\Services;
 use Illuminate\Http\Request;
@@ -20,9 +21,11 @@ class ServicesController extends Controller
         $this->comments = $comments;
 
     }
+    
     public function index() {
         $services = $this->services->all();
-        return view("frontend/services/services", compact('services'));
+        $categories = CategoriesServices::all();
+        return view("frontend/services/services", compact('services', 'categories'));
     }
 
     public function detail(Request $request) {

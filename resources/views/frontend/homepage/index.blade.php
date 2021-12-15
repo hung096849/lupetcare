@@ -74,57 +74,24 @@
 
 <section class="new-service">
     <div class="title-home">
-
         <span class="title">Dịch vụ mới</span>
     </div>
     <div class="container">
         <div class="list-new-service">
-
             <div class="row">
-                <div class="col-6 col-md-3">
-                    <div class="item">
-                        <div class="d-block images">
-                            <img src="{{ asset('frontend/images/img-new_service.png') }}" alt="" class="w-100">
+                @foreach ($serviceNew as $item)
+                    <div class="col-6 col-md-3">
+                        <div class="item">
+                            <div class="d-block images">
+                                <img src="{{ asset('frontend/images/img-new_service.png') }}" alt="" class="w-100">
+                            </div>
+                            <a href="#" class="d-block item-title mt-3">
+                                Căt tỉa cơ bản
+                            </a>
+                            <p class="item-price mt-2">50.000 đ</p>
                         </div>
-                        <a href="#" class="d-block item-title mt-3">
-                            Căt tỉa cơ bản
-                        </a>
-                        <p class="item-price mt-2">50.000 đ</p>
                     </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="item">
-                        <div class="d-block images">
-                            <img src="{{ asset('frontend/images/img-new_service.png') }}" alt="" class="w-100">
-                        </div>
-                        <a href="#" class="d-block item-title mt-3">
-                            Căt tỉa cơ bản
-                        </a>
-                        <p class="item-price mt-2">50.000 đ</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="item">
-                        <div class="d-block images">
-                            <img src="{{ asset('frontend/images/img-new_service.png') }}" alt="" class="w-100">
-                        </div>
-                        <a href="#" class="d-block item-title mt-3">
-                            Căt tỉa cơ bản
-                        </a>
-                        <p class="item-price mt-2">50.000 đ</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="item">
-                        <div class="d-block images">
-                            <img src="{{ asset('frontend/images/img-new_service.png') }}" alt="" class="w-100">
-                        </div>
-                        <a href="#" class="d-block item-title mt-3">
-                            Căt tỉa cơ bản
-                        </a>
-                        <p class="item-price mt-2">50.000 đ</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -132,12 +99,12 @@
 
 <section class="hot-service">
     <div class="title-home">
-
         <span class="title">Dịch vụ sử dụng nhiều</span>
     </div>
     <div class="container">
         <div class="list-hot-service">
             <div class="row">
+                @foreach ($serviceHot as $service)
                 <div class="col-6 col-md-3">
                     <div class="item">
                         <div class="d-block images">
@@ -149,83 +116,7 @@
                         <p class="item-price mt-2">50.000 đ</p>
                     </div>
                 </div>
-                <div class="col-6 col-md-3">
-                    <div class="item">
-                        <div class="d-block images">
-                            <img src="{{ asset('frontend/images/img-hot_service.png') }}" alt="" class="w-100">
-                        </div>
-                        <a href="#" class="d-block item-title mt-3">
-                            Căt tỉa cơ bản
-                        </a>
-                        <p class="item-price mt-2">50.000 đ</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="item">
-                        <div class="d-block images">
-                            <img src="{{ asset('frontend/images/img-hot_service.png') }}" alt="" class="w-100">
-                        </div>
-                        <a href="#" class="d-block item-title mt-3">
-                            Căt tỉa cơ bản
-                        </a>
-                        <p class="item-price mt-2">50.000 đ</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="item">
-                        <div class="d-block images">
-                            <img src="{{ asset('frontend/images/img-hot_service.png') }}" alt="" class="w-100">
-                        </div>
-                        <a href="#" class="d-block item-title mt-3">
-                            Căt tỉa cơ bản
-                        </a>
-                        <p class="item-price mt-2">50.000 đ</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="item">
-                        <div class="d-block images">
-                            <img src="{{ asset('frontend/images/img-hot_service.png') }}" alt="" class="w-100">
-                        </div>
-                        <a href="#" class="d-block item-title mt-3">
-                            Căt tỉa cơ bản
-                        </a>
-                        <p class="item-price mt-2">50.000 đ</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="item">
-                        <div class="d-block images">
-                            <img src="{{ asset('frontend/images/img-hot_service.png') }}" alt="" class="w-100">
-                        </div>
-                        <a href="#" class="d-block item-title mt-3">
-                            Căt tỉa cơ bản
-                        </a>
-                        <p class="item-price mt-2">50.000 đ</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="item">
-                        <div class="d-block images">
-                            <img src="{{ asset('frontend/images/img-hot_service.png') }}" alt="" class="w-100">
-                        </div>
-                        <a href="#" class="d-block item-title mt-3">
-                            Căt tỉa cơ bản
-                        </a>
-                        <p class="item-price mt-2">50.000 đ</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="item">
-                        <div class="d-block images">
-                            <img src="{{ asset('frontend/images/img-hot_service.png') }}" alt="" class="w-100">
-                        </div>
-                        <a href="#" class="d-block item-title mt-3">
-                            Căt tỉa cơ bản
-                        </a>
-                        <p class="item-price mt-2">50.000 đ</p>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
         </div>

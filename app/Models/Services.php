@@ -12,6 +12,9 @@ class Services extends Model
 
     protected $table = "services";
 
+    const SERVICE_HOT = 0;
+    const SERVICE_NEW = 1;
+
     protected $fillable = [
         'category_id',
         'service_name',
