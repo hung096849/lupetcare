@@ -7,6 +7,7 @@ use App\Http\Controllers\BackEnd\Categories\CategoriesController;
 use App\Http\Controllers\Backend\Comments\CommentsController;
 use App\Http\Controllers\Backend\DashBorad\DashboardController;
 use App\Http\Controllers\BackEnd\Contacts\ContactController;
+use App\Http\Controllers\BackEnd\Slides\SildeController;
 use App\Http\Controllers\BackEnd\Customer\CustomerController;
 use App\Http\Controllers\BackEnd\News\NewsController;
 use App\Http\Controllers\Backend\Order\OrderController;
@@ -164,6 +165,15 @@ Route::prefix('admin')->name('backend.')->group(function () {
                 Route::get('/delete/{id}', [CommentsController::class, 'delete'])->name('delete');
                 Route::delete('/comments/delete', [CommentsController::class, 'commentsDelete'])->name('comments.delete');
                 Route::get('/search', [CommentsController::class, 'search'])->name('search');
+            });
+            Route::prefix('/slides')->name('slides.')->group(function () {
+                Route::get('/', [SildeController::class, 'index'])->name('show');
+                Route::get('/delete/{id}', [SildeController::class, 'delete'])->name('delete');
+                Route::get('/create', [SildeController::class, 'create'])->name('create');
+                Route::post('/store', [SildeController::class, 'store'])->name('store');
+                Route::get('/edit/{id}', [SildeController::class, 'edit'])->name('edit');
+                Route::patch('/update/services', [SildeController::class, 'update'])->name('update');
+                Route::delete('/slides/delete', [SildeController::class, 'slidessDelete'])->name('slides.delete');
             });
 
 

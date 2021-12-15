@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Frontend\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
@@ -164,6 +163,6 @@ class LoginController extends Controller
 
         DB::table('password_resets')->where(['email'=> $request->email])->delete();
 
-        return redirect('/dang-nhap')->with('message', 'Your password has been changed!');
+        return  redirect()->back()->with(['success' => 'Đổi mật khẩu thành công, vui lòng quay lại trang đăng nhập ']);
     }
 }

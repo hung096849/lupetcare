@@ -32,10 +32,10 @@ class ContactFormRequest extends FormRequest
                 'message' => 'required',
             ],
             [
-                'name.required' => ' Cần nhập họ tên',
-                'email.required' => ' Cần nhập email',
+                'name.required' => ' Vui lòng nhập họ tên',
+                'email.required' => ' Vui lòng nhập email',
                 'email.email' => 'Phải đúng định dạng email',
-                'phone.required' => ' Cần nhập số điện thoại',
+                'phone.required' => ' Vui lòng nhập số điện thoại',
                 'phone.digits' => ' Số điện thoại phải đầy đủ 11 chữ số,và không bao gồm chữ cái hoặc kí tự khác ',
                 'title.required' => 'Vui lòng nhập tiêu đề',
                 'message.required' => ' Vui lòng để lại lời nhắn của bạn '

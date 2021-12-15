@@ -45,19 +45,7 @@
                             </div>
 
                         </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="inputName">Slug</label>
-                                <input type="text" name="slug" id="title" class="form-control"
-                                    value="{{old('slug',$customers->slug)}}" readonly/>
-                                @error('slug')
-                                <div class="mt-1 text-red-500">
-                                    {{$message}}
-                                </div>
-                                @enderror
-                            </div>
-
-                        </div>
+                
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="inputName">Số điện thoại</label>

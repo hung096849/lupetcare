@@ -23,14 +23,15 @@
         <section class="register">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-md-6">
-                        <div class="images d-block run_hv">
+                <div class="col-12 col-md-7 m-0 p-0 image-hide">
+                        <div class="images d-block run_hv ">
                             <img src="{{ asset('frontend/images/img-new_service.png ') }}"
                                 alt="" class="w-100" srcset="">
                         </div>
 
                     </div>
-                    <div class="col-12 col-md-6">
+
+                    <div class="col-12 col-md-5 m-0 p-0 ">
                         <div class="register_form">
                             <h4 class="title w-100">Đăng nhập</h4>
 
