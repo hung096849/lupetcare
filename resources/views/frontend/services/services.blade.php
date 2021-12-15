@@ -8,18 +8,20 @@
             <div class="col-12 col-lg-3">
                 <div class="list_cate">
                     <ul>
-                        <li class="active"><a href="#">Chăm sóc cơ
-                                bản
-                            </a></li>
-                        <li><a href="#"> Vệ sinh </a></li>
-                        <li><a href="#">Làm đẹp thú cưng</a></li>
-                        <li><a href="#">Combo </a></li>
+                        {{-- <li class="active"><a href="#">Chăm sóc cơ
+                            bản
+                        </a></li>
+                    <li><a href="#"> Vệ sinh </a></li>
+                    <li><a href="#">Làm đẹp thú cưng</a></li>
+                    <li><a href="#">Vấ</a></li> --}}
+                        @foreach ($categories as $item)
+                                <li><a href="#">{{ $item->name }} </a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
             <div class="col-12 col-lg-9">
                 <div class="pro-cate">
-
                     <div class="row">
                         @foreach ($services as $service)
                             <div class="col-12 col-md-4 col-xl-3">
@@ -49,7 +51,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <nav aria-label="Page navigation example">
+                    {{-- <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-end">
                           <li class="page-item ">
                             <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
@@ -61,7 +63,7 @@
                             <a class="page-link" href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                           </li>
                         </ul>
-                      </nav>
+                      </nav> --}}
                 </div>
             </div>
         </div>
