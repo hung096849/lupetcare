@@ -278,10 +278,10 @@
             </main>
         </div>
     </div>
-    {{-- {{ asset('frontend/js/js-pdf/html2pdf.bundle.min.js') }} --}}
-    <script src=""></script>
+    
+    <script src="{{ asset('frontend/js/js-pdf/html2pdf.bundle.min.js') }}"></script>
     <script>
-        var nameFile = "Billing"+document.getElementById('code').innerText;
+        var nameFile = "Mã hóa đơn : "+document.getElementById('code').innerText;
         var element = document.getElementById('element-to-print');
         var opt = {
             margin:       1,

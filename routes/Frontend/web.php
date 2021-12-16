@@ -53,9 +53,9 @@ Route::name('frontend.')->group(function () {
 
         Route::name('order_services.')->group(function () {
             // {slug}
-            Route::get('/dat-lich-uu-tien/{id}', [OrderController::class,'index'])->name('order');
+            Route::get('/dat-lich-uu-tien', [OrderController::class,'index'])->name('order');
 
-            Route::post('/dat-hangh-uu-tien/{id}', [OrderController::class,'addForm'])->name('addForm');
+            Route::post('/dat-hangh-uu-tien', [OrderController::class,'addForm'])->name('addForm');
 
             Route::get('/dat-lich-binh-thuong', [OrderController::class,'orderNormal'])->name('order-normal');
 
