@@ -108,6 +108,9 @@ class LoginController extends Controller
     {
         $request->validate([
             'email' => 'required|email|exists:customers',
+        ],
+        [
+            'email.required'=> 'Vui lòng nhập email để lấy lại mật khẩu'
         ]);
 
         $token = Str::random(64);
@@ -123,7 +126,7 @@ class LoginController extends Controller
             $message->subject('Reset Password');
         });
 
-        return back()->with('message', 'Bạn hãy kiểm tra email của bạn để lấy lại mật khảu!');
+        return back()->with('message', 'Bạn hãy kiểm tra email của bạn để lấy lại mật khẩu!');
     }
     /**
      * Write code on Method

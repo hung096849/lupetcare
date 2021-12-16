@@ -47,11 +47,11 @@
                                     <label for="exampleInputEmail1" class="form-label "><i class="fa
                                             fa-envelope-o" aria-hidden="true"></i></label>
                                     <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                    @if ($errors->has('email'))
-                                        <span class="text-danger">{{ $errors->first('email') }}</span>
-                                    @endif
+                                   
                                 </div>
-
+                                @if ($errors->has('email'))
+                                        <span style="margin-left: 50px;" class="text-danger">{{ $errors->first('email') }}</span>
+                                    @endif
                                
 
                                 <div class="forn-btn">
