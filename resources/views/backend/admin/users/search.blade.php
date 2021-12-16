@@ -13,7 +13,7 @@
         <td>
             <img src="{{ asset('storage/avatars/'.$user->avatar) }}" width="100px" />
         </td>
-        <td>{{ $user->roles->name }}</td>
+        <td>{{ $user->role->name }}</td>
         <td>
             <a href="{{ route('backend.admin.users.view' , $user->id) }}" class="btn btn-warning btn-sm btn-warning-edit"><i class="fas fa-eye"></i> Chi tiết</a>
             <a href="{{ route('backend.admin.users.edit', $user->id) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Sửa</a>

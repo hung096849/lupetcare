@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BackEnd\Categories;
 
+use App\Constant\PermissionConstant;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Categories\CategoriesFormRequest;
 use App\Models\CategoriesServices;
@@ -9,6 +10,7 @@ use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriesController extends Controller
 {
@@ -21,13 +23,17 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        $categories = $this->categories->paginate(3);
-        return view('backend.admin.categories.index', compact('categories'));
+        if(Auth::user()->can(PermissionConstant::CATEGORIES_PERMISSION_LIST)) {
+            $categories = $this->categories->sortable()->paginate(3);
+            return view('backend.admin.categories.index', compact('categories'));
+        }
     }
 
     public function create()
     {
-        return view('backend/admin/categories/create');
+        if(Auth::user()->can(PermissionConstant::CATEGORIES_PERMISSION_CREATE)) {
+            return view('backend/admin/categories/create');
+        }
     }
 
     public function store(CategoriesFormRequest $request)
@@ -41,8 +47,10 @@ class CategoriesController extends Controller
 
     public function edit(Request $request)
     {
-        $categories = $this->categories->find($request->id);
-        return view('backend/admin/categories/edit', compact('categories'));
+        if(Auth::user()->can(PermissionConstant::CATEGORIES_PERMISSION_EDIT)) {
+            $categories = $this->categories->find($request->id);
+            return view('backend/admin/categories/edit', compact('categories'));
+        }
     }
 
     public function update(Request $request)
@@ -57,15 +65,19 @@ class CategoriesController extends Controller
 
     public function view(Request $request)
     {
-        $categories = $this->categories->find($request->id);
-        return view('backend/admin/categories/view', compact('categories'));
+        if(Auth::user()->can(PermissionConstant::CATEGORIES_PERMISSION_VIEW)) {
+            $categories = $this->categories->find($request->id);
+            return view('backend/admin/categories/view', compact('categories'));
+        }
     }
 
     public function delete(Request $request)
     {
-        $categories = $this->categories->find($request->id);
-        $categories->delete();
-        return redirect()->route('backend.admin.categories.show')->with('success', Lang::get('message.delete', ['model' => 'Danh mục']));
+        if(Auth::user()->can(PermissionConstant::CATEGORIES_PERMISSION_DELETE)) {
+            $categories = $this->categories->find($request->id);
+            $categories->delete();
+            return redirect()->route('backend.admin.categories.show')->with('success', Lang::get('message.delete', ['model' => 'Danh mục']));
+        }
     }
 
     public function categoriesDelete(Request $request)
