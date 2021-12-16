@@ -59,7 +59,7 @@ class OrderController extends Controller
             // $twilio_number = getenv("TWILIO_NUMBER");
             $totalPrice = $request->total_price;
             $date = Carbon::parse($request->date.' '.$request->time)->format("Y-m-d H:i:s");
-            
+
             for ($i = 1; $i <= count($request->service_id); $i++) {
                 $serviceId[] = $request->service_id[$i];
             }
@@ -175,7 +175,7 @@ class OrderController extends Controller
             //         "amount" => 100 * 100,
             //         "currency" => "VND",
             //         "source" => $request->stripeToken,
-            //         "description" => "Test Payment" 
+            //         "description" => "Test Payment"
             // ]);
 
             for ($i = 1; $i <= count($request->service_id); $i++) {
@@ -270,7 +270,7 @@ class OrderController extends Controller
             $pile = $request->pile ? $request->pile : "";
             $totalPrice = $request->total_price;
             $date = Carbon::parse($request->date.' '.$request->time)->format("Y-m-d H:i:s");
-            
+
             Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
             Stripe\Charge::create([
                 "amount" => $pile,
