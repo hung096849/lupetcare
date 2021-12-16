@@ -24,7 +24,7 @@ class NewsController extends Controller
     public function index()
     {
         // if(Auth::user()->can(PermissionConstant::NEWS_PERMISSION_LIST)) {
-            $news = $this->news->paginate(5);
+            $news = $this->news->paginate(1);
             return view('backend.admin.news.index',compact('news'));
         // }
     }

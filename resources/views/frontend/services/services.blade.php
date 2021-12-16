@@ -8,12 +8,6 @@
             <div class="col-12 col-lg-3">
                 <div class="list_cate">
                     <ul>
-                        {{-- <li class="active"><a href="#">Chăm sóc cơ
-                            bản
-                        </a></li>
-                    <li><a href="#"> Vệ sinh </a></li>
-                    <li><a href="#">Làm đẹp thú cưng</a></li>
-                    <li><a href="#">Vấ</a></li> --}}
                         @foreach ($categories as $item)
                                 <li><a href="#">{{ $item->name }} </a></li>
                         @endforeach
@@ -30,40 +24,46 @@
                                     </div>  
                                     <div class="item_content">
                                         <h4 class="name">
-                                            <a href="{{ route('frontend.services.detail',$service->id) }}">Cắt tỉa móng cơ bản</a>
+                                            <a href="{{ route('frontend.services.detail',$service->id) }}"> {{ $service->service_name }}</a>
                                         </h4>
                                         <p class="price">
-                                            <a href="{{ route('frontend.order_services.order-normal') }}">50.000-- không cọc</a> 
+                                            {{ $service->price }} VNĐ
                                         </p>
-                                        <span class="time"><i class="fa fa-clock-o mr-1" aria-hidden="true"></i>20 PHÚT</span>
+                                        <span class="time"><i class="fa fa-clock-o mr-1" aria-hidden="true"></i>{{ $service->time }}</span>
                                         <div class="item_btn d-flex
                                             justify-content-center mt-4">
                                             <button type="button" class="btn
                                                 mr-3"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-                                            <a href="{{ route('frontend.order_services.order',$service->id) }}" class="btn
+                                            <a href="{{ route('frontend.order_services.order') }} " class="btn
                                                 btn-info bright
                                                 d-flex
                                                 justify-content-center
-                                                align-items-center">Đặt lịch</a>
+                                                align-items-center" data-toggle="modal" data-target="#exampleModal">Đặt lịch</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                     </div>
-                    {{-- <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-end">
-                          <li class="page-item ">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
-                          </li>
-                          <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link" href="#">3</a></li>
-                          <li class="page-item">
-                            <a class="page-link" href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                          </li>
-                        </ul>
-                      </nav> --}}
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Lupetcare trân trọng cám ơn</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              Vui lòng chọn phương thức đặt lịch 
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center"">
+                              <a name="" id="" class="btn btn-primary" href="{{ route('frontend.order_services.order-normal') }}" role="button">Đặt lịch thông thường</a>
+                              <a name="" id="" class="btn btn-success" href="{{ route('frontend.order_services.order') }}" role="button">Đặt lịch ưu tiên</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                 </div>
             </div>
         </div>
