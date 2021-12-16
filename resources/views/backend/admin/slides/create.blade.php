@@ -60,6 +60,26 @@
                                                    });
                                                </script>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="inputName">Tiêu đề</label>
+                                            <input type="text" name="title" id="title" class="form-control"
+                                                value="{{old('title')}}" placeholder="Name ..." />
+                                            @error('title')
+                                            <div class="mt-1 text-red-500">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputName">Nội dung</label>
+                                            <input type="text" name="content" id="title" class="form-control"
+                                                value="{{old('content')}}" placeholder="Name ..." />
+                                            @error('content')
+                                            <div class="mt-1 text-red-500">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
                                     </div>
                                   
 

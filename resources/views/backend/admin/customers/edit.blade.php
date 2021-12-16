@@ -47,7 +47,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="inputName">Số điện thoại</label>
-                                    <input type="number" name="phone" id="title" class="form-control"
+                                    <input type="text" name="phone" id="title" class="form-control"
                                         value="{{old('phone',$customers->phone)}}" placeholder="Phone ..." />
                                     @error('phone')
                                     <div class="mt-1 text-red-500">

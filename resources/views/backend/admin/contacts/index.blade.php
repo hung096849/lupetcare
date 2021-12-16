@@ -56,8 +56,8 @@
                                                     </div>
                                                 </div>
                                             </th>
-                                            <th>Số thứ tự</th>
-                                            <th>Tên khách hàng</th>
+                                            <th>@sortablelink('id', 'Số thứ tự')</th>
+                                            <th>@sortablelink('id', 'Tên khách hàng')</th>
                                             <th>Số điện thoại</th>
                                             <th>Email</th>
                                             <th>Hành động</th>

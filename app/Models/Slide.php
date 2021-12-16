@@ -10,7 +10,7 @@ class Slide extends Model
     use HasFactory;
     protected $table = "slides";
     protected $fillable = [
-        'image',
+        'image', 'title', 'content'
     ];
     function uploadFile($file,$folder) {
         $filenameWithExt = $file->getClientOriginalName();

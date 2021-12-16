@@ -3,8 +3,9 @@
     <div class="wrapper">
 
         @include('backend.includes.navbar-top', [
-        'add' => 'services',
-        'url' => route('backend.admin.services.show')
+        'edit' => 'slides',
+        'id' => $slides->id,
+        'url' => route('backend.admin.slides.show')
         ])
 
         <div class="content-wrapper" style="min-height: 1602px;">
@@ -13,7 +14,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6" style="padding:30px;">
-                            <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i> Sua dich vu</h1>
+                            <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i> Sửa slide</h1>
                         </div>
                     </div>
                 </div>
@@ -22,9 +23,11 @@
 
             <!-- Main content -->
             <section class="content">
-                <form method="POST" enctype="multipart/form-data" action="{{ route('backend.admin.services.update') }}">
+                <form method="POST" enctype="multipart/form-data" action="{{ route('backend.admin.slides.update') }}">
                     {{--  --}}
                     @csrf
+                    {{ method_field('PATCH') }}
+                     <input type="hidden" name="id" value="{{ $slides->id }}" />
                     <div class="row">
                         <div class="col-12">
                             <div class="card card-primary">
@@ -38,7 +41,7 @@
                                                 <label for="inputName">Hình ảnh</label>
                                                 <img id="blah" src="" width="100px" class="mt-2" />
                                                 <input type="file" name="image" id="title" class="form-control"
-                                                    value="{{ old('image', $services->image) }}" placeholder="" />
+                                                    value="{{ old('image',$slides->image) }}" placeholder="" />
                                                 @error('image')
                                                     <div class="mt-1 text-red-500">
                                                         {{ $message }}
@@ -62,6 +65,26 @@
                                                     });
                                                 </script>
                                             </div>
+                                            <div class="form-group">
+                                            <label for="inputName">Tiêu đề</label>
+                                            <input type="text" name="title" id="title" class="form-control"
+                                                value="{{old('title',$slides->title)}}" placeholder="Name ..." />
+                                            @error('title')
+                                            <div class="mt-1 text-red-500">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputName">Nội dung</label>
+                                            <input type="text" name="content" id="title" class="form-control"
+                                                value="{{old('content',$slides->content)}}" placeholder="Name ..." />
+                                            @error('content')
+                                            <div class="mt-1 text-red-500">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
                                         </div>
                                        
                                         </div>
@@ -70,7 +93,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <input type="submit" value="Sửa" class="btn btn-success float-left mr-2" />
-                                            <a href="{{ route('backend.admin.services.show') }}"
+                                            <a href="{{ route('backend.admin.slides.show') }}"
                                                 class="btn btn-secondary float-left">Quay lại</a>
                                         </div>
                                     </div>

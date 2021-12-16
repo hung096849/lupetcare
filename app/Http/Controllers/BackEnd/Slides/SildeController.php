@@ -23,7 +23,7 @@ class SildeController extends Controller
     }
     public function slidesDelete(Request $request)
     {
-        $this->customers->whereIn('id', explode(",", $request->ids))->delete();
+        $this->slides->whereIn('id', explode(",", $request->ids))->delete();
         return response()->json(['success' => "Xóa danh sách slide thành công"]);
     }
     public function delete(Request $request)
@@ -42,14 +42,15 @@ class SildeController extends Controller
     {
         $this->slides->create([
       
-            'image' => uploadFile($request->image, 'Service_image')
+            'image' => uploadFile($request->image, 'Service_image'),
+            'title' => $request->title,
+            'content' => $request->content
         ]);
         return redirect()->route('backend.admin.slides.show')->with('success', Lang::get('message.create', ['model' => 'slides']));
     }
 
     public function edit(Request $request)
     {
-        $categories = $this->categories->all();
         $slides = $this->slides->find($request->id);
         return view('backend/admin/slides/edit', compact('slides'));
     }
@@ -65,6 +66,8 @@ class SildeController extends Controller
         }
         $slides->update([
             'image' =>  $image,
+            'title' => $request->title,
+            'content' => $request->content
         ]);
         return redirect()->route('backend.admin.slides.show')->with('success', Lang::get('message.create', ['model' => 'slides']));
     }

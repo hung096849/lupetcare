@@ -28,7 +28,7 @@
                 </div>
             </div>
         </section>
-
+      
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -50,8 +50,13 @@
                                             </th>
                                             <th>Số thứ tự</th>
                                             <th>Ảnh</th>
+                                            <th>Tiêu đề</th>
+                                            <th>Nội dung</th>
                                         </tr>
                                     </thead>
+                                    <tbody id="search-data">
+                                        @include('backend.admin.slides.search')
+                                    </tbody>
                                 </table>
 
                                 <div class="ajax-load text-center" style="display:none">

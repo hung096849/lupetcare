@@ -172,8 +172,8 @@ Route::prefix('admin')->name('backend.')->group(function () {
                 Route::get('/create', [SildeController::class, 'create'])->name('create');
                 Route::post('/store', [SildeController::class, 'store'])->name('store');
                 Route::get('/edit/{id}', [SildeController::class, 'edit'])->name('edit');
-                Route::patch('/update/services', [SildeController::class, 'update'])->name('update');
-                Route::delete('/slides/delete', [SildeController::class, 'slidessDelete'])->name('slides.delete');
+                Route::patch('/update/slides', [SildeController::class, 'update'])->name('update');
+                Route::delete('/slides/delete', [SildeController::class, 'slidesDelete'])->name('slides.delete');
             });
 
 
