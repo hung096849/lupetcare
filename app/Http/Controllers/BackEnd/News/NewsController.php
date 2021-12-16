@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\BackEnd\News;
 
+use App\Constant\PermissionConstant;
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 
@@ -21,9 +23,10 @@ class NewsController extends Controller
 
     public function index()
     {
-        $news = $this->news->paginate(5);
-
-        return view('backend.admin.news.index',compact('news'));
+        // if(Auth::user()->can(PermissionConstant::NEWS_PERMISSION_LIST)) {
+            $news = $this->news->paginate(5);
+            return view('backend.admin.news.index',compact('news'));
+        // }
     }
 
     public function view(Request $request)

@@ -31,6 +31,15 @@ class PermissionSeeder extends Seeder
             ['id' => 13, 'name' => 'customers', 'slug' => PermissionConstant::CUSTOMER_PERMISSION_EDIT, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
             ['id' => 14, 'name' => 'customers', 'slug' => PermissionConstant::CUSTOMER_PERMISSION_DELETE, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
             ['id' => 15, 'name' => 'customers', 'slug' => PermissionConstant::CUSTOMER_PERMISSION_CREATE, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+
+            ['id' => 16, 'name' => 'categories', 'slug' => PermissionConstant::CATEGORIES_PERMISSION_LIST, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 17, 'name' => 'categories', 'slug' => PermissionConstant::CATEGORIES_PERMISSION_EDIT, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 18, 'name' => 'categories', 'slug' => PermissionConstant::CATEGORIES_PERMISSION_CREATE, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 19, 'name' => 'categories', 'slug' => PermissionConstant::CATEGORIES_PERMISSION_VIEW, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 20, 'name' => 'categories', 'slug' => PermissionConstant::CATEGORIES_PERMISSION_DELETE, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            
+            // ['id' => 16, 'name' => 'news', 'slug' => PermissionConstant::NEWS_PERMISSION_LIST, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+
         ]);
     }
 }

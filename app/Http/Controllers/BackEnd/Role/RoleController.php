@@ -30,23 +30,23 @@ class RoleController extends Controller
     }
 
     public function index() {
-        // if(Auth::user()->can(PermissionConstant::ROLE_PERMISSION_LIST)) {
+        if(Auth::user()->can(PermissionConstant::ROLE_PERMISSION_LIST)) {
             $roles = $this->roleRepository->paginate(10);
             return view('backend/admin/role/index', compact('roles'));
-        // }
+        }
     }
 
     public function create() {
-        // if(Auth::user()->can(PermissionConstant::ROLE_PERMISSION_CREATE)) {
+        if(Auth::user()->can(PermissionConstant::ROLE_PERMISSION_CREATE)) {
             $permissions = $this->permissionRepository->orderBy('name')->get()->groupBy(function($data) {
                 return $data->name;
             });
             return view('backend/admin/role/create', compact('permissions'));
-        // }
+        }
     }
 
     public function store(StoreRoleRequest $request) {
-        // if(Auth::user()->can(PermissionConstant::ROLE_PERMISSION_CREATE)) {
+        if(Auth::user()->can(PermissionConstant::ROLE_PERMISSION_CREATE)) {
             if($request->validated()) {
                 $role = $this->roleRepository->create($request->validated());
                 if(is_array($request['permissions'])) {
@@ -55,7 +55,7 @@ class RoleController extends Controller
                 }
                 return redirect()->route('backend.admin.role.show')->with('success', Lang::get('message.create', ['model' => 'Vai trò']));
             }
-        // }
+        }
     }
 
     public function view(Request $request) {
@@ -69,7 +69,7 @@ class RoleController extends Controller
     }
 
     public function edit(Request $request) {
-        // if(Auth::user()->can(PermissionConstant::ROLE_PERMISSION_EDIT)) {
+        if(Auth::user()->can(PermissionConstant::ROLE_PERMISSION_EDIT)) {
             $role = $this->roleRepository->find($request->id);
             $permissions = $this->permissionRepository->with(['roles' => function($q) use ($role) {
             return $q->where('id', $role->id);
@@ -77,11 +77,11 @@ class RoleController extends Controller
                 return $data->name;
             });
             return view('backend/admin/role/edit', compact( 'role', 'permissions'));
-        // }
+        }
     }
 
     public function update(UpdateRoleRequest $request) {
-        // if(Auth::user()->can(PermissionConstant::ROLE_PERMISSION_EDIT)) {
+        if(Auth::user()->can(PermissionConstant::ROLE_PERMISSION_EDIT)) {
             if($request->validated()) {
                 $role = $this->roleRepository->find($request->id);
                 $role->update($request->validated());
@@ -93,22 +93,22 @@ class RoleController extends Controller
                 }
                 return redirect()->route('backend.admin.role.show')->with('success', Lang::get('message.update', ['model' => 'role']));;
             }
-        // }
+        }
     }
 
     public function delete(Request $request) {
-        // if(Auth::user()->can(PermissionConstant::ROLE_PERMISSION_DELETE)) {
+        if(Auth::user()->can(PermissionConstant::ROLE_PERMISSION_DELETE)) {
             $user = $this->roleRepository->find($request->id);
             $user->delete();
             return redirect()->back()->with('success', Lang::get('message.delete', ['model' => 'Vai trò']));
-        // }
+        }
     }
 
     public function usersDelete(Request $request) {
-        // if(Auth::user()->can(PermissionConstant::ROLE_PERMISSION_DELETE)) {
+        if(Auth::user()->can(PermissionConstant::ROLE_PERMISSION_DELETE)) {
             $this->roleRepository->whereIn('id', explode(",", $request->ids))->delete();
             return response()->json(['success' => "Delete user successful"]);
-        // }
+        }
     }
     public function search(Request $request) {
         $roles = $this->roleRepository

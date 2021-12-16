@@ -37,7 +37,7 @@
                                         <option value="{{ $data['roles'] }}">{{ $data['roles'] }}</option>
                                         <option value="{{ $data['customers'] }}">{{ $data['customers'] }}</option>
                                         <option value="{{ $data['customers'] }}">{{ $data['permissions'] }}</option>
-                                        {{-- <option value="{{ $data['plans'] }}">{{ $data['plans'] }}</option> --}}
+                                        <option value="{{ $data['categories'] }}">{{ $data['categories'] }}</option>
                                         {{-- <option value="{{ $data['categories_plans'] }}">{{ $data['categories_plans'] }}</option> --}}
                                     </select>  
                                 </div>
