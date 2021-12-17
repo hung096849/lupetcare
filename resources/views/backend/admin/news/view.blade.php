@@ -35,7 +35,7 @@
                                     <p>{{ $news->title }}</p>
                                 <label for="">Ảnh Tiêu đề</label>
                                     <p><img src="{{ asset('storage/News_image/' . $news->image) }}" alt=""
-                                        style="width: 100%;"></p>
+                                        style="width: 20%;"></p>
                                 {!! $news->detail !!}
                             </div>
                         </div>

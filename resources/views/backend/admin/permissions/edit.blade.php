@@ -39,6 +39,9 @@
                                         <option value="{{ $data['roles'] }}" {{ $permission->name ==  $data['roles'] ? 'selected' : ''}}>{{ $data['roles'] }}</option>
                                         <option value="{{ $data['customers'] }}" {{ $permission->name ==  $data['customers'] ? 'selected' : ''}}>{{ $data['customers'] }}</option>
                                         <option value="{{ $data['permissions'] }}" {{ $permission->name ==  $data['permissions'] ? 'selected' : ''}}>{{ $data['permissions'] }}</option>
+                                        <option value="{{ $data['news'] }}">{{ $permission->name ==  $data['news'] ? 'selected' : ''}}>{{ $data['news'] }}</option>
+                                        <option value="{{ $data['services'] }}">{{ $permission->name ==  $data['services'] ? 'selected' : ''}}>{{ $data['services'] }}</option>
+                                        <option value="{{ $data['comments'] }}">{{ $permission->name ==  $data['comments'] ? 'selected' : ''}}>{{ $data['comments'] }}</option>
                                         {{-- <option value="{{ $data['plans'] }}" {{ $permission->name ==  $data['plans'] ? 'selected' : ''}}>{{ $data['plans'] }}</option> --}}
                                         {{-- <option value="{{ $data['categories_plans'] }}" {{ $permission->name ==  $data['categories_plans'] ? 'selected' : ''}}>{{ $data['categories_plans'] }}</option> --}}
                                     </select>
@@ -48,7 +51,7 @@
                         </div>
                         <!-- /.card -->
                     </div>
-                   
+
                 </div>
                 <div class="row">
                     <div class="col-12">
@@ -58,7 +61,7 @@
                                     <label for="inputStatus">Key</label>
                                     <select id="inputStatus" name="slug" class="form-control show-permission-table" required>
                                         <option value="">Chọn giá trị quyền của bạn</option>
-                                    </select>  
+                                    </select>
                                 </div>
                             </div>
                             <!-- /.card-body -->

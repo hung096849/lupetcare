@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
+
 // use Cviebrock\EloquentSluggable\Sluggable;,Sluggable
 
 class Services extends Model
 {
-    use HasFactory;
+    use HasFactory, Sortable;
 
     protected $table = "services";
 
@@ -28,6 +30,8 @@ class Services extends Model
         'slug',
         'delete_at'
     ];
+
+    public $sortable = ['id', 'service_name'];
 
     function uploadFile($file,$folder) {
         $filenameWithExt = $file->getClientOriginalName();

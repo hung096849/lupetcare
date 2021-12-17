@@ -21,7 +21,7 @@
                         <a href="{{ route('backend.admin.news.create') }}"
                             class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i>Thêm mới</a>
                         <button class="btn btn-danger float-left delete_all"
-                            data-url="{{ route('backend.admin.services.services.delete') }}">
+                            data-url="{{ route('backend.admin.news.news.delete') }}">
                             <i class="fas fa-trash"></i>Xóa hàng loạt</button>
                     </div>
                 </div>
@@ -60,8 +60,8 @@
                                                     </div>
                                                 </div>
                                             </th>
-                                            <th>STT</th>
-                                            <th>Tiêu đề</th>
+                                            <th>@sortablelink('id', 'Số thứ tự')</th>
+                                            <th>@sortablelink('title', 'Tiêu đề')</th>
                                             <th>Hành động</th>
                                         </tr>
                                     </thead>

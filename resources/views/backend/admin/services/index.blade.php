@@ -61,8 +61,8 @@
                                                     </div>
                                                 </div>
                                             </th>
-                                            <th>Số thứ tự</th>
-                                            <th>Tên dịch vụ</th>
+                                            <th>@sortablelink('id', 'Số thứ tự')</th>
+                                            <th>@sortablelink('service_name', 'Tên dịch vụ')</th>
                                             <th>Ảnh</th>
                                             <th>Trạng thái</th>
                                             <th>Hành động</th>

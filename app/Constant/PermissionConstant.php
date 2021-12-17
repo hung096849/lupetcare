@@ -39,10 +39,22 @@ class PermissionConstant
     const CATEGORIES_PERMISSION_VIEW   = "view-categories";
     const CATEGORIES_PERMISSION_DELETE = "delete-categories";
 
-    // FAKE dữ liệu tin tức
+    /** news permission */
     const NEWS_PERMISSION_LIST   = "list-news";
     const NEWS_PERMISSION_EDIT   = "edit-news";
     const NEWS_PERMISSION_CREATE = "create-news";
     const NEWS_PERMISSION_VIEW   = "view-news";
     const NEWS_PERMISSION_DELETE = "delete-news";
+
+    /** services permission */
+    const SERVICES_PERMISSION_LIST   = "list-services";
+    const SERVICES_PERMISSION_EDIT   = "edit-services";
+    const SERVICES_PERMISSION_CREATE = "create-services";
+    const SERVICES_PERMISSION_VIEW   = "view-services";
+    const SERVICES_PERMISSION_DELETE = "delete-services";
+
+    /** comments permission */
+    const COMMENTS_PERMISSION_LIST   = "list-comments";
+    const COMMENTS_PERMISSION_EDIT   = "delete-comments";
+
 }

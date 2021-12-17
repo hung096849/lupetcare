@@ -36,30 +36,30 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-3">
-                                        <label for="">Tên dich vu</label>
+                                        <label for="">Tên dịch vụ</label>
                                         <p>{{ $services->service_name }}</p>
-                                        <label for="">Danh muc</label>
+                                        <label for="">Danh mục</label>
                                         <p>{{ $services->categories->name }}</p>
-                                        <label for="">Thoi gian</label>
+                                        <label for="">Thời gian</label>
                                         <p>{{ $services->time }}</p>
                                     </div>
                                     <div class="col-3">
-                                        <label for="">Gia</label>
+                                        <label for="">Giá</label>
                                         <p>{{ $services->price }}</p>
-                                        <label for="">Gia khuyen mai</label>
+                                        <label for="">Giá khuyến mãi</label>
                                         <p>{{ $services->price_sale }}</p>
                                     </div>
                                     <div class="col-6">
-                                        <label for="">anh</label>
+                                        <label for="">Ảnh</label>
                                         <p><img src="{{ asset('storage/Service_image/' . $services->image) }}" alt=""
-                                                style="height: 300px;"></p> 
+                                                style="height: 300px;"></p>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">chi tiet</label>
-                                    <p>{{ $services->detail }}</p>
-                                    <label for="">Mo ta</label>
-                                    <p>{{ $services->description }}</p>
+                                    <label for="">Chi tiết</label>
+                                    <p>{!! $services->detail !!}</p>
+                                    <label for="">Mô tả</label>
+                                    <p>{!! $services->description !!}</p>
 
                                 </div>
 

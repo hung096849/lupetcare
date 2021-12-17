@@ -4,8 +4,8 @@
 <div class="wrapper">
 
     @include('backend.includes.navbar-top', [
-    'list' => 'Tin tuc',
-    'url' => route('backend.admin.news.show')
+    'list' => 'Bình luận',
+    'url' => route('backend.admin.comments.show')
     ])
 
     @include('backend.components.alert')
@@ -20,7 +20,7 @@
                         <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i> Bình luận</h1>
                         <button class="btn btn-danger float-left delete_all"
                             data-url="{{ route('backend.admin.comments.comments.delete') }}">
-                            <i class="fas fa-trash"></i>Xóa hàng loạt</button>
+                            <i class="fas fa-trash"></i> Xóa hàng loạt</button>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                     </div>
                     <div class="col-sm-12 col-md-7">
                         <div class="dataTables_paginate paging_simple_numbers float-right" id="example2_paginate">
-                            {{-- @include('backend.components.pagination', ['paginator' => $news]) --}}
+                            {{-- @include('backend.components.pagination', ['paginator' => $comments]) --}}
                         </div>
                     </div>
                 </div>
