@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Users;
+namespace App\Http\Controllers\Backend\User;
 
 use App\Constant\PermissionConstant;
 use App\Http\Controllers\Controller;
@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Lang;
+
 
 class UserController extends Controller
 {
