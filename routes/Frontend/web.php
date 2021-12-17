@@ -53,13 +53,13 @@ Route::name('frontend.')->group(function () {
 
         Route::name('order_services.')->group(function () {
             // {slug}
-            Route::get('/dat-lich-uu-tien', [OrderController::class,'index'])->name('order');
+            Route::get('/dat-lich/uu-tien', [OrderController::class,'index'])->name('order');
 
-            Route::post('/dat-hangh-uu-tien', [OrderController::class,'addForm'])->name('addForm');
+            Route::post('/dat-lich/uu-tien', [OrderController::class,'addForm'])->name('addForm');
 
-            Route::get('/dat-lich-binh-thuong', [OrderController::class,'orderNormal'])->name('order-normal');
+            Route::get('/pet-dat-lich/binh-thuong', [OrderController::class,'orderNormal'])->name('order-normal');
 
-            Route::post('/dat-lich-binh-thuong', [OrderController::class,'addFormNormal']);
+            Route::post('/dat-lich/binh-thuong', [OrderController::class,'addFormNormal']);
 
             Route::post('check-form', [OrderController::class,'checkValidateForm'])->name('checkValidateForm');
         });
