@@ -13,7 +13,7 @@ use App\Http\Controllers\Backend\Order\OrderController;
 use App\Http\Controllers\Backend\Permissions\PermissionController;
 use App\Http\Controllers\Backend\PetInformation\PetInformationController;
 use App\Http\Controllers\Backend\Role\RoleController;
-use App\Http\Controllers\Backend\Users\UserController;
+use App\Http\Controllers\Backend\User\UserController;
 use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->name('backend.')->group(function () {
     Route::name('auth.')->group(function () {
