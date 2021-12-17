@@ -1,4 +1,4 @@
-<h1>Forget Password Email</h1>
+<h1>Lấy lại mật khẩu</h1>
    
-You can reset password from bellow link:
+Bạn hãy xác nhận dưới link này:
 <a href="{{ route('frontend.login.reset.password.get', $token) }}">Reset Password</a> 

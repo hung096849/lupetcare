@@ -31,7 +31,7 @@ class Customers extends Authenticatable implements MustVerifyEmail
            'verification_code',
            'is_verified', 'status', 'note', 'slug'
     ];
-    public $sortable = ['id','name'];
+    public $sortable = ['id','name','status'];
     public function sluggable(): array
     {
         return [

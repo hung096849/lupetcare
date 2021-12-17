@@ -12,5 +12,5 @@ class Contact extends Model
     public $fillable = [
         'name', 'phone', 'email', 'title','message'
     ];
-    public $sortable = ['id','name'];
+    public $sortable = ['id','name','email'];
 }

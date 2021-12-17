@@ -40,6 +40,17 @@ class SildeController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'image' => 'required',
+            'title' => 'required',
+            'content' => 'required',
+        ],
+        [
+            'image.required'=> 'Hãy chọn ảnh',
+            'title.required'=> 'Cần nhập tiêu đề',
+            'content.required'=> 'Cần nhập nội dung'
+        ]);
+
         $this->slides->create([
       
             'image' => uploadFile($request->image, 'Service_image'),
@@ -57,6 +68,16 @@ class SildeController extends Controller
 
     public function update(Request $request)
     {
+        $request->validate([
+            'image' => 'required',
+            'title' => 'required',
+            'content' => 'required',
+        ],
+        [
+            'image.required'=> 'Hãy chọn ảnh',
+            'title.required'=> 'Cần nhập tiêu đề',
+            'content.required'=> 'Cần nhập nội dung'
+        ]);
 
         $slides = $this->slides->where('id', $request->id)->first();
         if($request->image == ""){
@@ -69,7 +90,7 @@ class SildeController extends Controller
             'title' => $request->title,
             'content' => $request->content
         ]);
-        return redirect()->route('backend.admin.slides.show')->with('success', Lang::get('message.create', ['model' => 'slides']));
+        return redirect()->route('backend.admin.slides.show')->with('success', Lang::get('message.update', ['model' => 'slides']));
     }
 
 }

@@ -41,7 +41,7 @@
                                                 <label for="inputName">Hình ảnh</label>
                                                 <img id="blah" src="" width="100px" class="mt-2" />
                                                 <input type="file" name="image" id="title" class="form-control"
-                                                    value="{{ old('image',$slides->image) }}" placeholder="" />
+                                                    value="{{('image') }}" placeholder="" />
                                                 @error('image')
                                                     <div class="mt-1 text-red-500">
                                                         {{ $message }}
@@ -76,15 +76,17 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputName">Nội dung</label>
-                                            <input type="text" name="content" id="title" class="form-control"
-                                                value="{{old('content',$slides->content)}}" placeholder="Name ..." />
-                                            @error('content')
+                                        <label for="inputName">Nội dung</label>
+                                        <textarea type="text" name="content" id="content" class="form-control">{{ $slides->content }}</textarea>
+                                    <script>
+                                        CKEDITOR.replace( 'content' );
+                                    </script>
+                                        @error('content')
                                             <div class="mt-1 text-red-500">
-                                                {{$message}}
+                                                {{ $message }}
                                             </div>
-                                            @enderror
-                                        </div>
+                                        @enderror
+                                    </div>
                                         </div>
                                        
                                         </div>

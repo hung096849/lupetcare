@@ -35,7 +35,7 @@
                                         <div class="form-group">
                                             <label for="inputName">Hình ảnh</label>
                                             <input type="file" name="image" id="title" class="form-control"
-                                                value="{{old('image')}}" placeholder="" />
+                                                value="{{('image')}}" placeholder="" />
                                             <img id="blah" src="" width="100px" class="mt-2" />
                                             @error('image')
                                             <div class="mt-1 text-red-500">
@@ -71,15 +71,18 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputName">Nội dung</label>
-                                            <input type="text" name="content" id="title" class="form-control"
-                                                value="{{old('content')}}" placeholder="Name ..." />
-                                            @error('content')
-                                            <div class="mt-1 text-red-500">
-                                                {{$message}}
-                                            </div>
-                                            @enderror
-                                        </div>
+                                    <label for="inputName">Nội dung</label>
+
+                                        <textarea type="text" name="content" id="content" class="form-control"></textarea>
+                                        <script>
+                                            CKEDITOR.replace( 'content' );
+                                        </script>
+                                    @error('content')
+                                    <div class="mt-1 text-red-500">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                                </div>
                                     </div>
                                   
 
