@@ -13,7 +13,7 @@ use App\Http\Controllers\Backend\Order\OrderController;
 use App\Http\Controllers\Backend\Permissions\PermissionController;
 use App\Http\Controllers\Backend\PetInformation\PetInformationController;
 use App\Http\Controllers\Backend\Role\RoleController;
-use App\Http\Controllers\Backend\Users\UserController;
+use App\Http\Controllers\Backend\Users\UsersController;
 use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->name('backend.')->group(function () {
     Route::name('auth.')->group(function () {
@@ -31,15 +31,15 @@ Route::prefix('admin')->name('backend.')->group(function () {
             });
 
             Route::prefix('/users')->name('users.')->group(function () {
-                Route::get('/', [UserController::class, 'index'])->name('show');
-                Route::get('/create', [UserController::class, 'create'])->name('create');
-                Route::post('/store/user', [UserController::class, 'store'])->name('store');
-                Route::get('/view/{id}', [UserController::class, 'view'])->name('view');
-                Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
-                Route::patch('/update/user', [UserController::class, 'update'])->name('update');
-                Route::get('/delete/{id}', [UserController::class, 'delete'])->name('delete');
-                Route::delete('/users/delete', [UserController::class, 'usersDelete'])->name('users.delete');
-                Route::get('/search', [UserController::class, 'search'])->name('search');
+                Route::get('/', [UsersController::class, 'index'])->name('show');
+                Route::get('/create', [UsersController::class, 'create'])->name('create');
+                Route::post('/store/user', [UsersController::class, 'store'])->name('store');
+                Route::get('/view/{id}', [UsersController::class, 'view'])->name('view');
+                Route::get('/edit/{id}', [UsersController::class, 'edit'])->name('edit');
+                Route::patch('/update/user', [UsersController::class, 'update'])->name('update');
+                Route::get('/delete/{id}', [UsersController::class, 'delete'])->name('delete');
+                Route::delete('/users/delete', [UsersController::class, 'usersDelete'])->name('users.delete');
+                Route::get('/search', [UsersController::class, 'search'])->name('search');
             });
 
             Route::prefix('/role')->name('role.')->group(function () {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\User;
+namespace App\Http\Controllers\Backend\Users;
 
 use App\Constant\PermissionConstant;
 use App\Http\Controllers\Controller;
