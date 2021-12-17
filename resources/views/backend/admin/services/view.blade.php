@@ -49,18 +49,13 @@
                                         <label for="">Gia khuyen mai</label>
                                         <p>{{ $services->price_sale }}</p>
                                     </div>
-
                                     <div class="col-6">
                                         <label for="">anh</label>
                                         <p><img src="{{ asset('storage/Service_image/' . $services->image) }}" alt=""
-                                                style="height: 300px;"></p>
+                                                style="height: 300px;"></p> 
                                     </div>
-
                                 </div>
                                 <div class="form-group">
-
-
-
                                     <label for="">chi tiet</label>
                                     <p>{{ $services->detail }}</p>
                                     <label for="">Mo ta</label>
