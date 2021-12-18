@@ -6,19 +6,20 @@
   display: block;
   padding: 30px 0;
   .images {
-    padding: 15px;
+   
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     height: 100%;
     img {
       //   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
-      //     drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  
       border-radius: 7px;
     }
   }
   .register_form {
-    padding: 30px 60px;
+    padding: 60px ;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+   
     height: 100%;
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -42,6 +43,7 @@
       font-size: 20px;
     }
     .forn-btn {
+     
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
@@ -52,6 +54,11 @@
         width: 50%;
         padding: 10px 0;
         margin-bottom: 10px;
+        background-color: #529EBE;
+        border:none;
+        &:hover{
+          opacity: 0.7;
+        }
       }
       .link {
         a {
@@ -59,7 +66,7 @@
           font-size: 16px;
           line-height: 16px;
 
-          color: #04b4ff;
+          color: #529EBE;
         }
       }
       .forgot_pass {
@@ -68,7 +75,7 @@
           font-weight: 500;
           font-size: 16px;
           line-height: 16px;
-
+          text-decoration: revert;
           color: #000;
         }
       }
@@ -78,10 +85,52 @@
             font-weight: 500;
             font-size: 16px;
             line-height: 16px;
-  
+          
             color: #000;
           }
       }
+     // Large devices (desktops, less than 1200px)
+    
     }
   }
 }
+@media (max-width: 575.98px) {
+  .image-hide{
+   display: none;
+ 
+  } 
+  .register{
+    .register_form{
+      box-shadow: none;
+      padding: 40px 20px;
+    }
+  }
+  
+ }
+ @media (max-width: 767.98px) { 
+  .image-hide{
+    display: none;
+  
+   } 
+   .register{
+     .register_form{
+       box-shadow: none;
+       padding: 40px 30px;
+     }
+  }
+ }
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+  .image-hide{
+    display: none;
+  
+   } 
+   .register{
+     .register_form{
+       box-shadow: none;
+       padding: 40px ;
+     }
+ }
+}
+// Large devices (desktops, less than 1200px)
+

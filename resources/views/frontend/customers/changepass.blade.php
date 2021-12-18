@@ -23,9 +23,7 @@
                             <div class="name d-flex align-items-center
                                 justify-content-center">
                                 <div class="images">
-                                    <img
-                                        src="{{ asset('frontend/css/theme/frontend/images/img-hot_service.png') }}"
-                                        alt="" srcset="">
+                                    <img src="{{ asset('frontend/images/img-hot_service.png') }}" alt="" srcset="">
                                 </div>
                                 <span class="title">{{ Auth::guard('customers')->user()->name }}</span>
                             </div>
@@ -57,7 +55,7 @@
                                                 <ul>
                                                     <li><a href="{{ route('frontend.customers.profile') }}">Hồ
                                                             sơ</a></li>
-                                                    <li><a href="{{ route('frontend.customers.show') }}"
+                                                    <li><a href="{{ route('frontend.customers.showProfile') }}"
                                                             >Đổi
                                                             thông
                                                             tin</a></li>

@@ -19,7 +19,7 @@ class CustomerController extends Controller
 
     public function index()
     {
-        $customers = $this->customers->paginate(3);
+        $customers = $this->customers->sortable()->paginate(3);
         return view('backend.admin.customers.index', compact('customers'));
     }
 

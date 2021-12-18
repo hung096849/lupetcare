@@ -56,10 +56,10 @@
                                                     </div>
                                                 </div>
                                             </th>
-                                            <th>Số thứ tự</th>
-                                            <th>Tên khách hàng</th>
+                                            <th>@sortablelink('id', 'Số thứ tự')</th>
+                                            <th>@sortablelink('name', 'Tên khách hàng')</th>
                                             <th>Số điện thoại</th>
-                                            <th>Email</th>
+                                            <th>@sortablelink('email', 'Tên khách hàng')</th>
                                             <th>Hành động</th>
                                         </tr>
                                     </thead>

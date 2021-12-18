@@ -16,7 +16,7 @@ class ContactController extends Controller
 
     public function index()
     {
-        $contacts = $this->contacts->paginate(3);
+        $contacts = $this->contacts->sortable()->paginate(3);
         return view('backend.admin.contacts.index', compact('contacts'));
     }
 

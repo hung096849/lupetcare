@@ -19,7 +19,7 @@
 <section class="my-account">
             <div class="container container-fluid container-padding">
                 <div class="row">
-                    <div class="col-12 col-md-3">
+                    <div class="col-12 col-md-3 mt-3">
                         <div class="cate-account">
                             <div class="name d-flex align-items-center
                                 justify-content-center">
@@ -47,7 +47,7 @@
                                                 <ul>
                                                     <li><a href="#" class="acctive">Hồ
                                                             sơ</a></li>
-                                                    <li><a href="{{ route('frontend.customers.show') }}">Đổi thông
+                                                    <li><a href="{{ route('frontend.customers.showProfile') }}">Đổi thông
                                                             tin</a></li>
 
                                                     <li><a href="{{ route('frontend.customers.show') }}">Đổi mật khẩu</a></li>
@@ -70,14 +70,14 @@
 
                     </div>
                     <div class="col-12 col-md-9">
-                        <div class="content-account">
+                        <div class="content-account mt-3">
                             <div class="title-content px-4 py-4">
                                 <span class="text">Thông tin của tôi</span>
                             </div>
                             <div class="content-account-list">
                                 <div class="row">
                                     <div class="col-12 col-md-6">
-                                        @if(Auth::guard('customers')->check())
+        
                                         <div class="item">
                                             <span class="title t-text">Họ và tên
                                                 : </span>
@@ -95,7 +95,7 @@
                                             <span class="sub t-text">
                                             {{ Auth::guard('customers')->user()->phone }}</span>
                                         </div>
-                                    @endif
+                                       
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="images">

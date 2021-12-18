@@ -35,6 +35,11 @@ class CustomerController extends Controller
             'current_password' => ['required', new MatchOldPassword],
             'new_password' => ['required'],
             'new_confirm_password' => ['same:new_password'],
+        ],
+        [
+            'current_password.required'=>'Xin vui lòng nhập mật khẩu hiện tại',
+            'new_password.required'=>'Xin vui lòng nhập mật khẩu mới',
+            'new_confirm_password.required'=>'Xin vui lòng xác nhận mật khẩu mới',
         ]);
    
         Customers::find(auth('customers')->user()->id)->update(['password'=> Hash::make($request->new_password)]);
@@ -49,6 +54,10 @@ class CustomerController extends Controller
         $request->validate([
             'name' => 'required',
             'phone' => 'required',
+        ],
+        [
+            'name.required' => ' Xin vui lòng nhập họ và tên mới',
+            'phone.required' => ' Xin vui lòng nhập số điện thoại mới',
         ]);
         $userUpdate = [
             'name'          =>  $request->name,

@@ -23,13 +23,13 @@
         <section class="register">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-7 m-0 p-0 image-hide">
                         <div class="images d-block run_hv">
                             <img src="{{ asset('frontend/images/img-new_service.png ') }}" alt="" class="w-100" srcset="">
                         </div>
 
                     </div>
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-5 m-0 p-0">
                         <div class="register_form">
                             <h4 class="title w-100">QUÊN MẬT KHẨU</h4>
                             <span class="sub mb-4">Nhập địa chỉ email hoặc số điện
@@ -44,14 +44,14 @@
                             <form class="w-100"action="{{ route('frontend.login.forget.password.post') }}" method="POST">
                             @csrf
                                 <div class="mb-3 d-flex">
-                                    <label for="exampleInputEmail1" class="form-label mr-3"><i class="fa
+                                    <label for="exampleInputEmail1" class="form-label "><i class="fa
                                             fa-envelope-o" aria-hidden="true"></i></label>
                                     <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                    @if ($errors->has('email'))
-                                        <span class="text-danger">{{ $errors->first('email') }}</span>
-                                    @endif
+                                   
                                 </div>
-
+                                @if ($errors->has('email'))
+                                        <span style="margin-left: 50px;" class="text-danger">{{ $errors->first('email') }}</span>
+                                    @endif
                                
 
                                 <div class="forn-btn">

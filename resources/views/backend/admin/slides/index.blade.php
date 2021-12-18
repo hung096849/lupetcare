@@ -1,10 +1,12 @@
+
 @extends('layouts.backend')
 @section('content')
+
 <div class="wrapper">
 
     @include('backend.includes.navbar-top', [
-    'list' => 'Danh sách khách hàng',
-    'url' => route('backend.admin.customers.show')
+    'list' => 'Slide',
+    'url' => route('backend.admin.slides.show')
     ])
 
     @include('backend.components.alert')
@@ -16,35 +18,24 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-8" style="padding:30px;">
-                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i> Danh sách</h1>
-                        <a href="{{ route('backend.admin.customers.create') }}"
+                        <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i> Slide</h1>
+                        <a href="{{ route('backend.admin.slides.create') }}"
                             class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i>Thêm mới</a>
                         <button class="btn btn-danger float-left delete_all"
-                            data-url="{{ route('backend.admin.customers.customers.delete') }}"><i
-                                class="fas fa-trash"></i>Xóa hàng loạt</button>
+                            data-url="{{ route('backend.admin.slides.slides.delete') }}">
+                            <i class="fas fa-trash"></i>Xóa hàng loạt</button>
                     </div>
                 </div>
             </div>
         </section>
+      
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <div class="card-tools">
-                                    <div class="input-group input-group-sm" style="width: 150px;">
-                                        <input type="text" name="search" id="search"
-                                        data-url="{{ route('backend.admin.customers.search') }}" class="form-control float-right" placeholder="Tìm kiếm">
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-default">
-                                                <i class="fas fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+        
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
                                 <table class="table table-hover text-nowrap">
@@ -57,16 +48,14 @@
                                                     </div>
                                                 </div>
                                             </th>
-                                            <th>  @sortablelink('id', 'Số thứ tự')</th>
-                                            <th> @sortablelink('name', 'Tên khách hàng')</th>
-                                            <th>Số điện thoại</th>
-                                            <th>Email</th>
-                                            <th> @sortablelink('status', 'Trạng thái')</th>
-                                            <th>Hành động</th>
+                                            <th>Số thứ tự</th>
+                                            <th>Ảnh</th>
+                                            <th>Tiêu đề</th>
+                                            <th>Nội dung</th>
                                         </tr>
                                     </thead>
                                     <tbody id="search-data">
-                                        @include('backend.admin.customers.search')
+                                        @include('backend.admin.slides.search')
                                     </tbody>
                                 </table>
 
@@ -85,7 +74,7 @@
                     </div>
                     <div class="col-sm-12 col-md-7">
                         <div class="dataTables_paginate paging_simple_numbers float-right" id="example2_paginate">
-                            @include('backend.components.pagination', ['paginator' => $customers])
+                            @include('backend.components.pagination', ['paginator' => $slides])
                         </div>
                     </div>
                 </div>
@@ -97,5 +86,4 @@
 
     <div id="sidebar-overlay"></div>
 </div>
-
 @endsection

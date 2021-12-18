@@ -74,10 +74,18 @@ Route::name('frontend.')->group(function () {
 
         Route::name('customers.')->group(function(){
             Route::get('/ho-so',[CustomerController::class,'profile'])->name('profile');
-            Route::get('/change-password',[CustomerController::class,'changePass'])->name('show');
-            Route::post('/change-password',[CustomerController::class,'changePassword'])->name('changepass');
+
+            Route::get('/doi-thong-tin',[CustomerController::class,'showChangeProfile'])->name('showProfile');
+            Route::post('/doi-thong-tin',[CustomerController::class,'changeProfile'])->name('changeProfile');
+
+            // Route::get('/thong-tin-thu-cung', [PetInformationController::class, 'info'])->name('pet.information');
+
+
+            Route::get('/doi-mat-khau',[CustomerController::class,'changePass'])->name('show'); 
+            Route::post('/doi-mat-khau',[CustomerController::class,'changePassword'])->name('changepass');
 
         });
+        
 
         Route::prefix('/chi-tiet-hoa-don')->group(function () {
             Route::get('/', [PetInformationController::class, 'show'])->name('order.customer');

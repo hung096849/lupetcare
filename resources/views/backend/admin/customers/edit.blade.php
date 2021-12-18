@@ -47,7 +47,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="inputName">Số điện thoại</label>
-                                    <input type="number" name="phone" id="title" class="form-control"
+                                    <input type="text" name="phone" id="title" class="form-control"
                                         value="{{old('phone',$customers->phone)}}" placeholder="Phone ..." />
                                     @error('phone')
                                     <div class="mt-1 text-red-500">
@@ -71,8 +71,10 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="inputName">Mật khẩu</label>
+                                    <br>
+                                    <small>Để trống để giữ nguyên</small>
                                     <input type="password" name="password" id="title" class="form-control"
-                                        value="{{old('password',$customers->password)}}" placeholder="Password ..." />
+                                        placeholder="Password ..." />
                                     @error('password')
                                     <div class="mt-1 text-red-500">
                                         {{$message}}
@@ -83,8 +85,10 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="inputName">Nhập lai mật khẩu</label>
+                                    <br>
+                                    <small>Để trống để giữ nguyên</small>
                                     <input type="password" name="re_password" id="title" class="form-control"
-                                        value="{{old('re_password',$customers->re_password)}}" placeholder="Password ..." />
+                                        placeholder="Password ..." />
                                     @error('re_password')
                                     <div class="mt-1 text-red-500">
                                         {{$message}}
