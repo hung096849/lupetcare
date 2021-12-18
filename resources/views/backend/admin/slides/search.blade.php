@@ -9,9 +9,9 @@
         </div>
     </td>
     <td>{{ $slide->id}}</td>
-    <td><img src="{{ asset('storage/Service_image/' .  $slide->image) }}" alt="" style="width: 100px; height: 100px"></td>
     <td>{{ $slide->title}}</td>
-    <td>{{ $slide->content}}</td>
+    <td><img src="{{ asset('storage/Service_image/' .  $slide->image) }}" alt="" style="width: 100px; height: 100px"></td>
+    {{-- <td>{{ $slide->content}}</td> --}}
     <td>
         <a href="{{ route('backend.admin.slides.edit', $slide->id) }}" class="btn btn-info btn-sm"><i
                 class="fas fa-edit"></i> Sửa</a>

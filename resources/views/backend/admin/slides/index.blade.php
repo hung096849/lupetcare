@@ -49,9 +49,9 @@
                                                 </div>
                                             </th>
                                             <th>Số thứ tự</th>
-                                            <th>Ảnh</th>
                                             <th>Tiêu đề</th>
-                                            <th>Nội dung</th>
+                                            <th>Ảnh</th>
+                                            {{-- <th>Nội dung</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody id="search-data">

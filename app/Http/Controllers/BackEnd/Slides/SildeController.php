@@ -42,13 +42,13 @@ class SildeController extends Controller
     {
         $request->validate([
             'image' => 'required',
-            'title' => 'required',
-            'content' => 'required',
+            // 'title' => 'required',
+            // 'content' => 'required',
         ],
         [
             'image.required'=> 'Hãy chọn ảnh',
-            'title.required'=> 'Cần nhập tiêu đề',
-            'content.required'=> 'Cần nhập nội dung'
+            // 'title.required'=> 'Cần nhập tiêu đề',
+            // 'content.required'=> 'Cần nhập nội dung'
         ]);
 
         $this->slides->create([
@@ -70,13 +70,13 @@ class SildeController extends Controller
     {
         $request->validate([
             'image' => 'required',
-            'title' => 'required',
-            'content' => 'required',
+            // 'title' => 'required',
+            // 'content' => 'required',
         ],
         [
             'image.required'=> 'Hãy chọn ảnh',
-            'title.required'=> 'Cần nhập tiêu đề',
-            'content.required'=> 'Cần nhập nội dung'
+            // 'title.required'=> 'Cần nhập tiêu đề',
+            // 'content.required'=> 'Cần nhập nội dung'
         ]);
 
         $slides = $this->slides->where('id', $request->id)->first();
