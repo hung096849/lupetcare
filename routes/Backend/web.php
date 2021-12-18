@@ -4,18 +4,19 @@ use App\Http\Controllers\BackEnd\Auth\LoginController;
 use App\Http\Controllers\Backend\Calender\CalenderController;
 use App\Http\Controllers\BackEnd\Services\ServicesController;
 use App\Http\Controllers\BackEnd\Categories\CategoriesController;
-use App\Http\Controllers\Backend\Comments\CommentController;
+use App\Http\Controllers\Backend\Comments\CommentsController;
 use App\Http\Controllers\Backend\DashBorad\DashboardController;
 use App\Http\Controllers\BackEnd\Contacts\ContactController;
 use App\Http\Controllers\BackEnd\Slides\SildeController;
 use App\Http\Controllers\BackEnd\Customer\CustomerController;
 use App\Http\Controllers\BackEnd\News\NewsController;
-use App\Http\Controllers\Backend\Order\OrderController;
+use App\Http\Controllers\Backend\Orders\OrderController;
 use App\Http\Controllers\Backend\Permissions\PermissionController;
 use App\Http\Controllers\Backend\PetInformation\PetInformationController;
 use App\Http\Controllers\Backend\Role\RoleController;
 use App\Http\Controllers\Backend\User\UserController;
 use Illuminate\Support\Facades\Route;
+
 Route::prefix('admin')->name('backend.')->group(function () {
     Route::name('auth.')->group(function () {
         Route::get('/login', [LoginController::class, 'index'])->name('show');
@@ -161,10 +162,10 @@ Route::prefix('admin')->name('backend.')->group(function () {
             });
 
             Route::prefix('/comments')->name('comments.')->group(function () {
-                Route::get('/', [CommentController::class, 'index'])->name('show');
-                Route::get('/delete/{id}', [CommentController::class, 'delete'])->name('delete');
-                Route::delete('/comments/delete', [CommentController::class, 'commentsDelete'])->name('comments.delete');
-                Route::get('/search', [CommentController::class, 'search'])->name('search');
+                Route::get('/', [CommentsController::class, 'index'])->name('show');
+                Route::get('/delete/{id}', [CommentsController::class, 'delete'])->name('delete');
+                Route::delete('/comments/delete', [CommentsController::class, 'commentsDelete'])->name('comments.delete');
+                Route::get('/search', [CommentsController::class, 'search'])->name('search');
             });
             Route::prefix('/slides')->name('slides.')->group(function () {
                 Route::get('/', [SildeController::class, 'index'])->name('show');
