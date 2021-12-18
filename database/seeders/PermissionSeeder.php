@@ -37,8 +37,21 @@ class PermissionSeeder extends Seeder
             ['id' => 18, 'name' => 'categories', 'slug' => PermissionConstant::CATEGORIES_PERMISSION_CREATE, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
             ['id' => 19, 'name' => 'categories', 'slug' => PermissionConstant::CATEGORIES_PERMISSION_VIEW, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
             ['id' => 20, 'name' => 'categories', 'slug' => PermissionConstant::CATEGORIES_PERMISSION_DELETE, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
-            
-            // ['id' => 16, 'name' => 'news', 'slug' => PermissionConstant::NEWS_PERMISSION_LIST, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+
+            ['id' => 21, 'name' => 'services', 'slug' => PermissionConstant::SERVICES_PERMISSION_LIST, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 22, 'name' => 'services', 'slug' => PermissionConstant::SERVICES_PERMISSION_EDIT, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 23, 'name' => 'services', 'slug' => PermissionConstant::SERVICES_PERMISSION_CREATE, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 24, 'name' => 'services', 'slug' => PermissionConstant::SERVICES_PERMISSION_VIEW, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 25, 'name' => 'services', 'slug' => PermissionConstant::SERVICES_PERMISSION_DELETE, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+
+            ['id' => 26, 'name' => 'news', 'slug' => PermissionConstant::NEWS_PERMISSION_LIST, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 27, 'name' => 'news', 'slug' => PermissionConstant::NEWS_PERMISSION_EDIT, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 28, 'name' => 'news', 'slug' => PermissionConstant::NEWS_PERMISSION_CREATE, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 29, 'name' => 'news', 'slug' => PermissionConstant::NEWS_PERMISSION_VIEW, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 30, 'name' => 'news', 'slug' => PermissionConstant::NEWS_PERMISSION_DELETE, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+
+            ['id' => 31, 'name' => 'comments', 'slug' => PermissionConstant::COMMENTS_PERMISSION_LIST, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 32, 'name' => 'comments', 'slug' => PermissionConstant::COMMENTS_PERMISSION_EDIT, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
 
         ]);
     }

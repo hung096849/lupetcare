@@ -4,16 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class News extends Model
 {
-    use HasFactory;
+    use HasFactory, Sortable;
 
     protected $table ='news';
 
     protected $fillable = [
         'title', 'image', 'detail', 'slug'
     ];
+
+    public $sortable = ['id', 'title'];
 
     function uploadFile($file,$folder) {
         $filenameWithExt = $file->getClientOriginalName();

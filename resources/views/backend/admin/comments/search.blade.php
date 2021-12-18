@@ -16,7 +16,7 @@
         <a
         href="{{ route('backend.admin.comments.delete', $c->id) }}"
          class="btn btn-danger btn-sm"> <i
-                class="fas fa-trash"></i>Delete</a>
+                class="fas fa-trash"></i> Xóa</a>
     </td>
 </tr>
 

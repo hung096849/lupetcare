@@ -38,15 +38,19 @@
                                         <option value="{{ $data['customers'] }}">{{ $data['customers'] }}</option>
                                         <option value="{{ $data['customers'] }}">{{ $data['permissions'] }}</option>
                                         <option value="{{ $data['categories'] }}">{{ $data['categories'] }}</option>
+                                        <option value="{{ $data['news'] }}">{{ $data['news'] }}</option>
+                                        <option value="{{ $data['services'] }}">{{ $data['services'] }}</option>
+                                        <option value="{{ $data['comments'] }}">{{ $data['comments'] }}</option>
+
                                         {{-- <option value="{{ $data['categories_plans'] }}">{{ $data['categories_plans'] }}</option> --}}
-                                    </select>  
+                                    </select>
                                 </div>
                             </div>
                             <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
                     </div>
-                    
+
                 </div>
                 <div class="row">
                     <div class="col-12">
@@ -56,7 +60,7 @@
                                     <label for="inputStatus">Key</label>
                                     <select id="inputStatus" name="slug" class="form-control show-permission-table" required>
                                         <option value="">Chọn giá trị quyền của bạn</option>
-                                    </select>  
+                                    </select>
                                 </div>
                             </div>
                             <!-- /.card-body -->

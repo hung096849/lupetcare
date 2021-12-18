@@ -1,188 +1,93 @@
 @extends('layouts.frontend')
 @section('content')
-
     <section class="form-book-service">
         <div class="container-fluid container-padding">
             <div class="content">
+                <div class="new-detail-titles">
+                    <h2 class="text-center">Tin tức</h2>
+                </div>
                 <form>
-                    <div class="container">
-                        <div class="book-content">
-                            <div class="row">
-                                <div class="col-md-3 mt-2">
-                                    <div class="new-form">
-                                        <div class="new-form-service mr-4">
-                                            <div class="new-form-title">
-                                                <h2 class="">Lọc theo</h2>
-                                            </div>
-                                            <hr />
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="new-form-delete">
-                                                        <label for="Name " class="pt-2 pb-2">Xóa tất cả</label>
+                    <section class="page_new_slide">
+                        <div class="container">
+                            <div class="swiper mySwiper_blog_slode">
+                                <div class="swiper-wrapper">
+                                    @foreach ($news as $item)
+                                        <div class="swiper-slide">
+                                            <div class="container">
+                                                <div class="row align-items-center">
+                                                    <div class="col-12 col-lg-5">
+                                                        <a href="{{ route('frontend.tin-tuc.view', $item->id) }}"
+                                                            class="imgs d-block">
+                                                            <img src="{{ asset('storage/News_image/' . $item->image) }}"
+                                                                alt="" height="100" class="img_blog w-100">
+                                                        </a>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <hr />
-                                            <div class="filter-by-type">
-                                                <div class="row">
-                                                    <div class="col-md-12 filter-title">
-                                                        <label for="Name " class="pt-4 pb-2">Lọc theo kiểu</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-12 d-flex pt-2">
-                                                        <input type="checkbox" class="mt-2" />
-                                                        <label for="Name " class="ml-2">Sở thích </label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-12 d-flex pt-1">
-                                                        <input type="checkbox" class="mt-2" />
-                                                        <label for="Name " class="ml-2">Sở thích </label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-12 d-flex pt-1">
-                                                        <input type="checkbox" class="mt-2" />
-                                                        <label for="Name " class="ml-2">Sở thích </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr class="mt-4" />
-                                            <div class="filter-by-vendor ">
-                                                <div class="row">
-                                                    <div class="col-md-12 filter-title">
-                                                        <label for="Name " class="pt-4 pb-2">Lọc theo kiểu</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-12 d-flex pt-2">
-                                                        <input type="checkbox" class="mt-2" />
-                                                        <label for="Name " class="ml-2">Sở thích </label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-12 d-flex pt-1">
-                                                        <input type="checkbox" class="mt-2" />
-                                                        <label for="Name " class="ml-2">Sở thích </label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-12 d-flex pt-1">
-                                                        <input type="checkbox" class="mt-2" />
-                                                        <label for="Name " class="ml-2">Sở thích </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr />
-                                            <div class="recent-post">
-                                                <div class="row">
-                                                    <i></i>
-                                                    <div class="col-md-12 filter-title">
-                                                        <label for="Name " class="pt-4 pb-2">Lọc theo kiểu</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    @foreach ($news as $c)
-                                                        <div class="col-12 d-flex pt-1">
-                                                            <a href="{{ route('frontend.tin-tuc.view', $c->id) }}">
-                                                                <img src="{{ asset('storage/News_image/' . $c->image) }}"
-                                                                    alt="" --}} width="70px" height="50px" />
-                                                            </a>
-                                                            <div class="pl-2">
-                                                                <a href="{{ route('frontend.tin-tuc.view', $c->id) }}">
-                                                                    <label for="Name "
-                                                                        class="ml-2">{{ $c->title }}
-                                                                    </label></a>
-                                                                <p class="pl-2">
-                                                                    {{ substr($c->created_at, 0, 10) }}</p>
+                                                    <div class="lh-col-12 col-lg-7">
+                                                        <div class="blog_slide_tiem">
+                                                            <div class="blog_category mb-3">
+                                                                <div class="blog_list_category ">
+                                                                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                                    <span class="comma">,&nbsp;</span>
+                                                                </div>
+                                                                <div class="blog_date">
+                                                                    {{ substr($item->created_at, 0, 10) }}
+                                                                </div>
                                                             </div>
+                                                            <a href="{{ route('frontend.tin-tuc.view', $item->id) }}">
+                                                                <h3 class="blog_slide_title">{{ $item->title }}</h3>
+                                                            </a>
+                                                            <div class="blog_slide_desc">{!! substr($item->detail, 0, 200) !!}</div>
                                                         </div>
-                                                    @endforeach
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-9 ">
-                                    <div class="row">
-                                        <div class="new-form">
-                                            <div class="new-list">
-                                                <div class="new-list-title ">
-                                                    <h2 class="py-2">Tin tức</h2>
-                                                </div>
-                                                @foreach ($news as $n)
-                                                    <div class="row">
-                                                        <div class="new-list-item py-5">
-                                                            <div class="col-12 d-flex ">
-                                                                <div class="col-md-6">
-                                                                    <a
-                                                                        href="{{ route('frontend.tin-tuc.view', $n->id) }}">
-                                                                        <img src="{{ asset('storage/News_image/' . $n->image) }}"
-                                                                            alt="" width="100%" height="300px" /></a>
+                                    @endforeach
 
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="">
-                                                                        <a
-                                                                            href="{{ route('frontend.tin-tuc.view', $n->id) }}">
-                                                                            <label for="Name "
-                                                                                class="new-title-item ">{{ $n->title }}
-                                                                            </label>
-                                                                        </a>
-                                                                        <br />
-                                                                        <div class="d-flex m-2">
-                                                                            <i class="fa fa-heart-o"
-                                                                                aria-hidden="true"></i>
-                                                                            <span
-                                                                                class="pl-2">{{ substr($n->created_at, 0, 10) }}</span>
-                                                                        </div>
-                                                                        <p class="m-2 ">
-                                                                            {!! substr($n->detail, 0, 150) !!}
-                                                                        </p>
-                                                                        <br />
-                                                                        <a
-                                                                            href="{{ route('frontend.tin-tuc.view', $n->id) }}">
-                                                                            <button type="button"
-                                                                                class="btn btn-lg btn-info m-2">
-                                                                                Đọc tiếp
-                                                                            </button></a>
-                                                                    </div>
-                                                                </div>
+                                </div>
+                                <div class="container lh_sw_tract">
+                                    <div class="swiper-pagination swiper-pagination_blog_slode"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="container">
+                        <div class="book-content">
+                            <div class="row">
+                                <div class="section">
+                                    <div class="container">
+                                        <div class="row g-5 pt-4">
+                                            @foreach ($news as $item)
+
+                                                <div class="col-lg-4">
+                                                    <div class="tin-tuc d-block small-post-entry-v">
+                                                        <div class="thumbnail">
+                                                            <a href="{{ route('frontend.tin-tuc.view', $item->id) }}">
+                                                                <img src="{{ asset('storage/News_image/' . $item->image) }}" alt="Image"
+                                                                    class="img-fluid">
+                                                            </a>
+                                                        </div>
+                                                        <div class="content">
+                                                            <div class="post-meta mb-1 mt-3">
+                                                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                                <span class="date">{{ substr($item->created_at, 0, 10) }}</span>
                                                             </div>
+                                                            <h2 class="new-title-item mb-3"><a href="{{ route('frontend.tin-tuc.view', $item->id) }}">
+                                                                {{ $item->title }}</a></h2>
+                                                            <p class="chi-tiet-ngan">{!! substr($item->detail, 0, 200) !!}</p>
                                                         </div>
                                                     </div>
-                                                @endforeach
+                                                </div>
+                                            @endforeach
 
-                                                <nav aria-label="Page navigation example">
-                                                    <ul class="pagination justify-content-center">
-                                                        <li class="page-item ">
-                                                            <a class="page-link" href="#" tabindex="-1"
-                                                                aria-disabled="true"><i class="fa fa-angle-double-left"
-                                                                    aria-hidden="true"></i></a>
-                                                        </li>
-                                                        <li class="page-item active"><a class="page-link"
-                                                                href="#">1</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">2</a>
-                                                        </li>
-                                                        <li class="page-item"><a class="page-link" href="#">3</a>
-                                                        </li>
-                                                        <li class="page-item">
-                                                            <a class="page-link" href="#"><i
-                                                                    class="fa fa-angle-double-right"
-                                                                    aria-hidden="true"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </nav>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </form>
             </div>
         </div>
     </section>
-
 @endsection

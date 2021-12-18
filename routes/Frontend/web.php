@@ -27,7 +27,7 @@ Route::name('frontend.')->group(function () {
 
     Route::name('tin-tuc.')->group(function () {
         Route::get('/tin-tuc', [NewsController::class,'index'])->name('show');
-        Route::get('/tin-tuc/view/{id}', [NewsController::class,'view'])->name('view');
+        Route::get('/tin-tuc/chi-tiet/{id}', [NewsController::class,'view'])->name('view');
 
     });
 
