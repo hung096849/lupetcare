@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Backend\PetInfor;
+namespace App\Http\Controllers\Backend\Petinfor;
 
 use App\Http\Controllers\Controller;
 use App\Models\PetInformartion;
 use Illuminate\Http\Request;
 
-class PetInforController extends Controller
+class PetinforController extends Controller
 {
     protected $petInfomation;
 
