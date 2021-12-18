@@ -43,7 +43,7 @@ use App\Http\Controllers\BackEnd\Customer\CustomerController;
 use App\Http\Controllers\BackEnd\News\NewsController;
 use App\Http\Controllers\Backend\Orders\OrderController;
 use App\Http\Controllers\Backend\Permissions\PermissionController;
-use App\Http\Controllers\Backend\Pets\PetInformationController;
+use App\Http\Controllers\Backend\Pets\PetsController;
 use App\Http\Controllers\Backend\Role\RoleController;
 use App\Http\Controllers\Backend\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -144,15 +144,15 @@ Route::prefix('admin')->name('backend.')->group(function () {
             });
 
             Route::prefix('/pet-informations')->name('petinformation.')->group(function(){
-                Route::get('/', [PetInformationController::class, 'index'])->name('show');
-                Route::get('/create', [PetInformationController::class, 'create'])->name('create');
-                Route::post('/store', [PetInformationController::class, 'store'])->name('store');
-                Route::get('/show/{id}', [PetInformationController::class, 'view'])->name('view');
-                Route::get('/edit/{id}', [PetInformationController::class, 'edit'])->name('edit');
-                Route::patch('/update/pet-information', [PetInformationController::class, 'update'])->name('update');
-                Route::get('/delete/{id}', [PetInformationController::class, 'delete'])->name('delete');
-                Route::delete('/pet-information/delete', [PetInformationController::class, 'petDelete'])->name('pet.information.delete');
-                Route::get('/search', [PetInformationController::class, 'search'])->name('search');
+                Route::get('/', [PetsController::class, 'index'])->name('show');
+                Route::get('/create', [PetsController::class, 'create'])->name('create');
+                Route::post('/store', [PetsController::class, 'store'])->name('store');
+                Route::get('/show/{id}', [PetsController::class, 'view'])->name('view');
+                Route::get('/edit/{id}', [PetsController::class, 'edit'])->name('edit');
+                Route::patch('/update/pet-information', [PetsController::class, 'update'])->name('update');
+                Route::get('/delete/{id}', [PetsController::class, 'delete'])->name('delete');
+                Route::delete('/pet-information/delete', [PetsController::class, 'petDelete'])->name('pet.information.delete');
+                Route::get('/search', [PetsController::class, 'search'])->name('search');
             });
 
             Route::prefix('/orders')->name('orders.')->group(function () {

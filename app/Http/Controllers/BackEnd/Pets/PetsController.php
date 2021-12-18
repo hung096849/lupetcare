@@ -7,7 +7,7 @@ use App\Models\PetInformartion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 
-class PetInformationController extends Controller
+class PetsController extends Controller
 {
     protected $petInfomation;
 
