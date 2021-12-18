@@ -59,7 +59,7 @@
                                             <th>@sortablelink('id', 'Số thứ tự')</th>
                                             <th>@sortablelink('name', 'Tên khách hàng')</th>
                                             <th>Số điện thoại</th>
-                                            <th>@sortablelink('email', 'Tên khách hàng')</th>
+                                            <th>@sortablelink('email', 'Email')</th>
                                             <th>Hành động</th>
                                         </tr>
                                     </thead>
