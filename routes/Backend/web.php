@@ -4,7 +4,7 @@ use App\Http\Controllers\BackEnd\Auth\LoginController;
 use App\Http\Controllers\Backend\Calender\CalenderController;
 use App\Http\Controllers\BackEnd\Services\ServicesController;
 use App\Http\Controllers\BackEnd\Categories\CategoriesController;
-use App\Http\Controllers\Backend\Comment\CommentController;
+use App\Http\Controllers\Backend\Comments\CommentController;
 use App\Http\Controllers\Backend\DashBorad\DashboardController;
 use App\Http\Controllers\BackEnd\Contacts\ContactController;
 use App\Http\Controllers\BackEnd\Slides\SildeController;

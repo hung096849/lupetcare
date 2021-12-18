@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Backend\Comments;
 
 use App\Constant\PermissionConstant;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Lang;
 
-class CommentsController extends Controller
+class CommentController extends Controller
 {
     protected $comments;
 
@@ -43,5 +42,4 @@ class CommentsController extends Controller
         return response()->json(['success' => "Xóa thành công"]);
         }
     }
-
 }
