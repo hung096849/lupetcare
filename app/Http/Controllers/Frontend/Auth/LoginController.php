@@ -122,6 +122,7 @@ class LoginController extends Controller
           ]);
 
         Mail::send('frontend.auth.forgetLink', ['token' => $token], function($message) use($request){
+            $message->from('us@example.com', 'Lupetcare');
             $message->to($request->email);
             $message->subject('Reset Password');
         });
