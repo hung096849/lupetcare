@@ -10,9 +10,9 @@
                     <div class="address item-ft">
                         <div class="item">
                             <p class="d-flex align-items-center mt-3">
-                                <img src="{{ asset('frontend/images/map.png') }}" alt="" srcset=""> <span class="name">Địa chỉ
+                                <img src="{{ asset('frontend/images/map.png') }}" alt="" srcset=""> <span class="name">Địa chỉ:
                                     </span>
-                                <span class="sub">76 Nguyễn Trãi, Q.Thanh Xuân, Hà Nội</span>
+                                <span class="sub">  Số 1 Trịnh Văn Bô , Nam Từ Liêm , Hà Nội</span>
                             </p>
                         </div>
                     </div>
