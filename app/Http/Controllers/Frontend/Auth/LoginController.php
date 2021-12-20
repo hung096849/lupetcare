@@ -149,7 +149,12 @@ class LoginController extends Controller
             'email' => 'required|email|exists:customers',
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required'
-        ]);
+        ],
+        [
+            'email.exists'=>'Email trên không khớp với tài khoản',
+            'password.min'=>'Mật khẩu phải từ 6 kí tự trở lên ',
+        ]
+    );
 
         $updatePassword = DB::table('password_resets')
                             ->where([

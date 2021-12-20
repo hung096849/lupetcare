@@ -38,31 +38,31 @@
                                         class="form-label "><i class="fa
                                             fa-envelope-o" aria-hidden="true"></i></label>
                                             <input type="text" id="email_address" class="form-control" name="email" required autofocus placeholder="Nhập lại email">
-                                    @if ($errors->has('email'))
-                                        <span class="text-danger">{{ $errors->first('email') }}</span>
-                                    @endif
 
                                 </div>
+                                @if ($errors->has('email'))
+                                        <span style="margin-left: 50px;" class="text-danger">{{ $errors->first('email') }}</span>
+                                    @endif
                                 <div class="mb-3 d-flex">
                                     <label for="exampleInputPassword "
                                         class="form-label "><i class="fa fa-unlock-alt" aria-hidden="true"></i>
                                     </label>
                                     <input type="password" id="password" class="form-control" name="password" required autofocus placeholder="Mật khẩu">
-                                    @if ($errors->has('password'))
-                                        <span class="text-danger">{{ $errors->first('password') }}</span>
-                                    @endif 
+                                  
                                 </div>
-                              
+                                @if ($errors->has('password'))
+                                        <span style="margin-left: 50px;" class="text-danger">{{ $errors->first('password') }}</span>
+                                    @endif 
                                 <div class="mb-3 d-flex">
                                     <label for="exampleInputPassword "
                                    class="form-label "><i class="fa fa-unlock-alt" aria-hidden="true"></i>
                                     </label>
                                     <input type="password" id="password-confirm" class="form-control" name="password_confirmation" required autofocus placeholder="Nhập lại mật khẩu">
-                                    @if ($errors->has('password_confirmation'))
+                                   
+                                </div>
+                                @if ($errors->has('password_confirmation'))
                                         <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
                                     @endif
-                                </div>
-                            
                                 <div class="forn-btn">
 
                                     <button type="submit" class="btn btn-primary btn-register">Xác nhận</button>
