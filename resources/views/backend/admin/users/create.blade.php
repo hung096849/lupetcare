@@ -32,17 +32,16 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="inputName">Họ tên</label>
-                                    <input type="text" name="name" value="{{ old('name') }}" id="inputName" class="form-control" placeholder="Họ tên ..." />
+                                    <input type="text" name="name" value="{{ old('name') }}"  class="form-control" placeholder="Họ tên ..." />
                                     @if ($errors->has('name'))
                                     <div class="mt-1 text-red-500">
                                         {{ $errors->first('name') }}
                                     </div>
                                     @endif
                                 </div>
-
                                 <div class="form-group">
                                     <label for="inputDescription">Email</label>
-                                    <input type="email" name="email" value="{{ old('email') }}" id="inputName" class="form-control" placeholder="Email ..." />
+                                    <input type="email" name="email" value="{{ old('email') }}"  class="form-control" placeholder="Email ..." />
                                     @if ($errors->has('email'))
                                     <div class="mt-1 text-red-500">
                                         {{ $errors->first('email') }}

@@ -11,6 +11,9 @@
         <td>{{ $user->name }}</td>
         <td>{{ $user->email }}</td>
         <td>
+            {{ $user->status === App\Models\User::STATUS_INACTIVE ? "Nghỉ" : " Đi làm" }}
+        </td>
+        <td>
             <img src="{{ asset('storage/avatars/'.$user->avatar) }}" width="100px" />
         </td>
         <td>{{ $user->role->name }}</td>

@@ -50,6 +50,8 @@ class UserController extends Controller
                 }
                 $user = $this->userRepository->create($request->validated());
                 $user->password = Hash::make($request->password);
+                $user->status = User::STATUS_ACTIVE;
+                $user->number_book = User::NUBMER_BOOOK_DEFAULT;
                 $user->avatar = $this->userRepository->uploadAvatar($request->file('avatar'));
                 $user->save();
                 $user->roles()->attach($role);

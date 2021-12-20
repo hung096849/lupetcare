@@ -69,7 +69,7 @@ class OrderController extends Controller
             'order_code' => "ORDER-LUPET-".rand(1, 100000),
             "payment_method" => $request->payment_method,
             "vocher_id" => isset($request->vocher_id) ? $request->vocher_id : "",
-            'status' => Order::PROCESS,
+            'status' => $request->status,
             'date' => $date,
             'pile' => isset($request->pile) ? $request->pile : null,
             'total_price' => ($request->total_price_input)*$petInfomation->weight

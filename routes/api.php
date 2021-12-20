@@ -24,28 +24,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('/recurringEvents', RecurringEventController::class);
 
-Route::name('admin.')->prefix('/admin')->group(function () {
-
-    Route::prefix('/categories')->name('categories.')->group(function () {
-        Route::get('/', [CategoriesController::class, 'index'])->name('show');
-        Route::post('/store', [CategoriesController::class, 'store'])->name('store');
-        Route::get('/show/{id}', [CategoriesController::class, 'show'])->name('view');
-        Route::get('/update/{id}', [CategoriesController::class, 'update'])->name('update');
-        // Route::patch('/update/contact', [CategoriesController::class, 'update'])->name('update');
-        // Route::get('/delete/{id}', [CategoriesController::class, 'delete'])->name('delete');
-        // Route::delete('/contacts/delete', [CategoriesController::class, 'contactDelete'])->name('contacts.delete');
-        // Route::get('/search', [CategoriesController::class, 'search'])->name('search');
-    });
-
-    Route::prefix('/services')->name('services.')->group(function () {
-        Route::get('/', [ServicesController::class, 'index'])->name('show');
-        Route::post('/store', [ServicesController::class, 'store'])->name('store');
-        Route::get('/show/{id}', [ServicesController::class, 'show'])->name('view');
-        Route::get('/update/{id}', [ServicesController::class, 'update'])->name('update');
-        
-        // Route::patch('/update/contact', [CategoriesController::class, 'update'])->name('update');
-        // Route::get('/delete/{id}', [CategoriesController::class, 'delete'])->name('delete');
-        // Route::delete('/contacts/delete', [CategoriesController::class, 'contactDelete'])->name('contacts.delete');
-        // Route::get('/search', [CategoriesController::class, 'search'])->name('search');
-    });
-});
+Route::post('/create', [RecurringEventController::class, 'scheduled']);

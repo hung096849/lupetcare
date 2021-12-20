@@ -108,8 +108,8 @@
                                         <div class="form-group">
                                             <label for="inputName">Trạng thái</label>
                                             <select name="status" id="" class="custom-select">
-                                                <option value="{{ old('status', 0 ) }}">Hoạt động</option>
-                                                <option value="{{ old('status', 1 ) }}">Không hoạt động</option>
+                                                <option value="{{ old('status', App\Models\Services::SERVICE_HOT ) }}">Hoạt động</option>
+                                                <option value="{{ old('status', App\Models\Services::SERVICE_NEW ) }}">Không hoạt động</option>
                                             </select>
                                             @error('status')
                                             <div class="mt-1 text-red-500">

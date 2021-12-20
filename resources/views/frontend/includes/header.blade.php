@@ -53,7 +53,7 @@
                 </div>
                 <div class="col-12 col-lg-3">
 
-                    <div class="header-icon container">
+                    <div class="header-icon">
                         <div class="row align-items-center">
                             <div class="col-md-8">
                                 <div class="search d-flex
@@ -143,10 +143,9 @@
         </div>
 
     </div>
-
 </section>
 
-<!-- <section class="banner">
+<section class="banner">
     <div class="swiper mySwiper swiper-banner overflow-hidden swiper-container-initialized swiper-container-horizontal">
         <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-4557px, 0px, 0px);"><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="2" style="width: 1519px;">
                 <div class="images">
@@ -179,4 +178,4 @@
         <div class="swiper-button-prev d-none banner-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
         <div class="swiper-pagination d-none banner-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3"></span></div>
     <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-</section> -->
+</section>

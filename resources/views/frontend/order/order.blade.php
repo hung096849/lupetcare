@@ -1,12 +1,7 @@
 @extends('layouts.frontend')
 @section('content')
-<style>
-    .header-body{
-        /* width: 100px; */
-    }
-</style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="{{ asset('frontend/css/css-stripe/bootstrap.min.css') }}" />
+<script src="{{ asset('frontend/css/css-stripe/jquery.min.js') }}"></script>
 <form role="form" action="" method="post" class="require-validation"
     data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
     @csrf
@@ -109,94 +104,6 @@
 
                                 <div id="box_bookService" class="col-md-5 mt-4">
                                     <div id="box_quan"></div>
-                                    {{-- <div class="book-form">
-                                        <div class="book-form-service">
-                                            <div class="book-form-title">
-                                                <h2 class="text-center">Thông tin thú cưng</h2>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label for="phoneNumber" class="pt-4 pb-2 book-form-text">Tên thú
-                                                        cưng
-                                                        *</label>
-                                                    <input type="text" name="pet_name[1][]"
-                                                        class="form-control input-form-service">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label for="phoneNumber" class="pt-4 pb-2 book-form-text">Mã thú
-                                                        cưng
-                                                        *</label>
-                                                    <input type="text" name="code[1][]"
-                                                        placeholder="Nếu bạn tới lần đầu thì có thể để trống ... "
-                                                        class="form-control input-form-service">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label for="phoneNumber" class="pt-4 pb-2 book-form-text">Mã thú
-                                                        cưng
-                                                        *</label>
-                                                    <input type="text" name="code[2][]"
-                                                        placeholder="Nếu bạn tới lần đầu thì có thể để trống ... "
-                                                        class="form-control input-form-service">
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <label for="Name " class="pt-4 pb-2 book-form-text">Chọn dịch vụ
-                                                        *</label>
-                                                    <select id="" class="form-control input-form-service js-select2"
-                                                        multiple name="service_id[1][]">
-                                                        @foreach ($services as $service)
-                                                        <option value="{{ $service->id }}"> {{ $service->service_name }}
-                                                        </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <label for="Name " class="pt-4 pb-2 book-form-text">Chọn cân nặng
-                                                        thú
-                                                        cưng*</label>
-                                                    <select id="" name="weight[1][]"
-                                                        class="form-control input-form-service">
-                                                        <option value="1"> &lt;5kg </option>
-                                                        <option value="2">5kg-8kg</option>
-                                                        <option value="3">8kg-10kg</option>
-                                                        <option value="4">&gt;10kg</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <label for="Name " class="pt-4 pb-2 book-form-text">Chọn thú cưng
-                                                        của
-                                                        bạn</label>
-                                                    <select id="" name="type[1][]"
-                                                        class="form-control input-form-service">
-                                                        <option value="1"> Chó </option>
-                                                        <option value="2">Mèo</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <label for="Name " class="pt-4 pb-2 book-form-text">Chọn giới
-                                                        tính</label>
-                                                    <select id="" name="gender[1][]"
-                                                        class="form-control input-form-service">
-                                                        <option value="1"> Đực </option>
-                                                        <option value="2">Cái</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
 
                                     <div class="float-right my-4 pr-2 d-flex add-form-pet">
                                         <button type="button" class="btn btn-primary pl-3" id="clickAddForm" style="focus: none; outline: none;">Thêm thú
@@ -245,7 +152,7 @@
                                 <div class="">
                                     <div class="d-flex justify-content-center" style="max-height: 99px">
                                         <img class="img-responsive pull-right"
-                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRscRnNVQTCEyhmp2LjZ1Rtixj7V9plkiuXrA&usqp=CAU">
+                                            src="{{ asset('frontend/css/css-stripe/images.jfif') }}">
                                     </div>
                                 </div>
                             </div>
@@ -257,7 +164,6 @@
                                             size='4' type='text'>
                                     </div>
                                 </div>
-
                                 <div class='form-row row'>
                                     <div class='col-xs-12 form-group card required'>
                                         <label class='control-label'>Số thẻ</label> <input autocomplete='off'

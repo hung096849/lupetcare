@@ -4,18 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-// use Kyslik\ColumnSortable\Sortable;, Sortable
+use Kyslik\ColumnSortable\Sortable;
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory,Sortable;
 
-    const IN_PROCESS = 0;
-    const PROCESS = 1;
+    const STATUS_IN_PROCESS = 0;
+    const STATUS_PROCESS = 1;
     const UNPAID = 0;
     const PAID = 1;
     const PILE = 2;
     const CASH = 0;
     const CARD = 1;
+    const STATUS = 1;
 
     protected $table = 'orders';
     protected $fillable = [

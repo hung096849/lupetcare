@@ -28,6 +28,9 @@ class CustomerFormRequest extends FormRequest
     public function rules()
     {
         $now = Carbon::now()->subDays(1)->format('m/d/Y');
+        $maxDay = Carbon::now()->addDays(3)->format('m/d/Y');
+        $timeMin = "8:00";
+        $timeMax = "22:30";
         return [
             'name' => [
                 'required',
@@ -39,10 +42,10 @@ class CustomerFormRequest extends FormRequest
                 'required', 'email','regex:/^[A-Za-z0-9_.]{6,32}@([a-zA-Z0-9]{2,20})(.com)+$/',
             ],
             'time' => [
-                'required'
+                'required', "after:$timeMin", "before:$timeMax"
             ],
             'date' => [
-                'required', "after:$now"
+                'required', "after:$now", "before:$maxDay"
             ],
             'pet_name' => [
                 'required'
@@ -55,6 +58,9 @@ class CustomerFormRequest extends FormRequest
 
     public function messages() {
         $now = Carbon::now()->format('m/d/Y');
+        $maxDay = Carbon::now()->addDays(3)->format('m/d/Y');
+        $timeMin = "8:00";
+        $timeMax = "22:30";
         $messages = [
             'name.required' => 'Vui lòng không để trống',
             'phone.required' => 'Vui lòng không để trống',
@@ -63,8 +69,11 @@ class CustomerFormRequest extends FormRequest
             'email.email' => 'Vui lòng nhập đúng định dạng email',
             'email.regex' => 'Vui lòng nhập đúng định dạng email',
             'time.required' => 'Vui lòng không để trống',
+            'time.after' => "Vui lòng chọn giờ ít nhất từ lúc $timeMin giờ",
+            'time.before' => "Vui lòng chọn giờ không quá $timeMax giờ",
             'date.required' => 'Vui lòng không để trống',
             'date.after' => "Vui lòng chọn ngày ít nhất từ ngày $now",
+            'date.after' => "Vui lòng chọn ngày không quá $maxDay",
             'pet_name.required' => 'Vui lòng không để trống',
             'service_id.required' => 'Vui lòng chọn dịch vụ',
             

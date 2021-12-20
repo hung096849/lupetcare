@@ -83,7 +83,7 @@
                                                 <div class="col-md-6">
                                                     <label>Ngày tháng*</label>
                                                     <input type="text" name="date" value="{{ old('date') }}"
-                                                        class="form-control input-form-service date hasDatepicker id="
+                                                        class="form-control input-form-service date hasDatepicker" id="
                                                         datepicker">
                                                 </div>
                                             </div>
