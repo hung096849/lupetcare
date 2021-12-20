@@ -333,7 +333,7 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer d-flex justify-content-center"">
-                                            <a name="" id="" class="btn btn-primary submit" data-id="{{ $order->id }}" role="button">Đặt lịch</a>
+                                            <a name="" id="" class="btn btn-primary submit" data-route="{{ route('backend.admin.scheduled.show') }}" data-id="{{ $order->id }}" role="button">Đặt lịch</a>
                                              {{-- <button class="btn btn-primary submit" data-id="{{ $order->id }}">Đặt lịch</button> --}}
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">Hủy</span>
@@ -433,6 +433,7 @@
     $('.submit').click(function (e) {
         e.preventDefault();
         var id = $(this).data('id');
+        var route = $(this).data('route');
         var user_id = $('#user_id').val();
         var start_date = $(`#start_time_${id}`).val();
         var time = $(`#datetimepicker_${id}`).val();
@@ -452,6 +453,10 @@
             dataType: "json",
             success: function (response) {
                 console.log(response);
+                if(response.status == 200 ){
+                    toastr.success('Xếp lịch hẹn thành công !');
+                    location.href = route
+                }
             }
         });
     });

@@ -122,6 +122,7 @@ class RecurringEventController extends Controller
         }
 
         return response()->json([
+            'status' => 200,
             "action"=> $status,
             "tid" => $event->id
         ]);
