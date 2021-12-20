@@ -60,6 +60,7 @@
                                             </th>
                                             <th>Tên</th>
                                             <th>Email</th>
+                                            <th>Trạng thái</th>
                                             <th>Ảnh</th>
                                             <th>Vai trò</th>
                                             <th>Hành động</th>

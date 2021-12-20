@@ -31,12 +31,17 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputName">Tên</label>
-                                        <input type="text" name="name" value="{{ $user->name }}" id="inputName" class="form-control" disabled/>
+                                        <input type="text" name="name" value="{{ $user->name }}" class="form-control" disabled/>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="inputDescription">Email</label>
-                                        <input type="email" name="email" value="{{ $user->email }}" id="inputName" class="form-control" disabled/>
+                                        <input type="email" name="email" value="{{ $user->email }}" class="form-control" disabled/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputDescription">Số lần được làm việc</label>
+                                        <input value="{{ $user->number_book }}"  class="form-control" disabled/>
                                     </div>
 
                                     <div class="form-group">

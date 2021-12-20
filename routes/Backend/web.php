@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\DashBorad\DashboardController;
 use App\Http\Controllers\BackEnd\Contacts\ContactController;
 use App\Http\Controllers\BackEnd\Slides\SildeController;
 use App\Http\Controllers\BackEnd\Customer\CustomerController;
+use App\Http\Controllers\Backend\Event\RecurringEventController;
 use App\Http\Controllers\BackEnd\News\NewsController;
 use App\Http\Controllers\Backend\Orders\OrderController;
 use App\Http\Controllers\Backend\Permissions\PermissionController;
@@ -175,11 +176,6 @@ Route::prefix('admin')->name('backend.')->group(function () {
                 Route::get('/edit/{id}', [SildeController::class, 'edit'])->name('edit');
                 Route::patch('/update/slides', [SildeController::class, 'update'])->name('update');
                 Route::delete('/slides/delete', [SildeController::class, 'slidesDelete'])->name('slides.delete');
-            });
-
-
-            Route::get('/recurring_events', function () {
-                return view('backend/admin/calender/index');
             });
         });
     });

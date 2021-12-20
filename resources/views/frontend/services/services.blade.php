@@ -9,7 +9,7 @@
                 <div class="list_cate">
                     <ul>
                         @foreach ($categories as $item)
-                                <li><a href="#">{{ $item->name }} </a></li>
+                                <li><a data-toggle="tab" href="#menu{{ $item->id }}">{{ $item->name }} </a></li>
                         @endforeach
                     </ul>
                 </div>

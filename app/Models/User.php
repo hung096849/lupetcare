@@ -18,10 +18,17 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+    const STATUS_ACTIVE = 0;
+    const STATUS_INACTIVE = 1;
+    const STATUS_BOSS = 3;
+    const NUBMER_BOOOK_DEFAULT = 0;
+
     protected $fillable = [
         'name',
         'email',
         'password',
+        'status',
+        'number_book',
         'avatar',
         'role_id'
     ];

@@ -30,6 +30,8 @@ class UserSeeder extends Seeder
 		$admin = new User();
 		$admin->name = 'admin';
 		$admin->email = 'admin@gmail.com';
+		$admin->number_book = '9999';
+		$admin->status = 0;
         $admin->role_id = 1;
         $admin->avatar = "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg";
 		$admin->password = bcrypt('123456');

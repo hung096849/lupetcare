@@ -1,49 +1,68 @@
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css') }}">
-        <!-- Ionicons -->
-        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-        <!-- Tempusdominus Bootstrap 4 -->
-        <link rel="stylesheet" href="{{ asset('backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
-        <!-- iCheck -->
-        <link rel="stylesheet" href="{{ asset('backend/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-        <!-- JQVMap -->
-        <link rel="stylesheet" href="{{ asset('backend/plugins/jqvmap/jqvmap.min.css') }}">
-        <!-- Theme style -->
-        <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.min.css') }}">
-        <!-- Select2 -->
-        <link rel="stylesheet" href="{{ asset('backend/plugins/select2/css/select2.min.css') }}">
-        <!-- overlayScrollbars -->
-        <link rel="stylesheet" href="{{ asset('backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
-        <!-- Daterange picker -->
-        <link rel="stylesheet" href="{{ asset('backend/plugins/daterangepicker/daterangepicker.css') }}">
-        <!-- summernote -->
-        <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote-bs4.min.css') }}">
-        <!-- Toastr -->
-        <link rel="stylesheet" href="{{ asset('backend/plugins/toastr/toastr.min.css') }}">
-        <!-- Sweetalert2 -->
-        <link rel="stylesheet" href="{{ asset('backend/plugins/toastr/toastr.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('backend/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/jquery-ui.css') }}" />
+<!DOCTYPE html>
+<html lang="en">
 
-        <link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
-        <!-- Ckeditor -->
-        <script type="text/javascript" src="{{asset('backend/ckeditor/ckeditor.js')}}"></script>
-<script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js"></script>
-<script src="https://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxscheduler_recurring.js"></script>
-<link href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css" rel="stylesheet">
-<style type="text/css">
-    html,
-    body {
-        height: 100%;
-        padding: 0px;
-        margin: 0px;
-        overflow: hidden;
-    }
-</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Xếp lịch</title>
+
+    <link rel="stylesheet" href="{{ asset('backend/css/css.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="{{ asset('backend/css/ionicons.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="{{ asset('backend/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="{{ asset('backend/plugins/jqvmap/jqvmap.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.min.css') }}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('backend/plugins/select2/css/select2.min.css') }}">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="{{ asset('backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="{{ asset('backend/plugins/daterangepicker/daterangepicker.css') }}">
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote-bs4.min.css') }}">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{ asset('backend/plugins/toastr/toastr.min.css') }}">
+    <!-- Sweetalert2 -->
+    <link rel="stylesheet" href="{{ asset('backend/plugins/toastr/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/jquery-ui.css') }}" />
+
+    <link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
+    <!-- Ckeditor -->
+    <script type="text/javascript" src="{{asset('backend/ckeditor/ckeditor.js')}}"></script>
+
+    {{-- <script src="{{ asset('backend/js/schedule/dhtmlxscheduler.js') }}"></script>
+    <script src="{{ asset('backend/js/schedule/dhtmlxscheduler_recurring.js') }}"></script>
+    <link href="{{ asset('backend/css/schedule/dhtmlxscheduler.css') }}" rel="stylesheet"> --}}
+
+    <script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js"></script>
+    <script src="https://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxscheduler_recurring.js"></script>
+    <link href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css" rel="stylesheet">
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            padding: 0px;
+            margin: 0px;
+            overflow: hidden;
+        }
+
+        .timeline {
+            min-height: 900px;
+        }
+    </style>
+
+</head>
 
 <body>
-    <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="backend.admin.dashboard.show" class="brand-link">
@@ -218,25 +237,120 @@
         </div>
         <!-- /.sidebar -->
     </aside>
+    {{-- @extends('layouts.backend')
+    @section('content') --}}
+    <div class="wrapper">
+        <div class="content-wrapper" style="min-height: 1875.69px;">
 
+            <div class="row">
+                <div class="col-md-7 timeline">
+                    <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:83%;'>
+                        <div class="dhx_cal_navline">
+                            <div class="dhx_cal_prev_button">&nbsp;</div>
+                            <div class="dhx_cal_next_button">&nbsp;</div>
+                            {{-- <div class="dhx_cal_today_button"></div> --}}
+                            <div class="dhx_cal_date"></div>
+                            <div class="dhx_cal_tab" name="day_tab"></div>
+                            <div class="dhx_cal_tab" name="week_tab"></div>
+                            <div class="dhx_cal_tab" name="month_tab"></div>
+                        </div>
+                        <div class="dhx_cal_header"></div>
+                        <div class="dhx_cal_data"></div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Mã đơn hàng</th>
+                                <th>Tên</th>
+                                <th>SĐT</th>
+                                <th>Trạng thái</th>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($orders as $order)
+                            <tr>
+                                <td scope="row">{{ $order->order_code }}</td>
+                                <td>{{ $order->customer->name }}</td>
+                                <td>{{ $order->customer->phone }}</td>
+                                <td>{{ $order->status === App\Models\Order::STATUS_IN_PROCESS ? "Đang chờ" : "Đã xếp
+                                    lịch" }}</td>
+                                <td>
+                                    <a href="javascript:void(0);" class="btn btn-info btn-sm schedule"
+                                        data-toggle="modal" data-target="#exampleModal_{{ $order->id }}"><i
+                                            class="fas fa-edit"></i></a>
+                                </td>
+                            </tr>
 
-    <div class="content-wrapper" style="min-height: 1875.69px;">
-
-        <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
-            <div class="dhx_cal_navline">
-                <div class="dhx_cal_prev_button">&nbsp;</div>
-                <div class="dhx_cal_next_button">&nbsp;</div>
-                <div class="dhx_cal_today_button"></div>
-                <div class="dhx_cal_date"></div>
-                <div class="dhx_cal_tab" name="day_tab"></div>
-                <div class="dhx_cal_tab" name="week_tab"></div>
-                <div class="dhx_cal_tab" name="month_tab"></div>
+                            <div class="modal fade" id="exampleModal_{{ $order->id }}" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                Mã đơn hàng {{ $order->order_code }}
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Họ tên khách hàng : {{ $order->customer->name }}</p>
+                                            <p>Số điện thoại : {{ $order->customer->phone }}</p>
+                                            <p>
+                                                <label for="">Thời gian bắt đầu :</label>
+                                                <input type="text" name="" id="start_time_{{ $order->id }}"
+                                                    value="{{ $order->date }}">
+                                                <input type="datetime-local" id="birthdaytime" name="birthdaytime"
+                                                    value="{{ $order->date }}">
+                                            </p>
+                                            <div class="row">
+                                                <p class="col-md-12"><label for="">Thời gian kết thúc</label></p>
+                                                <div class="col-md-6">
+                                                    <input type="time" class="form-control input-form-service time"
+                                                        id="datetimepicker_{{ $order->id }}" name="time" value="">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" name="date" value=""
+                                                        class="form-control input-form-service date hasDatepicker"
+                                                        id="datepicker_{{ $order->id }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Mô tả</label>
+                                                <textarea class="form-control" name="" id="text_{{ $order->id }}"
+                                                    rows="3">Mã đơn hàng {{ $order->order_code }}---Số điện thoại : {{ $order->customer->phone }}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="">Chọn nhân viên</label>
+                                              <select class="form-control" id="user_id">
+                                                @foreach ($users as $user)
+                                                    <option value="{{ $user->id }}"> {{ $user->name }}</option>
+                                                @endforeach
+                                              </select>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer d-flex justify-content-center"">
+                                            <a name="" id="" class="btn btn-primary submit" data-id="{{ $order->id }}" role="button">Đặt lịch</a>
+                                             {{-- <button class="btn btn-primary submit" data-id="{{ $order->id }}">Đặt lịch</button> --}}
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">Hủy</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="dhx_cal_header"></div>
-            <div class="dhx_cal_data"></div>
         </div>
     </div>
 </body>
+
 <script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>
 
 <!-- jQuery -->
@@ -288,18 +402,59 @@
 <script src="{{ asset('backend/dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('backend/dist/js/pages/dashboard.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-
-<script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
 
 <script type="text/javascript">
     scheduler.config.xml_date = "%Y-%m-%d %H:%i:%s";
-scheduler.setLoadMode("day");//!
+    scheduler.setLoadMode("day");//!
 
-scheduler.init("scheduler_here", new Date(2021, 1, 1), "week");
+    scheduler.init("scheduler_here", new Date(2021, 11, 19), "week");
 
-scheduler.load("/api/recurringEvents", "json");//!
-var dp = new dataProcessor("/api/recurringEvents");//!
-dp.init(scheduler);
-dp.setTransactionMode("REST");
+    scheduler.load("/api/recurringEvents", "json");//!
+    var dp = new dataProcessor("/api/recurringEvents");//!
+    dp.init(scheduler);
+    dp.setTransactionMode("REST");
 </script>
+<script>
+    $(function () {
+      $('#datetimepicker1').datetimepicker();
+   });
+</script>
+<script>
+    $(function() {
+    $("#datepicker").datepicker();
+    } );
+</script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('.submit').click(function (e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var user_id = $('#user_id').val();
+        var start_date = $(`#start_time_${id}`).val();
+        var time = $(`#datetimepicker_${id}`).val();
+        var datepicker = $(`#datepicker_${id}`).val();
+        var end_date = `${datepicker} ${time}`;
+        var text = $(`#text_${id}`).val();
+        $.ajax({
+            type: "post",
+            url: "/api/create",
+            data: {
+                user_id,
+                id,
+                start_date,
+                end_date,
+                text
+            },
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    });
+</script>
+
+</html>
