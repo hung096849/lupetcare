@@ -67,12 +67,12 @@ class OrderController extends Controller
             for ($i = 1; $i <= count($request->service_id); $i++) {
                 $serviceId[] = $request->service_id[$i];
             }
-            $customer = $this->customer->where('phone', $request->phone)->orWhere('email', $request->email)->first();
+            $customer = $this->customer->where('phone', "0$request->phone")->orWhere('email', $request->email)->first();
 
             if(!$customer){
                 $customer = $this->customer->create([
                     "name"  =>  $request->name,
-                    "phone" =>  $request->phone,
+                    "phone" =>  "0$request->phone",
                     "email" =>  $request->email,
                     "note" =>   $request->note,
                     "status" => Customers::MEMBER,
@@ -186,12 +186,12 @@ class OrderController extends Controller
             for ($i = 1; $i <= count($request->service_id); $i++) {
                 $serviceId[] = $request->service_id[$i];
             }
-            $customer = $this->customer->where('phone', $request->phone)->orWhere('email', $request->email)->first();
+            $customer = $this->customer->where('phone', "0$request->phone")->orWhere('email', $request->email)->first();
 
             if(!$customer){
                 $customer = $this->customer->create([
                     "name"  =>  $request->name,
-                    "phone" =>  $request->phone,
+                    "phone" =>  "0$request->phone",
                     "email" =>  $request->email,
                     "note" =>   $request->note,
                     "status" => Customers::MEMBER,
@@ -250,7 +250,7 @@ class OrderController extends Controller
 
             $twilio = new Client($twilio_sid, $token);
             $message = $twilio->messages->create(
-                "$request->phone", // Text this number
+                "+84$request->phone", // Text this number
                 [
                     'from' => $twilio_number, // From a valid Twilio number
                     'body' => "Cám ơn bạn đã đặt lịch bên LupetCare !
