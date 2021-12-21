@@ -4,7 +4,7 @@
 
         <div class="container container-padding">
             <div class="row">
-                <div class="col-12 col-md-6 ">
+                <div class="col-12 col-lg-7 ">
                     <a href="#" class="f-logo d-block ">
                         <img src="{{ asset('frontend/images/logo.png') }}" alt="" class="w-50">
                     </a>
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-lg-5">
                   
                     <div class="pay">
                         <ul class="d-flex justify-content-center pb-5 ">
