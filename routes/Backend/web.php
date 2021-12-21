@@ -1,20 +1,20 @@
 <?php
 
 use App\Http\Controllers\BackEnd\Auth\LoginController;
-use App\Http\Controllers\Backend\Calender\CalenderController;
+use App\Http\Controllers\BackEnd\Calender\CalenderController;
 use App\Http\Controllers\BackEnd\Services\ServicesController;
 use App\Http\Controllers\BackEnd\Categories\CategoriesController;
-use App\Http\Controllers\Backend\Comments\CommentsController;
-use App\Http\Controllers\Backend\DashBorad\DashboardController;
+use App\Http\Controllers\BackEnd\Comments\CommentsController;
+use App\Http\Controllers\BackEnd\DashBorad\DashboardController;
 use App\Http\Controllers\BackEnd\Contacts\ContactController;
 use App\Http\Controllers\BackEnd\Slides\SildeController;
 use App\Http\Controllers\BackEnd\Customer\CustomerController;
 use App\Http\Controllers\BackEnd\News\NewsController;
-use App\Http\Controllers\Backend\Orders\OrderController;
-use App\Http\Controllers\Backend\Permissions\PermissionController;
-use App\Http\Controllers\Backend\PetInformation\PetInformationController;
-use App\Http\Controllers\Backend\Role\RoleController;
-use App\Http\Controllers\Backend\User\UserController;
+use App\Http\Controllers\BackEnd\Orders\OrderController;
+use App\Http\Controllers\BackEnd\Permissions\PermissionController;
+use App\Http\Controllers\BackEnd\PetInformation\PetInformationController;
+use App\Http\Controllers\BackEnd\Role\RoleController;
+use App\Http\Controllers\BackEnd\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('backend.')->group(function () {
