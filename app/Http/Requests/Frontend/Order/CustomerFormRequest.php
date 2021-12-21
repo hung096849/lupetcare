@@ -45,7 +45,7 @@ class CustomerFormRequest extends FormRequest
                 'required', "after:$timeMin", "before:$timeMax"
             ],
             'date' => [
-                'required', "date_format:MM/DD/YYYY", "after:$now", "before:$maxDay"
+                'required', "after:$now", "before:$maxDay"
             ],
             'pet_name' => [
                 'required'
@@ -77,7 +77,6 @@ class CustomerFormRequest extends FormRequest
             'time.after' => "Vui lòng chọn giờ ít nhất từ lúc $timeMin giờ",
             'time.before' => "Vui lòng chọn giờ không quá $timeMax giờ",
             'date.required' => 'Vui lòng không để trống',
-            'date.date_format' => "Vui lòng nhập đúng định dạng MM/DD/YYYY",
             'date.after' => "Vui lòng chọn ngày ít nhất từ ngày $now",
             'date.before' => "Vui lòng chọn ngày không quá $maxDay",
             'pet_name.required' => 'Vui lòng không để trống',
