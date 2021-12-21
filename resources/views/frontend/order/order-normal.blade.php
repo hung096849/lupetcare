@@ -1,5 +1,7 @@
 @extends('layouts.frontend')
 @section('content')
+@include('backend.components.alert')
+
 <form role="form" action="" method="post" id="payment-form">
     @csrf
     @if (Session::has('message'))
@@ -21,13 +23,6 @@
                     CỦA LUPET CARE
                 </p>
             </div>
-            @if (Session::has('success'))
-                <div class="alert alert-success text-center">
-                    <p class="alert alert-success">
-                        {{Session::get('success')}}
-                    </p>
-                </div>
-            @endif
             <div class="content">
                     <div class="container">
                         <div class="book-content">

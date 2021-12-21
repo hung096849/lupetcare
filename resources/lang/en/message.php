@@ -16,5 +16,6 @@ return [
     'create' => 'Thêm mới :model thành công',
     'update' => 'Sửa :model thành công',
     'delete' => 'Xóa :model thành công',
+    'bookService' => "Đặt lịch thành công"
 
 ];

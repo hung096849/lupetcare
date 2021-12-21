@@ -1,5 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
+@include('backend.components.alert')
 <link rel="stylesheet" href="{{ asset('frontend/css/css-stripe/bootstrap.min.css') }}" />
 <script src="{{ asset('frontend/css/css-stripe/jquery.min.js') }}"></script>
 <form role="form" action="" method="post" class="require-validation"
@@ -24,8 +25,8 @@
                     CỦA LUPET CARE
                 </p>
             </div>
-            @if (Session::has('success'))
-                <div class="alert alert-success text-center">
+            {{-- @if (Session::has('success'))
+                <div class="container text-center pt-3">
                     <p class="alert alert-success">
                         {{Session::get('success')}}
                     </p>
@@ -33,7 +34,8 @@
                         Tổng tiền bạn vừa thanh toán cọc trước là : {{Session::get('pile')}}
                     </p>
                 </div>
-            @endif
+            @endif --}}
+            
             <div class="content">
                     <div class="container">
                         <div class="book-content">
@@ -48,17 +50,11 @@
                                                 <div class="col-md-6">
                                                     <label for="Name " class="pt-4 pb-2 book-form-text">Họ và tên
                                                         *</label>
-                                                    <input type="text" value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->name : ""  }}" name="name" id="name"
+                                                    <input type="text" placeholder="Họ tên ..." value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->name : ""  }}" name="name" id="name"
                                                         class="form-control input-form-service">
                                                     <span class="error_name text-danger"></span>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    {{-- <label for="Name " class="pt-4 pb-2 book-form-text">Email của bạn
-                                                        *</label>
-                                                    <input type="text" value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->email : ""  }}" name="email" id="email"
-                                                        class="form-control input-form-service">
-                                                    <span class="error_email text-danger"></span> --}}
-
                                                     <label for="phoneNumber" class="pt-4 pb-2 book-form-text">
                                                         Số điện thoại
                                                         *</label>
@@ -69,16 +65,16 @@
                                                         font-size: inherit;
                                                         line-height: 1.75em;
                                                     ">+84</span>
-                                                        <input type="text" placeholder="969696969 ..." value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->phone : ""  }}" style="width: 100$; border: none; flex: auto; outline: none;padding-left: 0.5em;" name="phone" id="phone">
+                                                        <input type="text" placeholder="969696969 ..." value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->phone : ""  }}" style="width: 100%; border: none; flex: auto; outline: none;padding-left: 0.5em;" name="phone" id="phone">
                                                     </div>
                                                 <span class="error_phone text-danger"></span>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                        <label for="Name" class="pt-4 pb-2 book-form-text">Email của bạn
+                                                        <label for="Name " class="pt-4 pb-2 book-form-text">Email của bạn
                                                             *</label>
-                                                        <input type="text" placeholder="email@gmail.com ..." value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->email : ""  }}" name="email" id="email"
+                                                        <input type="text" placeholder="email@gmail.com" value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->email : ""  }}" name="email" id="email"
                                                             class="form-control input-form-service">
                                                         <span class="error_email text-danger"></span>
                                                 </div>
@@ -94,7 +90,7 @@
                                                 <div class="col-md-6">
                                                     <label for="phoneNumber" class="pt-5 pb-2 book-form-text">Ngày tháng
                                                         *</label>
-                                                    <input type="text" name="date" value="{{ old('date')}}"
+                                                    <input type="text" name="date" value="{{ old('date')}}" placeholder="MM/DD/YYYY"
                                                         class="form-control input-form-service date" id="datepicker">
                                                         <span class="error_date text-danger"></span>
                                                 </div>
@@ -119,7 +115,7 @@
                                     <div id="box_quan"></div>
 
                                     <div class="float-right my-4 pr-2 d-flex">
-                                        <button type="button" class="btn btn-info pl-3" id="clickAddForm" style="focus: none; outline: none;">Thêm thú
+                                        <button type="button" class="btn btn-primary pl-3" id="clickAddForm" style="focus: none; outline: none;">Thêm thú
                                             cưng</button>
                                     </div>
                                 </div>
@@ -153,6 +149,7 @@
                         <div id="paymentCOC" class="text-danger text-right" style="min-width: 120px;"></div>
                     </div>
                     <div class="d-flex justify-content-center align-items-center" style="margin: 20px 0px;">
+                        {{-- <button type="submit" class="btn btn-sm btn-info" id="payment-pile" style="margin-right: 12px; focus: none; outline: none;">Đặt lịch k cọc</button> --}}
                         <button type="button" class="btn btn-sm btn-info" id="payment" style="margin-right: 12px; focus: none; outline: none;">Đồng ý</button>
                         <button type="button" class="btn btn-sm btn-danger" id="popupNone" style="focus: none; outline: none;">Quay lại</button>
                     </div>
@@ -259,6 +256,7 @@
                     time: $('.time').val(),
                     date: $('.date').val(),
                     pet_name: $(`#petName_${i}`).val(),
+                    pet_code: $(`#petCode_${i}`).val(),
                     service_id: $(`#js-select-pet-${i}`).val(),
                 },
                 dataType: "json",
@@ -273,6 +271,7 @@
                         $('.error_time').text("");
                         $('.error_date').text("");
                         $(`.error_pet_name_${i}`).text("");
+                        $(`.error_pet_code_${i}`).text("");
                         $(`.error_pet_service_${i}`).text("");
 
                     } else if (response.status == 422) {
@@ -309,6 +308,12 @@
                         }else{
                             $(`.error_pet_name_${i}`).text("");
                         }
+
+                        if(response.error.pet_code){
+                            $(`.error_pet_code_${i}`).text(response.error.pet_code);
+                        }else{
+                            $(`.error_pet_code_${i}`).text("");
+                        }
                         
                         if(response.error.service_id){
                             $(`.error_pet_service_${i}`).text(response.error.service_id);
@@ -328,9 +333,9 @@
             document.querySelector("#billDetail").style.display = "none"
             document.querySelector("#formBanking").style.display = "block"
         })
-        document.querySelector("#payment-pile").addEventListener("click", function () {
-            console.log($('#servName').text());
-        })
+        // document.querySelector("#payment-pile").addEventListener("click", function () {
+        //     console.log($('#servName').text());
+        // })
         document.querySelector("#backTo").addEventListener("click", function () {
             document.querySelector("#formBanking").style.display = "none"
             document.querySelector("#billDetail").style.display = "block"
@@ -414,7 +419,7 @@
                         <label for="phoneNumber" class="pt-4 pb-2 book-form-text">Tên thú cưng
                             *</label>
                         <input type="text" name="pet_name[${i}][]" id="petName_${i}"
-                            class="form-control input-form-service">
+                            class="form-control input-form-service" placeholder="Nhập tên thú cưng ... ">
                             <span class="error_pet_name_${i} text-danger"></span>
                     </div>
                 </div>
@@ -422,9 +427,10 @@
                     <div class="col-md-12">
                         <label for="phoneNumber" class="pt-4 pb-2 book-form-text">Mã thú cưng
                             *</label>
-                        <input type="text" name="code[${i}][]"
-                            placeholder="Nếu bạn tới lần đầu thì có thể để trống ... "
+                        <input type="text" name="code[${i}][]" id="petCode_${i}"
+                            placeholder="Nhập mã thú cưng ... "
                             class="form-control input-form-service">
+                            <span class="error_pet_code_${i} text-danger"></span>
                     </div>
                 </div>
                 <div class="row">

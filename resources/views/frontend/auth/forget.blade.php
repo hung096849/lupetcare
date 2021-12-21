@@ -1,25 +1,5 @@
 @extends('layouts.frontend')
 @section('content')
- 
-        <meta name="viewport" content="width=device-width, initial-scale=1,
-            viewport-fit=cover" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Login</title>
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/animate.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/font-awesome.css') }}">
-        <!-- <link rel="stylesheet" href="theme/frontend/fancybox/dist/jquery.fancybox.min.css) }}"> -->
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/reset.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/swiper.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/home.css') }}" />
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/style.css') }}" />
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/main.css') }}" />
-        <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('frontend/css/jquery-ui.css') }}" />
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/register.css') }}" />
-   
- 
-    <body class="scrollstyle1">
         <section class="register">
             <div class="container">
                 <div class="row">
@@ -67,11 +47,5 @@
                 </div>
             </div>
         </section>
-
-
         <span class="back-to-top" style="display: none;"><i class="fa fa-arrow-up" aria-hidden="true"></i></span>
-       
-    
-
-</body>
 @endsection

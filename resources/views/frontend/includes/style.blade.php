@@ -12,3 +12,7 @@
 <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/contact.css') }}" />
 <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/bookservice.css') }}" />
 <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/register.css') }}" />
+<!-- Toastr -->
+<link rel="stylesheet" href="{{ asset('backend/plugins/toastr/toastr.min.css') }}">
+<!-- Sweetalert2 -->
+<link rel="stylesheet" href="{{ asset('backend/plugins/toastr/toastr.min.css') }}">

@@ -45,9 +45,12 @@ class CustomerFormRequest extends FormRequest
                 'required', "after:$timeMin", "before:$timeMax"
             ],
             'date' => [
-                'required', "after:$now", "before:$maxDay"
+                'required', "date_format:MM/DD/YYYY", "after:$now", "before:$maxDay"
             ],
             'pet_name' => [
+                'required'
+            ],
+            'pet_code' => [
                 'required'
             ],
             'service_id' => [
@@ -63,6 +66,7 @@ class CustomerFormRequest extends FormRequest
         $timeMax = "22:30";
         $messages = [
             'name.required' => 'Vui lòng không để trống',
+            'pet_code.required' => 'Vui lòng không để trống',
             'phone.required' => 'Vui lòng không để trống',
             'phone.regex' => 'Vui lòng nhập đúng định dạng số điện thoại',
             'phone.max' => 'Vui lòng nhập đúng định dạng số điện thoại',
@@ -73,8 +77,9 @@ class CustomerFormRequest extends FormRequest
             'time.after' => "Vui lòng chọn giờ ít nhất từ lúc $timeMin giờ",
             'time.before' => "Vui lòng chọn giờ không quá $timeMax giờ",
             'date.required' => 'Vui lòng không để trống',
+            'date.date_format' => "Vui lòng nhập đúng định dạng MM/DD/YYYY",
             'date.after' => "Vui lòng chọn ngày ít nhất từ ngày $now",
-            'date.after' => "Vui lòng chọn ngày không quá $maxDay",
+            'date.before' => "Vui lòng chọn ngày không quá $maxDay",
             'pet_name.required' => 'Vui lòng không để trống',
             'service_id.required' => 'Vui lòng chọn dịch vụ',
             
