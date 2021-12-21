@@ -59,7 +59,8 @@ Route::name('frontend.')->group(function () {
 
             Route::get('/pet-dat-lich/binh-thuong', [OrderController::class,'orderNormal'])->name('order-normal');
 
-            Route::post('/pet-dat-lich/binh-thuong', [OrderController::class,'addFormNormal']);
+            Route::post('/pet-
+            dat-lich/binh-thuong', [OrderController::class,'addFormNormal']);
 
             Route::post('check-form', [OrderController::class,'checkValidateForm'])->name('checkValidateForm');
         });

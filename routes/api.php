@@ -1,9 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\Admin\CategoriesController;
-use App\Http\Controllers\Api\Admin\ServicesController;
-use App\Http\Controllers\Backend\Event\RecurringEventController;
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\BackEnd\Event\RecurringEventController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
