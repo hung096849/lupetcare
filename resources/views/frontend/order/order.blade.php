@@ -63,27 +63,22 @@
                                                         Số điện thoại
                                                         *</label>
                                                     <div style="display:flex;width:100%;font-size:18px;border:1px solid black;border-radius:0.25em;padding: 2px;text-align: center;align-items: center;">
-                                                        <img style="height: 1.5em;" src="{{ asset('frontend/images/225px-Flag_of_Vietnam.svg.webp') }}" alt="co viet nam">
+                                                        <img style="height: 1.75em;" src="{{ asset('frontend/images/225px-Flag_of_Vietnam.svg.webp') }}" alt="co viet nam">
                                                         <span style="
                                                         margin-left: 0.5em;
                                                         font-size: inherit;
-                                                        line-height: 1.5em;
+                                                        line-height: 1.75em;
                                                     ">+84</span>
-                                                        <input type="text" value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->phone : ""  }}" style="border: none; flex: auto; outline: none;padding-left: 0.5em;" name="phone" id="phone">
+                                                        <input type="text" placeholder="969696969 ..." value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->phone : ""  }}" style="width: 100$; border: none; flex: auto; outline: none;padding-left: 0.5em;" name="phone" id="phone">
                                                     </div>
                                                 <span class="error_phone text-danger"></span>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    {{-- <label for="phoneNumber" class="pt-4 pb-2 book-form-text">
-                                                        Số điện thoại
-                                                        *</label>
-                                                    <input type="text" value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->phone : ""  }}" name="phone" id="phone"
-                                                        class="form-control input-form-service"> --}}
-                                                        <label for="Name " class="pt-4 pb-2 book-form-text">Email của bạn
+                                                        <label for="Name" class="pt-4 pb-2 book-form-text">Email của bạn
                                                             *</label>
-                                                        <input type="text" value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->email : ""  }}" name="email" id="email"
+                                                        <input type="text" placeholder="email@gmail.com ..." value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->email : ""  }}" name="email" id="email"
                                                             class="form-control input-form-service">
                                                         <span class="error_email text-danger"></span>
                                                 </div>
@@ -123,8 +118,8 @@
                                 <div id="box_bookService" class="col-md-5 mt-4">
                                     <div id="box_quan"></div>
 
-                                    <div class="float-right my-4 pr-2 d-flex add-form-pet">
-                                        <button type="button" class="btn btn-primary pl-3" id="clickAddForm" style="focus: none; outline: none;">Thêm thú
+                                    <div class="float-right my-4 pr-2 d-flex">
+                                        <button type="button" class="btn btn-info pl-3" id="clickAddForm" style="focus: none; outline: none;">Thêm thú
                                             cưng</button>
                                     </div>
                                 </div>
@@ -409,9 +404,9 @@
         render(i) {
             return /*html*/`<div class="book-form-service" style="border: 1px solid #ccc; border-radius: 12px; margin: 0px 0px 28px; padding: 16px">
                 <div class="book-form-title" style="position: relative">
-                    <h2 class="text-center" style="margin-right: 20px">Thông tin thú cưng ${i}</h2>
+                    <h2 class="text-center" style="margin-right: 20px">Thông tin thú cưng</h2>
                     <!-- <i class="fas fa-minus-square"></i> -->
-                    <button type="buton" class="btn btn-danger btn-sm" id="removePet-${i}" style="position: absolute; top: 0; right: 0;">Xoa</button>
+                    <button type="buton" class="btn btn-danger btn-sm" id="removePet-${i}" style="position: absolute; top: 0; right: 0;">Xóa</button>
                 </div>
 
                 <div class="row">

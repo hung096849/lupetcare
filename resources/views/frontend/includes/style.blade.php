@@ -9,3 +9,6 @@
 <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/main.css') }}" />
 <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css') }}" />
 <link rel="stylesheet" href="{{ asset('frontend/css/jquery-ui.css') }}" />
+<link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/contact.css') }}" />
+<link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/bookservice.css') }}" />
+<link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/register.css') }}" />
