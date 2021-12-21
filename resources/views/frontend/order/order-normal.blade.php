@@ -300,7 +300,7 @@
                             multiple name="service_id[${i}][]">
                             @foreach ($services as $service)
                                 <option value="{{ $service->id }}">
-                                {{ $service->id }}.{{ $service->service_name }}
+                                    {{ $service->id }}.{{ $service->service_name }}
                                 </option>
                             @endforeach
                         </select>
