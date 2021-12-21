@@ -3,7 +3,7 @@ namespace App\Http\Controllers\Frontend\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Models\Customers;
-use App\Jobs\sendSignupEmail;
+use App\Jobs\SendSignupEmail;
 use Illuminate\Http\Request;
 use App\Http\Requests\Frontend\Auth\CustomerRequest;
 use Carbon\Carbon;
