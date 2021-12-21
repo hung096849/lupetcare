@@ -57,10 +57,10 @@ class OrderController extends Controller
     {
         try {
             DB::beginTransaction();
-            // $token = getenv("TWILIO_AUTH_TOKEN");
-            // $twilio_sid = getenv("TWILIO_SID");
-            // $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
-            // $twilio_number = getenv("TWILIO_NUMBER");
+            $token = getenv("TWILIO_AUTH_TOKEN");
+            $twilio_sid = getenv("TWILIO_SID");
+            $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
+            $twilio_number = getenv("TWILIO_NUMBER");
             $totalPrice = $request->total_price;
             $date = Carbon::parse($request->date.' '.$request->time)->format("Y-m-d H:i:s");
 
@@ -128,14 +128,14 @@ class OrderController extends Controller
 
             Session::flash('success', 'Đặt lịch thành công !!!');
 
-            // $twilio = new Client($twilio_sid, $token);
-            // $message = $twilio->messages->create(
-            //     '+84962845342', // Text this number
-            //     [
-            //         'from' => $twilio_number, // From a valid Twilio number
-            //         'body' => 'Test send sms !'
-            //     ]
-            // );
+            $twilio = new Client($twilio_sid, $token);
+            $message = $twilio->messages->create(
+                '+84962845342', // Text this number
+                [
+                    'from' => $twilio_number, // From a valid Twilio number
+                    'body' => "Cám ơn bạn đã đặt lịch ! Chúng tôi sẽ liên lạc với bạn lại sớm nhất ! Mã đơn hàng của bạn là $order->order_code"
+                ]
+            );
             DB::commit();
             return back();
         } catch (\Exception $th) {
@@ -168,10 +168,10 @@ class OrderController extends Controller
     {
         try {
             DB::beginTransaction();
-            // $token = getenv("TWILIO_AUTH_TOKEN");
-            // $twilio_sid = getenv("TWILIO_SID");
-            // $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
-            // $twilio_number = getenv("TWILIO_NUMBER");
+            $token = getenv("TWILIO_AUTH_TOKEN");
+            $twilio_sid = getenv("TWILIO_SID");
+            $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
+            $twilio_number = getenv("TWILIO_NUMBER");
             $pile = $request->pile ? $request->pile : "";
             $totalPrice = $request->total_price;
             $date = Carbon::parse($request->date.' '.$request->time)->format("Y-m-d H:i:s");
@@ -248,14 +248,16 @@ class OrderController extends Controller
             Session::flash('success', 'Đặt lịch thành công !!!');
             Session::flash('pile', $pile);
 
-            // $twilio = new Client($twilio_sid, $token);
-            // $message = $twilio->messages->create(
-            //     '+84962845342', // Text this number
-            //     [
-            //         'from' => $twilio_number, // From a valid Twilio number
-            //         'body' => 'Test send sms !'
-            //     ]
-            // );
+            $twilio = new Client($twilio_sid, $token);
+            $message = $twilio->messages->create(
+                '+84962845342', // Text this number
+                [
+                    'from' => $twilio_number, // From a valid Twilio number
+                    'body' => "Cám ơn bạn đã đặt lịch bên LupetCare !
+                    Chúng tôi sẽ liên lạc với bạn lại sớm nhất ! Mã đơn hàng của bạn là $order->order_code ! Tiền cọc của bạn là $pile
+                    Vui lòng không chia sẻ mã đơn hàng này này cho bất kì ai !"
+                ]
+            );
             DB::commit();
             return back();
         } catch (\Exception $th) {
