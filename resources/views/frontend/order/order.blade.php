@@ -53,21 +53,39 @@
                                                     <span class="error_name text-danger"></span>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label for="phoneNumber" class="pt-4 pb-2 book-form-text">Số điện
-                                                        thoại
+                                                    {{-- <label for="Name " class="pt-4 pb-2 book-form-text">Email của bạn
                                                         *</label>
-                                                    <input type="text" value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->phone : ""  }}" name="phone" id="phone"
+                                                    <input type="text" value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->email : ""  }}" name="email" id="email"
                                                         class="form-control input-form-service">
-                                                    <span class="error_phone text-danger"></span>
+                                                    <span class="error_email text-danger"></span> --}}
+
+                                                    <label for="phoneNumber" class="pt-4 pb-2 book-form-text">
+                                                        Số điện thoại
+                                                        *</label>
+                                                    <div style="display:flex;width:100%;font-size:18px;border:1px solid black;border-radius:0.25em;padding: 2px;text-align: center;align-items: center;">
+                                                        <img style="height: 1.5em;" src="{{ asset('frontend/images/225px-Flag_of_Vietnam.svg.webp') }}" alt="co viet nam">
+                                                        <span style="
+                                                        margin-left: 0.5em;
+                                                        font-size: inherit;
+                                                        line-height: 1.5em;
+                                                    ">+84</span>
+                                                        <input type="text" value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->phone : ""  }}" style="border: none; flex: auto; outline: none;padding-left: 0.5em;" name="phone" id="phone">
+                                                    </div>
+                                                <span class="error_phone text-danger"></span>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <label for="Name " class="pt-4 pb-2 book-form-text">Email của bạn
+                                                    {{-- <label for="phoneNumber" class="pt-4 pb-2 book-form-text">
+                                                        Số điện thoại
                                                         *</label>
-                                                    <input type="text" value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->email : ""  }}" name="email" id="email"
-                                                        class="form-control input-form-service">
-                                                    <span class="error_email text-danger"></span>
+                                                    <input type="text" value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->phone : ""  }}" name="phone" id="phone"
+                                                        class="form-control input-form-service"> --}}
+                                                        <label for="Name " class="pt-4 pb-2 book-form-text">Email của bạn
+                                                            *</label>
+                                                        <input type="text" value="{{ Auth::guard('customers')->user() ? Auth::guard('customers')->user()->email : ""  }}" name="email" id="email"
+                                                            class="form-control input-form-service">
+                                                        <span class="error_email text-danger"></span>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -140,7 +158,6 @@
                         <div id="paymentCOC" class="text-danger text-right" style="min-width: 120px;"></div>
                     </div>
                     <div class="d-flex justify-content-center align-items-center" style="margin: 20px 0px;">
-                        <button type="submit" class="btn btn-sm btn-info" id="payment-pile" style="margin-right: 12px; focus: none; outline: none;">Đặt lịch k cọc</button>
                         <button type="button" class="btn btn-sm btn-info" id="payment" style="margin-right: 12px; focus: none; outline: none;">Đồng ý</button>
                         <button type="button" class="btn btn-sm btn-danger" id="popupNone" style="focus: none; outline: none;">Quay lại</button>
                     </div>

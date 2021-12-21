@@ -42,9 +42,6 @@
                   </div>
                 </div>
               </div>
-              {{-- <a href="{{ route('frontend.customers.pet.information') }}" class="list-text t-lisst
-                                d-block"><i class="fa fa-paw icon-user" aria-hidden="true"></i>Thú cưng của
-                tôi </a> --}}
               <a href="{{ route('frontend.order.customer') }}" class="list-text t-lisst
                                 d-block"><i class="fa fa-briefcase
                                     icon-user" aria-hidden="true"></i>Đơn hàng của tôi </a>

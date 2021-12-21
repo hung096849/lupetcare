@@ -36,7 +36,7 @@ class CustomerFormRequest extends FormRequest
                 'required',
             ],
             'phone' => [
-                'required', 'regex:/([0-9]{10,20})\b/'
+                'required', 'regex:/([3|5|7|8|9])+([0-9]{8})\b/', 'max:9'
             ],
             'email' => [
                 'required', 'email','regex:/^[A-Za-z0-9_.]{6,32}@([a-zA-Z0-9]{2,20})(.com)+$/',
@@ -65,6 +65,7 @@ class CustomerFormRequest extends FormRequest
             'name.required' => 'Vui lòng không để trống',
             'phone.required' => 'Vui lòng không để trống',
             'phone.regex' => 'Vui lòng nhập đúng định dạng số điện thoại',
+            'phone.max' => 'Vui lòng nhập đúng định dạng số điện thoại',
             'email.required' => 'Vui lòng không để trống',
             'email.email' => 'Vui lòng nhập đúng định dạng email',
             'email.regex' => 'Vui lòng nhập đúng định dạng email',

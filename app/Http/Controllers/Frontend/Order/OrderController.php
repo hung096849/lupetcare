@@ -254,7 +254,7 @@ class OrderController extends Controller
                 [
                     'from' => $twilio_number, // From a valid Twilio number
                     'body' => "Cám ơn bạn đã đặt lịch bên LupetCare !
-                    Chúng tôi sẽ liên lạc với bạn lại sớm nhất ! Mã đơn hàng của bạn là $order->order_code ! Tiền cọc của bạn là $pile
+                    Chúng tôi sẽ liên lạc với bạn lại sớm nhất ! Mã đơn hàng của bạn là $order->order_code ! Tiền cọc của bạn là $pile VNĐ
                     Vui lòng không chia sẻ mã đơn hàng này này cho bất kì ai !"
                 ]
             );
