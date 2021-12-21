@@ -130,7 +130,7 @@ class OrderController extends Controller
 
             $twilio = new Client($twilio_sid, $token);
             $message = $twilio->messages->create(
-                '+84962845342', // Text this number
+                "$request->phone", // Text this number
                 [
                     'from' => $twilio_number, // From a valid Twilio number
                     'body' => "Cám ơn bạn đã đặt lịch ! Chúng tôi sẽ liên lạc với bạn lại sớm nhất ! Mã đơn hàng của bạn là $order->order_code"
@@ -250,7 +250,7 @@ class OrderController extends Controller
 
             $twilio = new Client($twilio_sid, $token);
             $message = $twilio->messages->create(
-                '+84962845342', // Text this number
+                "$request->phone", // Text this number
                 [
                     'from' => $twilio_number, // From a valid Twilio number
                     'body' => "Cám ơn bạn đã đặt lịch bên LupetCare !
