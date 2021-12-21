@@ -53,6 +53,10 @@ class PermissionSeeder extends Seeder
             ['id' => 31, 'name' => 'comments', 'slug' => PermissionConstant::COMMENTS_PERMISSION_LIST, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
             ['id' => 32, 'name' => 'comments', 'slug' => PermissionConstant::COMMENTS_PERMISSION_EDIT, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
 
+            ['id' => 33, 'name' => 'contatcs', 'slug' => PermissionConstant::CONTATCS_PERMISSION_LIST, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 34, 'name' => 'contatcs', 'slug' => PermissionConstant::CONTACTS_PERMISSION_DELETE, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 35, 'name' => 'contatcs', 'slug' => PermissionConstant::CONTACTS_PERMISSION_VIEW, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+
         ]);
     }
 }

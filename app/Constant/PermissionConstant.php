@@ -57,4 +57,8 @@ class PermissionConstant
     const COMMENTS_PERMISSION_LIST   = "list-comments";
     const COMMENTS_PERMISSION_EDIT   = "delete-comments";
 
+    /** contatcs permission */
+    const CONTATCS_PERMISSION_LIST   = "list-contatcs";
+    const CONTACTS_PERMISSION_DELETE   = "delete-contatcs";
+    const CONTACTS_PERMISSION_VIEW   = "view-contatcs";
 }
