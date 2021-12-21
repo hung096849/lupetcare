@@ -1,4 +1,5 @@
 <section class="footer">
+
     <div class="footer-top">
 
         <div class="container container-padding">
@@ -8,28 +9,36 @@
                         <img src="{{ asset('frontend/images/logo.png') }}" alt="" class="w-50">
                     </a>
                     <div class="address item-ft">
-                        <div class="item">
-                            <p class="d-flex align-items-center mt-3">
-                                <img src="{{ asset('frontend/images/map.png') }}" alt="" srcset=""> <span class="name">Địa chỉ:
-                                    </span>
+                        <div class="item mt-3">
+                           
+                               <div class="lh-item_si d-flex align-items-center ">
+                                    <img src="{{ asset('frontend/images/map.png') }}" alt="" srcset="">
+                                    <span class="name">Địa chỉ:</span>
+                               </div>
                                 <span class="sub">  Số 1 Trịnh Văn Bô , Nam Từ Liêm , Hà Nội</span>
-                            </p>
+                          
                         </div>
                     </div>
                     <div class="email item-ft">
-                        <div class="item">
-                            <p class="d-flex align-items-center mt-3">
-                                <img src="{{ asset('frontend/images/email.png') }}" alt="" srcset=""> <span class="name">Email:</span>
+                        <div class="item mt-3">
+                            
+                            <div class="lh-item_si d-flex align-items-center ">
+                                <img src="{{ asset('frontend/images/email.png') }}" alt="" srcset="">
+                                 <span class="name">Email:</span>
+                            </div>
                                 <span class="sub">lupetcare@gmail.com</span>
-                            </p>
+                          
                         </div>
                     </div>
                     <div class="phone item-ft">
-                        <div class="item">
-                            <p class="d-flex align-items-center mt-3">
-                                <img src="{{ asset('frontend/images/akar-icons_phone.png') }}" alt="" srcset=""> <span class="name">Số điện thoại:</span>
+                        <div class="item mt-3">
+                           
+                            <div class="lh-item_si d-flex align-items-center 3">
+                                <img src="{{ asset('frontend/images/akar-icons_phone.png') }}" alt="" srcset="">
+                                 <span class="name">Số điện thoại:</span>
+                            </div>
                                 <span class="sub">0337082555</span>
-                            </p>
+                          
                         </div>
                     </div>
                 </div>

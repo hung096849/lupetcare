@@ -1,12 +1,12 @@
 @extends('layouts.frontend')
 @section('content')
 
-<section class="cate-home">
+<section class="cate-home  loading-page">
     <div class="title-home">
         <img src="{{ asset('frontend/images/icon-cate-home.png') }}" alt="" class="title-icon d-block mb-3">
         <span class="title">LuPet Care</span>
     </div>
-    <div class="container">
+    <div class="container ">
 
         <div class="swiper mySwiper list-cate-swiper swiper-container-initialized swiper-container-horizontal">
             <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">

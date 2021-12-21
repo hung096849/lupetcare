@@ -2,7 +2,7 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/list-service.css') }}" />
 
-<div class="list-service">
+<div class="list-service loading-page">
     <div class="container-fluid container-padding">
         <div class="row">
             <div class="col-12 col-lg-3">

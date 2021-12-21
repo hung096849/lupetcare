@@ -13,7 +13,7 @@
     @endif
     <input type="hidden" id="paymentPrice" name="pile" value="">
     <input type="hidden" name="total_price" id="totalPriceInput">
-    <section class="form-book-service">
+    <section class="form-book-service  loading-page">
         <div class="container-fluid container-padding">
             <div class="page-title text-center">
                 <h2 class="title">
@@ -104,7 +104,7 @@
                                             </div>
                                             <div class="col-12 d-flex justify-content-center mt-4 mb-4">
                                                 <button type="button" class="btn btn-lg btn-info px-5" id="appointment" data-route="{{ route('frontend.order_services.checkValidateForm') }}" style="focus: none; outline: none;">
-                                                    ĐẶT LỊCH
+                                                <span class="button__text">ĐẶT LỊCH</span>
                                                 </button>
                                             </div>
                                         </div>
