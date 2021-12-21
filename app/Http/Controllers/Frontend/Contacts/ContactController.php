@@ -15,9 +15,6 @@ class ContactController extends Controller
         return view('frontend.contacts.contactForm');
     }
     public function sendContact(ContactFormRequest $request){
-         
-      
-
         $input = $request->all();
 
         Contact::create($input);
