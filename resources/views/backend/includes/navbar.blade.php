@@ -170,6 +170,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('backend.admin.sms.show') }}" class="nav-link">
+                        <i class="nav-icon fas fa-sms"></i>
+                        <p>
+                            Tin nhắn
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

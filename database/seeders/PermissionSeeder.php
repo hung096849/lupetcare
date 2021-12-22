@@ -57,6 +57,18 @@ class PermissionSeeder extends Seeder
             ['id' => 34, 'name' => 'contatcs', 'slug' => PermissionConstant::CONTACTS_PERMISSION_DELETE, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
             ['id' => 35, 'name' => 'contatcs', 'slug' => PermissionConstant::CONTACTS_PERMISSION_VIEW, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
 
+            ['id' => 36, 'name' => 'sms', 'slug' => PermissionConstant::SMS_PERMISSION_LIST, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 37, 'name' => 'sms', 'slug' => PermissionConstant::SMS_PERMISSION_DELETE, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 38, 'name' => 'sms', 'slug' => PermissionConstant::SMS_PERMISSION_VIEW, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+
+            ['id' => 39, 'name' => 'petInformartion', 'slug' => PermissionConstant::PETINFORMARTION_PERMISSION_LIST, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 40, 'name' => 'petInformartion', 'slug' => PermissionConstant::PETINFORMARTION_PERMISSION_EDIT, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 41, 'name' => 'petInformartion', 'slug' => PermissionConstant::PETINFORMARTION_PERMISSION_CREATE, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 42, 'name' => 'petInformartion', 'slug' => PermissionConstant::PETINFORMARTION_PERMISSION_VIEW, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 43, 'name' => 'petInformartion', 'slug' => PermissionConstant::PETINFORMARTION_PERMISSION_DELETE, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+
+            ['id' => 44, 'name' => 'recurringEvents', 'slug' => PermissionConstant::RECURRINGEVENTS_PERMISSION_LIST, 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+
         ]);
     }
 }
