@@ -6,7 +6,6 @@ use App\Constant\PermissionConstant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Sms;
-use GuzzleHttp\RetryMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 
@@ -31,7 +30,7 @@ class SmsController extends Controller
     {
         if(Auth::user()->can(PermissionConstant::SMS_PERMISSION_VIEW)) {
         $sms = $this->sms->find($request->id);
-        return view('backend.admin.sms.view',compact('sms'));
+        return view('backend.admin.sms.view', compact('sms'));
         }
     }
 
