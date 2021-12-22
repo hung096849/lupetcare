@@ -1,4 +1,5 @@
 @extends('layouts.frontend')
+<link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/bookservice.css') }}" />
 @section('content')
 @include('backend.components.alert')
 
@@ -11,7 +12,7 @@
     @endif
     <input type="hidden" id="paymentPrice" name="pile" value="">
     <input type="hidden" name="total_price" id="totalPriceInput">
-    <section class="form-book-service">
+    <section class="form-book-service loading-page">
         <div class="container-fluid container-padding">
             <div class="page-title text-center">
                 <h2 class="title">
@@ -27,7 +28,7 @@
                     <div class="container">
                         <div class="book-content">
                             <div class="row">
-                                <div class="col-md-7 mt-4">
+                                <div class="col-lg-7 col-12 mt-4 col-or_2">
                                     <div class="book-form">
                                         <div class="book-form-service">
                                             <div class="book-form-title">
@@ -90,15 +91,16 @@
                                                 </div>
                                             </div>
                                             <div class="col-12 d-flex justify-content-center mt-4 mb-4">
-                                                <button type="button" class="btn btn-lg btn-info px-5" id="appointment" data-route="{{ route('frontend.order_services.checkValidateForm') }}" style="focus: none; outline: none;">
-                                                    ĐẶT LỊCH
-                                                </button>
+                                                <button type="button" class="btn btn-lg btn-info px-5 button" id="appointment" data-route="{{ route('frontend.order_services.checkValidateForm') }}" style="focus: none; outline: none;" onclick="this.classList.toggle('button--loading')">
+                                                <span class="button__text">ĐẶT LỊCH</span>
+                                                </button> 
+                                              
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div id="box_bookService" class="col-md-5 mt-4">
+                                <div id="box_bookService" class="col-lg-5 col-12 mt-4 col-or_1">
                                     <div id="box_quan"></div>
                                     <div class="float-right my-4 pr-2 d-flex">
                                         <button type="button" class="btn btn-info pl-3" id="clickAddForm" style="focus: none; outline: none;">Thêm thú

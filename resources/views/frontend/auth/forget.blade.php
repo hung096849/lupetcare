@@ -12,8 +12,7 @@
                     <div class="col-12 col-md-5 m-0 p-0">
                         <div class="register_form">
                             <h4 class="title w-100">QUÊN MẬT KHẨU</h4>
-                            <span class="sub mb-4">Nhập địa chỉ email hoặc số điện
-                                thoại di động được liên kết với tài khoản của
+                            <span class="sub mb-4">Nhập địa chỉ email được liên kết với tài khoản của
                                 bạn.</span>
                                 
                       @if (Session::has('message'))
@@ -36,8 +35,7 @@
 
                                 <div class="forn-btn">
 
-                                    <button type="submit" class="btn btn-primary
-                                        btn-register">Tiếp Tục</button>
+                                <button type="submit" class="btn btn-primary btn-register button" onclick="this.classList.toggle('button--loading')"><span class="button__text">Tiếp tục</span></button>
                                    
                                     <p class="link mt-1"> <a href="{{ route('frontend.login.show') }}" class="pl-1"><i class="fa fa-sign-out mr-1" aria-hidden="true"></i>Quay lại trang đăng nhập</a></p>
                                 </div>

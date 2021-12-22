@@ -28,7 +28,7 @@
                         <ul>
                             <li><a rel="" href="/" class="{{ (request()->is('/')) ? 'active' : '' }}">Trang
                                     chủ</a></li>
-                            {{-- <li>
+                             <li>
                                 <a href="#">Sản Phẩm</a>
                                 <ul>
                                     <li>
@@ -42,7 +42,7 @@
                                         </ul>
                                     </li>
                                 </ul>
-                            </li> --}}
+                            </li> 
                             <li><a href="{{ route('frontend.services.show') }}" class="{{ (request()->is('dich-vu')) ? 'active' : '' }}">Dịch Vụ</a></li>
                             <li><a rel=""  href="{{ route('frontend.tin-tuc.show') }}" class="{{ (request()->is('tin-tuc')) ? 'active' : '' }}">Tin tức</a></li>
                             <li>
@@ -55,7 +55,7 @@
 
                     <div class="header-icon">
                         <div class="row align-items-center">
-                            <div class="col-md-8">
+                            <div class="col-12 col-lg-8">
                                 <div class="search d-flex
                                     align-items-center">
                                     <input class="form-control me-2
@@ -63,17 +63,16 @@
                                     <i class="fa fa-search icon-search" aria-hidden="true"></i>
                                 </div>
                             </div>
-                            <div class="col-md-2 d-flex
-                                justify-content-center">
+                            <div class="col-12 col-lg-2 d-flex justify-content-center menuresponse-icon-love">
                                 <a href="./shoppingcart.html">
                                     <i class="fa fa-heart-o" aria-hidden="true"></i>
                                 </a>
                             </div>
-                            <div class="col-md-2 d-flex
-                                justify-content-center">
+                            <div class="col-12 col-lg-2 d-flex justify-content-center menuresponse-icon-login">
 
-                                    <i class="fa fa-user icon-hd icon-login" aria-hidden="true" onclick="showSearch()"></i>
-                                        <div class="header__notify">
+                                    <i class="fa fa-user icon-hd icon-login icon_logs" aria-hidden="true" onclick="showSearch()"></i>
+                                    <span class="show-menu__products lh_show"><i class="fa fa-angle-down"></i></span>
+                                    <div class="header__notify">
                                             <header class="header__notify-header">
 
                                             </header>

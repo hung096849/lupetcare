@@ -56,7 +56,8 @@
                                 <span class="text-danger">{{ $errors->first('message') }}</span>
                             @endif
                   </div>
-                  <button type="submit" style=" background-color: #79B6D0; color:#fff; border-radius: 5px;padding: 10px 25px " class="btn  btn-lg"> GỬI NGAY </button>
+                  <button type="submit" style=" background-color: #79B6D0; color:#fff; border-radius: 5px;padding: 10px 25px " class="btn  btn-lg button" onclick="this.classList.toggle('button--loading')"> <span class="button__text">GỬI NGAY</span> </button>
+
                 </form>
               </div>
               

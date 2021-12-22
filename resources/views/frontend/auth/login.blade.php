@@ -52,7 +52,7 @@
                                         @endif
                                 <div class="forn-btn">
 
-                                    <button type="submit" class="btn btn-primary btn-register">ĐĂNG nhập</button>
+                                    <button type="submit" class="btn btn-primary btn-register button" onclick="this.classList.toggle('button--loading')"><span class="button__text">Đăng nhập</span></button>
                                     <p class="link mt-1">Nếu bạn chưa có tài khoản , hãy <a href="{{ route('frontend.login.register-user') }}" class="pl-1">ĐĂNG KÝ?</a></p>
                                     <p class="link mt-1"> <a href="{{ route('frontend.login.forget.password.get') }}" class="pl-1">Quên mật khẩu?</a></p>
                                 </div>
