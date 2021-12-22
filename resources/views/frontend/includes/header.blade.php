@@ -55,7 +55,7 @@
 
                     <div class="header-icon">
                         <div class="row align-items-center">
-                            <div class="col-12 col-lg-8">
+                            <div class="col-12 col-lg-10">
                                 <div class="search d-flex
                                     align-items-center">
                                     <input class="form-control me-2
@@ -63,11 +63,11 @@
                                     <i class="fa fa-search icon-search" aria-hidden="true"></i>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-2 d-flex  menuresponse-icon-love">
+                            <!-- <div class="col-12 col-lg-2 d-flex  menuresponse-icon-love">
                                 <a href="./shoppingcart.html">
                                     <i class="fa fa-heart-o" aria-hidden="true"></i>
                                 </a>
-                            </div>
+                            </div> -->
                             <div class="col-12 col-lg-2 d-flex justify-content-center menuresponse-icon-login">
 
                                    <div class="lh-lcik" onclick="showSearch()"  style="cursor: pointer;    display: block;  width: 100%;">

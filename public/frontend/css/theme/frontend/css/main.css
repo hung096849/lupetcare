@@ -4,13 +4,14 @@ body {
     font-family: "Roboto";
     color: #131414;
 }
-.container-padding {
+/* .container-padding {
     padding: 0 40px;
-}
+} */
 .overflow-hidden {
     overflow: hidden !important;
 }
 .show-menu__products {
+    display: none;
     color: #fff;
     position: absolute;
     z-index: 1;
@@ -161,7 +162,7 @@ line-height: 28px;
     color: #000000;
 }
 .footer .footer-top .sub {
-    padding-left: 15px;
+  
     font-weight: 300;
     font-size: 22px;
     line-height: 28px;
@@ -245,7 +246,8 @@ line-height: 28px;
     color: #000000;
 }
 .item-ft .item {
-   
+   flex-wrap: wrap;
+   gap: 16px;
 }
 @media (min-width: 992px) {
     .header .nav-menu {
@@ -388,6 +390,10 @@ line-height: 28px;
     }
 }
 @media (max-width: 991px) {
+    .show-menu__products {
+        display: block;
+     
+    }
     .header .header-top {
         background: #ffffff;
         opacity: 1;

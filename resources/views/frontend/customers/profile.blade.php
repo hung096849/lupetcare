@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
-<section class="my-account">
+<section class="my-account ">
     <div class="container container-fluid container-padding">
         <div class="row">
             <div class="col-12 col-md-3 mt-3">
@@ -32,7 +32,7 @@
                                     data-parent="#accordionExample">
                                     <div class="card-body">
                                         <ul>
-                                            <li><a href="#" class="acctive">Hồ sơ</a></li>
+                                         
                                             <li><a href="{{ route('frontend.customers.showProfile') }}">Đổi thông tin</a></li>
                                             <li><a href="{{ route('frontend.customers.show') }}">Đổi mật khẩu</a></li>
                                         </ul>
@@ -52,7 +52,7 @@
             <div class="col-12 col-md-9">
                 <div class="content-account mt-3">
                     <div class="title-content px-4 py-4">
-                        <span class="text">Thông tin của tôi</span>
+                        <span class="text">Hồ sơ của tôi</span>
                     </div>
                     <div class="content-account-list">
                         <div class="row">

@@ -52,10 +52,7 @@
                                                 <ul>
                                                     <li><a href="{{ route('frontend.customers.profile') }}">Hồ
                                                             sơ</a></li>
-                                                    <li><a href="#"
-                                                            class="acctive">Đổi
-                                                            thông
-                                                            tin</a></li>
+                                                   
 
                                                     <li><a href="{{ route('frontend.customers.show') }}">Đổi mật khẩu</a></li>
                                                 </ul>
@@ -74,7 +71,7 @@
                     <div class="col-12 col-lg-9 mt-3">
                         <div class="content-account">
                             <div class="title-content px-4 py-4">
-                                <span class="text">Hồ sơ của tôi</span>
+                                <span class="text">Thông tin của tôi</span>
                             </div>
                             <div class="content-account-list">
                                     <div class="row">
@@ -103,7 +100,7 @@
                                             </div>
 
                                             <div class="d-flex align-items-center justify-content-center mt-3">
-                                                <button type="submit" class="btn btn-info px-5 py-2">Lưu</button>
+                                                <button type="submit" class="btn btn-info px-5 py-2 button"onclick="this.classList.toggle('button--loading')"><span class="button__text">Lưu</span></button>
                                             </form>
                                     </div>
                                            
@@ -115,12 +112,7 @@
                                           </div>
                                     </div>
 
-                                    <div class="d-flex align-items-center
-                                        justify-content-center mt-3">
-                                        <button type="submit" class="btn
-                                            btn-info px-5 py-2 button "onclick="this.classList.toggle('button--loading')"><span class="button__text">Lưu</span></button>
-                                    </div>
-
+                                   
                                 </form>
                             </div>
                         </div>
