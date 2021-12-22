@@ -7,10 +7,10 @@
                 <div class="list_cate ">
                     <ul class="nav nav-tabs list-group" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#all" role="tab" aria-selected="true">Tất cả</a>
+                            <a class="nav-link active" style="padding: 10px 0;" data-toggle="tab" href="#all" role="tab" aria-selected="true">Tất cả</a>
                         </li>
                         @foreach ($categories as $item)
-                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu{{ $item->id }}" role="tab" aria-selected="false"> {{ $item->name }}</a></li>
+                                <li class="nav-item"><a style="padding: 10px 0;" class="nav-link" data-toggle="tab" href="#menu{{ $item->id }}" role="tab" aria-selected="false"> {{ $item->name }}</a></li>
                         @endforeach
                     </ul>
                 </div>
