@@ -3,7 +3,7 @@
 <div class="wrapper">
 
     @include('backend.includes.navbar-top', [
-    'edit' => 'Sửa dịch vụ',
+    'edit' => 'Sửa đơn hàng',
     // 'url' => route('backend.admin.orders.show')
     ])
 
@@ -13,27 +13,45 @@
 
         <!-- Main content -->
         <section class="content">
-            <form method="POST" action="{{ route('backend.admin.orders.update') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('backend.admin.orders.updateOrder') }}" enctype="multipart/form-data">
                 @csrf
                 {{ method_field('PATCH') }}
-                <input type="hidden" name="id" value="{{ $orderPet->id }}" />
+                <input type="hidden" name="id" value="{{ $order->id }}" />
                 <div class="row">
                     <div class="col-12">
                         <div class="card card-primary">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputName">Tên thú cưng</label>
-                                        <input type="text" class="form-control"
-                                            value="{{ $orderPet->petInformation->name }}" readonly />
+                                        <div class="form-group">
+                                          <label for="">Trạng thái</label>
+                                          <select class="form-control" name="status" id="">
+                                                <option value="{{ App\Models\Order::STATUS_PRIORITIZE }}" 
+                                                    {{ $order->status === App\Models\Order::STATUS_PRIORITIZE ? 'selected' : '' }}>Ưu tiên</option>
+                                                <option value="{{ App\Models\Order::STATUS_IN_PROCESS }}" 
+                                                    {{ $order->status === App\Models\Order::STATUS_IN_PROCESS ? 'selected' : '' }}>Chờ đặt lịch</option>
+                                                <option value="{{ App\Models\Order::STATUS_PROCESS }}"
+                                                {{ $order->status === App\Models\Order::STATUS_PROCESS ? 'selected' : '' }}>Đã xếp lịch</option>
+                                                <option value="{{ App\Models\Order::STATUS_DONE }}"
+                                                {{ $order->status === App\Models\Order::STATUS_DONE ? 'selected' : '' }}>Sử dụng xong</option>
+                                          </select>
+                                        </div>
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputName">Mã thú cưng</label>
-                                        <input type="text" class="form-control"
-                                            value="{{ $orderPet->petInformation->code }}" readonly />
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Thanh toán</label>
+                                            <select class="form-control" name="is_paid" id="">
+                                                <option value="{{ App\Models\Order::UNPAID }}" 
+                                                    {{ $order->is_paid === App\Models\Order::UNPAID ? 'selected' : '' }}>Chưa thanh toán</option>
+                                                <option value="{{ App\Models\Order::PAID }}" 
+                                                    {{ $order->is_paid === App\Models\Order::PAID ? 'selected' : '' }}>Đã thanh toán</option>
+                                                <option value="{{ App\Models\Order::PILE }}"
+                                                {{ $order->is_paid === App\Models\Order::PILE ? 'selected' : '' }}>Đã thanh toán</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                {{-- <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for="inputName">Cân nặng</label>
                                         <select class="form-control">
@@ -50,7 +68,7 @@
                                         @endforeach
                                       </select>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <!-- /.card-body -->

@@ -103,7 +103,8 @@ class RecurringEventController extends Controller
         $order = $this->order->find($request->id);
         
         $order->update([
-            'status' => Order::STATUS_PROCESS
+            'status' => Order::STATUS_PROCESS,
+            'user_id' => $user->id
         ]);
 
         $event = new RecurringEvent();

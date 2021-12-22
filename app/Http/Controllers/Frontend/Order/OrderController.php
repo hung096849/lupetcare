@@ -229,8 +229,8 @@ class OrderController extends Controller
                     'vocher_id' => 1,
                     'customer_id' => $customerId,
                     "payment_method" => Order::CARD,
-                    'is_paid' => Order::PAID,
-                    'status' => Order::STATUS_PROCESS,
+                    'is_paid' => Order::PILE,
+                    'status' => Order::STATUS_PRIORITIZE,
                     'date' => $date,
                     'pile' => $pile,
                     'total_price' => $totalPrice

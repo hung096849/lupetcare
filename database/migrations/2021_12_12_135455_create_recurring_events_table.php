@@ -20,7 +20,7 @@ class CreateRecurringEventsTable extends Migration
             $table->dateTime('end_date');
 
             $table->string('rec_type')->nullable();
-            // $table->bigInteger('event_length')->nullable();
+            $table->bigInteger('event_length')->nullable();
             $table->string('event_pid')->nullable();
 
             $table->timestamps();

@@ -122,7 +122,7 @@
     
                 <aside class="col-md-7 px-0 mx-0 pr-md-4">
     
-                    <img src="{{ asset('frontend/imgs/download-pdf/WaveEvolution_Logo_I_RGB_colour.png') }}" alt="" class="logo mb-3">
+                    <img src="{{ asset('frontend/images/logo.png') }}" alt="" class="logo mb-3">
         
                     <address>
                         LupetCare <br>
@@ -138,23 +138,19 @@
                         <h1>
                             Invoice 
                         </h1>
-            
                         <div class="d-flex justify-content-between">
-            
                             <span>
                                 Mã hóa đơn
                             </span>
                             
                             <span id="code">
-                                 # {{ $order->order_code }}
+                                 # <b>{{ $order->order_code }}</b>
                             </span>
-            
                         </div>
-            
                         <div class="d-flex justify-content-between">
             
                             <span>
-                                Ngày phát hành
+                                Ngày tạo hóa đơn :
                             </span>
                             
                             <span>
@@ -166,10 +162,7 @@
                     </div>
     
                 </aside>
-    
-    
             </header>
-    
             <main>
     
                 <div class="basic-info d-flex justify-content-between mb-3">
@@ -196,12 +189,12 @@
         
                             <th>
                                 <h3>
-                                    Tên pet
+                                    Tên pet thú cưng
                                 </h3>
                             </th>
                             <th>
                                 <h3>
-                                    Mã pet
+                                    Mã thú cưng
                                 </h3>
                             </th>
                             <th>
@@ -211,9 +204,11 @@
                                 Đơn giá
                             </th>
                             <th>
+                                Cân nặng
+                            </th>
+                            <th>
                                 Giá theo cân nặng
                             </th>
-                            
                         </tr>
                     </thead>
     
@@ -231,66 +226,53 @@
                             </th>
                            
                             <th>
-                                {{ $item->petServices->price }}
+                                {{ number_format($item->petServices->price) }} VNĐ
                             </th>
                             <th>
-                                {{ $item->petServices->price*$item->quantity }}
+                                @php
+                                    $weight = "";
+                                    foreach (Config::get('dataWeight.WEIGHT') as $key => $value) {
+                                        if($item->quantity === $key) $weight = $value;
+                                    }
+                                @endphp
+                                {{ $weight }}
+                            </th>
+                            <th>
+                                {{ number_format($item->petServices->price*$item->quantity) }} VNĐ
                             </th>
                         </tr>
                         @endforeach
-    
-                        <tr class="break-line">
-                            <td colspan="4">
-                                Tiền cọc : 
-                            </td>
-                        </tr>
-                        <tr>
-
-                        </tr>
-                       
-                        <!-- br between each line -->
-                        <tr class="break-line">
-                            <td colspan="3">
-                                {{ isset($order->pile) ? $order->pile : 0 }}
-                            </td>
-                        </tr>
-
-                        <!-- br between each line -->
-                        <tr class="break-line">
-                            <td colspan="4">
-                                Tổng tiền cần thanh toán : 
-                            </td>
-                        </tr>
-                        <tr>
-
-                        </tr>
-                       
-                        <!-- br between each line -->
-                        <tr class="break-line">
-                            <td colspan="3">
-                                {{ $order->total_price - $order->pile }}
-                            </td>
-                        </tr>
-    
                     </tbody>
                 </table>
-    
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>
+                            <p>Tiền cọc : <b>{{ isset($order->pile) ? number_format($order->pile) : 0 }}</b></p>
+                        </div>
+                        <div>
+                            <p>Tổng tiền dịch vụ : <b>{{ isset($order->total_price) ? number_format($order->total_price) : 0 }}</b></p>
+                        </div>
+                        <div>
+                            <p>Tổng tiền cần thanh toán : <b>{{ isset($order->pile) ? number_format($order->total_price - $order->pile) : 0 }}</b></p>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
     </div>
     
     <script src="{{ asset('frontend/js/js-pdf/html2pdf.bundle.min.js') }}"></script>
     <script>
-        var nameFile = "Mã hóa đơn : "+document.getElementById('code').innerText;
-        var element = document.getElementById('element-to-print');
-        var opt = {
-            margin:       1,
-            filename:     `${nameFile}.pdf`,
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2 },
-            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-        html2pdf().set(opt).from(element).save();
+        // var nameFile = "Mã hóa đơn : "+document.getElementById('code').innerText;
+        // var element = document.getElementById('element-to-print');
+        // var opt = {
+        //     margin:       1,
+        //     filename:     `${nameFile}.pdf`,
+        //     image:        { type: 'jpeg', quality: 0.98 },
+        //     html2canvas:  { scale: 2 },
+        //     jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        //     };
+        // html2pdf().set(opt).from(element).save();
     </script>
 </body>
 </html>

@@ -9,18 +9,19 @@ class Order extends Model
 {
     use HasFactory,Sortable;
 
-    const STATUS_IN_PROCESS = 0;
-    const STATUS_PROCESS = 1;
+    const STATUS_DONE = 0; //xong
+    const STATUS_IN_PROCESS = 2;// chờ xếp lịch
+    const STATUS_PROCESS = 1; // đã xếp lịch
+    const STATUS_PRIORITIZE = 3; // ưu tiên
     const UNPAID = 0;
     const PAID = 1;
     const PILE = 2;
     const CASH = 0;
     const CARD = 1;
-    const STATUS = 1;
 
     protected $table = 'orders';
     protected $fillable = [
-        'customer_id', 'payment_method', 'is_paid', 'date', 'status', 'total_price', 'pile', 'order_code'
+        'customer_id', 'payment_method', 'is_paid', 'date', 'status', 'total_price', 'pile', 'order_code', 'user_id'
     ];
 
     public $sortable = ['customer_id', 'date', 'status', 'total_price', 'pile'];

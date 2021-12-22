@@ -17,7 +17,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-8" style="padding:30px;">
-                            <h1 class="float-left mr-5"><i class="nav-icon fas fa-address-book"></i>Khách Hàng Đặt Lịch</h1>
+                            <h1 class="float-left mr-5"><i class="nav-icon fas fa-shopping-cart"></i> Đơn đặt hàng</h1>
                             <a href="{{ route('backend.admin.orders.create') }}"
                                 class="btn btn-success float-left mr-2"><i class="fas fa-plus"></i>Thêm mới</a>
                             <button class="btn btn-danger float-left delete_all"
@@ -60,7 +60,6 @@
                                                         </div>
                                                     </div>
                                                 </th>
-                                                {{-- <th>Số đơn hàng</th> --}}
                                                 <th>
                                                     @sortablelink('customer_id', 'Khách hàng')
                                                 </th>
@@ -71,10 +70,11 @@
                                                     Tiền cọc
                                                 </th>
                                                 <th>
-                                                    Tổng tiền
+                                                    @sortablelink('total_price', 'Tổng tiền')
                                                 </th>
                                                 <th>
-                                                    Trạng thái
+                                                    @sortablelink('status', 'Trạng thái')
+                                                    
                                                 </th>
                                                 <th>
                                                     
@@ -98,16 +98,16 @@
                             <!-- /.card -->
                         </div>
                     </div>
-                    {{-- <div class="row">
+                    <div class="row">
                         <div class="col-sm-12 col-md-5">
                             <!-- <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div> -->
                         </div>
                         <div class="col-sm-12 col-md-7">
                             <div class="dataTables_paginate paging_simple_numbers float-right" id="example2_paginate">
-                                @include('backend.components.pagination', ['paginator' => $customers])
+                                @include('backend.components.pagination', ['paginator' => $orders])
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                 </div><!-- /.container-fluid -->
             </section>
             <!-- /.content -->

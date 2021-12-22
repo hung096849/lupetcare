@@ -27,7 +27,21 @@ class DashboardController extends Controller
         $customers = $this->customers->all();
         $orders = $this->orders->all();
         $services = $this->services->all();
-        $users = $this->users->where('role_id', 2)->orderBy('number_book', "DESC")->get();
-        return view('backend/admin/dashboard/index', compact('orders', 'customers', 'services', 'users'));
+        $users = $this->users->with('userOrders')->where([
+            'status' => User::STATUS_INACTIVE,
+            'status' => User::STATUS_ACTIVE,
+        ])->orderBy('number_book', "DESC")->get();
+        $total = 0;
+        $number = 0;
+        foreach ($users as $user) {
+            foreach ($user->userOrders as $key => $value) {
+                if($value->is_paid == Order::PAID) {
+                    $total += $value->total_price;
+                    $number ++;
+                }
+            }
+        }
+
+        return view('backend/admin/dashboard/index', compact('orders', 'customers', 'services', 'users', 'total', 'number'));
     }
 }

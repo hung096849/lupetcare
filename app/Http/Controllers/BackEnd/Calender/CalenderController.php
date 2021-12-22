@@ -20,7 +20,7 @@ class CalenderController extends Controller
 
     public function index(Request $request)
     {
-        $orders = $this->orders->where('status', Order::STATUS_IN_PROCESS)->sortable()->paginate(10);
+        $orders = $this->orders->where('status', Order::STATUS_IN_PROCESS)->orWhere('status', Order::STATUS_PRIORITIZE)->sortable()->paginate(10);
         $users = $this->users->where('status', User::STATUS_ACTIVE)->get();
         return view('backend/admin/calender/index', compact('orders', 'users'));
     }
