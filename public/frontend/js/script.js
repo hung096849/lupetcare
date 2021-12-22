@@ -1,4 +1,3 @@
-
 var SLIDESHOW = (function() {
     // var slideGruop = function() {
     //     var swiper = new Swiper(".mySwiper", {
@@ -49,194 +48,198 @@ var SLIDESHOW = (function() {
     //         },
     //     });
     // };
-    var slideBanner = function () {
+    var slideBanner = function() {
         var swiper_banner = new Swiper(".swiper-banner", {
-          loop: true,
-    
-          pagination: {
-            el: ".banner-pagination",
-            clickable: true,
-          },
-          navigation: {
-            nextEl: ".banner-button-next",
-            prevEl: ".banner-button-prev",
-          },
-          autoplay: {
-            delay: 3000,
-          },
+            loop: true,
+
+            pagination: {
+                el: ".banner-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".banner-button-next",
+                prevEl: ".banner-button-prev",
+            },
+            autoplay: {
+                delay: 3000,
+            },
         });
-      };
-      var slideCateHome = function () {
+    };
+    var slideCateHome = function() {
         var swiper_catehome = new Swiper(".list-cate-swiper", {
-          //   loop: true,
-          slidesPerView: 5,
-          spaceBetween: 30,
-          breakpoints: {
-                        1200: {
-                            slidesPerView: 5,
-                            spaceBetween: 30,
-                        },
-                        1025: {
-                            slidesPerView: 4,
-                            spaceBetween: 30,
-                        },
-                        991: {
-                            slidesPerView: 3,
-                            spaceBetween: 30,
-                        },
-                        768: {
-                            slidesPerView: 3,
-                            spaceBetween: 15,
-                        },
-                        425: {
-                            slidesPerView: 2,
-                            spaceBetween: 10,
-                        },
-                        375: {
-                            slidesPerView: 2,
-                            spaceBetween: 10,
-                        },
-                        320: {
-                            slidesPerView: 2,
-                            spaceBetween: 10,
-                        },
-                    },
-          pagination: {
-            el: ".swiper-cate-home",
-            clickable: true,
-          },
+            //   loop: true,
+            slidesPerView: 5,
+            spaceBetween: 30,
+            breakpoints: {
+                1200: {
+                    slidesPerView: 5,
+                    spaceBetween: 30,
+                },
+                1025: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                },
+                991: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 15,
+                },
+                425: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                },
+                375: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                },
+                320: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                },
+            },
+            pagination: {
+                el: ".swiper-cate-home",
+                clickable: true,
+            },
         });
-      };
-      var slideComment = function () {
+    };
+    var slideComment = function() {
         var swiper_comment = new Swiper(".swiper-user-comment", {
-          //   loop: true,
-        //   cssMode: true,
-          navigation: {
-            nextEl: ".comment-button-next",
-            prevEl: ".comment-button-prev",
-          },
-          pagination: {
-            el: ".comment-pagination",
-            clickable: true,
-          },
+            //   loop: true,
+            //   cssMode: true,
+            navigation: {
+                nextEl: ".comment-button-next",
+                prevEl: ".comment-button-prev",
+            },
+            pagination: {
+                el: ".comment-pagination",
+                clickable: true,
+            },
         });
-      };
-      var slideInstagram = function () {
+    };
+    var slideInstagram = function() {
         var swiper_instagram = new Swiper(".swiper-instagram", {
-          //   loop: true,
-          slidesPerView: 5,
-          spaceBetween: 0,
-          breakpoints: {
-            1200: {
-                slidesPerView: 5,
-                spaceBetween: 30,
+            //   loop: true,
+            slidesPerView: 5,
+            spaceBetween: 0,
+            breakpoints: {
+                1200: {
+                    slidesPerView: 5,
+                    spaceBetween: 30,
+                },
+                1025: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                },
+                991: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 15,
+                },
+                425: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                },
+                375: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                },
+                320: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                },
             },
-            1025: {
-                slidesPerView: 4,
-                spaceBetween: 30,
+            pagination: {
+                el: ".instagram-pagination",
+                clickable: true,
             },
-            991: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 15,
-            },
-            425: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-            },
-            375: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-            },
-            320: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-            },
-        },
-          pagination: {
-            el: ".instagram-pagination",
-            clickable: true,
-          },
         });
-      };
-      var slideBlogHome = function () {
+    };
+    var slideBlogHome = function() {
         var swiper_blog = new Swiper(".slide_blog-home", {
             loop: true,
-          slidesPerView: 3,
-          spaceBetween: 30,
-          breakpoints: {
-            1200: {
-                slidesPerView: 3,
-                spaceBetween: 30,
+            slidesPerView: 3,
+            spaceBetween: 30,
+            breakpoints: {
+                1200: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+                1025: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                991: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 15,
+                },
+                425: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                },
+                375: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                },
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                },
             },
-            1025: {
-                slidesPerView: 2,
-                spaceBetween: 30,
+            pagination: {
+                el: ".blog-home_pagination",
+                clickable: true,
             },
-            991: {
-                slidesPerView: 2,
-                spaceBetween: 30,
-            },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 15,
-            },
-            425: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-            },
-            375: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-            },
-            320: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-            },
-        },
-          pagination: {
-            el: ".blog-home_pagination",
-            clickable: true,
-          },
         });
-      };
-      var slideUser = function () {
+    };
+    var slideUser = function() {
         var swiper_user = new Swiper(".swiper-user", {
-          //   loop: true,
-          slidesPerView: 4,
-          spaceBetween: 0,
-    
-          pagination: {
-            el: ".user-pagination",
-            clickable: true,
-          },
+            //   loop: true,
+            slidesPerView: 4,
+            spaceBetween: 0,
+
+            pagination: {
+                el: ".user-pagination",
+                clickable: true,
+            },
         });
-      };
-      var sliePageBlog = function () {
+    };
+    var sliePageBlog = function() {
         var swiper_page_blog = new Swiper(".mySwiper_blog_slode", {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 20,
             loop: true,
             pagination: {
                 el: ".swiper-pagination_blog_slode",
                 clickable: true,
             },
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
         });
-      };
-      return {
-        _: function () {
-          slideCateHome();
-          slideBanner();
-          slideComment();
-          slideInstagram();
-          slideUser();
-          slideBlogHome();
-          sliePageBlog();
+    };
+    return {
+        _: function() {
+            slideCateHome();
+            slideBanner();
+            slideComment();
+            slideInstagram();
+            slideUser();
+            slideBlogHome();
+            sliePageBlog();
         },
-      };
+    };
 })();
 var WEBS = (function() {
     var backTop = function() {
@@ -444,7 +447,7 @@ var iframe =
     $(".map").attr("data-map") +
     '" style="border:0;" allowfullscreen="" width="100%" class="bd" loading="lazy"></iframe>';
 $(".map").html(iframe);
-// 
+//
 
 
 
