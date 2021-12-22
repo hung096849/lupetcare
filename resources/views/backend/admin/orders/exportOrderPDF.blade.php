@@ -263,16 +263,16 @@
     
     <script src="{{ asset('frontend/js/js-pdf/html2pdf.bundle.min.js') }}"></script>
     <script>
-        // var nameFile = "Mã hóa đơn : "+document.getElementById('code').innerText;
-        // var element = document.getElementById('element-to-print');
-        // var opt = {
-        //     margin:       1,
-        //     filename:     `${nameFile}.pdf`,
-        //     image:        { type: 'jpeg', quality: 0.98 },
-        //     html2canvas:  { scale: 2 },
-        //     jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-        //     };
-        // html2pdf().set(opt).from(element).save();
+        var nameFile = "Mã hóa đơn : "+document.getElementById('code').innerText;
+        var element = document.getElementById('element-to-print');
+        var opt = {
+            margin:       1,
+            filename:     `${nameFile}.pdf`,
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+        html2pdf().set(opt).from(element).save();
     </script>
 </body>
 </html>

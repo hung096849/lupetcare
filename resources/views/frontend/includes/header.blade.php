@@ -28,7 +28,7 @@
                         <ul>
                             <li><a rel="" href="/" class="{{ (request()->is('/')) ? 'active' : '' }}">Trang
                                     chủ</a></li>
-                             <li>
+                             {{-- <li>
                                 <a href="#">Sản Phẩm</a>
                                 <ul>
                                     <li>
@@ -42,7 +42,7 @@
                                         </ul>
                                     </li>
                                 </ul>
-                            </li> 
+                            </li>  --}}
                             <li><a href="{{ route('frontend.services.show') }}" class="{{ (request()->is('dich-vu')) ? 'active' : '' }}">Dịch Vụ</a></li>
                             <li><a rel=""  href="{{ route('frontend.tin-tuc.show') }}" class="{{ (request()->is('tin-tuc')) ? 'active' : '' }}">Tin tức</a></li>
                             <li>
