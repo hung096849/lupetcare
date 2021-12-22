@@ -21,33 +21,33 @@ class SmsController extends Controller
     public function index()
     {
         if(Auth::user()->can(PermissionConstant::SMS_PERMISSION_LIST)) {
-        $sms = $this->sms->sortable()->paginate(10);
-        return view('backend.admin.sms.index', compact('sms'));
+            $sms = $this->sms->sortable()->paginate(10);
+            return view('backend.admin.sms.index', compact('sms'));
         }
     }
 
     public function view(Request $request)
     {
         if(Auth::user()->can(PermissionConstant::SMS_PERMISSION_VIEW)) {
-        $sms = $this->sms->find($request->id);
-        return view('backend.admin.sms.view', compact('sms'));
+            $sms = $this->sms->find($request->id);
+            return view('backend.admin.sms.view', compact('sms'));
         }
     }
 
     public function delete(Request $request)
     {
         if(Auth::user()->can(PermissionConstant::SMS_PERMISSION_DELETE)) {
-        $sms = $this->sms->find($request->id);
-        $sms->delete();
-        return redirect()->route('backend.admin.sms.show')->with('success', Lang::get('message.delete', ['model' => 'Tin Nhắn']));
+            $sms = $this->sms->find($request->id);
+            $sms->delete();
+            return redirect()->route('backend.admin.sms.show')->with('success', Lang::get('message.delete', ['model' => 'Tin Nhắn']));
         }
     }
 
     public function smsDelete(Request $request)
     {
         if(Auth::user()->can(PermissionConstant::SMS_PERMISSION_DELETE)) {
-        $this->sms->whereIn('id', explode(",", $request->ids))->delete();
-        return response()->json(['success' => "Xóa thành công"]);
+            $this->sms->whereIn('id', explode(",", $request->ids))->delete();
+            return response()->json(['success' => "Xóa thành công"]);
         }
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Orders;
 
+use App\Constant\PermissionConstant;
 use App\Http\Controllers\Controller;
 use App\Models\Customers;
 use App\Models\Order;
@@ -11,6 +12,7 @@ use App\Models\Services;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 
@@ -37,25 +39,31 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = $this->orders->orderBy('status', "DESC")->paginate(10);
-        return view('backend.admin.orders.index', compact('orders'));
+        if(Auth::user()->can(PermissionConstant::ORDER_PERMISSION_LIST)) {
+            $orders = $this->orders->orderBy('status', "DESC")->paginate(10);
+            return view('backend.admin.orders.index', compact('orders'));
+        }
     }
 
     public function view(Request $request, $id)
     {
-        $orderPet = $this->orderPet->with('petInformation', 'petServices')
-            ->where('order_id', $id)
-            ->get();
-        $orders = $this->orders->find($id);
-        return view('backend.admin.orders.view', compact('orderPet', 'orders'));
+        if(Auth::user()->can(PermissionConstant::ORDER_PERMISSION_VIEW)) {
+            $orderPet = $this->orderPet->with('petInformation', 'petServices')
+                ->where('order_id', $id)
+                ->get();
+            $orders = $this->orders->find($id);
+            return view('backend.admin.orders.view', compact('orderPet', 'orders'));
+        }
     }
 
     public function create()
     {
-        $services = $this->services->all();
-        $customers = $this->customers->all();
-        $petInfomation = $this->petInfo->all();
-        return view('backend.admin.orders.create', compact('services', 'customers', 'petInfomation'));
+        if(Auth::user()->can(PermissionConstant::ORDER_PERMISSION_CREATE)) {
+            $services = $this->services->all();
+            $customers = $this->customers->all();
+            $petInfomation = $this->petInfo->all();
+            return view('backend.admin.orders.create', compact('services', 'customers', 'petInfomation'));
+        }
     }
 
     public function store(Request $request)
@@ -91,8 +99,10 @@ class OrderController extends Controller
 
     public function edit(Request $request)
     {
-        $order = $this->orders->find($request->id);
-        return view('backend.admin.orders.edit', compact('order'));
+        if(Auth::user()->can(PermissionConstant::ORDER_PERMISSION_EDIT)) {
+            $order = $this->orders->find($request->id);
+            return view('backend.admin.orders.edit', compact('order'));
+        }
     }
 
     public function updateOrder(Request $request)
