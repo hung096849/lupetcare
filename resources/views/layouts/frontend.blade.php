@@ -12,7 +12,6 @@
     @include('frontend.includes.header')
 
     @yield('content')
-    @include('frontend.includes.loading')
 
     @include('frontend.includes.footer')
 
