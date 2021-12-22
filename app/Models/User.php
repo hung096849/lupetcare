@@ -57,6 +57,11 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'role_id');
     }
 
+    public function userOrders()
+    {
+        return $this->hasMany(Order::class, 'user_id', 'id');
+    }
+
     public function uploadAvatar($file)
     {
         $filenameWithExt = $file->getClientOriginalName();

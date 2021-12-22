@@ -14,6 +14,7 @@ use App\Http\Controllers\BackEnd\Orders\OrderController;
 use App\Http\Controllers\BackEnd\Permissions\PermissionController;
 use App\Http\Controllers\BackEnd\PetInformation\PetInformationController;
 use App\Http\Controllers\BackEnd\Role\RoleController;
+use App\Http\Controllers\BackEnd\Sms\SmsController;
 use App\Http\Controllers\BackEnd\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -134,6 +135,8 @@ Route::prefix('admin')->name('backend.')->group(function () {
                 Route::get('/delete/order/{id}', [OrderController::class, 'orderDelete'])->name('orderDelete');
 
                 Route::get('/edit/{id}', [OrderController::class, 'edit'])->name('edit');
+                Route::patch('/update/order', [OrderController::class, 'updateOrder'])->name('updateOrder');
+
                 Route::patch('/update/order-pet', [OrderController::class, 'update'])->name('update');
 
                 Route::get('/insertService',[OrderController::class, 'insert'])->name('insert.service');
@@ -175,6 +178,14 @@ Route::prefix('admin')->name('backend.')->group(function () {
                 Route::get('/edit/{id}', [SildeController::class, 'edit'])->name('edit');
                 Route::patch('/update/slides', [SildeController::class, 'update'])->name('update');
                 Route::delete('/slides/delete', [SildeController::class, 'slidesDelete'])->name('slides.delete');
+            });
+
+            Route::prefix('/sms')->name('sms.')->group(function () {
+                Route::get('/', [SmsController::class, 'index'])->name('show');
+                Route::get('/delete/{id}', [SmsController::class, 'delete'])->name('delete');
+                Route::get('/show/{id}', [SmsController::class, 'view'])->name('view');
+                Route::delete('/sms/delete', [SmsController::class, 'smsDelete'])->name('sms.delete');
+                Route::get('/search', [SmsController::class, 'search'])->name('search');
             });
         });
     });

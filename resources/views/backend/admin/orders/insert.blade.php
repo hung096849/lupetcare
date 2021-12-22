@@ -31,7 +31,7 @@
                         <div class="card card-primary">
                             <div class="card-body">
                                 <div class="form-group">
-                                  <label for="">Tên thú cưng</label>
+                                  <label for="">Tên thú cưng --- Mã thú cưng</label>
                                   <select class="form-control" name="pet_id" id="">
                                       @foreach ($petInfo as $item)
                                         <option value="{{ $item->id }}"> {{ $item->name }} --- {{ $item->code }}</option>

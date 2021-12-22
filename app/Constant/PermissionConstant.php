@@ -61,4 +61,28 @@ class PermissionConstant
     const CONTATCS_PERMISSION_LIST   = "list-contatcs";
     const CONTACTS_PERMISSION_DELETE   = "delete-contatcs";
     const CONTACTS_PERMISSION_VIEW   = "view-contatcs";
+
+    /** sms permission */
+    const SMS_PERMISSION_LIST   = "list-sms";
+    const SMS_PERMISSION_DELETE   = "delete-sms";
+    const SMS_PERMISSION_VIEW   = "view-sms";
+
+    /** petInformartion permission */
+
+    const PETINFORMARTION_PERMISSION_LIST   = "list-petInformartion";
+    const PETINFORMARTION_PERMISSION_EDIT   = "edit-petInformartion";
+    const PETINFORMARTION_PERMISSION_CREATE = "create-petInformartion";
+    const PETINFORMARTION_PERMISSION_VIEW   = "view-petInformartion";
+    const PETINFORMARTION_PERMISSION_DELETE = "delete-petInformartion";
+
+    /** recurring_events permission */
+    const RECURRINGEVENTS_PERMISSION_LIST = "list-recurringEvents";
+
+    /** order permission */
+
+    const ORDER_PERMISSION_LIST   = "list-order";
+    const ORDER_PERMISSION_EDIT   = "edit-order";
+    const ORDER_PERMISSION_CREATE = "create-order";
+    const ORDER_PERMISSION_VIEW   = "view-order";
+    const ORDER_PERMISSION_DELETE = "delete-order";
 }

@@ -103,7 +103,9 @@
                   <thead>
                     <tr>
                       <th>Tên nhân viên</th>
-                      <th>Số lần chăm sóc thú cưng</th>
+                      <th>Tổng số đơn chăm sóc thú cưng</th>
+                      <th>Số đơn theo thực tế</th>
+                      <th>Doanh thu theo đơn hàng thành công</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -115,6 +117,12 @@
                       </td>
                       <td>
                         {{ $user->number_book }}
+                      </td>
+                      <td>
+                        {{ $number }}
+                      </td>
+                      <td>
+                        {{ $total }}
                       </td>
                     </tr>
                     @endforeach
@@ -133,18 +141,6 @@
                 </h3>
                 <!-- tools card -->
                 <div class="card-tools">
-                  <!-- button with a dropdown -->
-                  {{-- <div class="btn-group">
-                    <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
-                      <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="dropdown-menu" role="menu">
-                      <a href="#" class="dropdown-item">Add new event</a>
-                      <a href="#" class="dropdown-item">Clear events</a>
-                      <div class="dropdown-divider"></div>
-                      <a href="#" class="dropdown-item">View calendar</a>
-                    </div>
-                  </div> --}}
                   <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                   </button>

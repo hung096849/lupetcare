@@ -17,13 +17,14 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('order_code')->nullable();
             // $table->integer('vocher_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('customer_id')->nullable();
             $table->tinyInteger('payment_method')->comment('0:Cash, 1:Card')->default(0);
-            $table->tinyInteger('is_paid')->comment('0:Unpai, 1:Paid')->default(0);
+            $table->tinyInteger('is_paid')->comment('0:Unpai, 1:Paid, 2:Pile')->default(0);
             $table->dateTime('date');
             $table->bigInteger('total_price')->nullable();
             $table->bigInteger('pile')->nullable();
-            $table->tinyInteger('status')->comment('0:In process, 1:Success')->default(0);
+            $table->tinyInteger('status')->comment('0:In process, 1:Success, 2:prioritize')->default(0);
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->timestamps();
         });

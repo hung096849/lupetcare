@@ -36,7 +36,7 @@
         </td>
         <td>
             <a href="{{ route('backend.admin.orders.delete', $order->id) }}" type="button" class="btn btn-sm btn-danger" >Xóa</a>
-            <a href="{{ route('backend.admin.orders.edit', $order->id) }}" type="button" class="btn btn-warning btn-sm btn-warning-edit">Sửa</a>
+            {{-- <a href="{{ route('backend.admin.orders.edit', $order->id) }}" type="button" class="btn btn-warning btn-sm btn-warning-edit">Sửa</a> --}}
             
         </td>
     </tr>

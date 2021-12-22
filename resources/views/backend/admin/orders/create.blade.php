@@ -99,11 +99,11 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="">Phương thức thanh toán</label>
+                                                        <label for="">Thanh toán</label>
                                                         <select class="form-control" name="is_paid" id="">
-                                                            <option value="0">Chưa thanh toán</option>
-                                                            <option value="1">Đã thanh toán</option>
-                                                            {{-- <option value="3">Đã cọc</option> --}}
+                                                            <option value="{{ App\Models\Order::UNPAID }}">Chưa thanh toán</option>
+                                                            <option value="{{ App\Models\Order::PAID }}">Đã thanh toán</option>
+                                                            <option value="{{ App\Models\Order::PILE }}">Đã cọc</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -113,8 +113,8 @@
                                                     <div class="form-group">
                                                         <label for="">Trạng thái</label>
                                                         <select class="form-control" name="status" id="">
-                                                            <option value="1">Xác nhận</option>
-                                                            <option value="0">Chưa xác nhận</option>
+                                                            <option value="{{ App\Models\Order::STATUS_PRIORITIZE }}">Ưu tiên</option>
+                                                            <option value="{{ App\Models\Order::STATUS_IN_PROCESS }}">Chờ xếp lịch</option>
                                                         </select>
                                                     </div>
                                                 </div>

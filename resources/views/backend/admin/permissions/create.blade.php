@@ -36,13 +36,13 @@
                                         <option value="{{ $data['users'] }}">{{ $data['users'] }}</option>
                                         <option value="{{ $data['roles'] }}">{{ $data['roles'] }}</option>
                                         <option value="{{ $data['customers'] }}">{{ $data['customers'] }}</option>
-                                        <option value="{{ $data['customers'] }}">{{ $data['permissions'] }}</option>
+                                        <option value="{{ $data['permissions'] }}">{{ $data['permissions'] }}</option>
                                         <option value="{{ $data['categories'] }}">{{ $data['categories'] }}</option>
                                         <option value="{{ $data['news'] }}">{{ $data['news'] }}</option>
                                         <option value="{{ $data['services'] }}">{{ $data['services'] }}</option>
                                         <option value="{{ $data['comments'] }}">{{ $data['comments'] }}</option>
-
-                                        {{-- <option value="{{ $data['categories_plans'] }}">{{ $data['categories_plans'] }}</option> --}}
+                                        <option value="{{ $data['sms'] }}">{{ $data['sms'] }}</option>
+                                        <option value="{{ $data['orders'] }}">{{ $data['orders'] }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
                                 <div class="form-group">
                                     <label for="inputStatus">Key</label>
                                     <select id="inputStatus" name="slug" class="form-control show-permission-table" required>
-                                        <option value="">Chọn giá trị quyền của bạn</option>
+                                        <option value="">Chọn quyền của bạn</option>
                                     </select>
                                 </div>
                             </div>
