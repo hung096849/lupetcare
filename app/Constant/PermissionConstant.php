@@ -78,5 +78,11 @@ class PermissionConstant
     /** recurring_events permission */
     const RECURRINGEVENTS_PERMISSION_LIST = "list-recurringEvents";
 
+    /** order permission */
 
+    const ORDER_PERMISSION_LIST   = "list-order";
+    const ORDER_PERMISSION_EDIT   = "edit-order";
+    const ORDER_PERMISSION_CREATE = "create-order";
+    const ORDER_PERMISSION_VIEW   = "view-order";
+    const ORDER_PERMISSION_DELETE = "delete-order";
 }
