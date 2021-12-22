@@ -24,7 +24,7 @@ class SmsController extends Controller
         if(Auth::user()->can(PermissionConstant::SMS_PERMISSION_LIST)) {
         $sms = $this->sms->sortable()->paginate(10);
         return view('backend.admin.sms.index', compact('sms'));
-    }
+        }
     }
 
     public function view(Request $request)

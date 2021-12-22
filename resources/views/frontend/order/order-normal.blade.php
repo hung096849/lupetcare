@@ -171,6 +171,7 @@
                     time: $('.time').val(),
                     date: $('.date').val(),
                     pet_name: $(`#petName_${i}`).val(),
+                    pet_code: $(`#petCode_${i}`).val(),
                     service_id: $(`#js-select-pet-${i}`).val(),
                 },
                 dataType: "json",
@@ -185,6 +186,7 @@
                         $('.error_time').text("");
                         $('.error_date').text("");
                         $(`.error_pet_name_${i}`).text("");
+                        $(`.error_pet_code_${i}`).text("");
                         $(`.error_pet_service_${i}`).text("");
 
                     } else if (response.status == 422) {
@@ -226,6 +228,12 @@
                             $(`.error_pet_service_${i}`).text(response.error.service_id);
                         }else{
                             $(`.error_pet_service_${i}`).text("");
+                        }
+
+                        if(response.error.pet_code){
+                            $(`.error_pet_code_${i}`).text(response.error.pet_code);
+                        }else{
+                            $(`.error_pet_code_${i}`).text("");
                         }
                     }
                 }
@@ -272,9 +280,10 @@
                     <div class="col-md-12">
                         <label for="phoneNumber" class="pt-4 pb-2 book-form-text">Mã thú cưng
                             *</label>
-                        <input type="text" name="code[${i}][]"
-                            placeholder="Mã thú cưng ... "
+                        <input type="text" name="code[${i}][]" id="petCode_${i}"
+                            placeholder="Nhập mã thú cưng ... "
                             class="form-control input-form-service">
+                            <span class="error_pet_code_${i} text-danger"></span>
                     </div>
                 </div>
                 <div class="row">
