@@ -59,6 +59,32 @@
                                 </div>
                                 <div>
                                     <p>
+                                        <b> Thanh toán :</b> 
+                                        @if($orders->is_paid === App\Models\Order::UNPAID)
+                                            <span class="text-danger">Chưa thanh toán</span>
+                                        @elseif($orders->is_paid === App\Models\Order::PAID)
+                                            <span class="text-info">Đã thanh toán</span>
+                                        @else
+                                            <span class="text-warning">Đã cọc</span>
+                                        @endif
+                                    </p>
+                                </div>
+                                <div>
+                                    <p>
+                                        <b> Trạng thái :</b> 
+                                        @if($orders->status == App\Models\Order::STATUS_IN_PROCESS)
+                                            <span class="text-warning">Chờ đặt lịch</span>
+                                        @elseif($orders->status == App\Models\Order::STATUS_PROCESS)
+                                            <span class="text-info">Đã xếp lịch</span>
+                                        @elseif($orders->status == App\Models\Order::STATUS_PRIORITIZE)
+                                            <span class="text-info">Ưu tiên</span>
+                                        @else
+                                            <span class="text-success">Sử dụng xong</span>
+                                        @endif
+                                    </p>
+                                </div>
+                                <div>
+                                    <p>
                                         <b> Tiền cọc :</b> {{ $orders->pile == "" ? "Chưa cọc" : $orders->pile }} 
                                     </p>
                                 </div>
@@ -103,8 +129,6 @@
                                             <th>Giá </th>
                                             <th>Cân nặng</th>
                                             <th>Giá theo cân nặng</th>
-                                            {{-- <th>Thanh Toán</th>
-                                            <th>In hóa đơn</th> --}}
                                             <th>Hành động </th>
                                         </tr>
                                     </thead>

@@ -36,7 +36,6 @@ class LoginController extends Controller
         );
         $credentials = $request->only('email', 'password');
        
-       
         if (Auth::guard('customers')->attempt($credentials)) {
             $credentials['is_verified'] = Customers::CONFIRM;
             return redirect()->route('frontend.homepage.show');

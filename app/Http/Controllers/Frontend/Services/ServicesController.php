@@ -25,7 +25,13 @@ class ServicesController extends Controller
     public function index() {
         $services = $this->services->all();
         $categories = CategoriesServices::all();
-        return view("frontend/services/services", compact('services', 'categories'));
+        $serviceBasic = $this->services->where('category_id', 1)->get();
+        $serviceWC = $this->services->where('category_id', 2)->get();
+        $serviceAdvanced = $this->services->where('category_id', 3)->get();
+        $serviceBeautify = $this->services->where('category_id', 4)->get();
+        $serviceDifferent = $this->services->where('category_id', 5)->get();
+
+        return view("frontend/services/services", compact('services', 'categories', 'serviceBasic', 'serviceWC', 'serviceAdvanced', 'serviceBeautify', 'serviceDifferent'));
     }
 
     public function detail(Request $request) {

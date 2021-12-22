@@ -24,19 +24,14 @@
                                             text-left list-text acctive" data-toggle="collapse"
                       data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-user
                                                 icon-user"></i> Tài
-                      khoản của tôi<i class="fa
-                                                fa-angle-down smooth
-                                                icon-down"></i></a>
+                      khoản<i class="fa fa-angle-down smooth icon-down"></i></a>
                   </h2>
                 </div>
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                   <div class="card-body">
                     <ul>
-                      <li><a href="#" class="acctive">Hồ
-                          sơ</a></li>
-                      <li><a href="#">Đổi thông
-                          tin</a></li>
-
+                      <li><a href="#" class="acctive">Hồ sơ</a></li>
+                      <li><a href="{{ route('frontend.customers.showProfile') }}">Đổi thông tin</a></li>
                       <li><a href="{{ route('frontend.customers.show') }}">Đổi mật khẩu</a></li>
                     </ul>
                   </div>
@@ -44,9 +39,7 @@
               </div>
               <a href="{{ route('frontend.order.customer') }}" class="list-text t-lisst
                                 d-block"><i class="fa fa-briefcase
-                                    icon-user" aria-hidden="true"></i>Đơn hàng của tôi </a>
-              <a href="./purchase-order.html" class="list-text t-lisst
-                                d-block"><i class="fa fa-bell icon-user" aria-hidden="true"></i>Thông báo
+                                    icon-user" aria-hidden="true"></i>Đơn hàng </a>
               </a>
             </div>
           </div>
@@ -77,7 +70,8 @@
                   <span class="sub t-text">{{ $item->is_paid }}</span>
                 </div> --}}
                 <div class="item">
-                  <span class="sub t-text"><a href="{{ route('frontend.show.order.detail', $item->id) }}" >Xem chi tiết hóa đơn</a></span>
+                  <span class="sub t-text"><a href="{{ route('frontend.show.order.detail', $item->id) }}">Xem chi tiết
+                      hóa đơn</a></span>
                 </div>
               </div>
 

@@ -19,7 +19,7 @@ class CategoriesSeeder extends Seeder
             ['id' => 2, 'name' => 'Vệ sinh', 'slug' => 've-sinh', 'delete_at' => null , 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
             ['id' => 3, 'name' => 'Chăm sóc nâng cao', 'slug' => 'cham-soc-nang-cao', 'delete_at' => null , 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
             ['id' => 4, 'name' => 'Làm đẹp', 'slug' => 'lam-dep', 'delete_at' => null , 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
-            ['id' => 5, 'name' => 'Combo', 'slug' => 'combo', 'delete_at' => null , 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
+            ['id' => 5, 'name' => 'Dịch vụ khác', 'slug' => 'dich-vu-khac', 'delete_at' => null , 'created_at' => '2021-08-19 10:28:00', 'updated_at' => '2021-08-19 10:28:00'],
         ]);
     }
 }

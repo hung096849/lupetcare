@@ -10,6 +10,7 @@ use App\Models\OrderPet;
 use App\Models\PetInformartion;
 use App\Models\RecurringEvent;
 use App\Models\Services;
+use App\Models\Sms;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -58,10 +59,10 @@ class OrderController extends Controller
     {
         try {
             DB::beginTransaction();
-            // $token = getenv("TWILIO_AUTH_TOKEN");
-            // $twilio_sid = getenv("TWILIO_SID");
-            // $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
-            // $twilio_number = getenv("TWILIO_NUMBER");
+            $token = getenv("TWILIO_AUTH_TOKEN");
+            $twilio_sid = getenv("TWILIO_SID");
+            $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
+            $twilio_number = getenv("TWILIO_NUMBER");
             $totalPrice = $request->total_price;
             $date = Carbon::parse($request->date.' '.$request->time)->format("Y-m-d H:i:s");
 
@@ -128,16 +129,24 @@ class OrderController extends Controller
             }
 
             Session::flash('success', Lang::get('message.bookService'));
+            $content = "Cám ơn bạn đã đặt lịch ! Chúng tôi sẽ liên lạc với bạn lại sớm nhất ! Mã đơn hàng của bạn là $order->order_code";
+            Sms::create([
+                'order_code'    => $order->order_code,
+                'name'          => $customer->name,
+                'phone'         => $customer->phone,
+                'content'       => $content,
+            ]);
 
-            // $twilio = new Client($twilio_sid, $token);
-            // $message = $twilio->messages->create(
-            //     "+84962845342", // Text this number
-            //     // +84$request->phone
-            //     [
-            //         'from' => $twilio_number, // From a valid Twilio number
-            //         'body' => "Cám ơn bạn đã đặt lịch ! Chúng tôi sẽ liên lạc với bạn lại sớm nhất ! Mã đơn hàng của bạn là $order->order_code"
-            //     ]
-            // );
+            $twilio = new Client($twilio_sid, $token);
+            $message = $twilio->messages->create(
+                "+84962845342", // Text this number
+                // +84$request->phone
+                [
+                    'from' => $twilio_number, // From a valid Twilio number
+                    'body' => $content
+                ]
+            );
+            
             DB::commit();
             return redirect()->back();
         } catch (\Exception $th) {
@@ -147,13 +156,15 @@ class OrderController extends Controller
         }
     }
 
-    function checkHasPet(string $code)
+    function checkHasPet(string $code = null)
     {
-        $listPetInfo = $this->petInfo->where('code', $code)->first();
-        if ($listPetInfo) {
-            return true;
+        if($code !== null) {
+            $listPetInfo = $this->petInfo->where('code', $code)->first();
+            if ($listPetInfo) {
+                return true;
+            }
+            return false;
         }
-        return false;
     }
 
     public function checkValidateForm(CustomerFormRequest $request)
@@ -170,10 +181,10 @@ class OrderController extends Controller
     {
         try {
             DB::beginTransaction();
-            // $token = getenv("TWILIO_AUTH_TOKEN");
-            // $twilio_sid = getenv("TWILIO_SID");
-            // $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
-            // $twilio_number = getenv("TWILIO_NUMBER");
+            $token = getenv("TWILIO_AUTH_TOKEN");
+            $twilio_sid = getenv("TWILIO_SID");
+            $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
+            $twilio_number = getenv("TWILIO_NUMBER");
             $pile = $request->pile ? $request->pile : "";
             $totalPrice = $request->total_price;
             $date = Carbon::parse($request->date.' '.$request->time)->format("Y-m-d H:i:s");
@@ -248,19 +259,28 @@ class OrderController extends Controller
             }
 
             Session::flash('success', Lang::get('message.bookService'));
-            // Session::flash('pile', $pile);
-
-            // $twilio = new Client($twilio_sid, $token);
-            // $message = $twilio->messages->create(
-            //     "+84962845342", // Text this number
-            //     // "+84$request->phone"
-            //     [
-            //         'from' => $twilio_number, // From a valid Twilio number
-            //         'body' => "Cám ơn bạn đã đặt lịch bên LupetCare !
-            //         Chúng tôi sẽ liên lạc với bạn lại sớm nhất ! Mã đơn hàng của bạn là $order->order_code ! Tiền cọc của bạn là $pile VNĐ
-            //         Vui lòng không chia sẻ mã đơn hàng này này cho bất kì ai !"
-            //     ]
-            // );
+            Session::flash('pile', $pile);
+            $content = "Cám ơn bạn đã đặt lịch bên LupetCare !
+            Chúng tôi sẽ liên lạc với bạn lại sớm nhất ! Mã đơn hàng của bạn là $order->order_code !
+            Tiền cọc của bạn là ".number_format($pile)."VNĐ
+            Vui lòng không chia sẻ mã đơn hàng này này cho bất kì ai !";
+            
+            Sms::create([
+                'order_code'    => $order->order_code,
+                'name'          => $customer->name,
+                'phone'         => $customer->phone,
+                'content'       => $content,
+            ]);
+            
+            $twilio = new Client($twilio_sid, $token);
+            $message = $twilio->messages->create(
+                "+84962845342", // Text this number
+                // "+84$request->phone"
+                [
+                    'from' => $twilio_number, // From a valid Twilio number
+                    'body' => $content
+                ]
+            );
             DB::commit();
             return back();
         } catch (\Exception $th) {

@@ -33,7 +33,7 @@ class PetInformationController extends Controller
     {
         $customer = Auth::guard('customers')->user();
         $orders = $this->orders->with('order_pets')->where('customer_id', $customer->id)->get();
-        // dd($orders);
+
         return view('frontend/order_pet/index', compact('orders', 'customer'));
     }
 

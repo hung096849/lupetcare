@@ -232,10 +232,10 @@
                                 @php
                                     $weight = "";
                                     foreach (Config::get('dataWeight.WEIGHT') as $key => $value) {
-                                        if($item->quantity === $key) $weight = $value;
+                                        if($item->quantity == $key) $weight = $value;
                                     }
                                 @endphp
-                                {{ $weight }}
+                                {{ $item->quantity }}
                             </th>
                             <th>
                                 {{ number_format($item->petServices->price*$item->quantity) }} VNĐ

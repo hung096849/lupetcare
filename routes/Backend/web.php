@@ -134,7 +134,7 @@ Route::prefix('admin')->name('backend.')->group(function () {
                 Route::get('/delete/order/{id}', [OrderController::class, 'orderDelete'])->name('orderDelete');
 
                 Route::get('/edit/{id}', [OrderController::class, 'edit'])->name('edit');
-                Route::get('/update/order', [OrderController::class, 'updateOrder'])->name('updateOrder');
+                Route::patch('/update/order', [OrderController::class, 'updateOrder'])->name('updateOrder');
 
                 Route::patch('/update/order-pet', [OrderController::class, 'update'])->name('update');
 

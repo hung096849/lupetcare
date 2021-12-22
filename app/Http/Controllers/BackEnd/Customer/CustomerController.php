@@ -37,6 +37,7 @@ class CustomerController extends Controller
             'email' =>$request->email,
             'password'=>Hash::make($request->password),
             're_password'=> $request->re_password,
+            'is_verified' => Customers::CONFIRM,
             'status'=>Customers::MEMBER
         ]);
         return redirect()->route('backend.admin.customers.show')->with('success', Lang::get('message.create', ['model' => 'Danh sách khách hàng']));
@@ -56,7 +57,7 @@ class CustomerController extends Controller
             'slug' => SlugService::createSlug(Customers::class, 'slug', $request->name),
             'phone' => $request->phone,
             'email' =>$request->email,
-            'password'=>$request->password,
+            'password'=> Hash::make($request->password),
             're_password'=> $request->re_password,
         ]);
         return redirect()->route('backend.admin.customers.show')->with('success', Lang::get('message.update', ['model' => 'Danh sách khách hàng']));

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Calender;
+namespace App\Http\Controllers\BackEnd\Calender;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;

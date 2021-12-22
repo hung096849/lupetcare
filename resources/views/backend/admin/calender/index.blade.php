@@ -335,7 +335,7 @@
     scheduler.config.xml_date = "%Y-%m-%d %H:%i:%s";
     scheduler.setLoadMode("day");//!
 
-    scheduler.init("scheduler_here", new Date(2021, 11, 19), "week");
+    scheduler.init("scheduler_here", new Date(2021, 11, 22), "week");
 
     scheduler.load("/api/recurringEvents", "json");//!
     var dp = new dataProcessor("/api/recurringEvents");//!
