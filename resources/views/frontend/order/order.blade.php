@@ -3,6 +3,7 @@
 @include('backend.components.alert')
 <link rel="stylesheet" href="{{ asset('frontend/css/css-stripe/bootstrap.min.css') }}" />
 <script src="{{ asset('frontend/css/css-stripe/jquery.min.js') }}"></script>
+
 <form role="form" action="" method="post" class="require-validation"
     data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
     @csrf
@@ -42,7 +43,7 @@
                             <div class="row">
                                 <div class="col-md-7 mt-4">
                                     <div class="book-form">
-                                        <div class="book-form-service">
+                                        <div class="book-form-service loading-page">
                                             <div class="book-form-title">
                                                 <h2 class="text-center">Thông tin chủ sở hữu</h2>
                                             </div>

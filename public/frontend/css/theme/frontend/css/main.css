@@ -14,14 +14,9 @@ body {
     color: #fff;
     position: absolute;
     z-index: 1;
-    right: 0px;
+    right: 30px;
     padding: 5px 10px;
     top: 0;
-}
-.menuresponse-icon-login .show-menu__products {
-
-    right: 24px;
-
 }
 .title-home {
     text-align: center;
@@ -162,7 +157,7 @@ body {
     padding-left: 15px;
     font-weight: 500;
     font-size: 24px;
-    line-height: 28px;
+line-height: 28px;
     color: #000000;
 }
 .footer .footer-top .sub {
@@ -250,10 +245,7 @@ body {
     color: #000000;
 }
 .item-ft .item {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
+   
 }
 @media (min-width: 992px) {
     .header .nav-menu {
@@ -305,7 +297,7 @@ body {
         transition: 0.3s;
         z-index: 999;
     }
-    .header .menu > ul > li > ul {
+.header .menu > ul > li > ul {
         position: absolute;
         visibility: hidden;
         opacity: 0;
@@ -427,8 +419,8 @@ body {
     .header .header-body .nav-menu {
         display: block !important;
         height: 100vh;
-        flex: 0 0 50%;
-        background: #073973;
+        flex: 0 0 60%;
+background: #073973;
         transform: translateX(-100%);
     }
     .header .header-body .nav-menu .nav-menu {
@@ -444,6 +436,8 @@ body {
     .header .header-body .logo {
         margin: auto;
         padding: 5px;
+        -webkit-filter: brightness(0) invert(1);
+        filter: brightness(0) invert(1);
     }
     .header .header-body .menu {
         margin-top: 10px;
@@ -479,29 +473,36 @@ body {
         position: relative;
     }
     .menuresponse-icon-love {
-        margin-left: 15px;
         border-bottom: solid thin #dadada45;
         justify-content: left !important;
         padding: 5px;
         position: relative;
+        margin-left: 15px;
     }
-    .menuresponse-icon-love::before {
+    .menuresponse-icon-love a::before {
         content: "Yêu thích";
         color: white;
-        left: 30px;
+        left: 40px;
         position: absolute;
     }
     .menuresponse-icon-login {
-        margin-left: 15px;
         border-bottom: solid thin #dadada45;
         justify-content: left !important;
         padding: 7px 5px;
         position: relative;
+        margin-left: 15px;
+    }
+    .menuresponse-icon-love a i{
+        color: #fff;
+    }
+    .menuresponse-icon-login .icon-hd {
+
+        width: 100%;
     }
     .menuresponse-icon-login::before {
         content: "Tài khoản";
         color: white;
-        left: 30px;
+        left: 40px;
         position: absolute;
     }
     .icon-search {
@@ -528,7 +529,7 @@ body {
         padding-left: 15px;
     }
     .bg-menu {
-        flex: 0 0 60%;
+        flex: 0 0 48%;
         transform: translateX(500%);
         background: #07397394;
     }
@@ -540,7 +541,6 @@ body {
         color: #fff;
         font-size: 25px;
         padding: 7px;
-        margin-right: 20px;
     }
     .header__notify::before {
         content: "";
@@ -561,7 +561,7 @@ body {
     .header__notify-item {
         border-top: 1px solid #dadada45;
     }
-    .header__notify-name {
+.header__notify-name {
         color: #fff;
     }
     .icon_logs{

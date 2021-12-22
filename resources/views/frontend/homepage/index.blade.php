@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('content')
 
-<section class="cate-home  loading-page">
+<section class="cate-home ">
     <div class="title-home">
         <img src="{{ asset('frontend/images/icon-cate-home.png') }}" alt="" class="title-icon d-block mb-3">
         <span class="title">LuPet Care</span>

@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row align-content-center
                 justify-content-between">
-                <div class="col-4 lo-go-none d-block d-lg-none">
+                <div class="col-5 lo-go-none d-block d-lg-none">
                     <a href="/" title="Trang chủ" class="img_
                         d-block logo-1"> <img loading="lazy" src="{{ asset('frontend/images/logo.png') }}" alt="" title=""> </a>
                 </div>
@@ -63,16 +63,18 @@
                                     <i class="fa fa-search icon-search" aria-hidden="true"></i>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-2 d-flex justify-content-center menuresponse-icon-love">
+                            <div class="col-12 col-lg-2 d-flex  menuresponse-icon-love">
                                 <a href="./shoppingcart.html">
                                     <i class="fa fa-heart-o" aria-hidden="true"></i>
                                 </a>
                             </div>
                             <div class="col-12 col-lg-2 d-flex justify-content-center menuresponse-icon-login">
 
-                                    <i class="fa fa-user icon-hd icon-login icon_logs" aria-hidden="true" onclick="showSearch()"></i>
-                                    <span class="show-menu__products lh_show"><i class="fa fa-angle-down"></i></span>
-                                    <div class="header__notify">
+                                   <div class="lh-lcik" onclick="showSearch()"  style="cursor: pointer;    display: block;  width: 100%;">
+                                         <i class="fa fa-user icon-hd icon-login" aria-hidden="true" ></i>
+                                        <span class="show-menu__products lh_show"><i class="fa fa-angle-down"></i></span>
+                                   </div>
+                                        <div class="header__notify">
                                             <header class="header__notify-header">
 
                                             </header>
@@ -144,7 +146,7 @@
     </div>
 </section>
 
-<section class="banner">
+<!-- <section class="banner">
     <div class="swiper mySwiper swiper-banner overflow-hidden swiper-container-initialized swiper-container-horizontal">
         <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-4557px, 0px, 0px);"><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="2" style="width: 1519px;">
                 <div class="images">
@@ -177,4 +179,4 @@
         <div class="swiper-button-prev d-none banner-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
         <div class="swiper-pagination d-none banner-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3"></span></div>
     <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-</section>
+</section> -->

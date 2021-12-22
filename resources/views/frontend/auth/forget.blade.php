@@ -1,6 +1,7 @@
 @extends('layouts.frontend')
 @section('content')
-        <section class="register">
+
+        <section class="register loading-page">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-7 m-0 p-0 image-hide">
