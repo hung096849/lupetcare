@@ -13,7 +13,7 @@
     @endif
     <input type="hidden" id="paymentPrice" name="pile" value="">
     <input type="hidden" name="total_price" id="totalPriceInput">
-    <section class="form-book-service  loading-page">
+    <section class="form-book-service">
         <div class="container-fluid container-padding">
             <div class="page-title text-center">
                 <h2 class="title">
