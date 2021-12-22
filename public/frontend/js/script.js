@@ -317,6 +317,8 @@ var MENU = (function() {
                 $(".bg-menu").addClass("smooth");
                 $(".nav-menu").addClass("smooth");
                 $(".header-body").addClass("smooth");
+                $(".show_menu").addClass("d-none");
+
             });
         }
     };
@@ -329,6 +331,7 @@ var MENU = (function() {
                 $(".nav-menu").removeClass("col_active");
                 $(".bg-menu").removeClass("active");
                 $(".header-body").removeClass("active");
+                $(".show_menu").removeClass("d-none");
             });
         }
     };

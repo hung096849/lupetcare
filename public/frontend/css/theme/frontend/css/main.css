@@ -14,9 +14,14 @@ body {
     color: #fff;
     position: absolute;
     z-index: 1;
-    right: 0;
+    right: 0px;
     padding: 5px 10px;
     top: 0;
+}
+.menuresponse-icon-login .show-menu__products {
+
+    right: 24px;
+
 }
 .title-home {
     text-align: center;
@@ -422,7 +427,7 @@ body {
     .header .header-body .nav-menu {
         display: block !important;
         height: 100vh;
-        flex: 0 0 44%;
+        flex: 0 0 50%;
         background: #073973;
         transform: translateX(-100%);
     }
@@ -474,6 +479,7 @@ body {
         position: relative;
     }
     .menuresponse-icon-love {
+        margin-left: 15px;
         border-bottom: solid thin #dadada45;
         justify-content: left !important;
         padding: 5px;
@@ -486,6 +492,7 @@ body {
         position: absolute;
     }
     .menuresponse-icon-login {
+        margin-left: 15px;
         border-bottom: solid thin #dadada45;
         justify-content: left !important;
         padding: 7px 5px;
@@ -533,6 +540,7 @@ body {
         color: #fff;
         font-size: 25px;
         padding: 7px;
+        margin-right: 20px;
     }
     .header__notify::before {
         content: "";
