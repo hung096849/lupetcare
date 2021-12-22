@@ -1,17 +1,18 @@
 
 @extends('layouts.frontend')
 @section('content')
-    
-    <section class="register">
+
+  
+    <section class="register loading-page ">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-7 m-0 p-0 image-hide">
+                <div class="col-12 col-lg-7 m-0 p-0 image-hide">
                     <div class="images d-block run_hv">
                         <img src="{{ asset('frontend/images/img-new_service.png ') }}" alt="" class="w-100" srcset="">
                     </div>
 
                 </div>
-                <div class="col-12 col-md-5 m-0 p-0">
+                <div class="col-12 col-lg-5 m-0 p-0">
                     <div class="register_form">
                         <h4 class="title w-100">Tạo tài khoản</h4>
                             
@@ -70,7 +71,7 @@
                             
                             <div class="forn-btn">
 
-                                <button type="submit" class="btn btn-primary btn-register">ĐĂNG KÝ</button>
+                                <button type="submit" class="btn btn-primary btn-register button" onclick="this.classList.toggle('button--loading')"><span class="button__text">ĐĂNG KÝ</span></button>
                                 <p class="link mt-1">Nếu bạn có tài khoản , hãy <a href="{{ route('frontend.login.show') }}" class="pl-1">ĐĂNG NHẬP?</a></p>
                             </div>
                         </form>

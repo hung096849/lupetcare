@@ -16,13 +16,12 @@
         <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/my-account.css') }}">
 
 
-<section class="my-account">
+<section class="my-account loading-page">
             <div class="container container-fluid container-padding">
                 <div class="row">
-                    <div class="col-12 col-md-3 mt-3">
+                    <div class="col-12 col-lg-3 mt-3">
                         <div class="cate-account">
-                            <div class="name d-flex align-items-center
-                                justify-content-center">
+                            <div class="name d-flex align-items-center">
                                 <div class="images">
                                     <img src="{{ asset('frontend/images/img-hot_service.png') }}" alt="" srcset="">
                                 </div>
@@ -69,7 +68,7 @@
                         </div>
 
                     </div>
-                    <div class="col-12 col-md-9">
+                    <div class="col-12 col-lg-9">
                         <div class="content-account mt-3">
                             <div class="title-content px-4 py-4">
                                 <span class="text">Thông tin của tôi</span>
@@ -98,7 +97,7 @@
                                        
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <div class="images">
+                                        <div class="images mt-3">
 
                                             <img src="{{ asset('frontend/images/img-hot_service.png') }}" alt="" class="img d-block">
                                             <p class="title d-block">Ảnh đại

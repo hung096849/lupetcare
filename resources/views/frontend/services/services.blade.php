@@ -2,6 +2,7 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/list-service.css') }}" />
 
+  
 <div class="list-service loading-page">
     <div class="container-fluid container-padding">
         <div class="row">
@@ -57,7 +58,7 @@
                             <div class="modal-body">
                               Vui lòng chọn phương thức đặt lịch 
                             </div>
-                            <div class="modal-footer d-flex justify-content-center"">
+                            <div class="modal-footer d-flex justify-content-center">
                               <a name="" id="" class="btn btn-primary" href="{{ route('frontend.order_services.order-normal') }}" role="button">Đặt lịch thông thường</a>
                               <a name="" id="" class="btn btn-success" href="{{ route('frontend.order_services.order') }}" role="button">Đặt lịch ưu tiên</a>
                             </div>
@@ -68,12 +69,12 @@
             </div>
         </div>
     </div>
-</div>
-
-<section class="banner-ft">
+    <section class="banner-ft">
     <a href="#" class="d-block images">
         <img src="{{ asset('frontend/images/banner-ft.png') }}" alt="" class="w-100" srcset="">
     </a>
 </section>
+</div>
+
 
 @endsection

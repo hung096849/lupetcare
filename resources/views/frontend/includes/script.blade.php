@@ -7,4 +7,7 @@
 <script src="{{ asset('frontend/js/select2.min.js') }}"></script>
 <script src="{{ asset('frontend/js/jquery-ui.js') }}"></script>
 <script src="{{ asset('backend/plugins/toastr/toastr.min.js') }}"></script>
+<script src="{{ asset('frontend/js/loading.js') }}"></script>
+
+
 

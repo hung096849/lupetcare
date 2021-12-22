@@ -2,6 +2,7 @@
 @section('content')
 @include('backend.components.alert')
 
+  
 <form role="form" action="" method="post" id="payment-form">
     @csrf
     @if (Session::has('message'))
@@ -11,7 +12,7 @@
     @endif
     <input type="hidden" id="paymentPrice" name="pile" value="">
     <input type="hidden" name="total_price" id="totalPriceInput">
-    <section class="form-book-service loading-page">
+    <section class="form-book-service ">
         <div class="container-fluid container-padding">
             <div class="page-title text-center">
                 <h2 class="title">
@@ -28,8 +29,8 @@
                         <div class="book-content">
                             <div class="row">
                                 <div class="col-lg-7 col-12 mt-4 col-or_2">
-                                    <div class="book-form">
-                                        <div class="book-form-service">
+                                    <div class="book-form ">
+                                        <div class="book-form-service loading-page">
                                             <div class="book-form-title">
                                                 <h2 class="text-center">Thông tin chủ sở hữu</h2>
                                             </div>

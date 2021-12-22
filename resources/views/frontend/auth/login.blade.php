@@ -1,9 +1,10 @@
 @extends('layouts.frontend')
 @section('content')
-        <section class="register">
+
+        <section class="register loading-page ">
             <div class="container">
                 <div class="row">
-                <div class="col-12 col-md-7 m-0 p-0 image-hide">
+                <div class="col-12 col-lg-7 m-0 p-0 image-hide">
                         <div class="images d-block run_hv ">
                             <img src="{{ asset('frontend/images/img-new_service.png ') }}"
                                 alt="" class="w-100" srcset="">
@@ -11,7 +12,7 @@
 
                     </div>
 
-                    <div class="col-12 col-md-5 m-0 p-0 ">
+                    <div class="col-12 col-lg-5 m-0 p-0 ">
                         <div class="register_form">
                             <h4 class="title w-100">Đăng nhập</h4>
 
@@ -31,13 +32,13 @@
                                         class="form-label mr-3"><i class="fa
                                             fa-user-circle-o"
                                             aria-hidden="true"></i></label>
-                                    <input type="email" class="form-control"
+                                    <input type="email" class="form-control "
                                         id="exampleInputUserName" placeholder="Email"
                                         name="email" value="{{ old('email') }}">
                                       
                                 </div>
                                 @if ($errors->has('email'))
-                                        <span style="color: red; margin-left: 70px;">{{ $errors->first('email') }}</span>
+                                        <span style="color: red; margin-left: 70px;margin-bottom:10px;display: block;">{{ $errors->first('email') }}</span>
                                     @endif
                                 <div class="mb-3 d-flex">
                                     <label for="exampleInputPassword "
@@ -48,12 +49,12 @@
                                 
                                 </div>
                                 @if ($errors->has('password'))
-                                            <span style="color: red; margin-left: 70px;">{{ $errors->first('password') }}</span>
+                                            <span style="color: red; margin-left: 70px;margin-bottom:10px;display: block;">{{ $errors->first('password') }}</span>
                                         @endif
                                 <div class="forn-btn">
 
-                                    <button type="submit" class="btn btn-primary btn-register button" onclick="this.classList.toggle('button--loading')"><span class="button__text">Đăng nhập</span></button>
-                                    <p class="link mt-1">Nếu bạn chưa có tài khoản , hãy <a href="{{ route('frontend.login.register-user') }}" class="pl-1">ĐĂNG KÝ?</a></p>
+                                <button type="submit" class="btn btn-primary btn-register button" onclick="this.classList.toggle('button--loading')"><span class="button__text">Tiếp tục</span></button>
+                                  <p class="link mt-1">Nếu bạn chưa có tài khoản , hãy <a href="{{ route('frontend.login.register-user') }}" class="pl-1">ĐĂNG KÝ?</a></p>
                                     <p class="link mt-1"> <a href="{{ route('frontend.login.forget.password.get') }}" class="pl-1">Quên mật khẩu?</a></p>
                                 </div>
                             </form>

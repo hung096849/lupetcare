@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('content')
 
-    <section class="page_contact">
+    <section class="page_contact loading-page">
       <div class="container">
         <div class="contact">
           <div class="title mb-4">

@@ -5,20 +5,17 @@
             viewport-fit=cover" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Login</title>
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/animate.css') }}">
+
         <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/font-awesome.css') }}">
-        <!-- <link rel="stylesheet" href="theme/frontend/fancybox/dist/jquery.fancybox.min.css) }}"> -->
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/reset.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/swiper.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/style.css') }}" />
-        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/main.css') }}" />
         <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/my-account.css') }}">
+        <link rel="stylesheet" href="{{ asset('frontend/css/theme/frontend/css/loading.css') }}">
 
-<section class="my-account">
+
+<section class="my-account loading-page">
             <div class="container container-fluid container-padding">
                 <div class="row">
-                    <div class="col-12 col-md-3 mt-3">
+                    <div class="col-12 col-lg-3 mt-3">
                         <div class="cate-account">
                             <div class="name d-flex align-items-center
                                 justify-content-center">
@@ -82,7 +79,7 @@
                         </div>
 
                     </div>
-                    <div class="col-12 col-md-9 mt-3">
+                    <div class="col-12 col-lg-9 mt-3">
                         <div class="content-account">
                             <div class="title-content px-4 py-4">
                                 <span class="text">Đổi mật khẩu</span>
@@ -98,9 +95,14 @@
                             <div class="content-account-list">
                                 <form class="form-change"method="POST" action="{{ route('frontend.customers.changepass') }}">
                                 @csrf 
+                               
+                                <div style="background-color: #f8d7da;">
                                 @foreach ($errors->all() as $error)
-                            <p class="text-danger">{{ $error }}</p>
-                         @endforeach 
+                                 <p class="text-danger ml-3">{{ $error }}</p>
+                                 @endforeach 
+                                </div>
+                           
+                       
                                     <div class="row">
                                         <div class="col-12 col-md-8 p-0 m-0">
                                             <div class="form-group d-flex
@@ -138,7 +140,7 @@
                                     <div class="d-flex align-items-center
                                         justify-content-center mt-3">
                                         <button type="submit" class="btn
-                                            btn-info px-5 py-2">Thay đổi</button>
+                                            btn-info px-5 py-2 button"onclick="this.classList.toggle('button--loading')"><span class="button__text">Thay đổi</span></button>
                                     </div>
 
                                 </form>
