@@ -38,7 +38,7 @@
                             <div class="mb-3 d-flex">
                                 <label for="exampleInputEmail1" class="form-label mr-3"><i class="fa
                                         fa-envelope-o" aria-hidden="true"></i></label>
-                                <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder= "Email" aria-describedby="emailHelp">
+                                <input type="email" class="form-control" name="email" value="{{request()->email}}" id="exampleInputEmail1" placeholder= "Email" aria-describedby="emailHelp">
                     
                             </div>
                             @if ($errors->has('email'))

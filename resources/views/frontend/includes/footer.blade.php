@@ -55,11 +55,11 @@
                         <span class="text">
                             Đăng kí với tư cách thành viên để nhận ưu đãi
                         </span>
-                        <form class="d-flex btn-form">
+                        <form action="{{ route('frontend.login.register-user') }}/post?id=1" method="post" class="d-flex btn-form">
                             <input class="form-control me-2 mr-3
-                                input-email" type="email" placeholder="Email:" aria-label="Search">
-                            <button class="btn btn-outline-success
-                                email-btn" type="submit">Gửi</button>
+                                input-email" type="email" placeholder="Email:" name="email" aria-label="Search">
+                            <a href="{{ route('frontend.login.register-user') }}" value="email" class="btn btn-outline-success
+                                email-btn" >Gửi</a>
                         </form>
                     </div>
                 </div>
